@@ -2,13 +2,12 @@
 import React from "react";
 import AuthStyle from "@/styles/auth.styled";
 import Button from "@/components/Button";
-// import loginUser from "../actions/login";
 import Googlelogin from "@/components/Googlelogin";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 const Page = () => {
+    const router=useRouter()
     const loginUser = async e => {
         e.preventDefault();
-        const router=useRouter()
         const { email, password } = e.target;
         const result = await fetch("/api/auth", {
             method: "POST",

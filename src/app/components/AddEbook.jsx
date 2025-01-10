@@ -1,13 +1,15 @@
 "use client";
 import styled from "styled-components";
 import Button from "./Button";
+import { media } from "../../config/media";
 
 const AddEbook = () => {
     const addEbook = async e => {
         e.preventDefault();
         const { title, author } = e.target;
-        await fetch("/api/ebook", {
+        const res = await fetch("/api/ebook", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "content-type": "application/json",
             },
@@ -16,6 +18,10 @@ const AddEbook = () => {
                 author: author.value,
             }),
         });
+        if (!res.ok) {
+            console.log(res.statusText);
+        }
+        console.log(await res.json());
     };
     return (
         <EbookStyles>
@@ -48,6 +54,9 @@ export default AddEbook;
 const EbookStyles = styled.div`
     margin: 60px auto;
     padding: 60px;
+    ${media.sm} {
+        padding: 20px;
+    }
     width: min(400px, 90%);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     .title {

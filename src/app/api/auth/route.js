@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { forwordCookieToClient } from "../../../utils/forword-cookie";
 export async function POST(request) {
     const res = await fetch("http://localhost:4000/login", {
         method: "POST",
@@ -13,13 +14,6 @@ export async function POST(request) {
     });
     const result = await res.json();
     const response = NextResponse.json(result);
-    //forword respose cookie to client
-    const resSetCookies = res.headers.getSetCookie();
-    if (resSetCookies) {
-        resSetCookies.forEach(setcookie => {
-            response.headers.append("Set-Cookie", setcookie);
-        });
-    }
-    //forword respose cookie to client end
+    forwordCookieToClient(res, response);
     return response;
 }

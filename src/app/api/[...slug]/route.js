@@ -1,49 +1,106 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { forwordCookieToClient } from "../../../utils/forword-cookie";
 
-export async function POST(request, { params }) {
-    const slug = (await params).slug.join("/");
-    const requestURL = `${process.env.BASE_URL}/${slug}`;
-    console.log("request url middlware", requestURL);
+export async function GET(req) {
+    return sendRequest(req, req.method);
+}
+export async function POST(req) {
+    return sendRequest(req, req.method);
+}
+export async function PATCH(req) {
+    return sendRequest(req, req.method);
+}
+export async function DELETE(req) {
+    return sendRequest(req, req.method);
+}
+
+async function sendRequest(req, method) {
+    const BASE_URL = process.env.BASE_URL;
     const cookieStore = await cookies();
-    const accesstoken = cookieStore.get("accesstoken")?.value;
-    const refreshtoken = cookieStore.get("accesstoken")?.value;
 
-    const sendRequest = async (requestURL, token) => {
-        const body = await request.json();
-        const result = await fetch(requestURL, {
+    let accesstoken = cookieStore.get("accesstoken")?.value;
+    const refreshtoken = cookieStore.get("refreshtoken")?.value;
+    console.log({ accesstoken, refreshtoken });
+    if (!accesstoken && refreshtoken) {
+        const result = await fetch(`${BASE_URL}/refreshtoken`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                credentials: "include",
-                authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify(body),
+            body: JSON.stringify({
+                token: refreshtoken,
+            }),
         });
         if (!result.ok) {
-            throw result;
-        }
-        return new NextResponse(JSON.stringify(result), { status: 200 });
-    };
-    try {
-        if (accesstoken && !refreshtoken) {
-            console.log("refreshing token");
-            const res = await fetch("http://localhost:4000/refreshtoken", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify({
-                    token: refreshtoken,
+            return NextResponse(
+                JSON.stringify({
+                    success: false,
+                    message: "unauthorized",
                 }),
-            });
-            const response = NextResponse.json(res);
-            sendRequest()
-        } else {
-            sendRequest(requestURL, accesstoken);
+                { status: 401 }
+            );
         }
-    } catch (err) {
-        return new NextResponse(JSON.stringify({ error: err.message }), { status: 500 });
+        const data = await result.json();
+        console.log({ data });
+        accesstoken = data.accesstoken;
+        const response = new NextResponse(JSON.stringify(data));
+        forwordCookieToClient(result, response);
+        // return response;
+        const body = await req.json();
+        const options = {
+            method,
+            headers: {
+                authorization: `Bearer ${accesstoken}`,
+                "Content-Type": req.headers["Content-Type"] || "application/json",
+            },
+            body: method != "GET" ? JSON.stringify(body) : undefined,
+        };
+
+        const url = new URL(req.url);
+        const slug = url.pathname.split("/api/")[1];
+        console.log({ options });
+        const response1 = await fetch(`${BASE_URL}/${slug}`, options);
+        if (!response1.ok) {
+            return new NextResponse(
+                JSON.stringify({
+                    success: false,
+                    message: "internal server error",
+                }),
+                { status: response.status }
+            );
+        }
+        const result1 = await response1.json();
+        console.log(result1);
+        return NextResponse.json(result1);
+    } else {
+        console.log("out refresh");
+        console.log("brearerr", accesstoken);
+        const body = await req.json();
+        const options = {
+            method,
+            headers: {
+                authorization: `Bearer ${accesstoken}`,
+                "Content-Type": req.headers["Content-Type"] || "application/json",
+            },
+            body: method != "GET" ? JSON.stringify(body) : undefined,
+        };
+
+        const url = new URL(req.url);
+        const slug = url.pathname.split("/api/")[1];
+        console.log({ options });
+        const response = await fetch(`${BASE_URL}/${slug}`, options);
+        if (!response.ok) {
+            return new NextResponse(
+                JSON.stringify({
+                    success: false,
+                    message: "internal server error",
+                }),
+                { status: response.status }
+            );
+        }
+        const result = await response.json();
+        console.log(result);
+        return NextResponse.json(result);
     }
 }
