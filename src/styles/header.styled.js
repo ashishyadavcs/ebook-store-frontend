@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { media } from "../config/media";
 
 const StyledHeader = styled.header`
+    position: sticky;
+    background: #fff;
+    z-index: 2;
+    top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: sticky;
         background: #fff;
         z-index: 2;
         top: 0;
@@ -15,8 +19,10 @@ const StyledHeader = styled.header`
             color: #000;
             padding: 10px;
             margin: 5px;
-            &:hover {
-                background: #f1f1f1;
+            ${media.minsm} {
+                &:hover {
+                    background: #f1f1f1;
+                }
             }
         }
         .links {
@@ -36,7 +42,7 @@ const StyledHeader = styled.header`
                 top: 100%;
                 background: #000;
                 width: 250px;
-                min-height: 92vh;
+                min-height: 100vh;
                 transition: all 0.3s;
                 li {
                     position: relative;

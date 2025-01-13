@@ -6,7 +6,7 @@ const loginUser = async e => {
     e.preventDefault();
     const router=useRouter()
     const { email, password } = e.target;
-    const result = await fetch("/api/auth", {
+    const result = await fetch("/api/auth/login", {
         method: "POST",
         credentials: "include",
         headers: {

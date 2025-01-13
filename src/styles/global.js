@@ -11,7 +11,8 @@ html{
     font-size: 62.5%;
 }
 body{
-    font-size: 1.8rem;
+    /* background: red; */
+    font-size: 1.6rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 

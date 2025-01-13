@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import StyledComponentsRegistry from "./styledregistery";
+import StyledComponentsRegistry from "./components/styledregistery";
 import Globalstyle from "@/styles/global";
 import Container from "@/components/Container";
 export default function RootLayout({ children }) {

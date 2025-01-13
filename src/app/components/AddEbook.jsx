@@ -2,26 +2,29 @@
 import styled from "styled-components";
 import Button from "./Button";
 import { media } from "../../config/media";
+import { redirect } from "next/navigation";
 
 const AddEbook = () => {
     const addEbook = async e => {
         e.preventDefault();
-        const { title, author } = e.target;
+        const formdata = new FormData(e.target);
+        const formobj = Object.fromEntries(formdata.entries());
         const res = await fetch("/api/ebook", {
             method: "POST",
             credentials: "include",
             headers: {
-                "content-type": "application/json",
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                title: title.value,
-                author: author.value,
-            }),
+            body: JSON.stringify(formobj),
         });
+        if (res.redirected) {
+            redirect(res.url);
+        }
         if (!res.ok) {
             console.log(res.statusText);
         }
-        console.log(await res.json());
+        const ress = await res.json();
+        console.log("ress", ress);
     };
     return (
         <EbookStyles>
@@ -44,7 +47,15 @@ const AddEbook = () => {
                         placeholder="Ebook Author"
                     />
                 </label>
-                <Button>add</Button>
+                <label htmlFor="cover-image">
+                    <input
+                        // name="coverImageUrl"
+                        type="file"
+                        accept="images/png"
+                        placeholder="cover image"
+                    />
+                </label>
+                <Button>add ebook</Button>
             </form>
         </EbookStyles>
     );
@@ -72,6 +83,7 @@ const EbookStyles = styled.div`
             align-items: center;
             input {
                 flex: 1;
+                max-width: 100%;
             }
         }
         input {

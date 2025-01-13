@@ -4,7 +4,6 @@ import { media } from "../config/media";
 const AuthStyle = styled.div`
     margin: 60px auto;
     padding: 60px;
-    color: red;
     ${media.sm} {
         padding: 20px;
     }
