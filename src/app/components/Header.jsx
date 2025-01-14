@@ -12,8 +12,8 @@ const Header = () => {
             text: "home",
         },
         {
-            link: "/ebooks",
-            text: "ebooks",
+            link: "/admin",
+            text: "admin",
         },
         {
             link: "/login",

@@ -1,21 +1,13 @@
-"use client";
-
-import {useRouter} from "next/router";
-
 const loginUser = async e => {
-    e.preventDefault();
-    const router=useRouter()
-    const { email, password } = e.target;
+    const formdata=new FormData()
+    const inputdata=Object.fromEntries(formdata.entries())
     const result = await fetch("/api/auth/login", {
         method: "POST",
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            email: email.value,
-            password: password.value,
-        }),
+        body: JSON.stringify(),
     });
     if(!result.ok){
         alert("login failed")

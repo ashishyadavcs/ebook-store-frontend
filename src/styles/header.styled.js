@@ -14,21 +14,22 @@ const StyledHeader = styled.header`
         background: #fff;
         z-index: 2;
         top: 0;
-        a {
+        a,button {
             font-weight: 600;
             color: #000;
             padding: 10px;
             margin: 5px;
             ${media.minsm} {
                 &:hover {
+                    border-radius: 8px;
                     background: #f1f1f1;
                 }
             }
         }
         .links {
             display: flex;
+            align-items: center;
             list-style: none;
-            gap: 40px;
         }
         .menu-btn {
             display: none;
