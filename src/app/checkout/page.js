@@ -4,9 +4,9 @@ import Container from "@/components/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect } from "react";
 import { constant } from "../../config/constant";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
+import {config} from "../../config/index.js";
 
 const Payment = () => {
     useEffect(() => {
@@ -20,7 +20,7 @@ const Payment = () => {
         e.preventDefault();
 
         try {
-            const req = await fetch(`http://localhost:4000/create-order`, {
+            const req = await fetch(`${config.BASE_URL}/create-order`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Payment = () => {
                 order_id: id,
                 handler: async response => {
                     console.log("handler", response.razorpay_order_id);
-                    const req = await fetch(`http://localhost:4000/verify-payment`, {
+                    const req = await fetch(`${config.BASE_URL}/verify-payment`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
