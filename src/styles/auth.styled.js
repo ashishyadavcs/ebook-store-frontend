@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { media } from "../config/media";
-const AuthStyle = styled.div`
+const AuthStyle = styled.section`
     margin: 60px auto;
     padding: 60px;
     ${media.sm} {

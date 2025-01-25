@@ -1,0 +1,3 @@
+ to convert form keys into object
+ 
+ const formobj = Object.fromEntries(formdata.entries());

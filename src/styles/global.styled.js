@@ -1,21 +1,27 @@
 "use client";
 const { createGlobalStyle } = require("styled-components");
 
-const Globalstyle = createGlobalStyle`
+export const Globalstyle = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --redpink:#FF0080;
+    --hotyellow:#FFB;
+    --aqua:#43FFEC;
+}
 html{
     font-size: 62.5%;
 }
 body{
-    background: red;
     font-size: 1.6rem;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+main{
+    min-height: 78vh;
+}
 .container{
     width: min(1440px,90%);
     margin: auto;
@@ -28,10 +34,9 @@ textarea{
 }
 input{
     font-family: inherit;
-font-size: inherit;
+    font-size: inherit;
     padding: 10px;
-    outline: none;
-    
+    outline: none; 
 }
 button{
     border: none;
@@ -40,7 +45,7 @@ button{
 }
 
 .btn{
-    background: #f1f1f1;
+    background: #ddd;
     border: none;
     text-decoration: none;
     outline: none;
@@ -48,14 +53,25 @@ button{
     padding: 10px 20px;
     cursor: pointer;
     text-align: center;
-    display: flex;
+    display: inline-flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
+    color:inherit
 }
 a{
     text-decoration: none;
 }
+.gradient-text{
+    width: max-content;
+    color: transparent;
+    background: linear-gradient(90deg,var(--aqua),var(--hotyellow),var(--redpink));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+#nprogress .bar {
+    border-radius: 100px;
+    background: linear-gradient(90deg,var(--aqua),var(--hotyellow),var(--redpink));
+    height: 5px;
+}
 `;
-
-export default Globalstyle;

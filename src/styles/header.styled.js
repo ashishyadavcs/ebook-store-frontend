@@ -14,16 +14,14 @@ const StyledHeader = styled.header`
         background: #fff;
         z-index: 2;
         top: 0;
-        a,button {
+        a,
+        button {
+            background: transparent;
             font-weight: 600;
-            color: #000;
-            padding: 10px;
-            margin: 5px;
+            padding: 14px 0;
             ${media.minsm} {
-                &:hover {
-                    border-radius: 8px;
-                    background: #f1f1f1;
-                }
+                padding: 14px;
+                margin: 5px;
             }
         }
         .links {
@@ -32,12 +30,12 @@ const StyledHeader = styled.header`
             list-style: none;
         }
         .menu-btn {
+            cursor: pointer;
             display: none;
         }
-        @media (max-width: 767px) {
+        ${media.sm} {
             .links {
                 flex-direction: column;
-                gap: 10px;
                 position: absolute;
                 left: -100%;
                 top: 100%;
@@ -47,6 +45,8 @@ const StyledHeader = styled.header`
                 transition: all 0.3s;
                 li {
                     position: relative;
+                    width: 100%;
+                    padding: 0 0 0 30px;
                     &::before {
                         position: absolute;
                         content: "";
@@ -56,11 +56,12 @@ const StyledHeader = styled.header`
                         height: 2px;
                         background: linear-gradient(to right, #ddd, transparent);
                     }
-                }
-                a {
-                    color: #fff;
-                    display: block;
-                    padding: 10px 30px;
+                    a,
+                    button {
+                        color: #fff;
+                        display: block;
+                        padding: 14px;
+                    }
                 }
             }
             .menu-btn {
@@ -72,10 +73,27 @@ const StyledHeader = styled.header`
                     height: 2px;
                     background: #000;
                     margin-bottom: 5px;
+                    transition: all 0.3s;
                 }
             }
 
             &.active {
+                .menu-btn {
+                    span {
+                        &:nth-of-type(2) {
+                            opacity: 0;
+                            transform: translateX(10px);
+                        }
+                        &:first-child {
+                            transform: rotate(45deg);
+                            transform-origin: left;
+                        }
+                        &:last-child {
+                            transform: translateY(7px) rotate(-45deg);
+                            transform-origin: left;
+                        }
+                    }
+                }
                 .links {
                     left: -30px;
                 }

@@ -4,13 +4,14 @@ import { NextResponse } from "next/server";
 export async function middleware(request) {
     const BASE_URL = process.env.BASE_URL;
     const url = request.nextUrl;
-    if (url.pathname.startsWith("/api/auth")) {
-        return NextResponse.next();
-    }
+
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
 
+    if (url.pathname.startsWith("/api/auth")) {
+        return NextResponse.next();
+    }
     if (!accesstoken && refreshtoken) {
         const result = await fetch(`${BASE_URL}/refreshtoken`, {
             method: "POST",
@@ -27,7 +28,6 @@ export async function middleware(request) {
             return NextResponse.redirect(loginurl);
         }
         const data = await result.json();
-        cookieStore.set("accesstoken", data.accesstoken); //add coookie on client
 
         const resSetCookies = result.headers.getSetCookie();
         const newheaders = new Headers();
@@ -37,13 +37,21 @@ export async function middleware(request) {
                 newheaders.append("Set-Cookie", setcookie);
             });
         }
-        return NextResponse.next({
+        console.log("mycookie", request.headers.cookies);
+        const response = NextResponse.next({
             headers: newheaders,
         });
+
+        response.cookies.set("accesstoken", data.accesstoken, {
+            httpOnly: true,
+            secure: false,
+            path: "/",
+            maxAge: 3600, // Cookie expiry in seconds (e.g., 1 hour)
+        });
+        return response;
     }
 
     if (!refreshtoken && !accesstoken) {
-        console.log("inside redirect");
         const loginurl = new URL("/login", request.url);
         loginurl.searchParams.set("from", request.nextUrl.pathname);
         return NextResponse.redirect(loginurl);
@@ -53,5 +61,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ["/admin", "/api/:path*", "/api"],
+    matcher: ["/dashboard", "/api/:path*", "/api"],
 };

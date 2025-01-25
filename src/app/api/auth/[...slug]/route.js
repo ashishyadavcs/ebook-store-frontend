@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-import { forwordCookieToClient } from "../../../../utils/forword-cookie";
+import { forwordCookieToClient } from "@/utils/forword-cookie";
 export async function POST(request, { params }) {
-    console.log(`${process.env.BASE_URL}/${params.slug.join("/")}`);
     const body = await request.text();
-    const res = await fetch(`http://localhost:4000/logout`, {
+    const res = await fetch(`${process.env.BASE_URL}/${params.slug.join("/")}`, {
         method: request.method,
         credentials: "include",
         headers: {

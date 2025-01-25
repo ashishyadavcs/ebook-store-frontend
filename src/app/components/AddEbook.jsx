@@ -3,32 +3,32 @@ import styled from "styled-components";
 import Button from "./Button";
 import { media } from "../../config/media";
 import { redirect } from "next/navigation";
+import { toastify } from "./Toast";
 
 const AddEbook = () => {
     const addEbook = async e => {
         e.preventDefault();
         const formdata = new FormData(e.target);
-        const formobj = Object.fromEntries(formdata.entries());
+        formdata.delete("coverImageUrl");
+        formdata.append("coverImageUrl", e.target.coverImageUrl.files[0]);
         const res = await fetch("/api/ebook", {
             method: "POST",
             credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formobj),
+            body: formdata,
         });
         if (res.redirected) {
             redirect(res.url);
         }
         if (!res.ok) {
-            console.log(res.statusText);
+            return toastify.error(res.message || res.statusText);
         }
-        const ress = await res.json();
-        console.log("ress", ress);
+        await res.json();
+        toastify.success("ebook added successfull");
     };
     return (
         <EbookStyles>
             <form onSubmit={addEbook}>
+                <h2>Add new Ebook</h2>
                 <label htmlFor="email">
                     <input
                         defaultValue={"How to be successfull"}
@@ -49,9 +49,10 @@ const AddEbook = () => {
                 </label>
                 <label htmlFor="cover-image">
                     <input
-                        // name="coverImageUrl"
+                        required
+                        name="coverImageUrl"
                         type="file"
-                        accept="images/png"
+                        accept="images/*"
                         placeholder="cover image"
                     />
                 </label>
@@ -69,7 +70,7 @@ const EbookStyles = styled.div`
         padding: 20px;
     }
     width: min(400px, 90%);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     .title {
         margin: 0 0 10px;
     }

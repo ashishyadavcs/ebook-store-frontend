@@ -12,8 +12,8 @@ const Header = () => {
             text: "home",
         },
         {
-            link: "/admin",
-            text: "admin",
+            link: "/dashboard",
+            text: "dashboard",
         },
         {
             link: "/login",
@@ -23,15 +23,27 @@ const Header = () => {
     return (
         <StyledHeader>
             <Container>
-                <nav>
+                <nav role="menubar">
                     <Link href="/">{process.env.NEXT_PUBLIC_APP_NAME}</Link>
-                    <ul className="links">
+                    <ul className="links" role="menubar">
                         {navList.map((nav, i) => (
-                            <li key={i}>
+                            <li
+                                onClick={e => {
+                                    e.currentTarget.parentElement.parentElement.classList.remove(
+                                        "active"
+                                    );
+                                }}
+                                role="menuitem"
+                                key={i}
+                            >
                                 <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
-                        <li>
+                        <li  onClick={e => {
+                                    e.currentTarget.parentElement.parentElement.classList.remove(
+                                        "active"
+                                    );
+                                }}>
                             <Button onClick={logout}>logout</Button>
                         </li>
                     </ul>
