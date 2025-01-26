@@ -59,6 +59,21 @@ button{
     align-items: center;
     color:inherit
 }
+.loader {
+    display: inline-block;
+  border: 2px solid #f3f3f3; /* Light grey */
+  border-top: 2px solid; /* Blue */
+  border-radius: 50%;
+  --size:18px;
+  width: var(--size);
+  height:var(--size);
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 a{
     text-decoration: none;
 }

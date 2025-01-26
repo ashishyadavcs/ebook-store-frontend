@@ -1,15 +1,17 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import AuthStyle from "@/styles/auth.styled";
 import Button from "@/components/Button";
 import Googlelogin from "@/components/Googlelogin";
 import { useRouter } from "next/navigation";
 import { toastify } from "@/components/Toast";
 const Page = () => {
+    const [loading, setloading] = useState(false);
     const router = useRouter();
     const loginUser = async e => {
         e.preventDefault();
         try {
+            setloading(true);
             const { email, password } = e.target;
             const res = await fetch("/api/auth/login", {
                 method: "POST",
@@ -22,15 +24,16 @@ const Page = () => {
                     password: password.value,
                 }),
             });
-            const result=await res.json()
+            const result = await res.json();
             if (!result.success) {
-                console.log("sucecss false");
                 throw Error("failed");
             } else {
+                setloading(false);
                 toastify.success("loggedin successfull");
                 router.push("/dashboard");
             }
         } catch (err) {
+            setloading(false);
             toastify.error(err.message);
         }
     };
@@ -56,7 +59,7 @@ const Page = () => {
                         placeholder="password"
                     />
                 </label>
-                <Button>login</Button>
+                <Button loading={loading}>login</Button>
                 or
                 <Googlelogin />
             </form>

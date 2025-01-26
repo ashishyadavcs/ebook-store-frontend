@@ -19,9 +19,9 @@ async function sendRequest(req) {
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    if (!accesstoken && !refreshtoken) {
-        return NextResponse.redirect(new URL("/login", req.url));
-    }
+    // if (!accesstoken && !refreshtoken) {
+    //     return NextResponse.redirect(new URL("/login", req.url));
+    // }
 
     const options = {
         method,

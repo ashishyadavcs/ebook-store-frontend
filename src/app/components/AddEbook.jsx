@@ -4,12 +4,15 @@ import Button from "./Button";
 import { media } from "../../config/media";
 import { redirect } from "next/navigation";
 import { toastify } from "./Toast";
+import {useState} from "react";
 
 const AddEbook = () => {
+    const [loading, setloading] = useState(false);
     const addEbook = async e => {
         e.preventDefault();
+        setloading(true);
         const formdata = new FormData(e.target);
-        formdata.delete("coverImageUrl")
+        formdata.delete("coverImageUrl");
         formdata.append("coverImageUrl", e.target.coverImageUrl.files[0]);
         const res = await fetch("/api/ebook", {
             method: "POST",
@@ -20,9 +23,13 @@ const AddEbook = () => {
             redirect(res.url);
         }
         if (!res.ok) {
+            setloading(false);
+
             return toastify.error(res.message || res.statusText);
         }
+
         await res.json();
+        setloading(false);
         toastify.success("ebook added successfull");
     };
     return (
@@ -56,7 +63,7 @@ const AddEbook = () => {
                         placeholder="cover image"
                     />
                 </label>
-                <Button>add ebook</Button>
+                <Button loading={loading}>add ebook</Button>
             </form>
         </EbookStyles>
     );

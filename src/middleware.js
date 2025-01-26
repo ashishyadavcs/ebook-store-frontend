@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import _config from "@/config/index.js"
+import _config from "@/config/index.js";
 export async function middleware(request) {
     const url = request.nextUrl;
 
@@ -8,7 +8,10 @@ export async function middleware(request) {
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
 
-    if (url.pathname.startsWith("/api/auth")) {
+    if (
+        url.pathname.startsWith("/api/auth") ||
+        (url.pathname.startsWith("/api/ebooks") && request.method === "GET")
+    ) {
         return NextResponse.next();
     }
     if (!accesstoken && refreshtoken) {
