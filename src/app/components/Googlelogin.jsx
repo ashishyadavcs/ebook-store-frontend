@@ -1,4 +1,4 @@
-import { config } from "../../config/index.js";
+import  config  from "../../config/index.js";
 import Button from "./Button";
 import { FcGoogle } from "react-icons/fc";
 const Googlelogin = ({ title = "Login with" }) => {

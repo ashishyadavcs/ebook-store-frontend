@@ -1,8 +1,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-
+import _config from "@/config/index.js"
 export async function middleware(request) {
-    const BASE_URL = process.env.BASE_URL;
     const url = request.nextUrl;
 
     const cookieStore = await cookies();
@@ -13,7 +12,7 @@ export async function middleware(request) {
         return NextResponse.next();
     }
     if (!accesstoken && refreshtoken) {
-        const result = await fetch(`${BASE_URL}/refreshtoken`, {
+        const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

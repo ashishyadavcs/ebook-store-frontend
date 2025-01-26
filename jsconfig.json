@@ -4,6 +4,7 @@
             "@/components/*": ["./src/app/components/*"],
             "@/styles/*": ["./src/styles/*"],
             "@/utils/*": ["./src/utils/*"],
+            "@/config/*": ["./src/config/*"],
         }
     }
 }

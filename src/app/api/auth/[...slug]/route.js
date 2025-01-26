@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { forwordCookieToClient } from "@/utils/forword-cookie";
-import {config} from "../../../../config/index.js";
+import config from "@/config/index.js";
 export async function POST(request, { params }) {
     const body = await request.text();
     const res = await fetch(`${config.BASE_URL}/${params.slug.join("/")}`, {

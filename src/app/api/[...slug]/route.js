@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import {config} from "../../../config/index.js";
+import _config from "@/config/index.js";
 
 export async function GET(req) {
     return sendRequest(req);
@@ -14,11 +14,8 @@ export async function PATCH(req) {
 export async function DELETE(req) {
     return sendRequest(req);
 }
-
 async function sendRequest(req) {
     const method = req.method;
-    const BASE_URL = process.env.BASE_URL;
-
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
@@ -45,20 +42,20 @@ async function sendRequest(req) {
 
     const url = new URL(req.url);
     const slug = url.pathname.split("/api/")[1];
-    console.log(options);
-    const response1 = await fetch(`${config.BASE_URL}/${slug}`, options);
-
-    if (!response1.ok) {
-        return new NextResponse(
-            JSON.stringify({
+    try {
+        const response = await fetch(`${_config.BASE_URL}/${slug}`, options);
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        const result = await response.json();
+        return NextResponse.json(result);
+    } catch (err) {
+        return NextResponse.json(
+            {
                 success: false,
-                message: response1.statusText,
-            }),
-            { status: response1.status }
+                message: err.message,
+            },
+            { status: 500 }
         );
     }
-
-    const result1 = await response1.json();
-    console.log(result1);
-    return NextResponse.json(result1);
 }
