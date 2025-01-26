@@ -23,6 +23,7 @@ const Page = () => {
                 }),
             });
             const result=await res.json()
+            console.log(result)
             if (!result.success) {
                 console.log("sucecss false");
                 throw Error("failed");

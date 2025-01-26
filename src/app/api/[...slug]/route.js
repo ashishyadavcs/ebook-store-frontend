@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import {config} from "../../../config/index.js";
 
 export async function GET(req) {
     return sendRequest(req);
@@ -45,7 +46,7 @@ async function sendRequest(req) {
     const url = new URL(req.url);
     const slug = url.pathname.split("/api/")[1];
     console.log(options);
-    const response1 = await fetch(`${BASE_URL}/${slug}`, options);
+    const response1 = await fetch(`${config.BASE_URL}/${slug}`, options);
 
     if (!response1.ok) {
         return new NextResponse(
