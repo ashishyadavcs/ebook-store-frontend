@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { constant } from "../../config/constant";
 import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
-import {config} from "../../config/index.js";
+import config from "../../config/index.js";
 
 const Payment = () => {
     useEffect(() => {
