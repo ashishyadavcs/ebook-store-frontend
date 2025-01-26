@@ -27,7 +27,6 @@ async function sendRequest(req) {
         method,
         headers: {
             Authorization: `Bearer ${accesstoken}`,
-            "Content-Type": req.headers.get("Content-Type"),
         },
     };
 

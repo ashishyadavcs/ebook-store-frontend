@@ -9,7 +9,7 @@ const AddEbook = () => {
     const addEbook = async e => {
         e.preventDefault();
         const formdata = new FormData(e.target);
-        formdata.delete("coverImageUrl");
+        formdata.delete("coverImageUrl")
         formdata.append("coverImageUrl", e.target.coverImageUrl.files[0]);
         const res = await fetch("/api/ebook", {
             method: "POST",
