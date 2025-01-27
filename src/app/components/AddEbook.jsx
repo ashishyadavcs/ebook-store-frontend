@@ -24,13 +24,13 @@ const AddEbook = () => {
         }
         if (!res.ok) {
             setloading(false);
-
             return toastify.error(res.message || res.statusText);
         }
 
         await res.json();
         setloading(false);
         toastify.success("ebook added successfull");
+        redirect("/")
     };
     return (
         <EbookStyles>

@@ -3,7 +3,8 @@ import { forwordCookieToClient } from "@/utils/forword-cookie";
 import config from "@/config/index.js";
 export async function POST(request, { params }) {
     const body = await request.text();
-    const res = await fetch(`${config.BASE_URL}/${params.slug.join("/")}`, {
+    const _params=await params
+    const res = await fetch(`${config.BASE_URL}/${_params.slug.join("/")}`, {
         method: request.method,
         credentials: "include",
         headers: {

@@ -61,6 +61,8 @@ const StyledHeader = styled.header`
                         color: #fff;
                         display: block;
                         padding: 14px;
+                        width: 100%;
+                        text-align: left;
                     }
                 }
             }
