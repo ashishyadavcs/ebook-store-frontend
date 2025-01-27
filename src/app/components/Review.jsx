@@ -5,7 +5,8 @@ import { useState } from "react";
 import { media } from "../../config/media";
 import { toastify } from "./Toast";
 
-const Review = ({ size, ebookid,handler }) => {
+const Review = ({ size, ebookid, handler }) => {
+    const [loading, setloading] = useState(false);
     const [review, setReview] = useState({
         rating: 5,
         review: "",
@@ -27,6 +28,7 @@ const Review = ({ size, ebookid,handler }) => {
     };
     const addReview = async e => {
         e.preventDefault();
+        setloading(true);
         const req = await fetch("/api/review", {
             method: "POST",
             headers: {
@@ -39,11 +41,13 @@ const Review = ({ size, ebookid,handler }) => {
             }),
         });
         if (req.ok) {
-            handler(false)
+            handler(false);
             toastify.success("Thanks for rating");
+            setloading(false);
         } else {
-            handler(false)
+            handler(false);
             toastify.error("something went wrong");
+            setloading(false);
         }
     };
     return (
@@ -65,7 +69,7 @@ const Review = ({ size, ebookid,handler }) => {
                     placeholder="your review"
                     className="textarea"
                 />
-                <Button>Rate Ebook</Button>
+                <Button loading={loading}>Rate Ebook</Button>
             </form>
         </ReviewStyle>
     );
