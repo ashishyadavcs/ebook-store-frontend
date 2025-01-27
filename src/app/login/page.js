@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import AuthStyle from "@/styles/auth.styled";
 import Button from "@/components/Button";
 import Googlelogin from "@/components/Googlelogin";
@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 const Page = () => {
     const [loading, setloading] = useState(false);
-    const router=useRouter()
+    const router = useRouter();
     const from = useSearchParams().get("from");
     const loginUser = async e => {
         e.preventDefault();
@@ -39,32 +39,34 @@ const Page = () => {
         }
     };
     return (
-        <AuthStyle>
-            <h2 className="title">Login</h2>
-            <form onSubmit={loginUser}>
-                <label htmlFor="email">
-                    <input
-                        defaultValue={"as@as.as"}
-                        name="email"
-                        type="text"
-                        required
-                        placeholder="email"
-                    />
-                </label>
-                <label htmlFor="password">
-                    <input
-                        defaultValue={"123"}
-                        name="password"
-                        type="text"
-                        required
-                        placeholder="password"
-                    />
-                </label>
-                <Button loading={loading}>login</Button>
-                or
-                <Googlelogin />
-            </form>
-        </AuthStyle>
+        <Suspense fallback="loading...">
+            <AuthStyle>
+                <h2 className="title">Login</h2>
+                <form onSubmit={loginUser}>
+                    <label htmlFor="email">
+                        <input
+                            defaultValue={"as@as.as"}
+                            name="email"
+                            type="text"
+                            required
+                            placeholder="email"
+                        />
+                    </label>
+                    <label htmlFor="password">
+                        <input
+                            defaultValue={"123"}
+                            name="password"
+                            type="text"
+                            required
+                            placeholder="password"
+                        />
+                    </label>
+                    <Button loading={loading}>login</Button>
+                    <p>or</p>
+                    <Googlelogin />
+                </form>
+            </AuthStyle>
+        </Suspense>
     );
 };
 
