@@ -27,9 +27,12 @@ async function sendRequest(req) {
         method,
         headers: {
             Authorization: `Bearer ${accesstoken}`,
+            ...(req.headers.get("Content-Type")?.includes("json") && {
+                "Content-Type": req.headers.get("Content-Type"),
+            }),
+            //no content-type required for formdata
         },
     };
-
     if (method !== "GET") {
         if (req.headers.get("Content-Type").includes("json")) {
             options.body = JSON.stringify(await req.json());
@@ -38,7 +41,7 @@ async function sendRequest(req) {
             options.body = formData;
         }
     }
-
+    console.log({ options });
     const url = new URL(req.url);
     const slug = url.pathname.split("/api/")[1];
     try {

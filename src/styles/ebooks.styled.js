@@ -1,5 +1,5 @@
+"use client"
 import styled from "styled-components";
-
 export const EbooksContainer = styled.div`
     display: flex;
     flex-wrap: wrap;

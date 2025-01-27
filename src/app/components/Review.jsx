@@ -1,10 +1,11 @@
+"use client";
 import styled, { css } from "styled-components";
 import Button from "./Button";
 import { useState } from "react";
 import { media } from "../../config/media";
 import { toastify } from "./Toast";
 
-const Review = ({ size, ebookid }) => {
+const Review = ({ size, ebookid,handler }) => {
     const [review, setReview] = useState({
         rating: 5,
         review: "",
@@ -38,8 +39,10 @@ const Review = ({ size, ebookid }) => {
             }),
         });
         if (req.ok) {
+            handler(false)
             toastify.success("Thanks for rating");
         } else {
+            handler(false)
             toastify.error("something went wrong");
         }
     };
@@ -70,6 +73,14 @@ const Review = ({ size, ebookid }) => {
 
 export default Review;
 const ReviewStyle = styled.div`
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: min(400px, 100%);
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -113,8 +124,13 @@ const ReviewStyle = styled.div`
             );
         }
     }
-    textarea {
-        border: 2px solid #ddd;
-        padding: 10px;
+    form {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        textarea {
+            border: 2px solid #ddd;
+            padding: 10px;
+        }
     }
 `;
