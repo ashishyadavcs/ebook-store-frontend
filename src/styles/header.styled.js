@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
         button {
             background: transparent;
             font-weight: 600;
-            padding: 14px 0;
+            padding: 20px 0;
             ${media.minsm} {
                 padding: 14px;
                 margin: 5px;

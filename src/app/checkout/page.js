@@ -2,13 +2,14 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { constant } from "../../config/constant";
 import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
 
 const Payment = () => {
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -18,8 +19,8 @@ const Payment = () => {
 
     const payment = async e => {
         e.preventDefault();
-
         try {
+            setLoading(true)
             const req = await fetch(`${config.BASE_URL}/create-order`, {
                 method: "POST",
                 headers: {
@@ -70,7 +71,9 @@ const Payment = () => {
             };
             const paymentobject = new window.Razorpay(options);
             paymentobject.open();
+            setLoading(false)
         } catch (err) {
+            setLoading(false)
             console.log(err);
         }
     };
@@ -89,7 +92,7 @@ const Payment = () => {
                         <span>Mobile</span>
                         <input type="tel" />
                     </label>
-                    <Button>pay now</Button>
+                    <Button loading={loading}>pay now</Button>
                 </form>
                 <div className="cart">
                     {[...Array(3)].map((p, i) => (
