@@ -20,7 +20,7 @@ export default function Home() {
     return (
         <HomeStyles>
             <Container>
-                <h1 className="gradient-text">Read Ebooks online</h1>
+                <h1>Read Ebooks online</h1>
                 <EbooksContainer>
                     {ebooks.map(ebook => (
                         <Ebook key={ebook._id} data={ebook} />

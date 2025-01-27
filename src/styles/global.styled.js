@@ -62,7 +62,7 @@ button{
 .loader {
     display: inline-block;
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid; /* Blue */
+  border-top: 2px solid;
   border-radius: 50%;
   --size:18px;
   width: var(--size);
