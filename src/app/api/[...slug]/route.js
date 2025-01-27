@@ -41,7 +41,7 @@ async function sendRequest(req) {
             options.body = formData;
         }
     }
-    console.log({ options });
+
     const url = new URL(req.url);
     const slug = url.pathname.split("/api/")[1];
     try {
