@@ -1,25 +1,15 @@
 "use client";
 import styled from "styled-components";
 import { constant } from "../../config/constant";
-import Review from "@/components/Review";
-import Button from "./Button";
 import Image from "next/image";
 import { useState } from "react";
 const Ebook = ({ data }) => {
-    const [showReview, setshowReview] = useState(false);
-    const { _id, title, author, coverImageUrl = constant.image } = data;
+    const {title, author, coverImageUrl = constant.image } = data;
     return (
         <Ebookstyle className="ebook">
             <Image alt="ebook" height={400} width={400} src={coverImageUrl} />
             <h2 className="title">{title}</h2>
             <p className="description">{author}</p>
-            <div className="btn-group">
-                <Button type="link" href="/checkout">
-                    add to cart
-                </Button>
-                <Button onClick={e => setshowReview(v => !v)}>rate ebook</Button>
-            </div>
-            {showReview && <Review handler={setshowReview} ebookid={_id} size={30} />}
         </Ebookstyle>
     );
 };

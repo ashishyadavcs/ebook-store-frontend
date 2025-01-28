@@ -19,6 +19,7 @@ body{
     font-size: 1.6rem;
     font-family: Arial, Helvetica, sans-serif;
 }
+a{color:inherit}
 main{
     min-height: 78vh;
 }
@@ -28,6 +29,7 @@ main{
 }
 textarea{
     font-family: inherit;
+    font-size: inherit;
     outline: none;
     border: none;
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { media } from "../../config/media";
 import { toastify } from "./Toast";
 
-const Review = ({ size, ebookid, handler }) => {
+const Review = ({ size, ebookid }) => {
     const [loading, setloading] = useState(false);
     const [review, setReview] = useState({
         rating: 5,
@@ -41,17 +41,15 @@ const Review = ({ size, ebookid, handler }) => {
             }),
         });
         if (req.ok) {
-            handler(false);
             toastify.success("Thanks for rating");
             setloading(false);
         } else {
-            handler(false);
             toastify.error("something went wrong");
             setloading(false);
         }
     };
     return (
-        <ReviewStyle size={size}>
+        <ReviewStyle size={size} className="review">
             <h3>Rate This Ebook</h3>
             <form onSubmit={addReview}>
                 <div className="rating">
@@ -77,14 +75,8 @@ const Review = ({ size, ebookid, handler }) => {
 
 export default Review;
 const ReviewStyle = styled.div`
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     width: min(400px, 100%);
     background: #fff;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;

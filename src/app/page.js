@@ -3,6 +3,7 @@ import { EbooksContainer } from "@/styles/ebooks.styled";
 import { HomeStyles } from "@/styles/home.styled";
 import Container from "./components/Container";
 import config from "@/config/index.js";
+import Link from "next/link";
 export default async function Home() {
     let ebooks = [];
     try {
@@ -15,10 +16,12 @@ export default async function Home() {
     return (
         <HomeStyles>
             <Container>
-                <h1>Read Ebooks online</h1>
+                <h1>Endless Stories, One Click Away!</h1>
                 <EbooksContainer>
                     {ebooks.map(ebook => (
-                        <Ebook key={ebook._id} data={ebook} />
+                        <Link className="ebook-details" href={`/${ebook._id}`}>
+                            <Ebook key={ebook._id} data={ebook} />
+                        </Link>
                     ))}
                 </EbooksContainer>
             </Container>

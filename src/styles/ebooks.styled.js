@@ -1,11 +1,7 @@
-"use client"
+"use client";
 import styled from "styled-components";
 export const EbooksContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    .ebook {
-        min-width: 300px;
-        flex: 1;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 `;

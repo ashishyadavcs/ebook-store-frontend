@@ -10,7 +10,7 @@ class Tostisy {
 
 const toastify = new Tostisy();
 const Toast = () => {
-    return <ToastContainer position="bottom-left" autoClose="1000" theme="light" />;
+    return <ToastContainer position="bottom-right" autoClose="1000" theme="light" />;
 };
 
 export { Toast, toastify };

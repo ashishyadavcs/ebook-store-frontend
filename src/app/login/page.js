@@ -57,7 +57,7 @@ const Page = () => {
                     />
                 </label>
                 <label htmlFor="password">
-                <span>Password</span>
+                    <span>Password</span>
 
                     <input
                         defaultValue={"123"}
@@ -68,10 +68,11 @@ const Page = () => {
                     />
                 </label>
                 <Button loading={loading}>login</Button>
-                <p className="already">don't have an account <Link href="/register">signup</Link> </p>
+                <p className="already">
+                    don't have an account <Link href="/register">signup</Link>{" "}
+                </p>
                 <span className="or">or</span>
-                <Googlelogin title="Login with google"/>
-                
+                <Googlelogin title="Login with google" />
             </MyForm>
         </AuthStyle>
     );
