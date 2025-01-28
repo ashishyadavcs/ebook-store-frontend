@@ -57,10 +57,11 @@ button{
     gap: 10px;
     justify-content: center;
     align-items: center;
-    color:inherit
+    color:inherit;
+    position: relative;
 }
 .loader {
-    display: inline-block;
+display: inline-block;
   border: 2px solid #f3f3f3; /* Light grey */
   border-top: 2px solid;
   border-radius: 50%;

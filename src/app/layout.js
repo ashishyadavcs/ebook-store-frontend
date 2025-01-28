@@ -5,7 +5,7 @@ import Config from "@/components/Config";
 import { Suspense } from "react";
 export default function RootLayout({ children }) {
     return (
-        <Suspense>
+        <Suspense loading="loading...">
             <html lang="en">
                 <body>
                     <StyledComponentsRegistry>

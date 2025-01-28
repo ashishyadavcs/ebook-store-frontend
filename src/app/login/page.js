@@ -4,10 +4,13 @@ import AuthStyle from "@/styles/auth.styled";
 import Button from "@/components/Button";
 import Googlelogin from "@/components/Googlelogin";
 import { toastify } from "@/components/Toast";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import MyForm from "@/components/Form";
+import Link from "next/link";
 const Page = () => {
     const [loading, setloading] = useState(false);
-    const router=useRouter()
+    const router = useRouter();
     const loginUser = async e => {
         e.preventDefault();
         try {
@@ -39,9 +42,12 @@ const Page = () => {
     };
     return (
         <AuthStyle>
-            <h2 className="title">Login</h2>
-            <form onSubmit={loginUser}>
+            <Image height={600} width={400} alt="ebookstore" src="/images/book-cover.svg" />
+
+            <MyForm onSubmit={loginUser}>
+                <h2 className="title">Login</h2>
                 <label htmlFor="email">
+                    <span>Email</span>
                     <input
                         defaultValue={"as@as.as"}
                         name="email"
@@ -51,6 +57,8 @@ const Page = () => {
                     />
                 </label>
                 <label htmlFor="password">
+                <span>Password</span>
+
                     <input
                         defaultValue={"123"}
                         name="password"
@@ -60,9 +68,11 @@ const Page = () => {
                     />
                 </label>
                 <Button loading={loading}>login</Button>
-                <p>or</p>
-                <Googlelogin />
-            </form>
+                <p className="already">don't have an account <Link href="/register">signup</Link> </p>
+                <span className="or">or</span>
+                <Googlelogin title="Login with google"/>
+                
+            </MyForm>
         </AuthStyle>
     );
 };
