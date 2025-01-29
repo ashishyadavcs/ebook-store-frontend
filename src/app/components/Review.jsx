@@ -44,7 +44,7 @@ const Review = ({ size, ebookid }) => {
             toastify.success("Thanks for rating");
             setloading(false);
         } else {
-            toastify.error("something went wrong");
+            toastify.error(req.statusText);
             setloading(false);
         }
     };
