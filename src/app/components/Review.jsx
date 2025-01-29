@@ -47,11 +47,12 @@ const Review = ({ size, ebookid }) => {
                 throw new Error("something went wrong");
             }
             if (req.redirected) {
+                router.refresh()
                 toastify.info("login to add review");
                 router.push(`/login?from=${ebookid}`);
+                return
             }
             const result = await req.json();
-            console.log(result);
             toastify.success("Thanks for rating");
             setloading(false);
         } catch (err) {
