@@ -4,7 +4,7 @@ import Review from "@/components/Review";
 import config from "@/config/index";
 import Ebookdetails from "@/styles/ebookdetails.styled";
 import Image from "next/image";
-
+export const revalidate = 5000
 const Page = async ({ params }) => {
     const { slug: ebookid } = await params;
     const req = await fetch(`${config.APP_URL}/api/ebooks/${ebookid}`);
@@ -28,7 +28,7 @@ const Page = async ({ params }) => {
                             <p className="author">Clea Shearer . Joanna Teplin (2023)</p>
                             <strong>Free</strong>
                         </div>
-                        <Button>Read Now</Button>
+                        <Button href="/checkout">Buy Now</Button>
                     </div>
                     <p>
                         The Invincible is a gripping tale of courage, resilience, and the unyielding

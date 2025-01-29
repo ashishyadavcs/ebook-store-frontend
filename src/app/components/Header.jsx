@@ -16,10 +16,6 @@ const Header = () => {
             text: "dashboard",
         },
         {
-            link: "/register",
-            text: "register",
-        },
-        {
             link: "/login",
             text: "login",
         },

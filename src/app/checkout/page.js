@@ -86,11 +86,11 @@ const Payment = () => {
                 <form className="form" onSubmit={payment}>
                     <label>
                         <span>Name</span>
-                        <input type="text" />
+                        <input type="text" defaultValue="Ashish Kumar" />
                     </label>
                     <label>
                         <span>Mobile</span>
-                        <input type="tel" />
+                        <input type="tel" value="+91-9847685788" />
                     </label>
                     <Button loading={loading}>pay now</Button>
                 </form>

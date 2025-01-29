@@ -12,12 +12,15 @@ const Ebookdetails = styled.section`
     .container {
         display: flex;
         .thumbnail {
+            border-radius: 8px;
+            overflow: hidden;
             background: #ddd;
             position: relative;
             height: 400px;
             width: max(300px, 100%);
+            max-width: 100%;
             img {
-                object-fit: fill;
+                object-fit: cover;
                 object-position: start;
             }
         }
@@ -26,9 +29,10 @@ const Ebookdetails = styled.section`
         }
         .info {
             display: flex;
+            flex-wrap: wrap;
             align-items: flex-end;
-            gap: 50px;
-            .btn{
+            gap:min( 50px,4vw);
+            .btn {
                 flex-shrink: 0;
             }
         }

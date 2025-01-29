@@ -19,7 +19,6 @@ body{
     font-size: 1.6rem;
     font-family: Arial, Helvetica, sans-serif;
 }
-a{color:inherit}
 main{
     min-height: 78vh;
 }
@@ -39,6 +38,9 @@ input{
     font-size: inherit;
     padding: 10px;
     outline: none; 
+}
+img{
+    max-width: 100%;
 }
 button{
     border: none;
@@ -70,7 +72,7 @@ display: inline-block;
   --size:18px;
   width: var(--size);
   height:var(--size);
-  animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

@@ -4,7 +4,7 @@ import React from "react";
 
 const Button = props => {
     const { type = "button", className, children, loading = false, ...restprops } = props;
-    if (type == "button")
+    if (!props.href)
         return (
             <button disabled={loading} className={`btn ${className}`} {...restprops}>
                 {loading && <span className="loader" />} {children}

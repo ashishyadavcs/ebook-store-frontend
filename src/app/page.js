@@ -4,14 +4,13 @@ import { HomeStyles } from "@/styles/home.styled";
 import Container from "./components/Container";
 import config from "@/config/index.js";
 import Link from "next/link";
+export const revalidate = 3600;
 export default async function Home() {
     let ebooks = [];
     try {
-        const req = await fetch(`${config.APP_URL}/api/ebooks`, {
-            cache: "no-store",
-        });
+        const req = await fetch(`${config.APP_URL}/api/ebooks`);
         const { data } = await req.json();
-        ebooks = [...data];
+        ebooks = [...data].reverse();
     } catch (err) {}
     return (
         <HomeStyles>

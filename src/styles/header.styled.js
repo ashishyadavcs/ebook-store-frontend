@@ -60,7 +60,7 @@ const StyledHeader = styled.header`
                     button {
                         color: #fff;
                         display: block;
-                        padding: 14px;
+                        padding: 20px;
                         width: 100%;
                         text-align: left;
                     }
