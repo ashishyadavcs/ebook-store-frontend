@@ -4,8 +4,10 @@ import Button from "./Button";
 import { useState } from "react";
 import { media } from "../../config/media";
 import { toastify } from "./Toast";
+import { useRouter } from "next/navigation";
 
 const Review = ({ size, ebookid }) => {
+    const router = useRouter();
     const [loading, setloading] = useState(false);
     const [review, setReview] = useState({
         rating: 5,
@@ -29,22 +31,31 @@ const Review = ({ size, ebookid }) => {
     const addReview = async e => {
         e.preventDefault();
         setloading(true);
-        const req = await fetch("/api/review", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                rating: review.rating,
-                review: review.review,
-                ebook: ebookid,
-            }),
-        });
-        if (req.ok) {
+        try {
+            const req = await fetch("/api/review", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    rating: review.rating,
+                    review: review.review,
+                    ebook: ebookid,
+                }),
+            });
+            if (!req.ok) {
+                throw new Error("something went wrong");
+            }
+            if (req.redirected) {
+                toastify.info("login to add review");
+                router.push(`/login?from=${ebookid}`);
+            }
+            const result = await req.json();
+            console.log(result);
             toastify.success("Thanks for rating");
             setloading(false);
-        } else {
-            toastify.error(req.statusText);
+        } catch (err) {
+            toastify.error(err.statusText);
             setloading(false);
         }
     };

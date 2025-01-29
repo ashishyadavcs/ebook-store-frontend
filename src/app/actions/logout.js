@@ -17,8 +17,8 @@ export const logout = async () => {
     );
     const result = await res.json();
     if (result) {
-        token.set("accesstoken", "");
-        token.set("refreshtoken", "");
+        token.delete("accesstoken");
+        token.delete("refreshtoken");
         redirect("/login");
     }
 };

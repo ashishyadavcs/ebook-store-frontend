@@ -4,12 +4,13 @@ import AuthStyle from "@/styles/auth.styled";
 import Button from "@/components/Button";
 import Googlelogin from "@/components/Googlelogin";
 import { toastify } from "@/components/Toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import MyForm from "@/components/Form";
 import Link from "next/link";
 const Page = () => {
     const [loading, setloading] = useState(false);
+    const searchParams = useSearchParams();
     const router = useRouter();
     const loginUser = async e => {
         e.preventDefault();
@@ -33,7 +34,7 @@ const Page = () => {
             } else {
                 setloading(false);
                 toastify.success("loggedin successfull");
-                router.push("/dashboard");
+                router.push(searchParams.get("from") || "/dashboard");
             }
         } catch (err) {
             setloading(false);
