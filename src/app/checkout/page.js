@@ -9,7 +9,7 @@ import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
 
 const Payment = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -20,7 +20,7 @@ const Payment = () => {
     const payment = async e => {
         e.preventDefault();
         try {
-            setLoading(true)
+            setLoading(true);
             const req = await fetch(`${config.BASE_URL}/create-order`, {
                 method: "POST",
                 headers: {
@@ -71,9 +71,9 @@ const Payment = () => {
             };
             const paymentobject = new window.Razorpay(options);
             paymentobject.open();
-            setLoading(false)
+            setLoading(false);
         } catch (err) {
-            setLoading(false)
+            setLoading(false);
             console.log(err);
         }
     };

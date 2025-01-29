@@ -94,4 +94,18 @@ a{
     background: linear-gradient(130deg, rgb(164, 228, 1), rgb(219, 194, 0), rgb(255, 153, 0), rgb(255, 98, 36), rgb(255, 36, 87), rgb(250, 0, 133), rgb(202, 7, 179), rgb(88, 42, 162));
     height: 5px;
 }
+.channel{
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    z-index: 2;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    color: inherit;
+}
 `;
