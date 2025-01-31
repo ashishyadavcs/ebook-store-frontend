@@ -5,6 +5,7 @@
             "@/styles/*": ["./src/styles/*"],
             "@/utils/*": ["./src/utils/*"],
             "@/config/*": ["./src/config/*"],
+            "@/state/*": ["./src/app/state/*"],
         }
     }
 }

@@ -2,8 +2,11 @@
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+    const user = useSelector(state => state.user.data);
+    console.log(user);
     const navList = [
         {
             link: "/",
@@ -14,8 +17,8 @@ const Header = () => {
             text: "dashboard",
         },
         {
-            link: "/login",
-            text: "login",
+            link: user ? "#" : "/login",
+            text: user ? user.email : "login",
         },
     ];
     return (
