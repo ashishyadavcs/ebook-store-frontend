@@ -17,7 +17,7 @@ const Page = async ({ params }) => {
                         priority
                         layout="fill"
                         alt="ebook"
-                        src={ebook.coverImageUrl || "/images/ebook.jpg"}
+                        src={ebook?.coverImageUrl || "/images/ebook.jpg"}
                     />
                 </span>
 

@@ -2,8 +2,8 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import _config from "@/config/index.js";
 
-export async function GET(req) {
-    return sendRequest(req);
+export async function GET(req, { params }) {
+    return sendRequest(req, params);
 }
 export async function POST(req) {
     return sendRequest(req);
@@ -14,7 +14,10 @@ export async function PATCH(req) {
 export async function DELETE(req) {
     return sendRequest(req);
 }
-async function sendRequest(req) {
+async function sendRequest(req, params) {
+    console.log({
+        query:await params,
+    });
     const method = req.method;
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
