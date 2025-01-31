@@ -2,11 +2,12 @@
 import styled from "styled-components";
 import { constant } from "../../config/constant";
 import Image from "next/image";
-const Ebook = ({ data }) => {
+import {media} from "@/config/media";
+const Ebook = ({ data,className }) => {
     const { title, author, coverImageUrl = constant.image } = data;
-  
+
     return (
-        <Ebookstyle className="ebook">
+        <Ebookstyle className={`ebook ${className}`}>
             <Image alt="ebook" height={400} width={400} src={coverImageUrl} />
             <h2 className="title">{title}</h2>
             <p className="description">{author}</p>
@@ -22,29 +23,52 @@ const Ebook = ({ data }) => {
 
 export default Ebook;
 const Ebookstyle = styled.div`
+overflow: hidden;
     .btn-group {
         display: flex;
         gap: 10px;
+    }
+    &.trending {
+        position: relative;
+        @keyframes wave {
+            100% {
+                background-position: 100% 0;
+            }
+        }
+        &::before {
+            content: "trending";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            border-radius: 2px;
+            padding: 2px 8px;
+            font-size: 12px;
+            background: linear-gradient(90deg, #06c050 30%, #fff 5px, #06c050 50%);
+            background-size: 300%;
+            color: #fff;
+            animation: wave 1s linear infinite forwards;
+        }
     }
     .rating {
         margin: 10px 0;
         gap: 4px;
         display: inline-flex;
-        span{
+        align-items: center;
+        span {
             padding: 2px 6px;
-        background: #1bb91b;
-        color: #fff;
+            background: #1bb91b;
+            color: #fff;
         }
     }
     del {
         opacity: 0.5;
     }
     .title {
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem,4vw,1.8rem);
         margin: 1rem 0 0;
     }
     .description {
-        margin: 1rem 0 1rem;
+        margin: 1vw 0 1vw;
     }
     .off {
         color: #1bb91b;
@@ -52,6 +76,9 @@ const Ebookstyle = styled.div`
     img {
         max-width: 100%;
         object-fit: cover;
+        ${media.sm}{
+            height: 150px;
+        }
     }
     padding: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);

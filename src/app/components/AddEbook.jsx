@@ -4,7 +4,7 @@ import Button from "./Button";
 import { media } from "../../config/media";
 import { redirect } from "next/navigation";
 import { toastify } from "./Toast";
-import {useState} from "react";
+import { useState } from "react";
 import MyForm from "./Form";
 
 const AddEbook = () => {
@@ -31,12 +31,12 @@ const AddEbook = () => {
         await res.json();
         setloading(false);
         toastify.success("ebook added successfull");
-        redirect("/")
+        redirect("/");
     };
     return (
         <EbookStyles>
             <MyForm onSubmit={addEbook}>
-                <h2>Add new Ebook</h2>
+                <h2 className="title">Add new Ebook</h2>
                 <label htmlFor="email">
                     <input
                         defaultValue={"How to be successfull"}
@@ -72,6 +72,7 @@ const AddEbook = () => {
 
 export default AddEbook;
 const EbookStyles = styled.div`
+    padding: 40px;
     ${media.sm} {
         padding: 20px;
     }
@@ -79,5 +80,4 @@ const EbookStyles = styled.div`
     .title {
         margin: 0 0 10px;
     }
-   
 `;

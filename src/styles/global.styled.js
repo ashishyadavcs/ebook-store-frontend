@@ -16,7 +16,7 @@ html{
     font-size: 62.5%;
 }
 body{
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem,4vw,1.6rem);
     font-family: Arial, Helvetica, sans-serif;
 }
 main{

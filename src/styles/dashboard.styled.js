@@ -7,7 +7,7 @@ const Dashboard = styled.section`
         position: sticky;
         top: 62px;
         width: 250px;
-        ${media.sm}{
+        ${media.sm} {
             width: 100%;
         }
         ul {
@@ -38,6 +38,7 @@ const Dashboard = styled.section`
     .container {
         display: flex;
         flex-wrap: wrap;
+        gap: 40px;
         main {
             padding: 40px 0;
             flex: 1;

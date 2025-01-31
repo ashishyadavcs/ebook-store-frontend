@@ -4,7 +4,10 @@ import styled from "styled-components";
 export const FormStyle = styled(Form)`
     width: min(400px, 90%);
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
+    .title{
+        margin: 0 0 10px;
+    }
     label {
         color: #666;
         display: flex;

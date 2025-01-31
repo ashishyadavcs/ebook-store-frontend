@@ -23,7 +23,7 @@ const Header = () => {
         <StyledHeader>
             <Container>
                 <nav role="menubar">
-                    <Link href="/">{process.env.NEXT_PUBLIC_APP_NAME}</Link>
+                    <Link href="/" className="sitename">{process.env.NEXT_PUBLIC_APP_NAME}</Link>
                     <ul className="links" role="menubar">
                         {navList.map((nav, i) => (
                             <li

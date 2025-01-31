@@ -1,7 +1,7 @@
 import Ebook from "./components/Ebook";
 import { EbooksContainer } from "@/styles/ebooks.styled";
 import { HomeStyles } from "@/styles/home.styled";
-import Container from "./components/Container";
+import Container from "@/components/Container";
 import config from "@/config/index.js";
 import Link from "next/link";
 export const revalidate = 3600;
@@ -17,9 +17,13 @@ export default async function Home() {
             <Container>
                 <h1>Endless Stories, One Click Away!</h1>
                 <EbooksContainer>
-                    {ebooks.map(ebook => (
-                        <Link className="ebook-details" href={`/${ebook._id}`}>
-                            <Ebook key={ebook._id} data={ebook} />
+                    {ebooks.map((ebook, i) => (
+                        <Link scroll={true} className="ebook-details" href={`/${ebook._id}`}>
+                            <Ebook
+                                {...(i == 2 && { className: "trending" })}
+                                key={ebook._id}
+                                data={ebook}
+                            />
                         </Link>
                     ))}
                 </EbooksContainer>
