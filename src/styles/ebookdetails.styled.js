@@ -31,7 +31,7 @@ const Ebookdetails = styled.section`
             display: flex;
             flex-wrap: wrap;
             align-items: flex-end;
-            gap:min( 50px,4vw);
+            gap: min(50px, 4vw);
             .btn {
                 flex-shrink: 0;
             }

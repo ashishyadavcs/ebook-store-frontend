@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Footerstyle = styled.footer`
     background: #ddd;
     padding: 20px 0;
-    .copyright{
+    .copyright {
         text-align: center;
     }
 `;

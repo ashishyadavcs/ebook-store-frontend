@@ -25,8 +25,6 @@ const Layout = ({ children }) => {
             url: "",
             icon: <MdLogout />,
         },
-       
-        
     ];
     return (
         <DashboardStyled>

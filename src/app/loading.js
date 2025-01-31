@@ -1,10 +1,8 @@
-import React from 'react'
-import Container from '@/components/ui/Container'
+import React from "react";
+import Container from "@/components/ui/Container";
 
 const Loading = () => {
-  return (
-    <Container>loading...</Container>
-  )
-}
+    return <Container>loading...</Container>;
+};
 
-export default Loading
+export default Loading;

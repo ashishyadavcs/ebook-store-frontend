@@ -2,8 +2,8 @@
 import styled from "styled-components";
 import { constant } from "@/config/constant";
 import Image from "next/image";
-import {media} from "@/config/media";
-const Ebook = ({ data,className }) => {
+import { media } from "@/config/media";
+const Ebook = ({ data, className }) => {
     const { title, author, coverImageUrl = constant.image } = data;
 
     return (
@@ -23,7 +23,7 @@ const Ebook = ({ data,className }) => {
 
 export default Ebook;
 const Ebookstyle = styled.div`
-overflow: hidden;
+    overflow: hidden;
     .btn-group {
         display: flex;
         gap: 10px;
@@ -64,7 +64,7 @@ overflow: hidden;
         opacity: 0.5;
     }
     .title {
-        font-size: clamp(1.2rem,4vw,1.8rem);
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
         margin: 1rem 0 0;
     }
     .description {
@@ -76,7 +76,7 @@ overflow: hidden;
     img {
         max-width: 100%;
         object-fit: cover;
-        ${media.sm}{
+        ${media.sm} {
             height: 150px;
         }
     }

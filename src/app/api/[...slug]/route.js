@@ -16,7 +16,7 @@ export async function DELETE(req) {
 }
 async function sendRequest(req, params) {
     console.log({
-        query:await params,
+        query: await params,
     });
     const method = req.method;
     const cookieStore = await cookies();
@@ -46,7 +46,7 @@ async function sendRequest(req, params) {
     }
 
     const url = new URL(req.url);
-    console.log({url})
+    console.log({ url });
     const slug = url.pathname.split("/api/")[1];
     try {
         const response = await fetch(`${_config.BASE_URL}/${slug}`, options);

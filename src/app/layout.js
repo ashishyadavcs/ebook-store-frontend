@@ -15,8 +15,11 @@ export default function RootLayout({ children }) {
                         <Header />
                         <main role="main">{children}</main>
                         <Footer />
-                        <Link className="channel" href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1">
-                            <FaYoutube color="red"/>
+                        <Link
+                            className="channel"
+                            href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
+                        >
+                            <FaYoutube color="red" />
                             channel
                         </Link>
                     </StyledComponentsRegistry>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Container from "@/components/ui/Container";
 import { Suspense } from "react";
 import styled from "styled-components";
@@ -15,8 +15,8 @@ export default function Custom404() {
     );
 }
 const Pagestyle = styled.section`
-min-height: 85vh;
-display: flex;
-align-items: center;
-text-align: center;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
 `;

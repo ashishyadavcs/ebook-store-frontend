@@ -13,7 +13,7 @@ import Link from "next/link";
 const Page = () => {
     const [loading, setloading] = useState(false);
     const router = useRouter();
-    const registerUser = async (e) => {
+    const registerUser = async e => {
         e.preventDefault();
         try {
             setloading(true);
@@ -78,11 +78,11 @@ const Page = () => {
                         />
                     </label>
                     <Button loading={loading}>Signup</Button>
-                    <p className="already">Already have an account <Link href="/login">login</Link> </p>
+                    <p className="already">
+                        Already have an account <Link href="/login">login</Link>{" "}
+                    </p>
                     <span className="or">or</span>
                     <Googlelogin title="signup with google" />
-              
-
                 </MyForm>
             </AuthStyle>
         </Container>

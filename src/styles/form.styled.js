@@ -5,7 +5,7 @@ export const FormStyle = styled(Form)`
     width: min(400px, 90%);
     display: flex;
     flex-direction: column;
-    .title{
+    .title {
         margin: 0 0 10px;
     }
     label {

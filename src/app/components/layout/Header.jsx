@@ -3,7 +3,6 @@ import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
 
-
 const Header = () => {
     const navList = [
         {
@@ -23,7 +22,9 @@ const Header = () => {
         <StyledHeader>
             <Container>
                 <nav role="menubar">
-                    <Link href="/" className="sitename">{process.env.NEXT_PUBLIC_APP_NAME}</Link>
+                    <Link href="/" className="sitename">
+                        {process.env.NEXT_PUBLIC_APP_NAME}
+                    </Link>
                     <ul className="links" role="menubar">
                         {navList.map((nav, i) => (
                             <li
@@ -38,7 +39,6 @@ const Header = () => {
                                 <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
-                       
                     </ul>
                     <button
                         onClick={e => e.currentTarget.parentElement.classList.toggle("active")}
