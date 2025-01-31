@@ -1,10 +1,10 @@
 "use client";
+import Container from "@/components/ui/Container";
 import { media } from "@/config/media";
 import styled from "styled-components";
-export const EbooksContainer = styled.div`
+export const EbooksContainer = styled(Container)`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    width: calc(100% - 10px);
     ${media.sm} {
         grid-template-columns: 50% 50%;
         grid-auto-rows: 1fr;

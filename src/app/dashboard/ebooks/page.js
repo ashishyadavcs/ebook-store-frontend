@@ -1,4 +1,4 @@
-import AddEbook from "@/components/AddEbook";
+import AddEbook from "@/components/ebook/AddEbook";
 const EbooksPage = () => {
     return <AddEbook />;
 };

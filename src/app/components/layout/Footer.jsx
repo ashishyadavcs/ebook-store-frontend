@@ -1,6 +1,6 @@
 "use client"
 import Footerstyle from "@/styles/footer.styled";
-import Container from "./Container";
+import Container from "@/components/ui/Container";
 
 const Footer = () => {
     return (

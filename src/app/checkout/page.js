@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/Button";
-import Container from "@/components/Container";
+import Button from "@/components/ui/Button";
+import Container from "@/components/ui/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect, useState } from "react";
 import { constant } from "../../config/constant";

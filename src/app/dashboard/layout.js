@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardStyled from "@/styles/dashboard.styled";
-import Container from "@/components/Container";
+import Container from "@/components/ui/Container";
 import Link from "next/link";
 import { FaBook } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";

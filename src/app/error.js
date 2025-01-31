@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
-import Button from "./components/Button";
-import Container from "./components/Container";
+import Button from "./components/ui/Button";
+import Container from "./components/ui/Container";
 export default function GlobalError({ error, reset }) {
     return (
         <Errorstyle>

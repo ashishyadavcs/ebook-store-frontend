@@ -1,6 +1,6 @@
 "use client";
 import styled, { css } from "styled-components";
-import Button from "./Button";
+import Button from "./ui/Button";
 import { useState } from "react";
 import { media } from "../../config/media";
 import { toastify } from "./Toast";

@@ -1,9 +1,9 @@
 "use client";
-import Button from "@/components/Button";
-import Container from "@/components/Container";
+import Button from "@/components/ui/Button";
+import Container from "@/components/ui/Container";
 import Googlelogin from "@/components/Googlelogin";
 import AuthStyle from "@/styles/auth.styled";
-import MyForm from "@/components/Form";
+import MyForm from "@/components/ui/Form";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toastify } from "@/components/Toast";

@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import styled from "styled-components";
 
 export const Buttonstyle = styled(Button)`

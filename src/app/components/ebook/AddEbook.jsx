@@ -1,11 +1,10 @@
 "use client";
 import styled from "styled-components";
-import Button from "./Button";
-import { media } from "../../config/media";
+import Button from "@/components/ui/Button";
+import { media } from "@/config/media";
 import { redirect } from "next/navigation";
-import { toastify } from "./Toast";
-import { useState } from "react";
-import MyForm from "./Form";
+import { toastify } from "@/components/Toast";
+import MyForm from "@/components/ui/Form";
 
 const AddEbook = () => {
     const [loading, setloading] = useState(false);

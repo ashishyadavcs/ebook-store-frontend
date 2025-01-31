@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import AuthStyle from "@/styles/auth.styled";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import Googlelogin from "@/components/Googlelogin";
 import { toastify } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import MyForm from "@/components/Form";
+import MyForm from "@/components/ui/Form";
 import Link from "next/link";
 const Page = () => {
     const [loading, setloading] = useState(false);

@@ -1,5 +1,5 @@
 "use client"
-import Container from "@/components/Container";
+import Container from "@/components/ui/Container";
 import { Suspense } from "react";
 import styled from "styled-components";
 

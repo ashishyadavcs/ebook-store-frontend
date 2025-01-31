@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
-import Container from "./Container";
+import Container from "@/components/ui/Container";
 
 
 const Header = () => {

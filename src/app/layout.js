@@ -1,6 +1,6 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import StyledComponentsRegistry from "./components/styledregistery";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import StyledComponentsRegistry from "@/components/styledregistery";
 import Config from "@/components/Config";
 import { Suspense } from "react";
 import Link from "next/link";

@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import config from "../../config/index.js";
-import Button from "./Button";
+import Button from "./ui/Button.jsx";
 import { FcGoogle } from "react-icons/fc";
 const Googlelogin = ({ title = "Login with" }) => {
     return (
