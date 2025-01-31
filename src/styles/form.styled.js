@@ -2,9 +2,9 @@
 import Form from "next/form";
 import styled from "styled-components";
 export const FormStyle = styled(Form)`
-    width: min(400px,90%);
+    width: min(400px, 90%);
     display: flex;
-    flex-direction: column;
+   flex-direction: column;
     label {
         color: #666;
         display: flex;

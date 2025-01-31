@@ -1,10 +1,11 @@
-import AddEbook from '@/components/AddEbook'
 import React from 'react'
 
-const Page = () => {
+const page = () => {
   return (
-    <AddEbook/>
+      <>
+      <h1>Dashboard</h1>
+      </>
   )
 }
 
-export default Page
+export default page

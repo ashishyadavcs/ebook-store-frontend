@@ -1,20 +1,24 @@
-'use client';
-
+"use client";
+import styled from "styled-components";
+import Button from "./components/Button";
+import Container from "./components/Container";
 export default function GlobalError({ error, reset }) {
-  return (
-    <html>
-      <body>
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-          <h1 className="text-3xl font-bold text-red-700">Application Error</h1>
-          <p>{error.message}</p>
-          <button
-            onClick={reset}
-            className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg"
-          >
-            Try Again
-          </button>
-        </div>
-      </body>
-    </html>
-  );
+    return (
+        <Errorstyle>
+            <Container className="text-center">
+                <h1>Application Error</h1>
+                <p>{error.message}</p>
+                <Button onClick={reset}>Try Again</Button>
+            </Container>
+        </Errorstyle>
+    );
 }
+
+const Errorstyle = styled.section`
+    min-height: 86vh;
+    display: flex;
+    align-items: center;
+    p {
+        margin: 5px 0 10px;
+    }
+`;

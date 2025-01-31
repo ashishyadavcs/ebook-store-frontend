@@ -5,6 +5,7 @@ import { media } from "../../config/media";
 import { redirect } from "next/navigation";
 import { toastify } from "./Toast";
 import {useState} from "react";
+import MyForm from "./Form";
 
 const AddEbook = () => {
     const [loading, setloading] = useState(false);
@@ -34,7 +35,7 @@ const AddEbook = () => {
     };
     return (
         <EbookStyles>
-            <form onSubmit={addEbook}>
+            <MyForm onSubmit={addEbook}>
                 <h2>Add new Ebook</h2>
                 <label htmlFor="email">
                     <input
@@ -64,41 +65,19 @@ const AddEbook = () => {
                     />
                 </label>
                 <Button loading={loading}>add ebook</Button>
-            </form>
+            </MyForm>
         </EbookStyles>
     );
 };
 
 export default AddEbook;
 const EbookStyles = styled.div`
-    margin: 60px auto;
-    padding: 60px;
     ${media.sm} {
         padding: 20px;
     }
-    width: min(400px, 90%);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     .title {
         margin: 0 0 10px;
     }
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        label {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            input {
-                flex: 1;
-                max-width: 100%;
-            }
-        }
-        input {
-            border: 2px solid #ddd;
-            &:focus {
-                border-color: blue;
-            }
-        }
-    }
+   
 `;

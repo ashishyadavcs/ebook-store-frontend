@@ -2,8 +2,7 @@
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "./Container";
-import Button from "./Button";
-import { logout } from "../actions/logout";
+
 
 const Header = () => {
     const navList = [
@@ -39,13 +38,7 @@ const Header = () => {
                                 <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
-                        <li  onClick={e => {
-                                    e.currentTarget.parentElement.parentElement.classList.remove(
-                                        "active"
-                                    );
-                                }}>
-                            <Button onClick={logout}>logout</Button>
-                        </li>
+                       
                     </ul>
                     <button
                         onClick={e => e.currentTarget.parentElement.classList.toggle("active")}
