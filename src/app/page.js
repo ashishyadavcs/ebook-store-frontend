@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export default async function Home() {
     let ebooks = [];
     try {
-        const req = await fetch(`${config.APP_URL}/api/ebooks`);
+        const req = await fetch(`${config.APP_URL}/api/ebooks`, { cache: "no-cache" });
         const { data } = await req.json();
         ebooks = [...data].reverse();
     } catch (err) {}
