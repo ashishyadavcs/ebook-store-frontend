@@ -54,6 +54,7 @@ button{
 .btn{
     background: #ddd;
     border: none;
+    border-radius: 4px;
     text-decoration: none;
     outline: none;
     font-size: inherit;
@@ -66,6 +67,8 @@ button{
     align-items: center;
     color:inherit;
     position: relative;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 .loader {
 display: inline-block;

@@ -12,7 +12,7 @@ const Layout = async ({ children }) => {
         {
             text: "Profile",
             url: "/profile",
-            icon: <CgProfile />,
+            icon: <CgProfile size={20} />,
         },
         {
             text: "My Ebooks",
@@ -34,6 +34,7 @@ const Layout = async ({ children }) => {
                         {links.map((a, i) => (
                             <li key={i}>
                                 <Link
+                                    scroll={true}
                                     {...{
                                         onClick: a.onClick,
                                         href: `/dashboard/${a.url}`,

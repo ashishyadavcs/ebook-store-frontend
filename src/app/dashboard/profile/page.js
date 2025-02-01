@@ -8,16 +8,26 @@ const Profile = async () => {
     const {
         data: { user },
     } = await useServerSideFetch("/api/user");
+
+    const saveUser = async formdata => {
+        "use server";
+        const response = await useServerSideFetch("/api/user", {
+            method: "PATCH",
+            body: formdata,
+        });
+
+        console.log({ response });
+    };
+
     return (
         <ProfileStyle>
-            <h1 className="title">Profile</h1>
-            <MyForm>
+            <MyForm action={saveUser}>
                 <Upload user={user} />
                 <label htmlFor="email">
                     <span>Name</span>
                     <input
                         defaultValue={user.name}
-                        name="title"
+                        name="name"
                         type="text"
                         required
                         placeholder="Name"
@@ -27,22 +37,14 @@ const Profile = async () => {
                     <span>Email</span>
                     <input
                         defaultValue={user.email}
-                        name="author"
+                        name="email"
                         type="text"
                         required
                         placeholder="Email"
                     />
                 </label>
-                <label htmlFor="cover-image">
-                    <span>Mobile</span>
-                    <input
-                        defaultValue={user.mobile}
-                        required
-                        type="tel"
-                        placeholder="Mobile Number"
-                    />
-                </label>
-                <Button>save</Button>
+
+                <Button>save profile</Button>
             </MyForm>
         </ProfileStyle>
     );

@@ -1,4 +1,5 @@
 "use client";
+import { media } from "@/config/media";
 import styled from "styled-components";
 const ProfileStyle = styled.section`
     .image {
@@ -9,6 +10,9 @@ const ProfileStyle = styled.section`
         background: #ddd;
         cursor: pointer;
         overflow: hidden;
+        ${media.sm} {
+            margin: auto;
+        }
         img {
             object-fit: cover;
         }

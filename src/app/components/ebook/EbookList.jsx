@@ -14,7 +14,7 @@ const EbookList = async ({ data, size = 300 }) => {
         } catch (err) {}
     }
     return (
-        <EbooksContainer size={size}>
+        <EbooksContainer className="ebooks" size={size}>
             {ebooks.map((ebook, i) => (
                 <Link key={i} scroll={true} className="ebook-details" href={`/${ebook._id}`}>
                     <Ebook

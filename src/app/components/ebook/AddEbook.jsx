@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import Button from "@/components/ui/Button";
 import { media } from "@/config/media";
-import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
 import { useState } from "react";
@@ -31,10 +30,9 @@ const AddEbook = () => {
         await res.json();
         setloading(false);
         toastify.success("ebook added successfull");
-        redirect("/");
     };
     return (
-        <EbookStyles>
+        <EbookStyles className="add-ebook">
             <MyForm onSubmit={addEbook}>
                 <h2 className="title">Add new Ebook</h2>
                 <label htmlFor="email">

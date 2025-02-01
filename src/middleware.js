@@ -39,7 +39,6 @@ export async function middleware(request) {
                 newheaders.append("Set-Cookie", setcookie);
             });
         }
-        console.log("mycookie", request.headers.cookies);
         const response = NextResponse.next({
             headers: newheaders,
         });

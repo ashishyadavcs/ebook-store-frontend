@@ -2,7 +2,7 @@
 import Form from "next/form";
 import styled from "styled-components";
 export const FormStyle = styled(Form)`
-    width: min(400px, 90%);
+    width: min(400px, 100%);
     display: flex;
     flex-direction: column;
     .title {
@@ -17,6 +17,7 @@ export const FormStyle = styled(Form)`
         margin: 0 0 15px;
         input {
             flex: 1;
+            border-radius: 4px;
         }
     }
     input {
