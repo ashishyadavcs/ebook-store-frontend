@@ -4,8 +4,8 @@ import config from "@/config/index";
 import Link from "next/link";
 
 const EbookList = async ({ data, size = 300 }) => {
-    let ebooks = data;
-    if (!ebooks) {
+    let ebooks = data || [];
+    if (!data) {
         // fetch ebooks if eboks dtaa not passed
         try {
             const req = await fetch(`${config.APP_URL}/api/ebooks`, { cache: "no-store" });
