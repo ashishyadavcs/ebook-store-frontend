@@ -1,9 +1,9 @@
+import EbookList from "@/components/ebook/EbookList";
 import React from "react";
-
 const page = () => {
     return (
         <>
-            <h1>Dashboard</h1>
+            <EbookList />
         </>
     );
 };

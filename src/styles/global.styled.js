@@ -47,7 +47,10 @@ button{
     outline: none;
     font-size: inherit;
 }
-
+.btn-group{
+    display: flex;
+    gap: 10px;
+}
 .btn{
     background: #ddd;
     border: none;
@@ -63,6 +66,9 @@ button{
     align-items: center;
     color:inherit;
     position: relative;
+    &:disabled{
+        cursor: progress;
+    }
 }
 .loader {
 display: inline-block;

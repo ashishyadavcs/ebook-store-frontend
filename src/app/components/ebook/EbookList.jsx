@@ -3,13 +3,16 @@ import Ebook from "@/components/ebook/Ebook";
 import config from "@/config/index";
 import Link from "next/link";
 
-const EbookList = async () => {
-    let ebooks = [];
-    try {
-        const req = await fetch(`${config.APP_URL}/api/ebooks`, { cache: "no-store" });
-        const { data } = await req.json();
-        ebooks = [...data].reverse();
-    } catch (err) {}
+const EbookList = async ({ data }) => {
+    let ebooks = data;
+    if (!ebooks) {
+        // fetch ebooks if eboks dtaa not passed
+        try {
+            const req = await fetch(`${config.APP_URL}/api/ebooks`, { cache: "no-store" });
+            const { data } = await req.json();
+            ebooks = [...data].reverse();
+        } catch (err) {}
+    }
     return (
         <EbooksContainer>
             {ebooks.map((ebook, i) => (

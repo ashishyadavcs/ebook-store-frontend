@@ -15,9 +15,6 @@ export async function DELETE(req) {
     return sendRequest(req);
 }
 async function sendRequest(req, params) {
-    console.log({
-        query: await params,
-    });
     const method = req.method;
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
@@ -28,6 +25,7 @@ async function sendRequest(req, params) {
 
     const options = {
         method,
+        credentials: "include",
         headers: {
             Authorization: `Bearer ${accesstoken}`,
             ...(req.headers.get("Content-Type")?.includes("json") && {
@@ -46,7 +44,6 @@ async function sendRequest(req, params) {
     }
 
     const url = new URL(req.url);
-    console.log({ url });
     const slug = url.pathname.split("/api/")[1];
     try {
         const response = await fetch(`${_config.BASE_URL}/${slug}`, options);

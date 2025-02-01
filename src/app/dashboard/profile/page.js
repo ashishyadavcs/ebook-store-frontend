@@ -1,18 +1,22 @@
 import Button from "@/components/ui/Button";
-import Container from "@/components/ui/Container";
 import MyForm from "@/components/ui/Form";
 import ProfileStyle from "@/styles/profile.styled";
-import React from "react";
+import { useServerSideFetch } from "@/utils/ssr-api-call";
+import Upload from "./upload";
 
-const Profile = () => {
+const Profile = async () => {
+    const {
+        data: { user },
+    } = await useServerSideFetch("/api/user");
     return (
         <ProfileStyle>
             <h1 className="title">Profile</h1>
             <MyForm>
+                <Upload user={user} />
                 <label htmlFor="email">
                     <span>Name</span>
                     <input
-                        defaultValue={"Ashish Kumar"}
+                        defaultValue={user.name}
                         name="title"
                         type="text"
                         required
@@ -22,7 +26,7 @@ const Profile = () => {
                 <label htmlFor="author">
                     <span>Email</span>
                     <input
-                        defaultValue={"as@as.as"}
+                        defaultValue={user.email}
                         name="author"
                         type="text"
                         required
@@ -32,7 +36,7 @@ const Profile = () => {
                 <label htmlFor="cover-image">
                     <span>Mobile</span>
                     <input
-                        value={"+91-893567866"}
+                        defaultValue={user.mobile}
                         required
                         type="tel"
                         placeholder="Mobile Number"

@@ -90,7 +90,7 @@ const Payment = () => {
                     </label>
                     <label>
                         <span>Mobile</span>
-                        <input type="tel" value="+91-9847685788" />
+                        <input type="tel" defaultValue="+91-9847685788" />
                     </label>
                     <Button loading={loading}>pay now</Button>
                 </form>

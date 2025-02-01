@@ -28,7 +28,10 @@ const Ebookdetail = async ({ id }) => {
                             <p className="author">{ebook?.author}</p>
                             <strong>Free</strong>
                         </div>
-                        <Button href="/checkout">Buy Now</Button>
+                        <div className="btn-group">
+                            <Button>+ add to cart </Button>
+                            <Button href="/checkout">Buy Now</Button>
+                        </div>
                     </div>
                     <p>
                         The Invincible is a gripping tale of courage, resilience, and the unyielding

@@ -2,16 +2,26 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Dashboard = styled.section`
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
     aside {
         background: #f1f1f1;
-        position: sticky;
-        top: 62px;
+
         width: 250px;
         ${media.sm} {
             width: 100%;
+            position: sticky;
+            top: 62px;
+            z-index: 3;
         }
         ul {
             list-style: none;
+            position: sticky;
+            top: 62px;
+            z-index: 3;
             ${media.sm} {
                 display: flex;
                 overflow: auto;
@@ -35,15 +45,9 @@ const Dashboard = styled.section`
         }
     }
 
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-        main {
-            padding: 40px 0;
-            flex: 1;
-            width: 100%;
-        }
+    .main {
+        flex: 1;
+        padding: 40px 0;
     }
 `;
 

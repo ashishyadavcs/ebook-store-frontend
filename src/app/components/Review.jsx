@@ -73,7 +73,7 @@ const Review = ({ size, ebookid }) => {
                     ))}
                 </div>
                 <textarea
-                    value={review.review}
+                    defaultValue={review.review}
                     onChange={e => setReview(v => ({ ...v, review: e.target.value }))}
                     placeholder="your review"
                     className="textarea"

@@ -2,11 +2,9 @@
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
-import { useSelector } from "react-redux";
+import { FaCartPlus } from "react-icons/fa6";
 
 const Header = () => {
-    const user = useSelector(state => state.user.data);
-    console.log(user);
     const navList = [
         {
             link: "/",
@@ -17,8 +15,12 @@ const Header = () => {
             text: "dashboard",
         },
         {
-            link: user ? "#" : "/login",
-            text: user ? user.email : "login",
+            link: "/login",
+            text: "login",
+        },
+        {
+            link: "/checkout",
+            icon: <FaCartPlus size={25} />,
         },
     ];
     return (
@@ -39,7 +41,7 @@ const Header = () => {
                                 role="menuitem"
                                 key={i}
                             >
-                                <Link href={nav.link}>{nav.text}</Link>
+                                <Link href={nav.link}>{nav.text || nav.icon}</Link>
                             </li>
                         ))}
                     </ul>

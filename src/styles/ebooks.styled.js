@@ -12,5 +12,8 @@ export const EbooksContainer = styled(Container)`
     gap: 10px;
     a {
         color: inherit;
+        .ebook {
+            height: 100%;
+        }
     }
 `;

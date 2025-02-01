@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../actions/logout";
 
-const Layout = ({ children }) => {
+const Layout = async ({ children }) => {
     const links = [
         {
             text: "Profile",
@@ -31,8 +31,8 @@ const Layout = ({ children }) => {
             <Container>
                 <aside role="sidebar">
                     <ul>
-                        {links.map(a => (
-                            <li>
+                        {links.map((a, i) => (
+                            <li key={i}>
                                 <Link
                                     {...{
                                         onClick: a.onClick,
@@ -46,8 +46,7 @@ const Layout = ({ children }) => {
                         ))}
                     </ul>
                 </aside>
-
-                <main>{children}</main>
+                <div className="main">{children}</div>
             </Container>
         </DashboardStyled>
     );
