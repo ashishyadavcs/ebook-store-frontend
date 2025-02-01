@@ -3,7 +3,7 @@ import Ebook from "@/components/ebook/Ebook";
 import config from "@/config/index";
 import Link from "next/link";
 
-const EbookList = async ({ data }) => {
+const EbookList = async ({ data, size = 300 }) => {
     let ebooks = data;
     if (!ebooks) {
         // fetch ebooks if eboks dtaa not passed
@@ -14,7 +14,7 @@ const EbookList = async ({ data }) => {
         } catch (err) {}
     }
     return (
-        <EbooksContainer>
+        <EbooksContainer size={size}>
             {ebooks.map((ebook, i) => (
                 <Link key={i} scroll={true} className="ebook-details" href={`/${ebook._id}`}>
                     <Ebook

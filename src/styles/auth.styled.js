@@ -4,7 +4,6 @@ import { media } from "../config/media";
 const AuthStyle = styled.section`
     overflow: hidden;
     border-radius: 20px;
-    padding: 10px 0;
     margin: 40px auto;
     display: flex;
     align-items: center;

@@ -9,7 +9,7 @@ const EbooksPage = async () => {
         <>
             <AddEbook />
             <h2>my ebooks</h2>
-            <EbookList data={ebooks} />
+            <EbookList size={200} data={ebooks} />
         </>
     );
 };

@@ -23,7 +23,7 @@ main{
     min-height: 78vh;
 }
 .container{
-    width: min(1440px,90%);
+    width:calc(100% - min(10vw,80px));
     margin: auto;
 }
 textarea{
@@ -66,9 +66,6 @@ button{
     align-items: center;
     color:inherit;
     position: relative;
-    &:disabled{
-        cursor: progress;
-    }
 }
 .loader {
 display: inline-block;

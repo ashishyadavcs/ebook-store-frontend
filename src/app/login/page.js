@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import MyForm from "@/components/ui/Form";
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 const Page = () => {
     const [loading, setloading] = useState(false);
     const searchParams = useSearchParams();
@@ -43,40 +44,41 @@ const Page = () => {
         }
     };
     return (
-        <AuthStyle>
-            <Image height={600} width={400} alt="ebookstore" src="/images/book-cover.svg" />
+        <Container>
+            <AuthStyle>
+                <Image height={600} width={400} alt="ebookstore" src="/images/book-cover.svg" />
+                <MyForm onSubmit={loginUser}>
+                    <h2 className="title">Login</h2>
+                    <label htmlFor="email">
+                        <span>Email</span>
+                        <input
+                            defaultValue={"as@as.as"}
+                            name="email"
+                            type="text"
+                            required
+                            placeholder="email"
+                        />
+                    </label>
+                    <label htmlFor="password">
+                        <span>Password</span>
 
-            <MyForm onSubmit={loginUser}>
-                <h2 className="title">Login</h2>
-                <label htmlFor="email">
-                    <span>Email</span>
-                    <input
-                        defaultValue={"as@as.as"}
-                        name="email"
-                        type="text"
-                        required
-                        placeholder="email"
-                    />
-                </label>
-                <label htmlFor="password">
-                    <span>Password</span>
-
-                    <input
-                        defaultValue={"123"}
-                        name="password"
-                        type="text"
-                        required
-                        placeholder="password"
-                    />
-                </label>
-                <Button loading={loading}>login</Button>
-                <p className="already">
-                    don't have an account <Link href="/register">signup</Link>{" "}
-                </p>
-                <span className="or">or</span>
-                <Googlelogin title="Login with google" />
-            </MyForm>
-        </AuthStyle>
+                        <input
+                            defaultValue={"123"}
+                            name="password"
+                            type="text"
+                            required
+                            placeholder="password"
+                        />
+                    </label>
+                    <Button loading={loading}>login</Button>
+                    <p className="already">
+                        don't have an account <Link href="/register">signup</Link>{" "}
+                    </p>
+                    <span className="or">or</span>
+                    <Googlelogin title="Login with google" />
+                </MyForm>
+            </AuthStyle>
+        </Container>
     );
 };
 
