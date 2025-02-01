@@ -11,10 +11,10 @@ const Page = async ({ params }) => {
             <EbookPageStyle>
                 <Ebookdetail id={ebookid} />
                 <Container>
-                    <h2 className="title">You Might Also Like These!</h2>
+                    <h2 className="heading">You Might Also Like These!</h2>
+                    <EbookList />
                 </Container>
             </EbookPageStyle>
-            <EbookList />
         </>
     );
 };

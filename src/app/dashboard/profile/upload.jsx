@@ -6,7 +6,7 @@ const Upload = ({ user }) => {
     const [image, setImage] = useState(false);
     return (
         <label htmlFor="image" className="image">
-            <Image src={image} layout="fill" />
+            {image && <Image src={image} layout="fill" />}
             <input
                 id="image"
                 defaultValue={user.image}

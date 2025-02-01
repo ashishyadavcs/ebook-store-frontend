@@ -9,6 +9,7 @@ const AuthStyle = styled.section`
     align-items: center;
     justify-content: center;
     ${media.sm} {
+        padding: 0 0 20px;
         img {
             display: none;
         }

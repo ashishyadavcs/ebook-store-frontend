@@ -8,8 +8,8 @@ export default function Home() {
             <h1>Endless Stories, One Click Away!</h1>
             <Container>
                 <Search />
+                <EbookList />
             </Container>
-            <EbookList />
         </HomeStyles>
     );
 }

@@ -9,12 +9,11 @@ const Dashboard = styled.section`
     }
     aside {
         background: #f1f1f1;
-
         width: 250px;
         ${media.sm} {
             width: 100%;
             position: sticky;
-            top: 62px;
+            top: 57px;
             z-index: 3;
         }
         ul {
@@ -48,6 +47,7 @@ const Dashboard = styled.section`
     .main {
         flex: 1;
         padding: 40px 0;
+        width: 100%;
     }
 `;
 

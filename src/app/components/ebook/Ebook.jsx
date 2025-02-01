@@ -68,7 +68,7 @@ const Ebookstyle = styled.div`
         margin: 1rem 0 0;
     }
     .description {
-        margin: 1vw 0 1vw;
+        margin: 1rem 0 1rem;
     }
     .off {
         color: #1bb91b;
