@@ -48,6 +48,7 @@ const Review = ({ size, ebookid }) => {
             }
             if (req.redirected) {
                 toastify.info("login to add review");
+                router.refresh();
                 router.push(`/login?from=${ebookid}`);
                 return;
             }

@@ -11,6 +11,15 @@ const Header = () => {
             text: "home",
         },
         {
+            link: "/about",
+            text: "about",
+        },
+        {
+            link: "/blog",
+            text: "blog",
+        },
+
+        {
             link: "/dashboard",
             text: "dashboard",
         },

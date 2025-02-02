@@ -33,7 +33,7 @@ const Profile = async () => {
                         placeholder="Name"
                     />
                 </label>
-                <label htmlFor="author">
+                <label htmlFor="email">
                     <span>Email</span>
                     <input
                         defaultValue={user.email}
@@ -41,6 +41,16 @@ const Profile = async () => {
                         type="text"
                         required
                         placeholder="Email"
+                    />
+                </label>
+                <label htmlFor="mobile">
+                    <span>Mobile</span>
+                    <input
+                        defaultValue={user.mobile}
+                        name="mobile"
+                        type="tel"
+                        required
+                        placeholder="Mobile Number"
                     />
                 </label>
 

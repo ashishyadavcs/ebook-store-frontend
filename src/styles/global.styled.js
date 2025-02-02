@@ -1,5 +1,11 @@
 "use client";
 const { createGlobalStyle } = require("styled-components");
+import { Inter } from "next/font/google";
+const inter = Inter({
+    fallback: ["serif"],
+    display: "swap",
+    subsets: ["latin"],
+});
 
 export const Globalstyle = createGlobalStyle`
 *{
@@ -17,13 +23,13 @@ html{
 }
 body{
     font-size: clamp(1.2rem,6vw,1.6rem);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:${inter.style.fontFamily};
 }
 main{
     min-height: 78vh;
 }
 .container{
-    width:calc(100% - min(10vw,80px));
+    width:min(1440px,90%);
     margin: auto;
 }
 textarea{
