@@ -38,9 +38,7 @@ body{
     font-size: clamp(1.2rem,6vw,1.6rem);
     font-family:${inter.style.fontFamily};
 }
-main{
-    min-height: 78vh;
-}
+
 .container{
     width:min(1440px,90%);
     margin: auto;
