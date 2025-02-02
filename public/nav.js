@@ -25,14 +25,14 @@ export const news = [
         title: "Nostrud exercitation",
         description:
             "Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        image: "https://example.com/image1.jpg",
+        image: "/images/default-ebook.avif",
         date: "15 April 2022",
     },
     {
         title: "Nostrud exercitation",
         description:
             "Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        image: "https://example.com/image2.jpg",
+        image: "/images/default-ebook.avif",
         date: "15 April 2022",
     },
 ];

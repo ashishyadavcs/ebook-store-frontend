@@ -33,7 +33,7 @@ const Footer = () => {
                     <h3>Latest news</h3>
                     {news.map((n, i) => (
                         <div key={i} className="news">
-                            <Image height={60} width={80} src={"/images/logo.svg"} />
+                            <Image alt="news" height={60} width={80} src={"/images/logo.svg"} />
                             <div className="content">
                                 <h4>{n.title}</h4>
                                 <p>{n.description}</p>

@@ -3,7 +3,7 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 const Footerstyle = styled.footer`
     background: #fbfbff;
-    margin: 50px 0 0;
+    margin: 20px 0 0;
     &,
     a {
         color: #888;
@@ -42,6 +42,9 @@ const Footerstyle = styled.footer`
         border-top: 1px solid #f1f1f1;
         display: flex;
         justify-content: space-between;
+        ${media.sm} {
+            font-size: 1.2rem;
+        }
     }
 `;
 export default Footerstyle;

@@ -2,7 +2,7 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const FeaturedBook = styled.section`
-    margin: 60px 0;
+    margin: 60px 0 0;
     background: pink;
     h2 {
         font-size: 4rem;
