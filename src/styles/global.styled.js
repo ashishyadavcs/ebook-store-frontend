@@ -18,6 +18,19 @@ export const Globalstyle = createGlobalStyle`
     --hotyellow:#FFB;
     --aqua:#43FFEC;
 }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+    background: transparent;
+    border-left: 1px solid #f1f1f1;
+  }
+
+::-webkit-scrollbar-thumb {
+    background:#FF0080;
+    height: 100px;
+    border-radius: 10px;
+    width: 6px;
+  }
 html{
     font-size: 62.5%;
 }

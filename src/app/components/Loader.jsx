@@ -23,6 +23,7 @@ const LoadingCSS = styled.div`
     gap: var(--gap);
     width: calc(100% - var(--gap));
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    min-height: 120vh;
     ${media.sm} {
         grid-template-columns: 50% 50%;
         grid-auto-rows: 1fr;

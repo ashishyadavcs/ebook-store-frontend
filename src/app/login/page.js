@@ -35,7 +35,6 @@ const Page = () => {
             } else {
                 setloading(false);
                 toastify.success("loggedin successfull");
-                router.refresh();
                 router.replace(searchParams.get("from") || "/dashboard");
             }
         } catch (err) {

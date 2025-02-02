@@ -7,6 +7,7 @@ import { constant } from "../../config/constant";
 import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
+import MyForm from "@/components/ui/Form";
 
 const Payment = () => {
     const [loading, setLoading] = useState(false);
@@ -83,7 +84,7 @@ const Payment = () => {
                 <h2 className="title">Checkout</h2>
             </Container>
             <Container>
-                <form className="form" onSubmit={payment}>
+                <MyForm className="form" onSubmit={payment}>
                     <label>
                         <span>Name</span>
                         <input type="text" defaultValue="Ashish Kumar" />
@@ -93,7 +94,7 @@ const Payment = () => {
                         <input type="tel" defaultValue="+91-9847685788" />
                     </label>
                     <Button loading={loading}>pay now</Button>
-                </form>
+                </MyForm>
                 <div className="cart">
                     {[...Array(3)].map((p, i) => (
                         <div key={i} className="product">

@@ -16,20 +16,6 @@ export const Checkoutstyle = styled.section`
         .cart {
             flex: 1;
         }
-        form {
-            input {
-                border: 2px solid #ddd;
-            }
-            &,
-            label {
-                display: flex;
-                flex-direction: column;
-            }
-            label {
-                gap: 7px;
-            }
-            gap: 20px;
-        }
 
         .product {
             display: flex;
