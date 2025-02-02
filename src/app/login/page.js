@@ -31,11 +31,11 @@ const Page = () => {
             });
             const result = await res.json();
             if (!result.success) {
-                throw Error("failed");
+                throw Error("login failed");
             } else {
                 setloading(false);
                 toastify.success("loggedin successfull");
-                router.replace(searchParams.get("from") || "/dashboard");
+                router.push(searchParams.get("from") || "/dashboard");
             }
         } catch (err) {
             setloading(false);

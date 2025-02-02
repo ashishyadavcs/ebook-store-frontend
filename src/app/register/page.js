@@ -30,7 +30,7 @@ const Page = () => {
             });
             const result = await res.json();
             if (!result.success) {
-                throw Error("failed");
+                throw Error("signup failed");
             } else {
                 setloading(false);
                 toastify.success("registered successfully");
