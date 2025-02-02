@@ -8,7 +8,11 @@ const EbookList = async ({ data, size = 300 }) => {
     let ebooks = data || [];
     if (!data) {
         try {
-            const req = await fetch(`${config.APP_URL}/api/ebooks`);
+            const req = await fetch(`${config.APP_URL}/api/ebooks`, {
+                next: {
+                    revalidate: 10,
+                },
+            });
             const { data } = await req.json();
             ebooks = [...data].reverse();
         } catch (err) {}

@@ -15,8 +15,6 @@ const Profile = async () => {
             method: "PATCH",
             body: formdata,
         });
-
-        console.log({ response });
     };
 
     return (

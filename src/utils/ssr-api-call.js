@@ -2,6 +2,9 @@ import config from "@/config/index";
 import { cookies } from "next/headers";
 const cacheOption = {
     cache: "no-cache",
+    next: {
+        revalidate: 10,
+    },
 };
 export const useServerSideFetch = async (url, option = cacheOption) => {
     const cookieStore = await cookies();
@@ -9,7 +12,7 @@ export const useServerSideFetch = async (url, option = cacheOption) => {
         headers: {
             Cookie: cookieStore.toString(),
         },
-        option,
+        ...option,
     });
     return await response.json();
 };

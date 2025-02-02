@@ -3,13 +3,12 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const Upload = ({ user }) => {
-    const [image, setImage] = useState(false);
+    const [image, setImage] = useState(user.image);
     return (
         <label htmlFor="image" className="image">
             {image && <Image alt="profile image" src={image} layout="fill" />}
             <input
                 id="image"
-                defaultValue={user.image}
                 hidden
                 name="image"
                 type="file"
