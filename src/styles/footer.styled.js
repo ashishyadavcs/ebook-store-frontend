@@ -12,7 +12,7 @@ const Footerstyle = styled.footer`
     .main {
         display: grid;
         gap: 40px;
-        grid-template-columns: 30% 30% 40%;
+        grid-template-columns: 30% 30% calc(40% - 2 * 40px);
         .news {
             display: flex;
             gap: 10px;
