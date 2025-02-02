@@ -11,17 +11,19 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 <StyledComponentsRegistry>
-                    <Header />
-                    <Config />
-                    <main role="main">{children}</main>
-                    <Footer />
-                    <Link
-                        className="channel"
-                        href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
-                    >
-                        <FaYoutube color="red" />
-                        channel
-                    </Link>
+                    <Suspense fallback={<Fallbackhtml />}>
+                        <Header />
+                        <Config />
+                        <main role="main">{children}</main>
+                        <Footer />
+                        <Link
+                            className="channel"
+                            href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
+                        >
+                            <FaYoutube color="red" />
+                            channel
+                        </Link>
+                    </Suspense>
                 </StyledComponentsRegistry>
             </body>
         </html>
