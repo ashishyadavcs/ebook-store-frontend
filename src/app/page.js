@@ -1,11 +1,8 @@
-"use client";
 import { HomeStyles } from "@/styles/home.styled";
 import EbookList from "@/components/ebook/EbookList";
 import Search from "./components/Search";
 import Container from "./components/ui/Container";
-import NewReleaseEbook from "./components/ebook/NewReleaseEbook";
-import styled from "styled-components";
-import { media } from "@/config/media";
+import FeaturedBook from "@/styles/featuredbook.styled";
 export default function Home() {
     return (
         <HomeStyles>
@@ -37,27 +34,3 @@ export default function Home() {
         </HomeStyles>
     );
 }
-
-const FeaturedBook = styled.section`
-    margin: 60px 0;
-    background: pink;
-    h2 {
-        font-size: 4rem;
-    }
-    p {
-        margin: 10px 0 20px;
-        font-size: 2rem;
-    }
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 20px 0;
-        ${media.sm} {
-            justify-content: center;
-            br {
-                display: none;
-            }
-        }
-    }
-`;
