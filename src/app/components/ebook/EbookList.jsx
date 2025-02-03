@@ -13,7 +13,7 @@ const EbookList = async ({ data, size = 300 }) => {
                     revalidate: 10,
                 },
             });
-            const { data } = await req.json();
+            const { data = [] } = await req.json();
             ebooks = [...data].reverse();
         } catch (err) {}
     }
