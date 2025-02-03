@@ -5,7 +5,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
 import { redirect } from "next/navigation.js";
-
 const Googlelogin = ({ title = "Login with" }) => {
     const handleSuccess = async res => {
         const token = res.credential;

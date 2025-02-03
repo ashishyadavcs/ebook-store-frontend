@@ -6,7 +6,7 @@ import Upload from "./upload";
 
 const Profile = async () => {
     const result = await useServerSideFetch("/api/user");
-    const user = result.data.user;
+    const user = result?.data?.user;
     const saveUser = async formdata => {
         "use server";
         const response = await useServerSideFetch("/api/user", {
