@@ -22,7 +22,7 @@ const Profile = async () => {
                 <label htmlFor="email">
                     <span>Name</span>
                     <input
-                        defaultValue={user.name}
+                        defaultValue={user?.name}
                         name="name"
                         type="text"
                         required
@@ -32,7 +32,7 @@ const Profile = async () => {
                 <label htmlFor="email">
                     <span>Email</span>
                     <input
-                        defaultValue={user.email}
+                        defaultValue={user?.email}
                         name="email"
                         type="text"
                         required
@@ -42,7 +42,7 @@ const Profile = async () => {
                 <label htmlFor="mobile">
                     <span>Mobile</span>
                     <input
-                        defaultValue={user.mobile}
+                        defaultValue={user?.mobile}
                         name="mobile"
                         type="tel"
                         required
