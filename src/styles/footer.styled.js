@@ -2,6 +2,7 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Footerstyle = styled.footer`
+    margin: 20px 0 0;
     background: #fbfbff;
     &,
     a {
@@ -13,6 +14,9 @@ const Footerstyle = styled.footer`
         gap: 40px;
         grid-template-columns: 30% 30% calc(40% - 2 * 40px);
         .news {
+            img {
+                border-radius: 4px;
+            }
             display: flex;
             gap: 10px;
             margin: 0 0 10px;

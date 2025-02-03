@@ -18,8 +18,11 @@ const Ebookdetails = styled.div`
             background: #ddd;
             position: relative;
             height: 400px;
-            width: max(300px, 100%);
+            width: 300px;
             max-width: 100%;
+            ${media.sm} {
+                width: 100%;
+            }
             img {
                 object-fit: cover;
                 object-position: start;

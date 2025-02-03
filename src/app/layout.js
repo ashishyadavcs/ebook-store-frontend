@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Fallbackhtml from "@/components/Fallbackhtml";
+import Breadcrumb from "@/components/Breadcrumb";
 export const metadata = {
     title: "Ebookstore",
     description: "Endless Stories, One Click Away!",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
                 <StyledComponentsRegistry>
                     <Suspense fallback={<Fallbackhtml />}>
                         <Header />
+                        {/* <Breadcrumb/> */}
                         <Config />
                         <main role="main">{children}</main>
                         <Footer />

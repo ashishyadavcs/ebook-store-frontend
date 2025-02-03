@@ -71,13 +71,16 @@ const StyledHeader = styled.header`
                 }
             }
             .menu-btn {
-                display: inline-flex;
-                flex-direction: column;
-                justify-content: center;
+                display: inline-block;
                 height: 30px;
                 width: 30px;
                 background: transparent;
                 &.user {
+                    display: inline-flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 50px;
+                    width: 50px;
                     border: 2px solid #ddd;
                     padding: 2px;
                     border-radius: 50%;

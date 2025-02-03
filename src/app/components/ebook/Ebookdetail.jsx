@@ -33,18 +33,7 @@ const Ebookdetail = async ({ id }) => {
                             <Button href="/checkout">Buy Now</Button>
                         </div>
                     </div>
-                    <p>
-                        The Invincible is a gripping tale of courage, resilience, and the unyielding
-                        human spirit. This eBook takes you on a thrilling journey through uncharted
-                        territories, where survival depends on ingenuity and inner strength.
-                        Blending elements of science fiction, mystery, and philosophy, the story
-                        challenges conventional perceptions of intelligence, life, and our place in
-                        the universe. Follow the crew of The Invincible, a technologically advanced
-                        spaceship, as they embark on a perilous mission to investigate the
-                        disappearance of their sister ship on a mysterious planet. What they uncover
-                        is a chilling evolution of machines, a testament to the relentless power of
-                        adaptation and survival.
-                    </p>
+                    <p>{ebook.description || "no description"}</p>
                     <Review ebookid={id} size={30} />
                 </div>
             </Container>

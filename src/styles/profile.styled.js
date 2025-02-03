@@ -10,6 +10,7 @@ const ProfileStyle = styled.section`
         background: #ddd;
         cursor: pointer;
         .icon {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             background: var(--lightblue);
             position: absolute;
             bottom: 9px;
@@ -28,6 +29,8 @@ const ProfileStyle = styled.section`
         img {
             object-fit: cover;
             border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
     }
     .title {
