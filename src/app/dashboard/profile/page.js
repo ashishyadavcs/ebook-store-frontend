@@ -5,10 +5,8 @@ import { useServerSideFetch } from "@/utils/ssr-api-call";
 import Upload from "./upload";
 
 const Profile = async () => {
-    const {
-        data: { user },
-    } = await useServerSideFetch("/api/user");
-
+    const result = await useServerSideFetch("/api/user");
+    const user = result.data.user;
     const saveUser = async formdata => {
         "use server";
         const response = await useServerSideFetch("/api/user", {
