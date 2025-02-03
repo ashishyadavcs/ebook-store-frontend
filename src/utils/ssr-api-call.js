@@ -7,12 +7,16 @@ const cacheOption = {
     },
 };
 export const useServerSideFetch = async (url, option = cacheOption) => {
-    const cookieStore = await cookies();
-    const response = await fetch(`${config.APP_URL}${url}`, {
-        headers: {
-            Cookie: cookieStore.toString(),
-        },
-        ...option,
-    });
-    return await response.json();
+    try {
+        const cookieStore = await cookies();
+        const response = await fetch(`${config.APP_URL}${url}`, {
+            headers: {
+                Cookie: cookieStore.toString(),
+            },
+            ...option,
+        });
+        return await response.json();
+    } catch (err) {
+        return null;
+    }
 };

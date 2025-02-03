@@ -33,7 +33,7 @@ const Ebookdetail = async ({ id }) => {
                             <Button href="/checkout">Buy Now</Button>
                         </div>
                     </div>
-                    <p>{ebook.description || "no description"}</p>
+                    <p>{ebook?.description || "no description"}</p>
                     <Review ebookid={id} size={30} />
                 </div>
             </Container>

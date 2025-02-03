@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({
     fallback: ["serif"],
     display: "swap",
+    preload: false,
     subsets: ["latin"],
 });
 
