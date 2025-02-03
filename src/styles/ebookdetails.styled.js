@@ -2,6 +2,7 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Ebookdetails = styled.div`
+    background: #fff;
     padding: 40px 0;
     .info {
         margin: 0 0 20px;

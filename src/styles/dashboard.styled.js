@@ -27,11 +27,14 @@ const Dashboard = styled.section`
                 gap: 5px;
                 align-items: center;
                 padding: 10px 20px;
+                ${media.sm} {
+                    padding: 14px;
+                }
                 color: #555;
                 border-bottom: 1px solid #f1f1f1;
                 margin: 0 0 10px;
                 background: #fff;
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
                 border-radius: 4px;
             }
         }

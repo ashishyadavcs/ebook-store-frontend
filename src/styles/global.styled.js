@@ -46,6 +46,7 @@ body{
     margin: auto;
 }
 textarea{
+    min-height: 100px;
     font-family: inherit;
     font-size: inherit;
     outline: none;

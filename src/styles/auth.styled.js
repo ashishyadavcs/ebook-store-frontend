@@ -9,6 +9,7 @@ const AuthStyle = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     ${media.sm} {
         border-radius: 8px;
         padding: 20px;
@@ -23,7 +24,6 @@ const AuthStyle = styled.section`
             width: 50%;
             height: 100%;
         }
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         gap: 40px;
         form {
             padding: 0 40px 0 0;

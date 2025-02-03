@@ -36,24 +36,13 @@ const AddEbook = () => {
             <MyForm onSubmit={addEbook}>
                 <h2 className="title">Add new Ebook</h2>
                 <label htmlFor="email">
-                    <input
-                        defaultValue={"How to be successfull"}
-                        name="title"
-                        type="text"
-                        required
-                        placeholder="Ebook title"
-                    />
+                    <input name="title" type="text" required placeholder="Ebook title" />
                 </label>
                 <label htmlFor="author">
-                    <input
-                        defaultValue={"Ashish Kumar"}
-                        name="author"
-                        type="text"
-                        required
-                        placeholder="Ebook Author"
-                    />
+                    <input name="author" type="text" required placeholder="Ebook Author" />
                 </label>
                 <label htmlFor="cover-image">
+                    <span>cover image</span>
                     <input
                         required
                         name="coverImageUrl"
@@ -65,11 +54,10 @@ const AddEbook = () => {
                 <label htmlFor="description">
                     <textarea
                         className="textarea"
-                        defaultValue={"Ashish Kumar"}
                         name="description"
                         type="text"
                         required
-                        placeholder="description"
+                        placeholder="ebook description"
                     />
                 </label>
                 <Button loading={loading}>add ebook</Button>
@@ -82,6 +70,7 @@ export default AddEbook;
 const EbookStyles = styled.div`
     background: #fff;
     padding: 40px;
+    border-radius: 8px;
     ${media.sm} {
         padding: 20px;
     }
