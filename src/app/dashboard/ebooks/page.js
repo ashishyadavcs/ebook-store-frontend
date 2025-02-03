@@ -5,8 +5,8 @@ import { useServerSideFetch } from "@/utils/ssr-api-call";
 const EbooksPage = async () => {
     let ebooks = [];
     try {
-        const { data } = await useServerSideFetch("/api/user");
-        ebooks = data.ebooks;
+        const result = await useServerSideFetch("/api/user");
+        ebooks = result.data.ebooks;
     } catch (err) {}
     return (
         <>
