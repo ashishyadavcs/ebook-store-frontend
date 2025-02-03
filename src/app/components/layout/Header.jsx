@@ -3,6 +3,7 @@ import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
 import { FaCartPlus } from "react-icons/fa6";
+import Image from "next/image";
 
 const Header = () => {
     const navList = [
@@ -46,13 +47,20 @@ const Header = () => {
                             </li>
                         ))}
                     </ul>
+
                     <button
                         onClick={e => e.currentTarget.parentElement.classList.toggle("active")}
-                        className="menu-btn"
+                        className="menu-btn user"
                     >
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        {true ? (
+                            <Image alt="user" height={40} width={40} src={"/images/logo.svg"} />
+                        ) : (
+                            <>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </>
+                        )}
                     </button>
                 </nav>
             </Container>

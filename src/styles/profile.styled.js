@@ -9,12 +9,25 @@ const ProfileStyle = styled.section`
         border-radius: 50%;
         background: #ddd;
         cursor: pointer;
-        overflow: hidden;
+        .icon {
+            background: var(--lightblue);
+            position: absolute;
+            bottom: 9px;
+            right: -5px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+            z-index: 2;
+        }
         ${media.sm} {
             margin: auto;
         }
         img {
             object-fit: cover;
+            border-radius: 50%;
         }
     }
     .title {

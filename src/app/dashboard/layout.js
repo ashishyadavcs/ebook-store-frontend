@@ -6,6 +6,8 @@ import { FaBook } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../actions/logout";
+import Sidebar from "./Sidebar";
+import { ismobile } from "@/config/common";
 
 const Layout = async ({ children }) => {
     const links = [
@@ -27,26 +29,9 @@ const Layout = async ({ children }) => {
         },
     ];
     return (
-        <DashboardStyled>
+        <DashboardStyled className="dashboard-layout">
             <Container>
-                <aside role="sidebar">
-                    <ul>
-                        {links.map((a, i) => (
-                            <li key={i}>
-                                <Link
-                                    scroll={true}
-                                    {...{
-                                        onClick: a.onClick,
-                                        href: `/dashboard/${a.url}`,
-                                    }}
-                                >
-                                    {a.icon}
-                                    {a.text}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </aside>
+                {!ismobile && <Sidebar />}
                 <div className="main">{children}</div>
             </Container>
         </DashboardStyled>

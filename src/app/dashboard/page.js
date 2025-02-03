@@ -1,11 +1,15 @@
-import EbookList from "@/components/ebook/EbookList";
 import React from "react";
-const page = () => {
+import DashboardStyled from "@/styles/dashboard.styled";
+import Container from "@/components/ui/Container";
+import Link from "next/link";
+import Sidebar from "./Sidebar";
+
+const Layout = async ({ children }) => {
     return (
-        <>
-            <EbookList />
-        </>
+        <DashboardStyled>
+            <Sidebar />
+        </DashboardStyled>
     );
 };
 
-export default page;
+export default Layout;

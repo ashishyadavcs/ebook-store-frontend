@@ -62,6 +62,16 @@ const AddEbook = () => {
                         placeholder="cover image"
                     />
                 </label>
+                <label htmlFor="description">
+                    <textarea
+                        className="textarea"
+                        defaultValue={"Ashish Kumar"}
+                        name="description"
+                        type="text"
+                        required
+                        placeholder="description"
+                    />
+                </label>
                 <Button loading={loading}>add ebook</Button>
             </MyForm>
         </EbookStyles>
@@ -70,6 +80,7 @@ const AddEbook = () => {
 
 export default AddEbook;
 const EbookStyles = styled.div`
+    background: #fff;
     padding: 40px;
     ${media.sm} {
         padding: 20px;

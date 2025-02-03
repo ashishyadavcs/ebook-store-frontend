@@ -17,6 +17,7 @@ export const Globalstyle = createGlobalStyle`
     --redpink:#FF0080;
     --hotyellow:#FFB;
     --aqua:#43FFEC;
+    --lightblue:#f2f4f7;
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -37,6 +38,7 @@ html{
 body{
     font-size: clamp(1.2rem,6vw,1.6rem);
     font-family:${inter.style.fontFamily};
+    background: var(--lightblue);
 }
 
 .container{

@@ -13,9 +13,8 @@ const Search = () => {
 export default Search;
 const Searchstyle = styled(MyForm)`
     margin: 30px auto;
-
     input {
-        border-radius: 100px;
+        border-radius: 8px;
         text-align: center;
     }
 `;

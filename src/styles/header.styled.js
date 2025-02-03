@@ -4,7 +4,7 @@ import { media } from "../config/media";
 const StyledHeader = styled.header`
     position: sticky;
     background: #fff;
-    z-index: 2;
+    z-index: 10;
     top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     nav {
@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
         z-index: 2;
         top: 0;
         a,
-        button {
+        .menu-btn {
             background: transparent;
             color: inherit;
             font-weight: 600;
@@ -71,9 +71,17 @@ const StyledHeader = styled.header`
                 }
             }
             .menu-btn {
-                display: inline-block;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 30px;
                 width: 30px;
                 background: transparent;
+                &.user {
+                    border: 2px solid #ddd;
+                    padding: 2px;
+                    border-radius: 50%;
+                }
                 span {
                     display: block;
                     height: 2px;

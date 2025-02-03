@@ -15,12 +15,12 @@ export const FormStyle = styled(Form)`
         flex-direction: column;
         width: 100%;
         margin: 0 0 15px;
-        input {
-            flex: 1;
-            border-radius: 4px;
-        }
     }
-    input {
+    input,
+    textarea {
+        flex: 1;
+        border-radius: 4px;
+        padding: 10px;
         border: 2px solid #ddd;
         &:focus {
             border-color: blue;

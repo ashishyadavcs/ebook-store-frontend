@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { media } from "../config/media";
 const AuthStyle = styled.section`
+    background: #fff;
     overflow: hidden;
     border-radius: 20px;
     margin: 40px auto;
@@ -9,7 +10,8 @@ const AuthStyle = styled.section`
     align-items: center;
     justify-content: center;
     ${media.sm} {
-        padding: 0 0 20px;
+        border-radius: 8px;
+        padding: 20px;
         img {
             display: none;
         }

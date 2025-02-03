@@ -88,7 +88,6 @@ const Review = ({ size, ebookid }) => {
 export default Review;
 const ReviewStyle = styled.div`
     width: min(400px, 100%);
-    background: #fff;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -137,6 +136,7 @@ const ReviewStyle = styled.div`
         gap: 10px;
         flex-direction: column;
         textarea {
+            background: #fff;
             border: 2px solid #ddd;
             padding: 10px;
         }

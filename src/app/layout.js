@@ -6,6 +6,10 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Fallbackhtml from "@/components/Fallbackhtml";
+export const metadata = {
+    title: "Ebookstore",
+    description: "Endless Stories, One Click Away!",
+};
 export default function RootLayout({ children }) {
     return (
         <html lang="en">

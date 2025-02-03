@@ -24,6 +24,8 @@ const Ebook = ({ data, className }) => {
 export default Ebook;
 const Ebookstyle = styled.div`
     overflow: hidden;
+    background: #fff;
+    border-radius: 4px;
     .btn-group {
         display: flex;
         gap: 10px;
