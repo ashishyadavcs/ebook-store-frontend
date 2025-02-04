@@ -2,7 +2,6 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Footerstyle = styled.footer`
-    margin: 20px 0 0;
     background: #fbfbff;
     &,
     a {

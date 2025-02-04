@@ -2,6 +2,7 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const EbookPageStyle = styled.section`
+    padding: 0 0 40px;
     .heading {
         text-align: center;
         margin: 100px auto 50px;

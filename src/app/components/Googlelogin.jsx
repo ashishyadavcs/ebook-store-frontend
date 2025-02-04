@@ -23,7 +23,7 @@ const Googlelogin = ({ title = "Login with" }) => {
         }
     };
     return (
-        <>
+        <GStyle>
             <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
                 <GoogleLogin
                     onSuccess={res => handleSuccess(res)}
@@ -32,13 +32,14 @@ const Googlelogin = ({ title = "Login with" }) => {
                     }}
                 />
             </GoogleOAuthProvider>
-        </>
+        </GStyle>
     );
 };
 
 export default Googlelogin;
-const GStyle = styled(Button)`
+const GStyle = styled.div`
     background: #fff;
+    margin: auto;
     border-radius: 100px;
     filter: drop-shadow(0 1px 2px #ddd);
 `;
