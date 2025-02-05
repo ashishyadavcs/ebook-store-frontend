@@ -5,6 +5,7 @@ const persistConfig = {
     version: 1,
     serialize: true,
     storage,
+    whitelist: ["user"],
 };
 export const persiteTheReducer = reducer => {
     return persistReducer(persistConfig, reducer);

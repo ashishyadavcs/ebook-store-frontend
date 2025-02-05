@@ -4,7 +4,14 @@ import { persiteTheReducer } from "@/state/persist";
 const reducer = combineReducers({
     user: userReducer,
 });
-
-export const store = configureStore({
-    reducer: persiteTheReducer(reducer),
-});
+export const makeStore = () => {
+    return configureStore({
+        reducer: persiteTheReducer(reducer),
+        middleware: getDefaultMiddleware =>
+            getDefaultMiddleware({
+                serializableCheck: {
+                    ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
+                },
+            }),
+    });
+};
