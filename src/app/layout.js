@@ -18,18 +18,18 @@ export default async function RootLayout({ children }) {
             <body>
                 <ReduxProvider>
                     <StyledComponentsRegistry>
-                        <Suspense fallback={<Fallbackhtml />}>
+                        <Suspense>
                             <Header />
                             <Config />
                             <main role="main">{children}</main>
                             <Footer />
-                            <Link
+                            {/* <Link
                                 className="channel"
                                 href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
                             >
                                 <FaYoutube color="red" />
                                 channel
-                            </Link>
+                            </Link> */}
                         </Suspense>
                     </StyledComponentsRegistry>
                 </ReduxProvider>
