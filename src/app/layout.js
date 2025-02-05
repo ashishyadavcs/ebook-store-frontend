@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Fallbackhtml from "@/components/Fallbackhtml";
+import ReduxProvider from "./state/Provider";
 
 export const metadata = {
     title: "Ebookstore",
@@ -15,21 +16,23 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <StyledComponentsRegistry>
-                    <Suspense fallback={<Fallbackhtml />}>
-                        <Header />
-                        <Config />
-                        <main role="main">{children}</main>
-                        <Footer />
-                        <Link
-                            className="channel"
-                            href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
-                        >
-                            <FaYoutube color="red" />
-                            channel
-                        </Link>
-                    </Suspense>
-                </StyledComponentsRegistry>
+                <ReduxProvider>
+                    <StyledComponentsRegistry>
+                        <Suspense fallback={<Fallbackhtml />}>
+                            <Header />
+                            <Config />
+                            <main role="main">{children}</main>
+                            <Footer />
+                            <Link
+                                className="channel"
+                                href="https://www.youtube.com/@frontendzonedotcom?sub_confirmation=1"
+                            >
+                                <FaYoutube color="red" />
+                                channel
+                            </Link>
+                        </Suspense>
+                    </StyledComponentsRegistry>
+                </ReduxProvider>
             </body>
         </html>
     );

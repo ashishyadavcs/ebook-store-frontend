@@ -1,7 +1,6 @@
 "use server";
 import config from "@/config/index";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const logout = async () => {
     const token = await cookies();
@@ -19,6 +18,5 @@ export const logout = async () => {
     if (result) {
         token.delete("accesstoken");
         token.delete("refreshtoken");
-        redirect("/login");
     }
 };

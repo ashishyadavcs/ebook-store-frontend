@@ -9,10 +9,13 @@ import Image from "next/image";
 import MyForm from "@/components/ui/Form";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import { useAppDispatch } from "@/state/hooks";
+import { addUser } from "@/state/userslice";
 const Page = () => {
     const [loading, setloading] = useState(false);
     const searchParams = useSearchParams();
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const loginUser = async e => {
         e.preventDefault();
         try {
@@ -33,6 +36,7 @@ const Page = () => {
             if (!result.success) {
                 throw Error("login failed");
             } else {
+                dispatch(addUser(result.user));
                 setloading(false);
                 toastify.success("loggedin successfull");
                 router.push(searchParams.get("from") || "/dashboard");

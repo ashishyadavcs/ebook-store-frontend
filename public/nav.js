@@ -1,3 +1,5 @@
+import { FaCartPlus } from "react-icons/fa";
+
 export const company = [
     {
         link: "/",
@@ -34,5 +36,25 @@ export const news = [
             "Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: "/images/default-ebook.avif",
         date: "15 April 2022",
+    },
+];
+
+export const navList = [
+    {
+        link: "/",
+        text: "home",
+    },
+
+    {
+        link: "/dashboard",
+        text: "dashboard",
+    },
+    {
+        link: "/login",
+        text: "login",
+    },
+    {
+        link: "/checkout",
+        icon: <FaCartPlus size={25} />,
     },
 ];

@@ -1,33 +1,52 @@
+"use client";
 import Button from "@/components/ui/Button";
 import MyForm from "@/components/ui/Form";
 import ProfileStyle from "@/styles/profile.styled";
-import { useServerSideFetch } from "@/utils/ssr-api-call";
 import Upload from "./upload";
+import { useAppDispatch, useAppSelector } from "@/state/hooks";
+import { useState } from "react";
+import { toastify } from "@/components/Toast";
+import { addUser } from "@/state/userslice";
 
-const Profile = async () => {
-    const result = await useServerSideFetch("/api/user");
-    const user = result?.data?.user;
-    const saveUser = async formdata => {
-        "use server";
-        const response = await useServerSideFetch("/api/user", {
-            method: "PATCH",
-            body: formdata,
-        });
+const Profile = () => {
+    const [loading, setloading] = useState(false);
+    const user = useAppSelector(state => state.user.data);
+    const dispatch = useAppDispatch();
+    const updateUser = async e => {
+        e.preventDefault();
+        try {
+            setloading(true);
+            const formdata = new FormData(e.target);
+            formdata.delete("image");
+            if (e.target.image.files[0]) {
+                formdata.append("image", e.target.image.files[0]);
+            }
+            const res = await fetch("/api/user", {
+                method: "PATCH",
+                body: formdata,
+                credentials: "include",
+            });
+            const result = await res.json();
+            if (!result.success) {
+                throw Error("user update failed");
+            } else {
+                console.log(result.user);
+                dispatch(addUser(result.user));
+                setloading(false);
+                toastify.success("profile updated");
+            }
+        } catch (err) {
+            setloading(false);
+            toastify.error(err.message);
+        }
     };
-
     return (
         <ProfileStyle>
-            <MyForm action={saveUser}>
+            <MyForm onSubmit={updateUser}>
                 <Upload user={user} />
                 <label htmlFor="email">
                     <span>Name</span>
-                    <input
-                        defaultValue={user?.name}
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Name"
-                    />
+                    <input defaultValue={user?.name} name="name" type="text" placeholder="Name" />
                 </label>
                 <label htmlFor="email">
                     <span>Email</span>
@@ -35,7 +54,6 @@ const Profile = async () => {
                         defaultValue={user?.email}
                         name="email"
                         type="text"
-                        required
                         placeholder="Email"
                     />
                 </label>
@@ -45,12 +63,11 @@ const Profile = async () => {
                         defaultValue={user?.mobile}
                         name="mobile"
                         type="tel"
-                        required
                         placeholder="Mobile Number"
                     />
                 </label>
 
-                <Button>save profile</Button>
+                <Button loading={loading}>update profile</Button>
             </MyForm>
         </ProfileStyle>
     );

@@ -2,29 +2,13 @@
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
-import { FaCartPlus } from "react-icons/fa6";
 import Image from "next/image";
+import { navList } from "../../../../public/nav";
+import { useAppSelector } from "@/state/hooks";
+import { FaCartPlus } from "react-icons/fa";
 
 const Header = () => {
-    const navList = [
-        {
-            link: "/",
-            text: "home",
-        },
-
-        {
-            link: "/dashboard",
-            text: "dashboard",
-        },
-        {
-            link: "/login",
-            text: "login",
-        },
-        {
-            link: "/checkout",
-            icon: <FaCartPlus size={25} />,
-        },
-    ];
+    const user = useAppSelector(state => state.user.data);
     return (
         <StyledHeader>
             <Container>
@@ -33,7 +17,20 @@ const Header = () => {
                         {process.env.NEXT_PUBLIC_APP_NAME}
                     </Link>
                     <ul className="links" role="menubar">
-                        {navList.map((nav, i) => (
+                        {[
+                            {
+                                link: "/",
+                                text: "home",
+                            },
+                            {
+                                link: user ? "/dashboard" : "/login",
+                                text: user ? "dashboard" : "login",
+                            },
+                            // {
+                            //     link: "/checkout",
+                            //     icon: <FaCartPlus size={25} />,
+                            // },
+                        ].map((nav, i) => (
                             <li
                                 onClick={e => {
                                     e.currentTarget.parentElement.parentElement.classList.remove(

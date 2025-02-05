@@ -16,6 +16,11 @@ export const FormStyle = styled(Form)`
         width: 100%;
         margin: 0 0 15px;
     }
+    input.userimage {
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
     input,
     textarea {
         flex: 1;

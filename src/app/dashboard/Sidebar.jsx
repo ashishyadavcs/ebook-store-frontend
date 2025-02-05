@@ -3,8 +3,7 @@ import DashboardStyled from "@/styles/dashboard.styled";
 import Link from "next/link";
 import { FaBook } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import { MdLogout } from "react-icons/md";
-import { logout } from "../actions/logout";
+import Logout from "@/components/dashboard/Logout";
 
 const Sidebar = async ({ children }) => {
     const links = [
@@ -17,12 +16,6 @@ const Sidebar = async ({ children }) => {
             text: "My Ebooks",
             url: "/ebooks",
             icon: <FaBook />,
-        },
-        {
-            text: "logout",
-            onClick: logout,
-            url: "",
-            icon: <MdLogout />,
         },
     ];
     return (
@@ -43,6 +36,7 @@ const Sidebar = async ({ children }) => {
                             </Link>
                         </li>
                     ))}
+                    <Logout />
                 </ul>
             </aside>
         </DashboardStyled>

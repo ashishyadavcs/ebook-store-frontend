@@ -1,9 +1,5 @@
 const Fallbackhtml = () => {
-    return (
-        <html>
-            <body></body>
-        </html>
-    );
+    return "loading...";
 };
 
 export default Fallbackhtml;
