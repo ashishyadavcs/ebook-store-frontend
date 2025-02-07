@@ -40,7 +40,13 @@ const Header = () => {
                                 <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
-                        <li>
+                        <li
+                            onClick={e => {
+                                e.currentTarget.parentElement.parentElement.classList.remove(
+                                    "active"
+                                );
+                            }}
+                        >
                             <Link
                                 className={`cart ${cart.length == 0 ? "disabled" : ""}`}
                                 href="/viewcart"
@@ -56,7 +62,12 @@ const Header = () => {
                         className="menu-btn user"
                     >
                         {true ? (
-                            <Image alt="user" height={40} width={40} src={"/images/logo.svg"} />
+                            <Image
+                                alt="user"
+                                height={40}
+                                width={40}
+                                src={user?.image || "/images/logo.svg"}
+                            />
                         ) : (
                             <>
                                 <span></span>

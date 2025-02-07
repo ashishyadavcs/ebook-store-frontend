@@ -16,6 +16,7 @@ const StyledHeader = styled.header`
         top: 0;
         a,
         .menu-btn {
+            overflow: hidden;
             background: transparent;
             color: inherit;
             font-weight: 600;
@@ -41,6 +42,9 @@ const StyledHeader = styled.header`
                 span {
                     position: absolute;
                     inset: auto auto 63% 64%;
+                    ${media.sm} {
+                        inset: auto auto 51% 18%;
+                    }
                     display: inline-flex;
                     align-items: center;
                     place-content: center;
