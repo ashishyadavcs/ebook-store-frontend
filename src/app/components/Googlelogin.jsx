@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import config from "../../config/index.js";
-import Button from "./ui/Button.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
 import { redirect } from "next/navigation.js";
+import { useAppDispatch } from "@/state/hooks/index.js";
+import { addUser } from "@/state/userslice.js";
 const Googlelogin = ({ title = "Login with" }) => {
+    const dispatch = useAppDispatch();
     const handleSuccess = async res => {
         const token = res.credential;
         const response = await fetch(`/api/auth/google`, {
@@ -18,6 +20,7 @@ const Googlelogin = ({ title = "Login with" }) => {
             }),
         });
         const result = await response.json();
+        dispatch(addUser(result.user));
         if (result.success) {
             redirect("/dashboard");
         }

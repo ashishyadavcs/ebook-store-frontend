@@ -9,6 +9,7 @@ import { FaCartPlus } from "react-icons/fa";
 
 const Header = () => {
     const user = useAppSelector(state => state.user.data);
+    const cart = useAppSelector(state => state.cart.data);
     return (
         <StyledHeader>
             <Container>
@@ -26,10 +27,6 @@ const Header = () => {
                                 link: user ? "/dashboard" : "/login",
                                 text: user ? "dashboard" : "login",
                             },
-                            // {
-                            //     link: "/checkout",
-                            //     icon: <FaCartPlus size={25} />,
-                            // },
                         ].map((nav, i) => (
                             <li
                                 onClick={e => {
@@ -40,9 +37,18 @@ const Header = () => {
                                 role="menuitem"
                                 key={i}
                             >
-                                <Link href={nav.link}>{nav.text || nav.icon}</Link>
+                                <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
+                        <li>
+                            <Link
+                                className={`cart ${cart.length == 0 ? "disabled" : ""}`}
+                                href="/viewcart"
+                            >
+                                <FaCartPlus size={25} />
+                                <span>{cart.length}</span>
+                            </Link>
+                        </li>
                     </ul>
 
                     <button

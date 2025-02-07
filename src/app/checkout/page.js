@@ -3,13 +3,16 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect, useState } from "react";
-import { constant } from "../../config/constant";
 import { redirect } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
 import MyForm from "@/components/ui/Form";
+import { useAppSelector } from "@/state/hooks";
 
 const Payment = () => {
+    const cart = useAppSelector(state => state.cart.data);
+    const user = useAppSelector(state => state.user.data);
+
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         const script = document.createElement("script");
@@ -22,7 +25,7 @@ const Payment = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const req = await fetch(`${config.BASE_URL}/create-order`, {
+            const req = await fetch(`/api/create-order`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +46,6 @@ const Payment = () => {
                 description: "Test UPI Payment",
                 order_id: id,
                 handler: async response => {
-                    console.log("handler", response.razorpay_order_id);
                     const req = await fetch(`${config.BASE_URL}/verify-payment`, {
                         method: "POST",
                         headers: {
@@ -57,14 +59,14 @@ const Payment = () => {
                     });
                     const result = await req.json();
                     if (result.success) {
-                        return redirect("/");
+                        redirect("/");
                     }
                     toastify.error("payment failed");
                 },
                 prefill: {
-                    name: "User Name",
-                    email: "user@example.com",
-                    contact: "9999999999",
+                    name: user?.name,
+                    email: user?.email,
+                    contact: user?.mobile,
                 },
                 theme: {
                     color: "#3399cc",
@@ -87,20 +89,20 @@ const Payment = () => {
                 <MyForm className="form" onSubmit={payment}>
                     <label>
                         <span>Name</span>
-                        <input type="text" defaultValue="Ashish Kumar" />
+                        <input readOnly type="text" defaultValue={user.name} />
                     </label>
                     <label>
                         <span>Mobile</span>
-                        <input type="tel" defaultValue="+91-9847685788" />
+                        <input readOnly type="tel" defaultValue={user.mobile} />
                     </label>
                     <Button loading={loading}>pay now</Button>
                 </MyForm>
                 <div className="cart">
-                    {[...Array(3)].map((p, i) => (
-                        <div key={i} className="product">
-                            <img height={100} width={200} src={constant.image} />
+                    {[...cart].map((p, i) => (
+                        <div key={p._id} className="product">
+                            <img height={100} width={200} src={p.coverImageUrl} />
                             <div className="details">
-                                <p>My ebook title</p>
+                                <p>{p.title}</p>
                                 <div className="btn-group">
                                     <Button>&#8722;</Button>
                                     <Button>1</Button>

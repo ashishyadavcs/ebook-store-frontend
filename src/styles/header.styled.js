@@ -32,6 +32,26 @@ const StyledHeader = styled.header`
             display: flex;
             align-items: center;
             list-style: none;
+            .cart {
+                &.disabled {
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+                position: relative;
+                span {
+                    position: absolute;
+                    inset: auto auto 63% 64%;
+                    display: inline-flex;
+                    align-items: center;
+                    place-content: center;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 1.4rem;
+                    background: #02b47c;
+                }
+            }
         }
         .menu-btn {
             cursor: pointer;

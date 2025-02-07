@@ -4,6 +4,7 @@ import Review from "@/components/Review";
 import Image from "next/image";
 import Ebookdetails from "@/styles/ebookdetails.styled";
 import config from "@/config/index";
+import AddTocart from "@/components/ebook/AddTocart";
 const Ebookdetail = async ({ id }) => {
     const req = await fetch(`${config.APP_URL}/api/ebooks/${id}`, {
         cache: "no-store",
@@ -29,7 +30,7 @@ const Ebookdetail = async ({ id }) => {
                             <strong>Free</strong>
                         </div>
                         <div className="btn-group">
-                            <Button>+ add to cart </Button>
+                            <AddTocart ebook={ebook} />
                             <Button href="/checkout">Buy Now</Button>
                         </div>
                     </div>

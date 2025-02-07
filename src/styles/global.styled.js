@@ -90,6 +90,10 @@ button{
     position: relative;
     font-weight: 600;
     text-transform: capitalize;
+    &:disabled{
+        pointer-events: none;
+        opacity: 0.5;
+    }
 }
 .loader {
 display: inline-block;
