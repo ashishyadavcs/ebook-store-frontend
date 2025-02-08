@@ -40,21 +40,23 @@ const Header = () => {
                                 <Link href={nav.link}>{nav.text}</Link>
                             </li>
                         ))}
-                        <li
-                            onClick={e => {
-                                e.currentTarget.parentElement.parentElement.classList.remove(
-                                    "active"
-                                );
-                            }}
-                        >
-                            <Link
-                                className={`cart ${cart.length == 0 ? "disabled" : ""}`}
-                                href="/viewcart"
+                        {user && (
+                            <li
+                                onClick={e => {
+                                    e.currentTarget.parentElement.parentElement.classList.remove(
+                                        "active"
+                                    );
+                                }}
                             >
-                                <FaCartPlus size={25} />
-                                <span>{cart.length}</span>
-                            </Link>
-                        </li>
+                                <Link
+                                    className={`cart ${cart.length == 0 ? "disabled" : ""}`}
+                                    href="/viewcart"
+                                >
+                                    <FaCartPlus size={25} />
+                                    <span>{cart.length}</span>
+                                </Link>
+                            </li>
+                        )}
                     </ul>
 
                     <button

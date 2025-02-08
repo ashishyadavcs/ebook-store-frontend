@@ -29,6 +29,7 @@ const Googlelogin = ({ title = "Login with" }) => {
         <GStyle>
             <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
                 <GoogleLogin
+                    useOneTap
                     onSuccess={res => handleSuccess(res)}
                     onError={() => {
                         toastify.error("login failed");
