@@ -100,6 +100,7 @@ const StyledHeader = styled.header`
                 width: 30px;
                 background: transparent;
                 &.user {
+                    position: relative;
                     display: inline-flex;
                     flex-direction: column;
                     justify-content: center;
@@ -108,6 +109,9 @@ const StyledHeader = styled.header`
                     border: 2px solid #ddd;
                     padding: 2px;
                     border-radius: 50%;
+                    img {
+                        object-fit: cover;
+                    }
                 }
                 span {
                     display: block;

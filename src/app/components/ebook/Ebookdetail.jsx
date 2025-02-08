@@ -6,9 +6,7 @@ import Ebookdetails from "@/styles/ebookdetails.styled";
 import config from "@/config/index";
 import AddTocart from "@/components/ebook/AddTocart";
 const Ebookdetail = async ({ id }) => {
-    const req = await fetch(`${config.APP_URL}/api/ebooks/${id}`, {
-        cache: "no-store",
-    });
+    const req = await fetch(`${config.APP_URL}/api/ebooks/${id}`);
     const { data: ebook } = await req.json();
     return (
         <Ebookdetails>
@@ -31,7 +29,7 @@ const Ebookdetail = async ({ id }) => {
                         </div>
                         <div className="btn-group">
                             <AddTocart ebook={ebook} />
-                            <Button href="/checkout">Buy Now</Button>
+                            <Button href={`/checkout?from=${id}`}>Buy Now</Button>
                         </div>
                     </div>
                     <p>{ebook?.description || "no description"}</p>

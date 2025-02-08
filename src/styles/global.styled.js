@@ -90,6 +90,7 @@ button{
     position: relative;
     font-weight: 600;
     text-transform: capitalize;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
     &:disabled{
         pointer-events: none;
         opacity: 0.5;

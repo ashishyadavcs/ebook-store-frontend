@@ -1,15 +1,17 @@
 import PriceDetailStyles from "@/styles/pricedetail.styled";
+import { calculateCart } from "@/utils/cart";
 
-const PriceDetails = () => {
+const PriceDetails = ({ items }) => {
+    const { totalitems, totalprice } = calculateCart(items);
     return (
         <PriceDetailStyles className="price-details">
             <h3>Price details</h3>
             <ul>
                 <li>
-                    price(1 item) <span>$1879</span>
+                    price({totalitems} item) <span>&#8377;{totalprice}</span>
                 </li>
                 <li>
-                    Total Payable <span>$2879</span>
+                    Total Payable <span>&#8377;{totalprice}</span>
                 </li>
             </ul>
         </PriceDetailStyles>

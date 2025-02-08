@@ -9,14 +9,16 @@ const Ebook = ({ data, className }) => {
     return (
         <Ebookstyle className={`ebook ${className}`}>
             <Image alt="ebook" height={400} width={400} src={coverImageUrl} />
-            <h2 className="title">{title}</h2>
-            <p className="description">{author}</p>
-            <p className="rating">
-                <span>4.5</span>(1023)
-            </p>
-            <p>
-                <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
-            </p>
+            <div className="content">
+                <h2 className="title">{title}</h2>
+                <p className="description">{author}</p>
+                <p className="rating">
+                    <span>4.5</span>(1023)
+                </p>
+                <p>
+                    <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
+                </p>
+            </div>
         </Ebookstyle>
     );
 };
@@ -26,6 +28,9 @@ const Ebookstyle = styled.div`
     overflow: hidden;
     background: #fff;
     border-radius: 4px;
+    .content {
+        padding: 10px;
+    }
     .btn-group {
         display: flex;
         gap: 10px;
@@ -82,6 +87,5 @@ const Ebookstyle = styled.div`
             height: 150px;
         }
     }
-    padding: 10px;
-    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 `;

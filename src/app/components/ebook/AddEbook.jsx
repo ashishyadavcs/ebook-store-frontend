@@ -41,6 +41,9 @@ const AddEbook = () => {
                 <label htmlFor="author">
                     <input name="author" type="text" required placeholder="Ebook Author" />
                 </label>
+                <label htmlFor="price">
+                    <input name="price" type="number" required placeholder="price" />
+                </label>
                 <label htmlFor="cover-image">
                     <span>cover image</span>
                     <input

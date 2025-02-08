@@ -1,27 +1,42 @@
 import styled from "styled-components";
 const ItemListStyles = styled.div`
+    .products {
+        max-height: 60vh;
+        overflow: auto;
+        padding: 0 2px;
+        margin: 0 0 20px;
+    }
     .product {
         display: flex;
-        gap: 10px;
         overflow: hidden;
         background: #fff;
         margin: 0 0 10px;
+        height: 200px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
         a {
+            width: 200px;
             height: 100%;
             img {
-                width: 200px;
+                width: 100%;
                 height: 100%;
+                object-fit: cover;
+                object-position: top;
             }
         }
         .details {
-            padding: 10px;
+            padding: 20px;
         }
         .btn-group {
-            margin: 7px 0;
+            margin: 10px 0;
             display: flex;
-            gap: 4px;
+            gap: 10px;
         }
+    }
+    .btn {
+        position: sticky;
+        bottom: 0;
+        background: #fff;
     }
 `;
 export default ItemListStyles;

@@ -11,7 +11,7 @@ const Payment = () => {
         <Checkoutstyle>
             <Container>
                 <ItemList items={cart} />
-                <PriceDetails />
+                <PriceDetails items={cart} />
             </Container>
         </Checkoutstyle>
     );

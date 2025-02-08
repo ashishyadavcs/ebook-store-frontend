@@ -18,16 +18,16 @@ const ReduxProvider = ({ children }) => {
     let persister = persistStore(storeRef.current);
     return (
         <Provider store={storeRef.current}>
-            {/* <PersistGate
+            <PersistGate
                 loading={
                     <Container>
                         <Loader />
                     </Container>
                 }
                 persistor={persister}
-            > */}
-            {children}
-            {/* </PersistGate> */}
+            >
+                {children}
+            </PersistGate>
         </Provider>
     );
 };

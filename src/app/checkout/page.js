@@ -3,23 +3,61 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect, useState } from "react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
 import MyForm from "@/components/ui/Form";
 import { useAppSelector } from "@/state/hooks";
+import PriceDetails from "@/components/checkout/PriceDetails.jsx";
+import { calculateCart } from "@/utils/cart.js";
 
 const Payment = () => {
-    const cart = useAppSelector(state => state.cart.data);
-    const user = useAppSelector(state => state.user.data);
+    const params = useSearchParams();
+    const router = useRouter();
+    const from = params.get("from");
+    let mycart = useAppSelector(state => state.cart.data);
+    const [cart, setcart] = useState(mycart);
 
-    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
         script.async = true;
         document.body.appendChild(script);
     }, []);
+
+    useEffect(() => {
+        if (from) {
+            const fetchEBook = async from => {
+                const response = await fetch(`/api/ebooks/${from}`);
+                if (!response.ok) {
+                    toastify.info("wrong checkout url");
+                    throw new Error("wrong id");
+                }
+                return await response.json();
+            };
+            fetchEBook(from)
+                .then(res => {
+                    setcart([{ ...res.data, price: 20, quantity: 1 }]);
+                })
+                .catch(err => {
+                    router.push("/");
+                });
+        } else {
+            setcart(mycart);
+        }
+    }, [from]);
+
+    console.log(cart);
+
+    const user = useAppSelector(state => state.user.data);
+    const { name = "", email = "", mobile = "" } = user;
+    const [loading, setLoading] = useState(false);
+    const { totalitems, totalprice } = calculateCart(cart);
+    let orderDetails = {
+        title: "",
+        description: "",
+        amount: totalprice,
+    };
 
     const payment = async e => {
         e.preventDefault();
@@ -31,7 +69,7 @@ const Payment = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    amount: 5000,
+                    amount: totalprice * 100, // convert in paise
                 }),
             });
             const result = await req.json();
@@ -64,8 +102,8 @@ const Payment = () => {
                     toastify.error("payment failed");
                 },
                 prefill: {
-                    name: user?.name,
-                    email: user?.email,
+                    name,
+                    email,
                     contact: user?.mobile,
                 },
                 theme: {
@@ -97,22 +135,7 @@ const Payment = () => {
                     </label>
                     <Button loading={loading}>pay now</Button>
                 </MyForm>
-                <div className="cart">
-                    {[...cart].map((p, i) => (
-                        <div key={p._id} className="product">
-                            <img height={100} width={200} src={p.coverImageUrl} />
-                            <div className="details">
-                                <p>{p.title}</p>
-                                <div className="btn-group">
-                                    <Button>&#8722;</Button>
-                                    <Button>1</Button>
-                                    <Button>+</Button>
-                                </div>
-                                <strong>Rs. 1000</strong>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <PriceDetails items={cart} />
             </Container>
         </Checkoutstyle>
     );
