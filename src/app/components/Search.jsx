@@ -1,20 +1,17 @@
 "use client";
-import styled from "styled-components";
-import MyForm from "./ui/Form";
+import SearchStyle from "@/styles/search.styled";
+import { useRouter } from "next/navigation";
 
 const Search = () => {
+    const router = useRouter();
+    const search = e => {
+        router.push(`?query=${e.target.value}`);
+    };
     return (
-        <Searchstyle>
-            <input type="search" placeholder="search ebooks" />
-        </Searchstyle>
+        <SearchStyle>
+            <input onInput={search} type="search" placeholder="search ebooks" />
+        </SearchStyle>
     );
 };
 
 export default Search;
-const Searchstyle = styled(MyForm)`
-    margin: 30px auto;
-    input {
-        border-radius: 8px;
-        text-align: center;
-    }
-`;

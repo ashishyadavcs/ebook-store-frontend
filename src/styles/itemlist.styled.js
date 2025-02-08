@@ -1,3 +1,4 @@
+import { media } from "@/config/media";
 import styled from "styled-components";
 const ItemListStyles = styled.div`
     .products {
@@ -35,8 +36,11 @@ const ItemListStyles = styled.div`
     }
     .btn {
         position: sticky;
-        bottom: 0;
+        bottom: 10px;
         background: #fff;
+        ${media.sm} {
+            display: block;
+        }
     }
 `;
 export default ItemListStyles;

@@ -8,7 +8,7 @@ const Ebook = ({ data, className }) => {
 
     return (
         <Ebookstyle className={`ebook ${className}`}>
-            <Image alt="ebook" height={400} width={400} src={coverImageUrl} />
+            <Image objectPosition="top" alt="ebook" height={400} width={400} src={coverImageUrl} />
             <div className="content">
                 <h2 className="title">{title}</h2>
                 <p className="description">{author}</p>

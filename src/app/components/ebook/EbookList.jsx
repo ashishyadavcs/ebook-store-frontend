@@ -4,13 +4,13 @@ import config from "@/config/index";
 import Link from "next/link";
 import { memo } from "react";
 
-const EbookList = async ({ data, size = 300 }) => {
+const EbookList = async ({ data, size = 300, search }) => {
     let ebooks = data || [];
     if (!data) {
         try {
-            const req = await fetch(`${config.APP_URL}/api/ebooks`, {
+            const req = await fetch(`${config.APP_URL}/api/ebooks?title=geni`, {
                 next: {
-                    revalidate: 10,
+                    revalidate: 0,
                 },
             });
             const { data = [] } = await req.json();

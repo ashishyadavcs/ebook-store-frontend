@@ -63,8 +63,8 @@ const Header = () => {
                     >
                         {true ? (
                             <Image
-                                layout="fill"
                                 alt="user"
+                                layout="fill"
                                 src={user?.image || "/images/logo.svg"}
                             />
                         ) : (

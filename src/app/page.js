@@ -3,16 +3,17 @@ import EbookList from "@/components/ebook/EbookList";
 import Search from "./components/Search";
 import Container from "./components/ui/Container";
 import FeaturedBook from "@/styles/featuredbook.styled";
-export default function Home() {
+export default async function Home({ searchParams }) {
+    const params = await searchParams;
     return (
         <HomeStyles>
             <Container>
                 <h1>Endless Stories, One Click Away!</h1>
-                <Search />
+                {/* <Search /> */}
             </Container>
 
             <Container>
-                <EbookList />
+                <EbookList search={params.query} />
             </Container>
             <FeaturedBook>
                 <Container>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const Button = props => {
-    const { type = "button", className, children, loading = false, ...restprops } = props;
+    const { type = "button", className = "", children, loading = false, ...restprops } = props;
     if (!props.href)
         return (
             <button disabled={loading} className={`btn ${className}`} {...restprops}>
