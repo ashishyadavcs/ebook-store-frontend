@@ -2,8 +2,10 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 const ItemListStyles = styled.div`
     .products {
-        max-height: 60vh;
-        overflow: auto;
+        ${media.minsm} {
+            max-height: 60vh;
+            overflow: auto;
+        }
         padding: 0 2px;
         margin: 0 0 20px;
     }
@@ -34,9 +36,14 @@ const ItemListStyles = styled.div`
             gap: 10px;
         }
     }
-    .btn {
+    .btn-wrap {
         position: sticky;
-        bottom: 10px;
+        bottom: 0px;
+        padding: 10px;
+        background: var(--lightblue);
+        margin: 0 -20px;
+    }
+    .btn {
         background: #fff;
         ${media.sm} {
             display: block;
