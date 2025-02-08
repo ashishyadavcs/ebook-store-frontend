@@ -1,5 +1,6 @@
 "use client";
 const { createGlobalStyle } = require("styled-components");
+import { media } from "@/config/media";
 import { Inter } from "next/font/google";
 const inter = Inter({
     fallback: ["serif"],
@@ -43,7 +44,10 @@ body{
 }
 
 .container{
-    width:min(1440px,90%);
+    width:90%;
+    ${media.xl}{
+        width:min(1440px,96%);
+    }
     margin: auto;
 }
 textarea{

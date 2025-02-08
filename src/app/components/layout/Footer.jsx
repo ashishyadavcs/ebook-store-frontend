@@ -43,10 +43,12 @@ const Footer = () => {
                     ))}
                 </div>
             </Container>
-            <Container className="sub-footer">
-                <p className="copyright">copyright&copy;2024-{new Date().getFullYear() + 1}</p>
-                <Link href={privacy.link}>{privacy.text}</Link>
-            </Container>
+            <div className="sub-footer">
+                <Container>
+                    <p className="copyright">copyright&copy;2024-{new Date().getFullYear() + 1}</p>
+                    <Link href={privacy.link}>{privacy.text}</Link>
+                </Container>
+            </div>
         </Footerstyle>
     );
 };

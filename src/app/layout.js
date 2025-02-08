@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Fallbackhtml from "@/components/Fallbackhtml";
 import ReduxProvider from "./state/Provider";
+import Head from "next/head";
 
 export const metadata = {
     title: "Ebookstore",
@@ -15,6 +16,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
     return (
         <html lang="en">
+            <Head>
+                <meta name="theme-color" content="#ff6600" />
+            </Head>
             <body>
                 <ReduxProvider>
                     <StyledComponentsRegistry>

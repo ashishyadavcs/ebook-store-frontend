@@ -7,8 +7,8 @@ const Footerstyle = styled.footer`
     a {
         color: #888;
     }
-    padding: 20px 0;
     .main {
+        padding: 20px 0;
         display: grid;
         gap: 40px;
         grid-template-columns: 30% 30% calc(40% - 2 * 40px);
@@ -40,10 +40,13 @@ const Footerstyle = styled.footer`
     .sub-footer {
         align-items: center;
         margin: 10px auto 0;
-        padding: 10px 0 0;
+        background: rgb(243, 250, 255);
         border-top: 1px solid #f1f1f1;
-        display: flex;
-        justify-content: space-between;
+        .container {
+            display: flex;
+            padding: 10px 0;
+            justify-content: space-between;
+        }
         ${media.sm} {
             font-size: 1.2rem;
         }
