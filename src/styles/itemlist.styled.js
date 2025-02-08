@@ -39,7 +39,7 @@ const ItemListStyles = styled.div`
     .btn-wrap {
         position: sticky;
         bottom: 0px;
-        padding: 10px;
+        padding: 10px 20px;
         background: var(--lightblue);
         margin: 0 -20px;
     }
