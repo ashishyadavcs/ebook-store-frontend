@@ -30,7 +30,7 @@ const Page = () => {
             });
             const result = await res.json();
             if (!result.success) {
-                throw Error("signup failed");
+                throw Error(result.errors[0].msg);
             } else {
                 setloading(false);
                 toastify.success("registered successfully");
@@ -54,7 +54,7 @@ const Page = () => {
                             name="name"
                             type="text"
                             required
-                            placeholder="email"
+                            placeholder="Name"
                         />
                     </label>
                     <label htmlFor="email">
