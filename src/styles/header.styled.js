@@ -95,18 +95,18 @@ const StyledHeader = styled.header`
                 }
             }
             .menu-btn {
-                display: inline-block;
-                height: 30px;
-                width: 30px;
+                display: inline-flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 25px;
                 background: transparent;
                 &.user {
                     position: relative;
                     display: inline-flex;
                     flex-direction: column;
                     justify-content: center;
-                    height: 50px;
-                    width: 50px;
-                    border: 2px solid #ddd;
+                    height: 40px;
+                    width: 40px;
                     padding: 2px;
                     border-radius: 50%;
                     img {
@@ -116,8 +116,8 @@ const StyledHeader = styled.header`
                 span {
                     display: block;
                     height: 2px;
+                    width: 100%;
                     background: #000;
-                    margin-bottom: 5px;
                     transition: all 0.3s;
                 }
             }
@@ -134,7 +134,7 @@ const StyledHeader = styled.header`
                             transform-origin: left;
                         }
                         &:last-child {
-                            transform: translateY(7px) rotate(-45deg);
+                            transform: translateY(5px) rotate(-45deg);
                             transform-origin: left;
                         }
                     }

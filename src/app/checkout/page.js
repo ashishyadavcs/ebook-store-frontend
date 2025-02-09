@@ -47,10 +47,13 @@ const Payment = () => {
         }
     }, [from]);
 
-    console.log(cart);
-
     const user = useAppSelector(state => state.user.data);
     const { name = "", email = "", mobile = "" } = user;
+    const [userdetail, setuserdetail] = useState({
+        name,
+        email,
+        mobile,
+    });
     const [loading, setLoading] = useState(false);
     const { totalitems, totalprice } = calculateCart(cart);
     let orderDetails = {
@@ -127,11 +130,19 @@ const Payment = () => {
                 <MyForm className="form" onSubmit={payment}>
                     <label>
                         <span>Name</span>
-                        <input readOnly type="text" defaultValue={user.name} />
+                        <input
+                            onChange={e => setuserdetail(v => ({ ...v, name: e.target.value }))}
+                            type="text"
+                            value={userdetail.name}
+                        />
                     </label>
                     <label>
                         <span>Mobile</span>
-                        <input readOnly type="tel" defaultValue={user.mobile} />
+                        <input
+                            onChange={e => setuserdetail(v => ({ ...v, mobile: e.target.value }))}
+                            type="tel"
+                            value={userdetail.mobile}
+                        />
                     </label>
                     <Button loading={loading}>pay now</Button>
                 </MyForm>

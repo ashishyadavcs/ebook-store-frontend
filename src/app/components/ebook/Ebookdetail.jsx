@@ -6,8 +6,11 @@ import Ebookdetails from "@/styles/ebookdetails.styled";
 import config from "@/config/index";
 import AddTocart from "@/components/ebook/AddTocart";
 const Ebookdetail = async ({ id }) => {
-    const req = await fetch(`${config.APP_URL}/api/ebooks/${id}`);
-    const { data: ebook } = await req.json();
+    const req = await fetch(`${config.APP_URL}/api/ebooks/${id}`, {
+        cache: "no-store",
+    });
+    let { data: ebook } = await req.json();
+    ebook = ebook[0];
     return (
         <Ebookdetails>
             <Container>

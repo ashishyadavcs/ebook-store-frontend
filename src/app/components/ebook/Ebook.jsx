@@ -3,18 +3,27 @@ import styled from "styled-components";
 import { constant } from "@/config/constant";
 import Image from "next/image";
 import { media } from "@/config/media";
-const Ebook = ({ data, className }) => {
-    const { title, author, coverImageUrl = constant.image } = data;
+const Ebook = ({ data, className, preload }) => {
+    const { title, author, coverImageUrl = constant.image, averageRating, totalReviews } = data;
 
     return (
         <Ebookstyle className={`ebook ${className}`}>
-            <Image objectPosition="top" alt="ebook" height={400} width={400} src={coverImageUrl} />
+            <Image
+                priority={preload}
+                objectPosition="top"
+                alt="ebook"
+                height={400}
+                width={400}
+                src={coverImageUrl}
+            />
             <div className="content">
                 <h2 className="title">{title}</h2>
                 <p className="description">{author}</p>
-                <p className="rating">
-                    <span>4.5</span>(1023)
-                </p>
+                {totalReviews > 0 && (
+                    <p className="rating">
+                        <span>{averageRating}</span>({totalReviews})
+                    </p>
+                )}
                 <p>
                     <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
                 </p>

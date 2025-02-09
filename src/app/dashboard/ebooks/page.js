@@ -1,6 +1,5 @@
 import AddEbook from "@/components/ebook/AddEbook";
 import EbookList from "@/components/ebook/EbookList";
-import { toastify } from "@/components/Toast";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 const EbooksPage = async () => {
     let ebooks = [];

@@ -61,14 +61,10 @@ const Header = () => {
 
                     <button
                         onClick={e => e.currentTarget.parentElement.classList.toggle("active")}
-                        className="menu-btn user"
+                        className={`menu-btn ${user ? "user" : ""}`}
                     >
-                        {true ? (
-                            <Image
-                                alt="user"
-                                layout="fill"
-                                src={user?.image || "/images/logo.svg"}
-                            />
+                        {user ? (
+                            <Image alt="user" layout="fill" src={user?.image} />
                         ) : (
                             <>
                                 <span></span>
