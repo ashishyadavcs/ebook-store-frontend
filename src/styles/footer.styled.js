@@ -3,10 +3,7 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 const Footerstyle = styled.footer`
     background: #fbfbff;
-    &,
-    a {
-        color: #888;
-    }
+
     .main {
         padding: 20px 0;
         display: grid;

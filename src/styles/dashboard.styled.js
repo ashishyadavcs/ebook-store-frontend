@@ -44,10 +44,11 @@ const Dashboard = styled.section`
         flex: 1;
         padding: min(40px, 5vw) 0;
         width: 100%;
+
         .add-ebook {
             margin: 0 0 40px; //TODO - move in ebooks page
         }
-        .add-ebook + h2 {
+        h2 {
             text-align: center;
             margin: 0 0 20px;
         }

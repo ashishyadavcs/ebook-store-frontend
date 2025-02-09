@@ -1,4 +1,3 @@
-import AddEbook from "@/components/ebook/AddEbook";
 import EbookList from "@/components/ebook/EbookList";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 const EbooksPage = async () => {
@@ -9,7 +8,6 @@ const EbooksPage = async () => {
     } catch (err) {}
     return (
         <>
-            <AddEbook />
             <h2>my ebooks</h2>
             <EbookList data={ebooks.reverse()} />
         </>

@@ -7,16 +7,20 @@ import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import config from "../../config/index.js";
 import MyForm from "@/components/ui/Form";
-import { useAppSelector } from "@/state/hooks";
+import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import PriceDetails from "@/components/checkout/PriceDetails.jsx";
 import { calculateCart } from "@/utils/cart.js";
+import { emptyCart } from "@/state/cart.js";
+import SuccessPopUp from "@/components/Successpopup.jsx";
 
 const Payment = () => {
     const params = useSearchParams();
     const router = useRouter();
     const from = params.get("from");
+    const dispatch = useAppDispatch();
     let mycart = useAppSelector(state => state.cart.data);
     const [cart, setcart] = useState(mycart);
+    const [success, setsuccess] = useState(false);
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -61,7 +65,6 @@ const Payment = () => {
         description: "",
         amount: totalprice,
     };
-
     const payment = async e => {
         e.preventDefault();
         try {
@@ -73,11 +76,13 @@ const Payment = () => {
                 },
                 body: JSON.stringify({
                     amount: totalprice * 100, // convert in paise
+                    cart,
                 }),
             });
-            const result = await req.json();
-            const data = result.data;
 
+            const result = await req.json();
+            console.log(result);
+            const data = result.data;
             const { amount, currency, id } = data;
             const options = {
                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEYID,
@@ -87,7 +92,7 @@ const Payment = () => {
                 description: "Test UPI Payment",
                 order_id: id,
                 handler: async response => {
-                    const req = await fetch(`${config.BASE_URL}/verify-payment`, {
+                    const req = await fetch(`/api/verify-payment`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -96,11 +101,19 @@ const Payment = () => {
                             orderid: response.razorpay_order_id,
                             paymentid: response.razorpay_payment_id,
                             signature: response.razorpay_signature,
+                            ebooks: from ? [from] : cart.map(e => e._id),
+                            amount,
                         }),
                     });
                     const result = await req.json();
                     if (result.success) {
-                        redirect("/");
+                        setsuccess(true);
+                        setTimeout(() => {
+                            setsuccess(false);
+                            redirect("/dashboard/ebooks");
+                        }, 2000);
+                        dispatch(emptyCart(null));
+                        return;
                     }
                     toastify.error("payment failed");
                 },
@@ -123,6 +136,7 @@ const Payment = () => {
     };
     return (
         <Checkoutstyle>
+            {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
             <Container>
                 <h2 className="title">Checkout</h2>
             </Container>

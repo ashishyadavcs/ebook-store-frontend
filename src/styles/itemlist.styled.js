@@ -16,7 +16,7 @@ const ItemListStyles = styled.div`
         margin: 0 0 10px;
         height: 200px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-
+        border-radius: 8px;
         a {
             width: 200px;
             height: 100%;

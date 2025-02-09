@@ -17,6 +17,7 @@ export const Checkoutstyle = styled.section`
             flex: 1;
         }
         .form {
+            border-radius: 8px;
             background: #fff;
             padding: 20px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
