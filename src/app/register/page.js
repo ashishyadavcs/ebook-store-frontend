@@ -49,33 +49,15 @@ const Page = () => {
                     <h2 className="title">Sign Up</h2>
                     <label htmlFor="email">
                         <span>Name</span>
-                        <input
-                            defaultValue={"Ashish Yadav"}
-                            name="name"
-                            type="text"
-                            required
-                            placeholder="Name"
-                        />
+                        <input name="name" type="text" required placeholder="Name" />
                     </label>
                     <label htmlFor="email">
                         <span>Email</span>
-                        <input
-                            defaultValue={"as@as.as"}
-                            name="email"
-                            type="email"
-                            required
-                            placeholder="email"
-                        />
+                        <input name="email" type="email" required placeholder="email" />
                     </label>
                     <label htmlFor="password">
                         <span>Password</span>
-                        <input
-                            defaultValue={"123"}
-                            name="password"
-                            type="password"
-                            required
-                            placeholder="password"
-                        />
+                        <input name="password" type="password" required placeholder="password" />
                     </label>
                     <Button loading={loading}>Signup</Button>
                     <p className="already">
