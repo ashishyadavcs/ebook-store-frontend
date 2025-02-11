@@ -3,9 +3,11 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 export const HomeStyles = styled.section`
     h1 {
-        margin: 20px auto;
+        margin: 40px auto;
+        font-size: clamp(2rem, 8vw, 4rem);
+        line-height: 1.3;
         ${media.sm} {
-            margin: 20px 50px 20px;
+            margin: 20px 30px 20px;
         }
         text-align: center;
     }

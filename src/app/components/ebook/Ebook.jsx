@@ -17,7 +17,7 @@ const Ebook = ({ data, className, preload }) => {
                 src={coverImageUrl}
             />
             <div className="content">
-                <h2 className="title">{title}</h2>
+                <h3 className="title">{title}</h3>
                 <p className="description">{author}</p>
                 {totalReviews > 0 && (
                     <p className="rating">
@@ -80,7 +80,7 @@ const Ebookstyle = styled.div`
         opacity: 0.5;
     }
     .title {
-        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        font-size: clamp(1.3rem, 4vw, 1.6rem);
         margin: 1rem 0 0;
     }
     .description {

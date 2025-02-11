@@ -3,13 +3,12 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 const FeaturedBook = styled.section`
     margin: 60px 0 0;
-    background: pink;
+    background: linear-gradient(0deg, #000000 5%, var(--lightblue));
     h2 {
-        font-size: 4rem;
+        font-size: clamp(2rem, 8vw, 4rem);
     }
     p {
         margin: 10px 0 20px;
-        font-size: 2rem;
     }
     .container {
         display: flex;

@@ -38,9 +38,9 @@ html{
     font-size: 62.5%;
 }
 body{
-    font-size: clamp(1.2rem,6vw,1.6rem);
+    font-size: clamp(1.4rem,6vw,1.6rem);
     font-family:${inter.style.fontFamily};
-    background: var(--lightblue);
+    background: url("/images/wall.avif") fixed;
 }
 
 .container{

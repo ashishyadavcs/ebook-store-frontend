@@ -20,7 +20,7 @@ const EbookList = async ({ data, size = 300, search }) => {
     return (
         <EbooksContainer className="ebooks" size={size}>
             {ebooks.map((ebook, i) => (
-                <Link key={i} scroll={true} className="ebook-details" href={`/${ebook._id}`}>
+                <Link key={i} className="ebook-details" href={`/${ebook._id}`}>
                     <Ebook
                         preload={i < 4}
                         {...(i == 2 && { className: "trending" })}

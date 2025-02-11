@@ -2,8 +2,14 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Footerstyle = styled.footer`
-    background: #fbfbff;
-
+    padding: 40px 0;
+    background: url("/images/gradient-black-bg.avif");
+    background-size: 100% 100%;
+    background-blend-mode: multiply;
+    &,
+    a {
+        color: #f1f1f1;
+    }
     .main {
         padding: 20px 0;
         display: grid;
@@ -18,6 +24,7 @@ const Footerstyle = styled.footer`
             margin: 0 0 10px;
             p {
                 margin: 5px 0;
+                font-size: 1.3rem;
             }
             span {
                 font-size: 1.2rem;
@@ -28,17 +35,22 @@ const Footerstyle = styled.footer`
             gap: 20px;
         }
         h3 {
-            margin: 0 0 min(20px, 3vw);
+            margin: 0 0 min(10px, 3vw);
         }
         ul {
             list-style: none;
         }
     }
+    .company {
+        a {
+            text-transform: capitalize;
+        }
+    }
     .sub-footer {
         align-items: center;
         margin: 10px auto 0;
-        background: rgb(243, 250, 255);
-        border-top: 1px solid #f1f1f1;
+        opacity: 0.5;
+        border-top: 1px solid rgba(241, 241, 241, 0.42);
         .container {
             display: flex;
             padding: 10px 0;

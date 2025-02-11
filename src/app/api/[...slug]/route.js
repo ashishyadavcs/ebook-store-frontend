@@ -5,23 +5,19 @@ import _config from "@/config/index.js";
 export async function GET(req, { params }) {
     return sendRequest(req, params);
 }
-export async function POST(req) {
-    return sendRequest(req);
+export async function POST(req, { params }) {
+    return sendRequest(req, params);
 }
-export async function PATCH(req) {
-    return sendRequest(req);
+export async function PATCH(req, { params }) {
+    return sendRequest(req, params);
 }
-export async function DELETE(req) {
-    return sendRequest(req);
+export async function DELETE(req, { params }) {
+    return sendRequest(req, params);
 }
 async function sendRequest(req, params) {
     const method = req.method;
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
-    const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    // if (!accesstoken && !refreshtoken) {
-    //     return NextResponse.redirect(new URL("/login", req.url));
-    // }
 
     const options = {
         method,
@@ -42,11 +38,10 @@ async function sendRequest(req, params) {
             options.body = formData;
         }
     }
+    const { slug } = await params;
 
-    const url = new URL(req.url);
-    const slug = url.pathname.split("/api/")[1];
     try {
-        const response = await fetch(`${_config.BASE_URL}/${slug}`, options);
+        const response = await fetch(`${_config.BASE_URL}/${slug.join("/")}`, options);
         if (!response.ok) {
             throw Error(response.statusText);
         }

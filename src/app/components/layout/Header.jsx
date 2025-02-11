@@ -6,14 +6,26 @@ import Image from "next/image";
 import { navList } from "../../../../public/nav";
 import { useAppSelector } from "@/state/hooks";
 import { FaCartPlus } from "react-icons/fa";
+import { useEffect } from "react";
 
 const Header = () => {
     const user = useAppSelector(state => state.user.data);
     const cart = useAppSelector(state => state.cart.data);
+
+    useEffect(() => {
+        const menu = document.querySelector("nav.menu");
+        if (!menu) return;
+        document.body.onclick = e => {
+            if (e.target == document.querySelector(".user")) return;
+            if (!e.target.closest(".menu")) {
+                menu.classList.remove("active");
+            }
+        };
+    }, []);
     return (
         <StyledHeader>
             <Container>
-                <nav role="menubar">
+                <nav role="menubar" className="menu">
                     <Link href="/" className="sitename">
                         {process.env.NEXT_PUBLIC_APP_NAME}
                     </Link>

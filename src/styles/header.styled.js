@@ -7,6 +7,25 @@ const StyledHeader = styled.header`
     z-index: 10;
     top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    &::before {
+        content: "";
+        height: 100vh;
+        width: 100%;
+        display: inline-block;
+        background: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        left: 0;
+        top: 55px;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s;
+        pointer-events: none;
+    }
+    &:has(.active)::before {
+        opacity: 1;
+        pointer-events: all;
+    }
+
     nav {
         display: flex;
         align-items: center;

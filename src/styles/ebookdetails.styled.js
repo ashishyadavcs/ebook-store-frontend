@@ -33,6 +33,7 @@ const Ebookdetails = styled.div`
         }
         .info {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
             align-items: flex-end;
             gap: min(50px, 4vw);
