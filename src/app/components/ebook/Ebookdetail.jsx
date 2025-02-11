@@ -14,9 +14,7 @@ const Ebookdetail = async ({ id }) => {
         paid = purhcasedEbooks.find(el => el._id == id);
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
         ebook = ebookResult?.data[0];
-    } catch (err) {
-        console.log(err);
-    }
+    } catch (err) {}
 
     return (
         <Ebookdetails>
@@ -45,7 +43,7 @@ const Ebookdetail = async ({ id }) => {
                             <h1>{ebook?.title}</h1>
                             <p>{ebook?.description || "no description"}</p>
                             <p className="author">
-                                <FaUserGraduate /> {ebook?.author}
+                                <FaUserGraduate /> {ebook?.author || "Mr.John"}
                             </p>
                             <strong className={`price ${paid ? "paid" : ""}`}>
                                 {paid ? "purchased" : "Free"}

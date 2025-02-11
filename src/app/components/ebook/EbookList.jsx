@@ -8,9 +8,9 @@ const EbookList = async ({ data, size = 300, search }) => {
     let ebooks = data || [];
     if (!data) {
         try {
-            const req = await fetch(`${config.APP_URL}/api/ebooks?title=geni`, {
+            const req = await fetch(`${config.APP_URL}/api/ebooks`, {
                 next: {
-                    revalidate: 0,
+                    revalidate: 10,
                 },
             });
             const { data = [] } = await req.json();

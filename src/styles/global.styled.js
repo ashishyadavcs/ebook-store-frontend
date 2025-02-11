@@ -48,7 +48,7 @@ body{
 }
 
 .container{
-    width:93%;
+    width:90%;
     ${media.xl}{
         width:min(1440px,96%);
     }

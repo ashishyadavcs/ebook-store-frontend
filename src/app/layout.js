@@ -3,14 +3,10 @@ import Header from "@/components/layout/Header";
 import StyledComponentsRegistry from "@/components/styledregistery";
 import Config from "@/components/Config";
 import { Suspense } from "react";
-import Link from "next/link";
-import { FaYoutube } from "react-icons/fa";
-import Fallbackhtml from "@/components/Fallbackhtml";
 import ReduxProvider from "./state/Provider";
-import Head from "next/head";
 
 export const viewport = {
-    themeColor: "#ff6600",
+    themeColor: "#ffffff",
 };
 export const metadata = {
     title: "Ebookstore",

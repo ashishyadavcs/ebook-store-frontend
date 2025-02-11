@@ -40,6 +40,8 @@ const StyledHeader = styled.header`
             color: inherit;
             font-weight: 600;
             padding: 18px 0;
+            position: relative;
+
             ${media.minsm} {
                 padding: 14px 0;
                 &.sitename {
@@ -117,7 +119,9 @@ const StyledHeader = styled.header`
                 display: inline-flex;
                 flex-direction: column;
                 gap: 5px;
-                width: 25px;
+                width: 46px;
+                padding: 19px 10px;
+                height: 100%;
                 background: transparent;
                 &.user {
                     position: relative;
