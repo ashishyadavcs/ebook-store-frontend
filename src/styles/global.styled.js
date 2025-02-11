@@ -19,6 +19,7 @@ export const Globalstyle = createGlobalStyle`
     --redpink:#FF0080;
     --hotyellow:#FFB;
     --aqua:#43FFEC;
+    --success:#00cd00;
     --lightblue:#f2f4f7;
 }
 ::-webkit-scrollbar {
@@ -38,7 +39,7 @@ html{
     font-size: 62.5%;
 }
 body{
-    font-size: clamp(1.4rem,6vw,1.6rem);
+    font-size: clamp(1.4rem,4vw,1.6rem);
     font-family:${inter.style.fontFamily};
     background: var(--lightblue);
     &:has(.ebooks){
@@ -47,7 +48,7 @@ body{
 }
 
 .container{
-    width:90%;
+    width:93%;
     ${media.xl}{
         width:min(1440px,96%);
     }
@@ -106,7 +107,7 @@ button{
         }
     }
     &:disabled{
-        cursor: progress;
+        cursor: not-allowed;
         pointer-events: none;
     }
 }

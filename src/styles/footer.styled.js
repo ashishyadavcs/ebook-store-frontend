@@ -42,6 +42,9 @@ const Footerstyle = styled.footer`
         }
     }
     .company {
+        li {
+            margin: 4px 0;
+        }
         a {
             text-transform: capitalize;
         }

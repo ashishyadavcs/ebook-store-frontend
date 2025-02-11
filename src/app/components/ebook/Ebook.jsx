@@ -19,14 +19,15 @@ const Ebook = ({ data, className, preload }) => {
             <div className="content">
                 <h3 className="title">{title}</h3>
                 <p className="description">{author}</p>
+
+                <p>
+                    <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
+                </p>
                 {totalReviews > 0 && (
                     <p className="rating">
                         <span>{averageRating}</span>({totalReviews})
                     </p>
                 )}
-                <p>
-                    <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
-                </p>
             </div>
         </Ebookstyle>
     );

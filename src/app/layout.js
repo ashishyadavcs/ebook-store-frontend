@@ -9,6 +9,9 @@ import Fallbackhtml from "@/components/Fallbackhtml";
 import ReduxProvider from "./state/Provider";
 import Head from "next/head";
 
+export const viewport = {
+    themeColor: "#ff6600",
+};
 export const metadata = {
     title: "Ebookstore",
     description: "Endless Stories, One Click Away!",
@@ -16,9 +19,6 @@ export const metadata = {
 export default async function RootLayout({ children }) {
     return (
         <html lang="en">
-            <Head>
-                <meta name="theme-color" content="#ff6600" />
-            </Head>
             <body>
                 <ReduxProvider>
                     <StyledComponentsRegistry>

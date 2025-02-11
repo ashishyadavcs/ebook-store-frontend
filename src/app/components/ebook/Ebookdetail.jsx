@@ -5,11 +5,13 @@ import Image from "next/image";
 import Ebookdetails from "@/styles/ebookdetails.styled";
 import AddTocart from "@/components/ebook/AddTocart";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
+import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 const Ebookdetail = async ({ id }) => {
-    let user, ebook;
+    let purhcasedEbooks, ebook, paid;
     try {
-        // const user = await useServerSideFetch("/api/user");
-        // console.log(user);
+        const userResult = await useServerSideFetch("/api/user");
+        purhcasedEbooks = userResult.data.ebooks;
+        paid = purhcasedEbooks.find(el => el._id == id);
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
         ebook = ebookResult?.data[0];
     } catch (err) {
@@ -41,18 +43,31 @@ const Ebookdetail = async ({ id }) => {
                     <div className="info">
                         <div className="left">
                             <h1>{ebook?.title}</h1>
-                            <p className="author">{ebook?.author}</p>
-                            <strong>Free</strong>
+                            <p>{ebook?.description || "no description"}</p>
+                            <p className="author">
+                                <FaUserGraduate /> {ebook?.author}
+                            </p>
+                            <strong className={`price ${paid ? "paid" : ""}`}>
+                                {paid ? "purchased" : "Free"}
+                            </strong>
                         </div>
                         <div className="btn-group">
-                            <AddTocart ebook={ebook} />
-                            <Button type="primary" href={`/checkout?from=${id}`}>
-                                Buy Now
-                            </Button>
+                            {paid ? (
+                                <Button type="primary" href={`/${id}/readnow`}>
+                                    Read Ebook <FaBookReader />
+                                </Button>
+                            ) : (
+                                <>
+                                    <AddTocart ebook={ebook} />
+                                    <Button type="primary" href={`/checkout?from=${id}`}>
+                                        Buy Now
+                                    </Button>
+                                </>
+                            )}
                         </div>
                     </div>
-                    <p>{ebook?.description || "no description"}</p>
-                    <Review ebookid={id} size={30} />
+
+                    {paid && <Review ebookid={id} size={30} />}
                 </div>
             </Container>
         </Ebookdetails>
