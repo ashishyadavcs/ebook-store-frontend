@@ -4,30 +4,39 @@ import styled from "styled-components";
 const Ebookdetails = styled.div`
     background: #fff;
     padding: 40px 0;
+    ${media.sm} {
+        padding: 0 0 40px;
+    }
     .info {
         margin: 0 0 20px;
     }
     .review {
         margin: 20px 0;
     }
-    .container {
-        display: flex;
-        .thumbnail {
-            border-radius: 8px;
-            overflow: hidden;
-            background: #ddd;
-            position: relative;
+    .thumbnail {
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ddd;
+        position: relative;
+        height: 400px;
+        width: 300px;
+        max-width: 100%;
+        ${media.sm} {
+            width: 100%;
+            border-radius: 0;
+            display: inline-block;
             height: 400px;
-            width: 300px;
-            max-width: 100%;
-            ${media.sm} {
-                width: 100%;
-            }
-            img {
-                object-fit: cover;
-                object-position: start;
+            &:not(.mobile) {
+                display: none;
             }
         }
+        img {
+            object-fit: contain;
+            object-position: top;
+        }
+    }
+    .container {
+        display: flex;
         .author {
             margin: 5px 0 10px;
         }
@@ -43,6 +52,9 @@ const Ebookdetails = styled.div`
         }
         ${media.sm} {
             flex-direction: column;
+            .details {
+                padding: 20px 0 0;
+            }
         }
         gap: 40px;
     }
