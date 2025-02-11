@@ -2,8 +2,7 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 export const HomeStyles = styled.section`
-    background: url("/images/wall.avif") fixed;
-    padding: 1px 0;
+    padding: 1px 0 0;
     h1 {
         margin: 40px auto;
         font-size: clamp(2rem, 8vw, 4rem);

@@ -40,7 +40,10 @@ html{
 body{
     font-size: clamp(1.4rem,6vw,1.6rem);
     font-family:${inter.style.fontFamily};
-    background: var(--lightblue)
+    background: var(--lightblue);
+    &:has(.ebooks){
+        background: url("/images/wall.avif") fixed;
+    }
 }
 
 .container{
