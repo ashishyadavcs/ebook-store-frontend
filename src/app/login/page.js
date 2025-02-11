@@ -62,7 +62,9 @@ const Page = () => {
 
                         <input name="password" type="password" required placeholder="password" />
                     </label>
-                    <Button loading={loading}>login</Button>
+                    <Button type="primary" loading={loading}>
+                        login
+                    </Button>
                     <p className="already">
                         don't have an account <Link href="/register">signup</Link>{" "}
                     </p>
