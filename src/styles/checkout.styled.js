@@ -21,6 +21,11 @@ export const Checkoutstyle = styled.section`
             background: #fff;
             padding: 20px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            ${media.minsm} {
+                .btn {
+                    width: max-content;
+                }
+            }
         }
     }
 `;

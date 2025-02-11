@@ -21,18 +21,27 @@ const Ebookdetails = styled.div`
         height: 400px;
         width: 300px;
         max-width: 100%;
-        ${media.sm} {
-            width: 100%;
-            border-radius: 0;
-            display: inline-block;
-            height: 400px;
-            &:not(.mobile) {
+        img {
+            object-fit: contain;
+        }
+        ${media.minsm} {
+            &.mobile {
                 display: none;
             }
         }
-        img {
-            object-fit: contain;
-            object-position: top;
+        ${media.sm} {
+            width: 100%;
+            height: fit-content;
+            border-radius: 0;
+            display: inline-block;
+            img {
+                width: 100%;
+                height: auto;
+                max-height: 400px;
+            }
+            &:not(.mobile) {
+                display: none;
+            }
         }
     }
     .container {

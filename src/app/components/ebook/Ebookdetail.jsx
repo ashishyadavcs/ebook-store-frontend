@@ -21,8 +21,9 @@ const Ebookdetail = async ({ id }) => {
             <span className="thumbnail mobile">
                 <Image
                     priority
-                    layout="fill"
                     alt="ebook"
+                    width={360}
+                    height={400}
                     src={ebook?.coverImageUrl || "/images/ebook.jpg"}
                 />
             </span>
@@ -45,7 +46,9 @@ const Ebookdetail = async ({ id }) => {
                         </div>
                         <div className="btn-group">
                             <AddTocart ebook={ebook} />
-                            <Button href={`/checkout?from=${id}`}>Buy Now</Button>
+                            <Button type="primary" href={`/checkout?from=${id}`}>
+                                Buy Now
+                            </Button>
                         </div>
                     </div>
                     <p>{ebook?.description || "no description"}</p>

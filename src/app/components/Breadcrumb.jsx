@@ -61,14 +61,17 @@ const Breadcrumb = () => {
 
 export default memo(Breadcrumb);
 const Breadcumbstyle = styled.div`
-    background: #fff;
+    padding: 4px 0;
+    background: #ffffff93;
     ul {
         display: flex;
+        align-items: center;
         list-style: none;
         gap: 10px;
         li {
             font-style: italic;
             position: relative;
+            display: inline-flex;
             &:not(:first-child)::before {
                 content: "";
                 display: inline-block;
@@ -80,11 +83,18 @@ const Breadcumbstyle = styled.div`
                 left: -7px;
                 top: 50%;
             }
+            a {
+                display: inline-block;
+            }
             &:last-child {
                 pointer-events: none;
                 a {
                     color: inherit;
                     opacity: 0.6;
+                    white-space: nowrap;
+                    width: 130px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
         }

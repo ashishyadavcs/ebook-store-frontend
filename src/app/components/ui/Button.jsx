@@ -3,16 +3,16 @@ import Link from "next/link";
 import React from "react";
 
 const Button = props => {
-    const { type = "button", className = "", children, loading = false, ...restprops } = props;
+    const { type = "", className = "", children, loading = false, ...restprops } = props;
     if (!props.href)
         return (
-            <button disabled={loading} className={`btn ${className}`} {...restprops}>
+            <button disabled={loading} className={`btn ${className} ${type}`} {...restprops}>
                 {loading && <span className="loader" />} {children}
             </button>
         );
     else
         return (
-            <Link className={`btn ${className}`} {...restprops}>
+            <Link className={`btn ${className} ${type}`} {...restprops}>
                 {children}
             </Link>
         );

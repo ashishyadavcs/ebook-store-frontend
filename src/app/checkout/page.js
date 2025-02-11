@@ -158,7 +158,9 @@ const Payment = () => {
                             value={userdetail.mobile}
                         />
                     </label>
-                    <Button loading={loading}>pay now</Button>
+                    <Button type="primary" loading={loading}>
+                        pay now
+                    </Button>
                 </MyForm>
                 <PriceDetails items={cart} />
             </Container>

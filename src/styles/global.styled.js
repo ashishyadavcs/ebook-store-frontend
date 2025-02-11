@@ -98,6 +98,10 @@ button{
     font-weight: 600;
     text-transform: capitalize;
     box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    &.primary{
+        background: #FF0080;
+        color: #fff;
+    }
     &:disabled{
         pointer-events: none;
         opacity: 0.5;
