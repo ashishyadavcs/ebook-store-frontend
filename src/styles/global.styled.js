@@ -40,7 +40,7 @@ html{
 body{
     font-size: clamp(1.4rem,6vw,1.6rem);
     font-family:${inter.style.fontFamily};
-    background: url("/images/wall.avif") fixed;
+    background: var(--lightblue)
 }
 
 .container{
