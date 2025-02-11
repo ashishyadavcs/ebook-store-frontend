@@ -101,10 +101,13 @@ button{
     &.primary{
         background: #FF0080;
         color: #fff;
+        .loader{
+            border-top-color: #FF0080;
+        }
     }
     &:disabled{
+        cursor: progress;
         pointer-events: none;
-        opacity: 0.5;
     }
 }
 .loader {

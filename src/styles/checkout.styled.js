@@ -5,7 +5,10 @@ import { media } from "../config/media";
 export const Checkoutstyle = styled.section`
     padding: 20px 0;
     .title {
-        margin: 0 0 30px;
+        margin: 0 0 20px;
+        ${media.sm} {
+            text-align: center;
+        }
     }
     .container {
         display: flex;

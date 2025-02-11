@@ -44,7 +44,6 @@ const ItemListStyles = styled.div`
         margin: 0 -18px;
     }
     .btn {
-        background: #fff;
         ${media.sm} {
             display: block;
         }
