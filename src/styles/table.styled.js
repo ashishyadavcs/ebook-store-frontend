@@ -20,6 +20,7 @@ const TableStyle = styled.div`
         td,
         th {
             text-align: left;
+            white-space: nowrap;
             padding: 10px;
             ${media.sm} {
                 &:first-child {

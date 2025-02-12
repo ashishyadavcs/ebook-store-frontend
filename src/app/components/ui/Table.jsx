@@ -9,9 +9,10 @@ const Table = ({ data = [] }) => {
         <TableStyle>
             <table>
                 <thead>
-                    <th>Ebook</th>
-                    <th>Author</th>
-                    <th>Total Orders</th>
+                    <th>thumbnail</th>
+                    <th>title</th>
+                    <th>author</th>
+                    <th>orders</th>
                     <th>Action</th>
                 </thead>
                 <tbody>

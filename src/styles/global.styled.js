@@ -47,8 +47,8 @@ ${css`
             background: url("/images/wall.avif") fixed;
         }
         ${media.sm} {
-            padding-bottom: 60px;
             &:has(.admin) {
+                padding-bottom: 60px;
                 :where(footer) {
                     display: none;
                 }
