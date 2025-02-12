@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import Button from "./Button";
 import Link from "next/link";
 import DeleteEbook from "../ebook/DeleteEbook";
-const Table = ({ data }) => {
+const Table = ({ data = [] }) => {
     return (
         <TableStyle>
             <table>
