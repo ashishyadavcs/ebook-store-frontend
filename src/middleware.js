@@ -10,6 +10,7 @@ export async function middleware(request) {
 
     if (
         url.pathname.startsWith("/api/auth") ||
+        url.pathname.startsWith("/api/cookie") ||
         (url.pathname.startsWith("/api/ebooks") && request.method === "GET")
     ) {
         return NextResponse.next();
