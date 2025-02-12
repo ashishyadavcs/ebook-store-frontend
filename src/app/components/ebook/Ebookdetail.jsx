@@ -9,11 +9,12 @@ import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 const Ebookdetail = async ({ id }) => {
     let purhcasedEbooks, ebook, paid;
     try {
+        const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
+        ebook = ebookResult?.data[0];
+
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
-        const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
-        ebook = ebookResult?.data[0];
     } catch (err) {}
 
     return (
