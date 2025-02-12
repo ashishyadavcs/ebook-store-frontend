@@ -15,6 +15,8 @@ const AddEbook = () => {
         const formdata = new FormData(e.target);
         formdata.delete("coverImageUrl");
         formdata.append("coverImageUrl", e.target.coverImageUrl.files[0]);
+        formdata.delete("fileUrl");
+        formdata.append("fileUrl", e.target.fileUrl.files[0]);
         const res = await fetch("/api/ebook", {
             method: "POST",
             credentials: "include",
