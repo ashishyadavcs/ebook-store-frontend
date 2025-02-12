@@ -9,7 +9,7 @@ export const viewport = {
     themeColor: "#ffffff",
 };
 export const metadata = {
-    title: "Ebookstore",
+    title: "🚀 Ebookstore",
     description: "Endless Stories, One Click Away!",
 };
 export default async function RootLayout({ children }) {

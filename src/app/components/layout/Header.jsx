@@ -3,7 +3,6 @@ import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
-import { navList } from "../../../../public/nav";
 import { useAppSelector } from "@/state/hooks";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
@@ -36,7 +35,11 @@ const Header = () => {
                                 text: "home",
                             },
                             {
-                                link: user ? "/dashboard" : "/login",
+                                link: user
+                                    ? user.role == "admin"
+                                        ? "/admin"
+                                        : "/dashboard"
+                                    : "/login",
                                 text: user ? "dashboard" : "login",
                             },
                         ].map((nav, i) => (

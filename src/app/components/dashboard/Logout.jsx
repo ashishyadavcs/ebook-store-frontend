@@ -9,18 +9,16 @@ import { redirect } from "next/navigation";
 const Logout = () => {
     const dispatch = useAppDispatch();
     return (
-        <li>
-            <Link
-                href=""
-                onClick={async e => {
-                    await logout();
-                    dispatch(removeuser(null));
-                    redirect("/login");
-                }}
-            >
-                <MdLogout /> logout
-            </Link>
-        </li>
+        <Link
+            href=""
+            onClick={async e => {
+                await logout();
+                dispatch(removeuser(null));
+                redirect("/login");
+            }}
+        >
+            <MdLogout /> logout
+        </Link>
     );
 };
 

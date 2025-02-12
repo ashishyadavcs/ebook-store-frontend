@@ -36,11 +36,13 @@ const Page = () => {
             if (!result.success) {
                 throw Error("login failed");
             } else {
-                console.log(result);
                 dispatch(addUser(result.user));
                 setloading(false);
                 toastify.success("loggedin successfull");
-                router.push(searchParams.get("from") || "/dashboard");
+                router.push(
+                    searchParams.get("from") ||
+                        (result.user.role == "admin" ? "/admin" : "/dashboard")
+                );
             }
         } catch (err) {
             setloading(false);

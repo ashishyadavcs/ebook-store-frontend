@@ -2,7 +2,7 @@
 import Button from "@/components/ui/Button";
 import MyForm from "@/components/ui/Form";
 import ProfileStyle from "@/styles/profile.styled";
-import Upload from "./upload";
+import Upload from "@/components/ui/upload";
 import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import { useState } from "react";
 import { toastify } from "@/components/Toast";
@@ -43,7 +43,7 @@ const Profile = () => {
     return (
         <ProfileStyle>
             <MyForm onSubmit={updateUser}>
-                <Upload user={user} />
+                <Upload name="image" imageURL={user.image} title="upload picture" />
                 <label htmlFor="email">
                     <span>Name</span>
                     <input defaultValue={user?.name} name="name" type="text" placeholder="Name" />
@@ -67,7 +67,9 @@ const Profile = () => {
                     />
                 </label>
 
-                <Button loading={loading}>update profile</Button>
+                <Button type="primary" loading={loading}>
+                    update profile
+                </Button>
             </MyForm>
         </ProfileStyle>
     );

@@ -36,7 +36,9 @@ const Sidebar = async ({ children }) => {
                             </Link>
                         </li>
                     ))}
-                    <Logout />
+                    <li>
+                        <Logout />
+                    </li>
                 </ul>
             </aside>
         </DashboardStyled>
