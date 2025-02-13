@@ -9,44 +9,41 @@ import DeleteEbook from "@/components/ebook/DeleteEbook";
 const Page = async () => {
     let data = [];
     try {
-        const result = await useServerSideFetch("/api/ebooks");
+        const result = await useServerSideFetch("/api/users");
         data = result.data;
     } catch (err) {}
     return (
         <>
-            <Button type="primary" href="/admin/ebooks/addebook">
-                add ebook
-            </Button>
             <Table>
                 <thead>
-                    <th>thumbnail</th>
-                    <th>title</th>
-                    <th>author</th>
-                    <th>orders</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    {data.map((ebook, i) => (
+                    {data.map((user, i) => (
                         <tr key={i}>
                             <td>
-                                <Link href={`/${ebook._id}`}>
+                                <Link href={`/${user._id}`}>
                                     <Image
-                                        src={ebook.coverImageUrl}
+                                        src={user.image}
                                         height={30}
                                         width={50}
-                                        alt={ebook.title}
+                                        alt={user.title}
                                     />
                                 </Link>
                             </td>
-                            <td>{ebook.title}</td>
-                            <td>{ebook.author}</td>
-                            <td>{ebook.title}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.mobile}</td>
                             <td>
                                 <div className="btn-group">
-                                    <Button href={`/admin/ebooks/${ebook._id}`}>
+                                    <Button href={`/admin/users/${user._id}`}>
                                         <FaEdit />
                                     </Button>
-                                    <DeleteEbook id={ebook._id} />
+                                    <DeleteEbook id={user._id} />
                                 </div>
                             </td>
                         </tr>

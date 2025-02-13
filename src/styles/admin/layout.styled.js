@@ -2,16 +2,40 @@
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Layoutstyle = styled.div`
+    height: calc(100vh - 65px);
+    margin: 30px 0;
     .container {
+        height: 100%;
         display: flex;
         gap: 40px;
+        --asidewidth: min(200px, 15vw);
         aside {
+            ${media.minsm} {
+                border-radius: 8px;
+                padding: 10px;
+            }
+            nav {
+                height: 100%;
+                display: flex;
+                ${media.minsm} {
+                    flex-direction: column;
+                }
+                a {
+                    width: 100%;
+                    &:last-child {
+                        margin: auto 0 0;
+                    }
+                    ${media.minsm} {
+                        border-radius: 8px;
+                    }
+                }
+            }
+
             position: sticky;
-            max-height: max-content;
-            top: 55px;
-            width: 250px;
-            min-height: 100vh;
-            background: #f8f8f8;
+            top: 0;
+            background: #fff;
+
+            width: var(--asidewidth);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             a {
                 display: flex;
@@ -19,11 +43,14 @@ const Layoutstyle = styled.div`
                 align-items: center;
                 padding: 10px;
                 color: #000;
+
+                &:hover {
+                    background: #f1f1f1;
+                }
             }
             ${media.sm} {
                 position: fixed;
                 inset: auto auto 0 0;
-                display: flex;
                 min-height: auto;
                 background: #fff;
                 z-index: 100;
@@ -48,11 +75,15 @@ const Layoutstyle = styled.div`
             }
         }
         .main {
-            margin: 20px 0;
-            flex: 1;
-            ${media.sm} {
-                width: 100%;
+            height: 100%;
+            padding: 4px;
+
+            width: 100%;
+            ${media.minsm} {
+                overflow: auto;
+                width: calc(100% - var(--asidewidth));
             }
+            flex: 1;
         }
     }
 `;

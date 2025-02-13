@@ -12,8 +12,8 @@ const Logout = () => {
         <Link
             href=""
             onClick={async e => {
-                await logout();
                 dispatch(removeuser(null));
+                await logout();
                 redirect("/login");
             }}
         >

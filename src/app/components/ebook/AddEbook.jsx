@@ -85,6 +85,7 @@ const EbookStyles = styled.div`
                 display: grid;
                 margin: 0 0 20px;
                 grid-template-columns: 50% 50%;
+                align-items: self-start;
                 gap: 20px;
                 label {
                     margin: 0;

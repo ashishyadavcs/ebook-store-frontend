@@ -46,12 +46,13 @@ ${css`
         &:has(.ebooks) {
             background: url("/images/wall.avif") fixed;
         }
-        ${media.sm} {
-            &:has(.admin) {
-                padding-bottom: 60px;
-                :where(footer) {
-                    display: none;
-                }
+
+        &:has(.admin) {
+            ${media.sm} {
+                padding: 0 0 60px;
+            }
+            :where(footer, header) {
+                display: none;
             }
         }
     }
