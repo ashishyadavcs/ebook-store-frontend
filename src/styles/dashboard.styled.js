@@ -21,6 +21,9 @@ const Dashboard = styled.main`
     .route {
         width: calc(100% - var(--sidebarwidth));
         padding: 30px calc(var(--container-width) / 2) 40px;
+        ${media.sm} {
+            padding: 0;
+        }
         border-left: 1px solid #ddd;
         flex: 1;
         .title {

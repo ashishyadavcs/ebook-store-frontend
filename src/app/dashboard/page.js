@@ -1,7 +1,7 @@
 import React from "react";
 
 const Page = async () => {
-    return <></>;
+    return <>Dashboard</>;
 };
 
 export default Page;

@@ -18,9 +18,7 @@ const Header = () => {
         if (!menu) return;
         document.body.onclick = e => {
             if (e.target == document.querySelector(".user")) return;
-            if (!e.target.closest(".user")) {
-                menu.classList.remove("active");
-            }
+            document.querySelector("aside.sidebar")?.classList.remove("active");
         };
     }, []);
     return (
@@ -43,7 +41,11 @@ const Header = () => {
 
                         <li>
                             {user ? (
-                                <Link href="/dashboard" className="user" onClick={openSidebar}>
+                                <Link
+                                    href={user.role == "admin" ? "/admin" : "/dashboard"}
+                                    className="user"
+                                    onClick={openSidebar}
+                                >
                                     <Image alt="user" height={40} width={40} src={user?.image} />
                                 </Link>
                             ) : (
