@@ -10,7 +10,7 @@ const Logout = () => {
     const dispatch = useAppDispatch();
     return (
         <Link
-            href=""
+            href="#"
             onClick={async e => {
                 dispatch(removeuser(null));
                 await logout();

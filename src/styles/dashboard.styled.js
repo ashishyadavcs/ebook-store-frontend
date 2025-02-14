@@ -10,7 +10,7 @@ const Dashboard = styled.main`
         transition: all 0.3s cubic-bezier(1, 0, 0, 0.41);
         ${media.sm} {
             position: fixed;
-            width: 100%;
+            width: 70%;
             left: -100%;
             &.active {
                 left: 0;

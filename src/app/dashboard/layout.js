@@ -6,6 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../actions/logout";
 import Sidebar from "@/components/layout/Sidebar";
+import Logout from "@/components/dashboard/Logout";
 
 const Layout = async ({ children }) => {
     const links = [
@@ -18,12 +19,6 @@ const Layout = async ({ children }) => {
             text: "My Ebooks",
             url: "/ebooks",
             icon: <FaBook />,
-        },
-        {
-            text: "logout",
-            onClick: logout,
-            url: "#",
-            icon: <MdLogout />,
         },
     ];
     return (
@@ -38,6 +33,7 @@ const Layout = async ({ children }) => {
                             </Link>
                         </li>
                     ))}
+                    <Logout />
                 </ul>
             </Sidebar>
             <div className="route">{children}</div>

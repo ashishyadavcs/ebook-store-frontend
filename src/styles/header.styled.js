@@ -32,6 +32,7 @@ const StyledHeader = styled.header`
         a {
             display: block;
             padding: 8px 0;
+            font-weight: 600;
             &.cart {
                 margin: 8px 0 0;
             }
@@ -58,6 +59,26 @@ const StyledHeader = styled.header`
                 font-size: 1.4rem;
                 background: #02b47c;
             }
+        }
+    }
+    ${media.sm} {
+        &::before {
+            content: "";
+            height: 100vh;
+            width: 100%;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            left: 0;
+            top: 60px;
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        &:has(~ main aside.active)::before {
+            opacity: 1;
+            pointer-events: all;
         }
     }
 `;

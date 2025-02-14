@@ -5,7 +5,7 @@ const SidebarStyles = styled.aside`
     max-height: 100vh;
     position: sticky;
     top: 60px;
-    z-index: 2;
+    z-index: 100;
     ul {
         list-style: none;
         display: flex;
