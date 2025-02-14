@@ -42,7 +42,7 @@ const Ebookdetail = async ({ id }) => {
                     <div className="info">
                         <div className="left">
                             <h1>{ebook?.title}</h1>
-                            <p>{ebook?.description || "no description"}</p>
+                            <p className="desc">{ebook?.description || "no description"}</p>
                             <span className="author">
                                 <FaUserGraduate /> {ebook?.author.toLowerCase() || "Mr.John"}
                             </span>

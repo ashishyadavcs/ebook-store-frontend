@@ -41,6 +41,9 @@ const Ebookdetails = styled.div`
             }
         }
     }
+    .desc {
+        margin: 10px 0;
+    }
     .details {
         flex: 1;
     }
@@ -49,10 +52,10 @@ const Ebookdetails = styled.div`
 
         .author {
             text-transform: capitalize;
-            margin: 10px 0 5px;
+            margin: 10px 10px 5px 0;
         }
         .price {
-            display: block;
+            display: inline-block;
             margin: 10px 0;
             &.paid {
                 background: var(--success);
