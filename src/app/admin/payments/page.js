@@ -1,11 +1,5 @@
 import Table from "@/components/ui/Table";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
-import React from "react";
-import Image from "next/image";
-import { FaEdit } from "react-icons/fa";
-import Button from "@/components/ui/Button";
-import Link from "next/link";
-import DeleteEbook from "@/components/ebook/DeleteEbook";
 const Page = async () => {
     let data = [];
     try {
