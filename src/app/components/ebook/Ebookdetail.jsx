@@ -43,11 +43,11 @@ const Ebookdetail = async ({ id }) => {
                         <div className="left">
                             <h1>{ebook?.title}</h1>
                             <p>{ebook?.description || "no description"}</p>
-                            <p className="author">
-                                <FaUserGraduate /> {ebook?.author || "Mr.John"}
-                            </p>
+                            <span className="author">
+                                <FaUserGraduate /> {ebook?.author.toLowerCase() || "Mr.John"}
+                            </span>
                             <strong className={`price ${paid ? "paid" : ""}`}>
-                                {paid ? "purchased" : "Free"}
+                                &#8377;{ebook.price ? ebook.price : 0} {paid && "paid"}
                             </strong>
                         </div>
                         <div className="btn-group">

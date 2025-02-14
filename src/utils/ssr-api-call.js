@@ -17,6 +17,6 @@ export const useServerSideFetch = async (url, option = cacheOption) => {
         const result = await response.json();
         return result;
     } catch (err) {
-        return null;
+        return [];
     }
 };

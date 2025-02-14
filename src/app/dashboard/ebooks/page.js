@@ -8,7 +8,7 @@ const EbooksPage = async () => {
     } catch (err) {}
     return (
         <>
-            <h2>my ebooks</h2>
+            <h2 className="title">my ebooks</h2>
             <EbookList data={ebooks.reverse()} />
         </>
     );

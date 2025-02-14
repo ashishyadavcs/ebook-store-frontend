@@ -1,5 +1,6 @@
 "use client";
 const { createGlobalStyle, css } = require("styled-components");
+import { colors } from "@/config/constant";
 import { media } from "@/config/media";
 import { Inter } from "next/font/google";
 const inter = Inter({
@@ -17,11 +18,12 @@ ${css`
         box-sizing: border-box;
     }
     :root {
-        --redpink: #ff0080;
+        --redpink: ${colors.redpink};
         --hotyellow: #ffb;
-        --aqua: #43ffec;
+        --aqua: ${colors.aqua};
         --success: #00cd00;
         --lightblue: #f2f4f7;
+        --container-width: min(80px, 10vw); //layout dependent in dashboard sidebar
     }
     ::-webkit-scrollbar {
         width: 6px;
@@ -43,25 +45,24 @@ ${css`
         font-size: clamp(1.4rem, 6vw, 1.6rem);
         font-family: ${inter.style.fontFamily};
         background: var(--lightblue);
-        &:has(.ebooks) {
+        /* &:has(.ebooks) {
             background: url("/images/wall.avif") fixed;
-        }
+        } */
 
         &:has(.admin) {
             ${media.sm} {
                 padding: 0 0 60px;
             }
-            :where(footer, header) {
-                display: none;
-            }
         }
     }
+    /* main {
+        display: flex;
+        height: 100vh;
+        overflow: auto;
+    } */
 
     .container {
-        width: 90%;
-        ${media.xl} {
-            width: min(1440px, 96%);
-        }
+        width: calc(100% - var(--container-width));
         margin: auto;
     }
     textarea {

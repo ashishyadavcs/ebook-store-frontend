@@ -88,14 +88,14 @@ const StyledHeader = styled.header`
                 position: absolute;
                 left: -100%;
                 top: 100%;
-                background: #000;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                background: #fff;
                 width: 250px;
                 min-height: 100vh;
                 transition: all 0.3s;
                 li {
                     position: relative;
                     width: 100%;
-                    padding: 0 0 0 30px;
                     &::before {
                         position: absolute;
                         content: "";
@@ -107,7 +107,6 @@ const StyledHeader = styled.header`
                     }
                     a,
                     button {
-                        color: #fff;
                         display: block;
                         padding: 20px;
                         width: 100%;
@@ -163,7 +162,7 @@ const StyledHeader = styled.header`
                     }
                 }
                 .links {
-                    left: -30px;
+                    left: 0;
                 }
             }
         }

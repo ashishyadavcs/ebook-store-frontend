@@ -6,7 +6,12 @@ const Button = props => {
     const { type = "", className = "", children, loading = false, ...restprops } = props;
     if (!props.href)
         return (
-            <button disabled={loading} className={`btn ${className} ${type}`} {...restprops}>
+            <button
+                aria-label="button"
+                disabled={loading}
+                className={`btn ${className} ${type}`}
+                {...restprops}
+            >
                 {loading && <span className="loader" />} {children}
             </button>
         );

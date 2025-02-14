@@ -1,55 +1,25 @@
 "use client";
 import { media } from "@/config/media";
 import styled from "styled-components";
-const Dashboard = styled.section`
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-    }
-    aside {
-        width: 250px;
+const Dashboard = styled.main`
+    display: flex;
+    flex-wrap: wrap;
+    --sidebarwidth: 18vw;
+    .sidebar {
+        width: var(--sidebarwidth);
         ${media.sm} {
+            position: absolute;
             width: 100%;
-            position: sticky;
-            top: 57px;
-            z-index: 1;
-            font-weight: 600;
-        }
-        .page-list {
-            list-style: none;
-            position: sticky;
-            top: 62px;
-            z-index: 3;
-
-            a {
-                display: flex;
-                gap: 5px;
-                align-items: center;
-                padding: 10px 20px;
-                ${media.sm} {
-                    padding: 14px;
-                }
-                color: #555;
-                border-bottom: 1px solid #f1f1f1;
-                margin: 0 0 10px;
-                background: #fff;
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-                border-radius: 4px;
-            }
+            left: 0;
+            bottom: 0;
         }
     }
-
-    .main {
+    .route {
+        width: calc(100% - var(--sidebarwidth));
+        padding: 30px calc(var(--container-width) / 2) 40px;
+        border-left: 1px solid #ddd;
         flex: 1;
-        padding: min(40px, 5vw) 0;
-        width: 100%;
-
-        .add-ebook {
-            margin: 0 0 40px; //TODO - move in ebooks page
-        }
-        h2 {
-            text-align: center;
+        .title {
             margin: 0 0 20px;
         }
     }

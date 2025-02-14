@@ -1,13 +1,7 @@
 import React from "react";
-import DashboardStyled from "@/styles/dashboard.styled";
-import Sidebar from "./Sidebar";
 
-const Layout = async ({ children }) => {
-    return (
-        <DashboardStyled>
-            <Sidebar />
-        </DashboardStyled>
-    );
+const Page = async () => {
+    return <></>;
 };
 
-export default Layout;
+export default Page;

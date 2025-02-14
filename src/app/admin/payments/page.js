@@ -18,11 +18,13 @@ const Page = async () => {
         <>
             <Table>
                 <thead>
-                    <th>PaymentId</th>
-                    <th>orderId</th>
+                    <tr>
+                        <th>PaymentId</th>
+                        <th>orderId</th>
 
-                    <th>Amount</th>
-                    <th>Ebooks</th>
+                        <th>Amount</th>
+                        <th>Ebooks</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {data.map((payment, i) => (

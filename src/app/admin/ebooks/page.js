@@ -14,16 +14,15 @@ const Page = async () => {
     } catch (err) {}
     return (
         <>
-            <Button type="primary" href="/admin/ebooks/addebook">
-                add ebook
-            </Button>
             <Table>
                 <thead>
-                    <th>thumbnail</th>
-                    <th>title</th>
-                    <th>author</th>
-                    <th>orders</th>
-                    <th>Action</th>
+                    <tr>
+                        <th>thumbnail</th>
+                        <th>title</th>
+                        <th>author</th>
+                        <th>orders</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {data.map((ebook, i) => (

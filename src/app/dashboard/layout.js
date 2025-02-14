@@ -1,13 +1,11 @@
 import React from "react";
 import DashboardStyled from "@/styles/dashboard.styled";
-import Container from "@/components/ui/Container";
 import Link from "next/link";
 import { FaBook } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../actions/logout";
-import Sidebar from "./Sidebar";
-import { ismobile } from "@/config/common";
+import Sidebar from "@/components/layout/Sidebar";
 
 const Layout = async ({ children }) => {
     const links = [
@@ -24,16 +22,25 @@ const Layout = async ({ children }) => {
         {
             text: "logout",
             onClick: logout,
-            url: "",
+            url: "#",
             icon: <MdLogout />,
         },
     ];
     return (
         <DashboardStyled className="dashboard-layout">
-            <Container>
-                {!ismobile && <Sidebar />}
-                <div className="main">{children}</div>
-            </Container>
+            <Sidebar>
+                <ul>
+                    {links.map((link, i) => (
+                        <li key={i}>
+                            <Link onClick={link.onClick} href={`/dashboard/${link.url}`}>
+                                {link.icon}
+                                {link.text}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </Sidebar>
+            <div className="route">{children}</div>
         </DashboardStyled>
     );
 };

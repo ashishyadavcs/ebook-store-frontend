@@ -48,9 +48,12 @@ const Ebookdetails = styled.div`
         display: flex;
 
         .author {
+            text-transform: capitalize;
             margin: 10px 0 5px;
         }
         .price {
+            display: block;
+            margin: 10px 0;
             &.paid {
                 background: var(--success);
                 color: #fff;

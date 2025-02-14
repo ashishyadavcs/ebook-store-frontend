@@ -92,6 +92,7 @@ const Ebookstyle = styled.div`
     }
     img {
         max-width: 100%;
+        width: 100%;
         object-fit: cover;
         ${media.sm} {
             height: 150px;
