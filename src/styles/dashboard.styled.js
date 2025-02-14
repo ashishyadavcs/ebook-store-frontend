@@ -22,9 +22,8 @@ const Dashboard = styled.main`
         width: calc(100% - var(--sidebarwidth));
         padding: 30px calc(var(--container-width) / 2) 40px;
         ${media.sm} {
-            padding: 10px;
+            padding: 20px calc(var(--container-width) / 2) 20px;
         }
-        border-left: 1px solid #ddd;
         flex: 1;
         .title {
             margin: 0 0 20px;

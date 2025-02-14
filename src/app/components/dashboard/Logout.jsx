@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/state/hooks";
 import { removeuser } from "@/state/userslice";
 import { redirect } from "next/navigation";
 
-const Logout = () => {
+const Logout = ({ size = 15 }) => {
     const dispatch = useAppDispatch();
     return (
         <Link
@@ -17,7 +17,7 @@ const Logout = () => {
                 redirect("/login");
             }}
         >
-            <MdLogout /> logout
+            <MdLogout size={size} /> logout
         </Link>
     );
 };
