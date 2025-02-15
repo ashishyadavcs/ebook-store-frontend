@@ -25,15 +25,12 @@ const StyledHeader = styled.header`
     }
     .links {
         display: flex;
-        gap: 23px;
-        ${media.minsm} {
-            gap: 30px;
-        }
+        gap: 10px;
         align-items: center;
         list-style: none;
         a {
             display: block;
-            padding: 8px 0;
+            padding: 10px;
             font-weight: 600;
             &.cart {
                 margin: 8px 0 0;

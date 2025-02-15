@@ -21,8 +21,10 @@ const Googlelogin = ({ title = "Login with" }) => {
         });
         const result = await response.json();
         dispatch(addUser(result.user));
+
         if (result.success) {
-            redirect("/dashboard");
+            const isAdmin = result.user.role == "admin";
+            redirect(isAdmin ? "/admin" : "/dashboard");
         }
     };
     return (

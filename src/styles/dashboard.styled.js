@@ -7,7 +7,7 @@ const Dashboard = styled.main`
     --sidebarwidth: 18vw;
     .sidebar {
         width: var(--sidebarwidth);
-        transition: all 0.3s cubic-bezier(1, 0, 0, 0.41);
+        transition: all 0.3s;
         ${media.sm} {
             position: fixed;
             width: 70%;

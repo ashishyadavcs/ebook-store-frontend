@@ -16,7 +16,17 @@ const Ebookdetail = async ({ id }) => {
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
     } catch (err) {}
-
+    const {
+        title = "",
+        coverImageUrl = "",
+        description = "",
+        author = "",
+        averageRating = "",
+        price = "",
+        reviews = [],
+        rating = 0,
+        totalReviews = 0,
+    } = ebook || {};
     return (
         <Ebookdetails>
             <span className="thumbnail mobile">
@@ -30,30 +40,25 @@ const Ebookdetail = async ({ id }) => {
             </span>
             <Container className="ebook-info">
                 <span className="thumbnail">
-                    <Image
-                        priority
-                        layout="fill"
-                        alt="ebook"
-                        src={ebook?.coverImageUrl || "/images/ebook.jpg"}
-                    />
+                    <Image priority layout="fill" alt="ebook" src={coverImageUrl} />
                 </span>
 
                 <div className="details">
                     <div className="info">
                         <div className="left">
-                            <h1>{ebook?.title}</h1>
-                            <p className="desc">{ebook?.description || "no description"}</p>
+                            <h1>{title}</h1>
+                            <p className="desc">{description || "no description"}</p>
                             <span className="author">
-                                <FaUserGraduate /> {ebook?.author.toLowerCase() || "Mr.John"}
+                                <FaUserGraduate /> {author.toLowerCase() || "Mr.John"}
                             </span>
-                            {ebook.averageRating && (
+                            {averageRating && (
                                 <div className="ebook-rating">
                                     <span className="star" />
-                                    {ebook.averageRating}
+                                    {averageRating}
                                 </div>
                             )}
                             <strong className={`price ${paid ? "paid" : ""}`}>
-                                &#8377;{ebook.price ? ebook.price : 0} {paid && "paid"}
+                                &#8377;{price ? price : 0} {paid && "paid"}
                             </strong>
                         </div>
                         <div className="btn-group">
@@ -76,11 +81,11 @@ const Ebookdetail = async ({ id }) => {
                 </div>
             </Container>
             <Container className="ebook-review">
-                {ebook.reviews.length > 0 && (
+                {reviews.length > 0 && (
                     <>
-                        <h3>Reviews & ratings ({ebook.totalReviews})</h3>
+                        <h3>Reviews & ratings ({totalReviews})</h3>
                         <ul className="reviews">
-                            {ebook.reviews.map(
+                            {reviews.map(
                                 r =>
                                     r.review && (
                                         <li>

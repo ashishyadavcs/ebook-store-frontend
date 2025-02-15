@@ -1,7 +1,9 @@
-import React from "react";
-
-const Page = async () => {
-    return <>Dashboard</>;
+const Page = () => {
+    return (
+        <>
+            <h1>Welcome to dashboard</h1>
+        </>
+    );
 };
 
 export default Page;
