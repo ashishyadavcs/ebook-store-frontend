@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/state/hooks";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
+import { constant } from "@/config/constant";
 
 const Header = () => {
     const user = useAppSelector(state => state.user.data);
@@ -46,7 +47,12 @@ const Header = () => {
                                     className="user"
                                     onClick={openSidebar}
                                 >
-                                    <Image alt="user" height={40} width={40} src={user?.image} />
+                                    <Image
+                                        alt="user"
+                                        height={40}
+                                        width={40}
+                                        src={user?.image || constant.default_user}
+                                    />
                                 </Link>
                             ) : (
                                 <Link href="/login">Login</Link>

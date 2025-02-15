@@ -31,8 +31,6 @@ const Breadcrumb = () => {
                     }`,
                 }));
     } catch (err) {
-        console.log(err);
-        console.log(pathname);
         urls = [];
     }
 

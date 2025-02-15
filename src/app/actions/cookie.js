@@ -24,7 +24,5 @@ export const setCookie = async (name, value, options = {}) => {
         return req.json({
             cookies: cookieStore.getAll(),
         });
-    } catch (err) {
-        console.log(err);
-    }
+    } catch (err) {}
 };

@@ -81,7 +81,6 @@ const Payment = () => {
             });
 
             const result = await req.json();
-            console.log(result);
             const data = result.data;
             const { amount, currency, id } = data;
             const options = {
@@ -131,7 +130,6 @@ const Payment = () => {
             setLoading(false);
         } catch (err) {
             setLoading(false);
-            console.log(err);
         }
     };
     return (

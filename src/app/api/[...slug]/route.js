@@ -32,7 +32,9 @@ async function sendRequest(req, params) {
     };
     if (method !== "GET") {
         if (req.headers.get("Content-Type").includes("json")) {
-            options.body = JSON.stringify(await req.json());
+            try {
+                options.body = JSON.stringify(await req.json());
+            } catch (err) {}
         } else {
             const formData = await req.formData();
             options.body = formData;

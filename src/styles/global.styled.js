@@ -60,7 +60,9 @@ ${css`
         height: 100vh;
         overflow: auto;
     } */
-
+    .text-center {
+        text-align: center;
+    }
     .container {
         width: calc(100% - var(--container-width));
         margin: auto;

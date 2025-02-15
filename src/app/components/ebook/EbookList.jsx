@@ -7,6 +7,7 @@ import { useServerSideFetch } from "@/utils/ssr-api-call";
 const EbookList = async ({ data, size = 300, search }) => {
     let ebooks = [];
     try {
+        if (data) return;
         const result = await useServerSideFetch("/api/ebooks");
         ebooks = result.data.reverse();
     } catch (err) {}

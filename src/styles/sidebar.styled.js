@@ -17,6 +17,7 @@ const SidebarStyles = styled.aside`
         flex-direction: column;
         a {
             color: inherit;
+            font-weight: 600;
             padding: 18px calc(var(--container-width) / 2); //same as container
             border-bottom: 1px solid #f1f1f1;
             display: flex;

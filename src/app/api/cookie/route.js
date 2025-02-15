@@ -5,7 +5,6 @@ export async function POST(req) {
     try {
         const { name, value, options = {} } = await req.json();
         const cookie = await cookies();
-        cookie.set(name, value);
 
         return NextResponse.json(
             {
@@ -16,7 +15,6 @@ export async function POST(req) {
             }
         );
     } catch (err) {
-        console.log(err);
         return NextResponse.json(
             { success: false },
             {

@@ -17,6 +17,7 @@ const Page = async () => {
             <Table>
                 <thead>
                     <tr>
+                        <th>index</th>
                         <th>thumbnail</th>
                         <th>title</th>
                         <th>author</th>
@@ -27,6 +28,7 @@ const Page = async () => {
                 <tbody>
                     {data.map((ebook, i) => (
                         <tr key={i}>
+                            <td>{i + 1}</td>
                             <td>
                                 <Link href={`/${ebook._id}`}>
                                     <Image

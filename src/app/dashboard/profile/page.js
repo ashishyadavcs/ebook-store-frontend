@@ -30,7 +30,6 @@ const Profile = () => {
             if (!result.success) {
                 throw Error("user update failed");
             } else {
-                console.log(result.user);
                 dispatch(addUser(result.user));
                 setloading(false);
                 toastify.success("profile updated");

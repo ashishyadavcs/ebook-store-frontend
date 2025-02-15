@@ -7,6 +7,9 @@ const StyledHeader = styled.header`
     z-index: 10;
     top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    a {
+        padding: 10px;
+    }
     .sitename {
         font-weight: 800;
     }
@@ -21,6 +24,7 @@ const StyledHeader = styled.header`
             border-radius: 50%;
             pointer-events: none;
             object-fit: cover;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
     }
     .links {
@@ -30,7 +34,6 @@ const StyledHeader = styled.header`
         list-style: none;
         a {
             display: block;
-            padding: 10px;
             font-weight: 600;
             &.cart {
                 margin: 8px 0 0;

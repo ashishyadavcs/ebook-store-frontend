@@ -1,4 +1,5 @@
 import EbookList from "@/components/ebook/EbookList";
+import Button from "@/components/ui/Button";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 const EbooksPage = async () => {
     let ebooks = [];
@@ -8,8 +9,19 @@ const EbooksPage = async () => {
     } catch (err) {}
     return (
         <>
-            <h2 className="title">my ebooks</h2>
-            <EbookList data={ebooks.reverse()} />
+            {ebooks.length == 0 ? (
+                <div className="text-center">
+                    <h2 className="title">No ebooks in your library</h2>
+                    <Button type="primary" href="/">
+                        exlore ebooks
+                    </Button>
+                </div>
+            ) : (
+                <>
+                    <h2 className="title text-center">my ebooks</h2>
+                    <EbookList data={ebooks.reverse()} />
+                </>
+            )}
         </>
     );
 };
