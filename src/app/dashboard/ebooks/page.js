@@ -19,7 +19,7 @@ const EbooksPage = async () => {
             ) : (
                 <>
                     <h2 className="title text-center">my ebooks</h2>
-                    <EbookList data={ebooks.reverse()} />
+                    <EbookList data={ebooks} />
                 </>
             )}
         </>
