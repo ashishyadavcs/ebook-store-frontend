@@ -20,6 +20,7 @@ const StyledHeader = styled.header`
         img {
             border-radius: 50%;
             pointer-events: none;
+            object-fit: cover;
         }
     }
     .links {

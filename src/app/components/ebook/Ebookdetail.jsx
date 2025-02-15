@@ -28,7 +28,7 @@ const Ebookdetail = async ({ id }) => {
                     src={ebook?.coverImageUrl || "/images/ebook.jpg"}
                 />
             </span>
-            <Container>
+            <Container className="ebook-info">
                 <span className="thumbnail">
                     <Image
                         priority
@@ -46,6 +46,12 @@ const Ebookdetail = async ({ id }) => {
                             <span className="author">
                                 <FaUserGraduate /> {ebook?.author.toLowerCase() || "Mr.John"}
                             </span>
+                            {ebook.averageRating && (
+                                <div className="ebook-rating">
+                                    <span className="star" />
+                                    {ebook.averageRating}
+                                </div>
+                            )}
                             <strong className={`price ${paid ? "paid" : ""}`}>
                                 &#8377;{ebook.price ? ebook.price : 0} {paid && "paid"}
                             </strong>
@@ -68,6 +74,27 @@ const Ebookdetail = async ({ id }) => {
 
                     {paid && <Review ebookid={id} size={30} />}
                 </div>
+            </Container>
+            <Container className="ebook-review">
+                {ebook.reviews.length > 0 && (
+                    <>
+                        <h3>Reviews & ratings ({ebook.totalReviews})</h3>
+                        <ul className="reviews">
+                            {ebook.reviews.map(
+                                r =>
+                                    r.review && (
+                                        <li>
+                                            <div className="ebook-rating">
+                                                <span className="star" />
+                                                {r.rating}
+                                            </div>
+                                            {r.review}
+                                        </li>
+                                    )
+                            )}
+                        </ul>
+                    </>
+                )}
             </Container>
         </Ebookdetails>
     );

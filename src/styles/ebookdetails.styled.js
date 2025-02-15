@@ -1,4 +1,5 @@
 "use client";
+import { colors } from "@/config/constant";
 import { media } from "@/config/media";
 import styled from "styled-components";
 const Ebookdetails = styled.div`
@@ -47,9 +48,50 @@ const Ebookdetails = styled.div`
     .details {
         flex: 1;
     }
-    .container {
+    .ebook-rating {
+        margin: 10px 0;
+        background: ${colors.green};
+        color: #fff;
+        border-radius: 4px;
+        padding: 2px 6px;
         display: flex;
+        width: max-content;
+        gap: 5px;
+        align-items: center;
+        .star {
+            display: inline-block;
+            --size: 18px;
+            height: var(--size);
+            width: var(--size);
+            background: #fff;
+            clip-path: polygon(
+                50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%
+            );
+        }
+    }
+    .ebook-review {
+        margin: 30px auto 0;
+        .reviews {
+            list-style: none;
+            li {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+    }
 
+    .ebook-info {
+        display: flex;
         .author {
             text-transform: capitalize;
             margin: 10px 10px 5px 0;
