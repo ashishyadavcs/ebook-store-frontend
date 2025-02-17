@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 import config from "../../config/index.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
