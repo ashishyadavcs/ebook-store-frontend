@@ -3,10 +3,12 @@ import config from "../../config/index.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
-import { redirect } from "next/navigation.js";
+import { useRouter, useSearchParams } from "next/navigation.js";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
 const Googlelogin = ({ title = "Login with" }) => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const dispatch = useAppDispatch();
     const handleSuccess = async res => {
         const token = res.credential;
@@ -24,7 +26,7 @@ const Googlelogin = ({ title = "Login with" }) => {
 
         if (result.success) {
             const isAdmin = result.user.role == "admin";
-            redirect(isAdmin ? "/admin" : "/dashboard");
+            router.push(searchParams.get("from") || isAdmin ? "/admin" : "/dashboard");
         }
     };
     return (
