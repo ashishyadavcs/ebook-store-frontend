@@ -7,10 +7,12 @@ import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import { useState } from "react";
 import { toastify } from "@/components/Toast";
 import { addUser } from "@/state/userslice";
+import { constant } from "@/config/constant";
 
 const Profile = () => {
     const [loading, setloading] = useState(false);
     const user = useAppSelector(state => state.user.data);
+    const { name = "", email = "", mobile = "", image = constant.default_user } = user;
     const dispatch = useAppDispatch();
     const updateUser = async e => {
         e.preventDefault();
@@ -43,24 +45,19 @@ const Profile = () => {
     return (
         <ProfileStyle>
             <MyForm onSubmit={updateUser}>
-                <Upload name="image" imageURL={user.image} title="upload picture" />
+                <Upload name="image" imageURL={image} title="upload picture" />
                 <label htmlFor="email">
                     <span>Name</span>
-                    <input defaultValue={user?.name} name="name" type="text" placeholder="Name" />
+                    <input defaultValue={name} name="name" type="text" placeholder="Name" />
                 </label>
                 <label htmlFor="email">
                     <span>Email</span>
-                    <input
-                        defaultValue={user?.email}
-                        name="email"
-                        type="text"
-                        placeholder="Email"
-                    />
+                    <input defaultValue={email} name="email" type="text" placeholder="Email" />
                 </label>
                 <label htmlFor="mobile">
                     <span>Mobile</span>
                     <input
-                        defaultValue={user?.mobile}
+                        defaultValue={mobile}
                         name="mobile"
                         type="tel"
                         placeholder="Mobile Number"

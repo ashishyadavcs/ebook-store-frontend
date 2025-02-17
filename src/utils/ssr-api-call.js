@@ -2,7 +2,7 @@ import config from "@/config/index";
 import { cookies } from "next/headers";
 const cacheOption = {
     next: {
-        revalidate: 5,
+        revalidate: 10,
     },
 };
 export const useServerSideFetch = async (url, option = cacheOption) => {

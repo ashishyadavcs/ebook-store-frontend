@@ -70,6 +70,7 @@ export async function middleware(request) {
 export const config = {
     matcher: [
         "/dashboard",
+        "/dashboard/:path*",
         "/api/:path*",
         "/api",
         "/checkout",
