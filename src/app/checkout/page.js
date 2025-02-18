@@ -12,6 +12,7 @@ import PriceDetails from "@/components/checkout/PriceDetails.jsx";
 import { calculateCart } from "@/utils/cart.js";
 import { emptyCart } from "@/state/cart.js";
 import SuccessPopUp from "@/components/Successpopup.jsx";
+import { colors } from "@/config/constant.js";
 
 const Payment = () => {
     const params = useSearchParams();
@@ -122,7 +123,7 @@ const Payment = () => {
                     contact: user?.mobile,
                 },
                 theme: {
-                    color: "#3399cc",
+                    color: colors.redpink,
                 },
             };
             const paymentobject = new window.Razorpay(options);

@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { forwordCookieToClient } from "@/utils/forword-cookie";
 import config from "@/config/index.js";
 export async function POST(request, { params }) {
     const body = await request.text();
@@ -13,7 +12,6 @@ export async function POST(request, { params }) {
         body: body && JSON.stringify(JSON.parse(body)),
     });
     const result = await res.json();
-    const response = NextResponse.json(result);
-    forwordCookieToClient(res, response);
+    const response = NextResponse.json(result, { headers: res.headers });
     return response;
 }

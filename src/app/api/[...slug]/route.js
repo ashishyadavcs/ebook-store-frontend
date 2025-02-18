@@ -3,21 +3,20 @@ import { NextResponse } from "next/server";
 import _config from "@/config/index.js";
 
 export async function GET(req, { params }) {
-    return sendRequest(req, params);
+    return authMiddleware(req, params);
 }
 export async function POST(req, { params }) {
-    return sendRequest(req, params);
+    return authMiddleware(req, params);
 }
 export async function PATCH(req, { params }) {
-    return sendRequest(req, params);
+    return authMiddleware(req, params);
 }
 export async function DELETE(req, { params }) {
-    return sendRequest(req, params);
+    return authMiddleware(req, params);
 }
-async function sendRequest(req, params) {
+
+async function sendRequest(req, params, accesstoken) {
     const method = req.method;
-    const cookieStore = await cookies();
-    const accesstoken = cookieStore.get("accesstoken")?.value;
 
     const options = {
         method,
@@ -34,7 +33,9 @@ async function sendRequest(req, params) {
         if (req.headers.get("Content-Type").includes("json")) {
             try {
                 options.body = JSON.stringify(await req.json());
-            } catch (err) {}
+            } catch (err) {
+                throw Error(err.message);
+            }
         } else {
             const formData = await req.formData();
             options.body = formData;
@@ -43,13 +44,14 @@ async function sendRequest(req, params) {
     const { slug } = await params;
 
     try {
-        const response = await fetch(`${_config.BASE_URL}/${slug.join("/")}`, options);
-        if (!response.ok) {
-            throw Error(response.statusText);
+        const res = await fetch(`${_config.BASE_URL}/${slug.join("/")}`, options);
+        if (!res.ok) {
+            throw Error(res.statusText);
         }
-        const result = await response.json();
+        const result = await res.json();
         return NextResponse.json(result);
     } catch (err) {
+        console.log(err);
         return NextResponse.json(
             {
                 success: false,
@@ -57,5 +59,36 @@ async function sendRequest(req, params) {
             },
             { status: 500 }
         );
+    }
+}
+async function authMiddleware(req, params) {
+    const cookieStore = await cookies();
+    let accesstoken = cookieStore.get("accesstoken")?.value;
+    const refreshtoken = cookieStore.get("refreshtoken")?.value;
+    if (!accesstoken && refreshtoken) {
+        const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                token: refreshtoken,
+            }),
+        });
+        if (!result.ok) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: err.message,
+                },
+                { status: 401 }
+            );
+        }
+        const data = await result.json();
+
+        accesstoken = data.accesstoken;
+        return sendRequest(req, params, accesstoken);
+    } else {
+        return sendRequest(req, params, accesstoken);
     }
 }

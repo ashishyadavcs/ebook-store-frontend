@@ -16,45 +16,8 @@ export async function middleware(request) {
     ) {
         return NextResponse.next();
     }
-    if (!accesstoken && refreshtoken) {
-        const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                token: refreshtoken,
-            }),
-        });
-        if (!result.ok) {
-            const loginurl = new URL("/login", request.url);
-            loginurl.searchParams.set("from", request.nextUrl.pathname);
-            return NextResponse.redirect(loginurl);
-        }
-        const data = await result.json();
 
-        const resSetCookies = result.headers.getSetCookie();
-        const newheaders = new Headers();
-
-        if (resSetCookies) {
-            resSetCookies.forEach(setcookie => {
-                newheaders.append("Set-Cookie", setcookie);
-            });
-        }
-        const response = NextResponse.next({
-            headers: newheaders,
-        });
-
-        response.cookies.set("accesstoken", data.accesstoken, {
-            httpOnly: true,
-            secure: false,
-            path: "/",
-            maxAge: 3600, // Cookie expiry in seconds (e.g., 1 hour)
-        });
-        return response;
-    }
-
-    if (!refreshtoken && !accesstoken) {
+    if (!refreshtoken) {
         const loginurl = new URL("/login", request.url);
         loginurl.searchParams.set("from", request.nextUrl.pathname);
         return NextResponse.redirect(loginurl);
