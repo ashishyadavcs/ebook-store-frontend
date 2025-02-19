@@ -1,12 +1,12 @@
 "use client";
 import styled from "styled-components";
 import config from "../../config/index.js";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
 import { useRouter, useSearchParams } from "next/navigation.js";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
+
 const Googlelogin = ({ title = "Login with" }) => {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -35,10 +35,13 @@ const Googlelogin = ({ title = "Login with" }) => {
             <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
                 <GoogleLogin
                     useOneTap
+                    auto_select
                     onSuccess={res => handleSuccess(res)}
                     onError={() => {
                         toastify.error("login failed");
                     }}
+                    cancel_on_tap_outside
+                    shape="circle"
                 />
             </GoogleOAuthProvider>
         </GStyle>
@@ -51,4 +54,7 @@ const GStyle = styled.div`
     margin: auto;
     border-radius: 100px;
     filter: drop-shadow(0 1px 2px #ddd);
+    .google-login {
+        color: inherit;
+    }
 `;
