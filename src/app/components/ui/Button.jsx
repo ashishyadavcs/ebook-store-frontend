@@ -12,7 +12,7 @@ const Button = props => {
                 className={`btn ${className} ${type}`}
                 {...restprops}
             >
-                {loading ? <span className="loader" /> : children}
+                {loading && <span className="loader" />} {children}
             </button>
         );
     else
