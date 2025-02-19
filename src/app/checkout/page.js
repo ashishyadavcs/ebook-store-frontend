@@ -107,6 +107,7 @@ const Payment = () => {
                     });
                     const result = await req.json();
                     if (result.success) {
+                        setLoading(false);
                         setsuccess(true);
                         setTimeout(() => {
                             setsuccess(false);
@@ -115,6 +116,7 @@ const Payment = () => {
                         dispatch(emptyCart(null));
                         return;
                     }
+                    setLoading(false);
                     toastify.error("payment failed");
                 },
                 prefill: {
@@ -128,7 +130,6 @@ const Payment = () => {
             };
             const paymentobject = new window.Razorpay(options);
             paymentobject.open();
-            setLoading(false);
         } catch (err) {
             setLoading(false);
         }
