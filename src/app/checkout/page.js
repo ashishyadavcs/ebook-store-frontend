@@ -90,7 +90,15 @@ const Payment = () => {
                 currency: currency,
                 name: "Ebook Store",
                 description: "Test UPI Payment",
+                image: "/images/logo.svg",
+                animation: false,
                 order_id: id,
+                config: {
+                    display: {
+                        // language: "hi",
+                    },
+                },
+                remember_customer: true, // to save cards
                 handler: async response => {
                     const req = await fetch(`/api/verify-payment`, {
                         method: "POST",
@@ -119,6 +127,12 @@ const Payment = () => {
                     setLoading(false);
                     toastify.error("payment failed");
                 },
+                modal: {
+                    ondismiss: () => {
+                        setLoading(false);
+                    },
+                },
+
                 prefill: {
                     name,
                     email,
