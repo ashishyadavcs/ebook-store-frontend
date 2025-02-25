@@ -20,7 +20,7 @@ const EbookList = async ({ data, size = 300, search }) => {
                 <Link
                     scroll={true}
                     prefetch={false}
-                    key={i}
+                    key={ebook._id}
                     className="ebook-details"
                     href={`/${ebook._id}`}
                 >

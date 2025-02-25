@@ -18,20 +18,16 @@ const ReduxProvider = ({ children }) => {
     let persister = persistStore(storeRef.current);
     return (
         <Provider store={storeRef.current}>
-            {process.env.NODE_ENV !== "development" ? (
-                <PersistGate
-                    loading={
-                        <Container>
-                            <Loader />
-                        </Container>
-                    }
-                    persistor={persister}
-                >
-                    {children}
-                </PersistGate>
-            ) : (
-                children
-            )}
+            <PersistGate
+                loading={
+                    <Container>
+                        <Loader />
+                    </Container>
+                }
+                persistor={persister}
+            >
+                {children}
+            </PersistGate>
         </Provider>
     );
 };
