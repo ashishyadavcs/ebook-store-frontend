@@ -3,11 +3,9 @@ import Ebookdetail from "@/components/ebook/Ebookdetail";
 import EbookList from "@/components/ebook/EbookList";
 import EbookPageStyle from "@/styles/ebookpage.styled";
 import { Suspense } from "react";
-import { useServerSideFetch } from "@/utils/ssr-api-call";
 
 const Page = async ({ params }) => {
     const { slug: ebookid } = await params;
-
     return (
         <>
             <EbookPageStyle>

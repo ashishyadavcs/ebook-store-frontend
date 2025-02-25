@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <StyledHeader>
             <Container>
-                <nav role="menubar" className="menu">
+                <nav className="menu">
                     <Link href="/" className="sitename">
                         {process.env.NEXT_PUBLIC_APP_NAME}
                     </Link>

@@ -7,7 +7,7 @@ const Button = props => {
         type = "",
         className = "",
         children,
-        loading = true,
+        loading = false,
         replace = false,
         ...restprops
     } = props;
