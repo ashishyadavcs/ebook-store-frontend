@@ -2,17 +2,23 @@ import Container from "@/components/ui/Container";
 import Ebookdetail from "@/components/ebook/Ebookdetail";
 import EbookList from "@/components/ebook/EbookList";
 import EbookPageStyle from "@/styles/ebookpage.styled";
-export const revalidate = 5000;
+import { Suspense } from "react";
+import { useServerSideFetch } from "@/utils/ssr-api-call";
 
 const Page = async ({ params }) => {
     const { slug: ebookid } = await params;
+
     return (
         <>
             <EbookPageStyle>
-                <Ebookdetail id={ebookid} />
+                <Suspense fallback="loading...">
+                    <Ebookdetail id={ebookid} />
+                </Suspense>
                 <Container>
                     <h2 className="heading">You Might Also Like These!</h2>
-                    <EbookList />
+                    <Suspense fallback="loading...">
+                        <EbookList />
+                    </Suspense>
                 </Container>
             </EbookPageStyle>
         </>

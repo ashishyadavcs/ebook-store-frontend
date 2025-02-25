@@ -3,7 +3,14 @@ import Link from "next/link";
 import React from "react";
 
 const Button = props => {
-    const { type = "", className = "", children, loading = false, ...restprops } = props;
+    const {
+        type = "",
+        className = "",
+        children,
+        loading = true,
+        replace = false,
+        ...restprops
+    } = props;
     if (!props.href)
         return (
             <button

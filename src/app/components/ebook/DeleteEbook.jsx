@@ -19,7 +19,6 @@ const DeleteEbook = ({ id }) => {
             if (res.ok) {
                 await res.json();
                 setloading(false);
-                router.push(`?deleted?id=${id}`);
                 router.refresh();
             }
         } catch (err) {
@@ -30,6 +29,7 @@ const DeleteEbook = ({ id }) => {
     return (
         <Button
             loading={loading}
+            replace={true}
             onClick={async e => {
                 await deleteEbook(id);
             }}

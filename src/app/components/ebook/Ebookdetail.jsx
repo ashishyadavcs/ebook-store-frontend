@@ -7,6 +7,8 @@ import AddTocart from "@/components/ebook/AddTocart";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { Suspense } from "react";
+import { constant } from "@/config/constant";
+import { notFound } from "next/navigation";
 const Ebookdetail = async ({ id }) => {
     let purhcasedEbooks, ebook, paid;
     try {
@@ -16,10 +18,12 @@ const Ebookdetail = async ({ id }) => {
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
-    } catch (err) {}
+    } catch (err) {
+        return notFound;
+    }
     const {
         title = "",
-        coverImageUrl = "",
+        coverImageUrl = constant.default_ebook,
         description = "",
         author = "",
         averageRating = "",

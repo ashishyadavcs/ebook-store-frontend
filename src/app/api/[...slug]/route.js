@@ -33,9 +33,7 @@ async function sendRequest(req, params, accesstoken) {
         if (req.headers.get("Content-Type").includes("json")) {
             try {
                 options.body = JSON.stringify(await req.json());
-            } catch (err) {
-                throw Error(err.message);
-            }
+            } catch (err) {}
         } else {
             const formData = await req.formData();
             options.body = formData;
