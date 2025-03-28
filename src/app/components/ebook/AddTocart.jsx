@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import { addToCart } from "@/state/cart";
 import { toastify } from "../Toast";
+import { FaCartPlus } from "react-icons/fa6";
 const AddTocart = ({ ebook }) => {
     ebook = { ...ebook, price: 20 };
     const cart = useAppSelector(state => state.cart.data);
@@ -17,6 +18,7 @@ const AddTocart = ({ ebook }) => {
                 toastify.success("added to cart");
             }}
         >
+            <FaCartPlus size={20} />
             {existingItem ? "added to cart" : "+ add to cart"}
         </Button>
     );
