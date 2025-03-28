@@ -1,7 +1,7 @@
 import { EbooksContainer } from "@/styles/ebooks.styled";
 import Ebook from "@/components/ebook/Ebook";
 import Link from "next/link";
-import { memo, Suspense } from "react";
+import { memo } from "react";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 
 const EbookList = async ({ data, size = 300, search }) => {

@@ -1,4 +1,5 @@
 "use client";
+import { media } from "@/config/media";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
@@ -11,6 +12,9 @@ const SkeletonContainer = styled.div`
     display: flex;
     gap: 20px;
     margin: 20px;
+    ${media.sm} {
+        flex-direction: column;
+    }
 `;
 
 const SkeletonBox = styled.div`
@@ -34,6 +38,9 @@ const ShimmerEffect = styled.div`
 const SkeletonImage = styled(SkeletonBox)`
     width: 200px;
     height: 300px;
+    ${media.sm} {
+        width: 100%;
+    }
 `;
 
 const SkeletonDetails = styled.div`
