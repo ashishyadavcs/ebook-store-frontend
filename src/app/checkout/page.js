@@ -143,7 +143,8 @@ const Payment = () => {
                 },
             };
             const paymentobject = new window.Razorpay(options);
-            paymentobject.open();
+            await paymentobject.open();
+            setLoading(false);
         } catch (err) {
             setLoading(false);
         }
