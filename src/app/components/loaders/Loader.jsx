@@ -2,7 +2,6 @@
 import Container from "@/components/ui/Container";
 import { media } from "@/config/media";
 import styled from "styled-components";
-
 const Loader = () => {
     return (
         <Container>

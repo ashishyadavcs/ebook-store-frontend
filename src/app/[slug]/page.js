@@ -3,13 +3,14 @@ import Ebookdetail from "@/components/ebook/Ebookdetail";
 import EbookList from "@/components/ebook/EbookList";
 import EbookPageStyle from "@/styles/ebookpage.styled";
 import { Suspense } from "react";
+import Details from "@/components/loaders/detail";
 
 const Page = async ({ params }) => {
     const { slug: ebookid } = await params;
     return (
         <>
             <EbookPageStyle>
-                <Suspense fallback="loading...">
+                <Suspense fallback={<Details />}>
                     <Ebookdetail id={ebookid} />
                 </Suspense>
                 <Container>

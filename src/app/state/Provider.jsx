@@ -4,7 +4,7 @@ import { persistStore } from "redux-persist";
 import { useRef } from "react";
 import { makeStore } from "./store";
 import dynamic from "next/dynamic";
-import Loader from "@/components/Loader";
+import Loader from "@/components/loaders/Loader";
 import Container from "@/components/ui/Container";
 const PersistGate = dynamic(
     () => import("redux-persist/integration/react").then(mod => mod.PersistGate),
