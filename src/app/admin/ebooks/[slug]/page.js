@@ -1,11 +1,16 @@
 import Back from "@/components/Back";
-import AddEbook from "@/components/ebook/AddEbook";
+import UpdateEbook from "@/components/ebook/UpdateEbook";
+import { useServerSideFetch } from "@/utils/ssr-api-call";
 
-const Page = () => {
+const Page = async ({ params }) => {
+    const { slug: id } = await params;
+    const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
+    const ebook = ebookResult?.data[0];
+    console.log(ebook);
     return (
         <>
-            <Back title="add Ebook" />
-            <AddEbook />
+            <Back title="Edit Ebook" />
+            <UpdateEbook ebook={ebook} />
         </>
     );
 };

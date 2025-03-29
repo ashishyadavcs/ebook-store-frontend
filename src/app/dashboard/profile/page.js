@@ -8,21 +8,22 @@ import { useState } from "react";
 import { toastify } from "@/components/Toast";
 import { addUser } from "@/state/userslice";
 import { constant } from "@/config/constant";
-
+import { useForm } from "@/hooks/useForm";
 const Profile = () => {
     const [loading, setloading] = useState(false);
     const user = useAppSelector(state => state.user.data);
     const { name = "", email = "", mobile = "", image = constant.default_user } = user;
+    const { handleChange, values } = useForm();
     const dispatch = useAppDispatch();
     const updateUser = async e => {
         e.preventDefault();
         try {
             setloading(true);
-            const formdata = new FormData(e.target);
-            formdata.delete("image");
-            if (e.target.image.files[0]) {
-                formdata.append("image", e.target.image.files[0]);
-            }
+            const formdata = new FormData();
+            Object.keys(values).forEach(field => {
+                formdata.append(field, values[field]);
+            });
+
             const res = await fetch("/api/user", {
                 method: "PATCH",
                 body: formdata,
@@ -33,7 +34,6 @@ const Profile = () => {
                 throw Error("user update failed");
             } else {
                 dispatch(addUser(result.user));
-
                 setloading(false);
                 toastify.success("profile updated");
             }
@@ -45,14 +45,31 @@ const Profile = () => {
     return (
         <ProfileStyle>
             <MyForm onSubmit={updateUser}>
-                <Upload name="image" imageURL={image} title="upload picture" />
+                <Upload
+                    onchange={handleChange}
+                    name="image"
+                    imageURL={image}
+                    title="upload picture"
+                />
                 <label htmlFor="email">
                     <span>Name</span>
-                    <input defaultValue={name} name="name" type="text" placeholder="Name" />
+                    <input
+                        onChange={handleChange}
+                        defaultValue={name}
+                        name="name"
+                        type="text"
+                        placeholder="Name"
+                    />
                 </label>
                 <label htmlFor="email">
                     <span>Email</span>
-                    <input defaultValue={email} name="email" type="text" placeholder="Email" />
+                    <input
+                        onChange={handleChange}
+                        defaultValue={email}
+                        name="email"
+                        type="text"
+                        placeholder="Email"
+                    />
                 </label>
                 <label htmlFor="mobile">
                     <span>Mobile</span>
@@ -60,11 +77,12 @@ const Profile = () => {
                         defaultValue={mobile}
                         name="mobile"
                         type="tel"
+                        onChange={handleChange}
                         placeholder="Mobile Number"
                     />
                 </label>
 
-                <Button type="primary" loading={loading}>
+                <Button disabled={!values} type="primary" loading={loading}>
                     update profile
                 </Button>
             </MyForm>

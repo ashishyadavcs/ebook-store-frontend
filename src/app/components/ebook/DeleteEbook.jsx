@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "../ui/Button";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { toastify } from "../Toast";
 
 const DeleteEbook = ({ id }) => {
     const [loading, setloading] = useState(false);
@@ -18,6 +19,7 @@ const DeleteEbook = ({ id }) => {
             });
             if (res.ok) {
                 await res.json();
+                toastify.success("ebook deleted!");
                 setloading(false);
                 router.refresh();
             }

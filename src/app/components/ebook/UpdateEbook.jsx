@@ -6,19 +6,20 @@ import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
 import { useState } from "react";
 import Upload from "@/components/ui/upload";
-
-const AddEbook = () => {
+import { useForm } from "@/hooks/useForm";
+const UpdateEbook = ({ ebook }) => {
+    const { handleChange, values } = useForm();
+    console.log(values);
     const [loading, setloading] = useState(false);
     const addEbook = async e => {
         e.preventDefault();
         setloading(true);
-        const formdata = new FormData(e.target);
-        formdata.delete("coverImageUrl");
-        formdata.append("coverImageUrl", e.target.coverImageUrl.files[0]);
-        formdata.delete("fileUrl");
-        formdata.append("fileUrl", e.target.fileUrl.files[0]);
-        const res = await fetch("/api/ebook", {
-            method: "POST",
+        const formdata = new FormData();
+        Object.keys(values).forEach(field => {
+            formdata.append(field, values[field]);
+        });
+        const res = await fetch(`/api/ebook/${ebook._id}`, {
+            method: "PATCH",
             credentials: "include",
             body: formdata,
         });
@@ -32,6 +33,7 @@ const AddEbook = () => {
 
         await res.json();
         setloading(false);
+
         toastify.success("ebook added successfull");
     };
     return (
@@ -39,36 +41,58 @@ const AddEbook = () => {
             <MyForm onSubmit={addEbook}>
                 <div className="fields">
                     <label htmlFor="email">
-                        <input name="title" type="text" required placeholder="Ebook title" />
+                        <input
+                            value={ebook.title}
+                            onChange={handleChange}
+                            name="title"
+                            type="text"
+                            placeholder="Ebook title"
+                        />
                     </label>
                     <label htmlFor="author">
-                        <input name="author" type="text" required placeholder="Ebook Author" />
+                        <input
+                            value={ebook.author}
+                            onChange={handleChange}
+                            name="author"
+                            type="text"
+                            placeholder="Ebook Author"
+                        />
                     </label>
 
                     <label htmlFor="description">
                         <textarea
+                            value={ebook.description}
+                            onChange={handleChange}
                             className="textarea"
                             name="description"
-                            type="text"
-                            required
                             placeholder="ebook description"
                         />
                     </label>
-                    <Upload required={true} name="coverImageUrl" title="Upload cover Image" />
+                    <Upload
+                        imageURL={ebook.coverImageUrl}
+                        name="coverImageUrl"
+                        title="Upload cover Image"
+                        onchange={handleChange}
+                    />
                     <label htmlFor="price">
-                        <input name="price" type="number" required placeholder="price" />
+                        <input
+                            onChange={handleChange}
+                            name="price"
+                            type="number"
+                            placeholder="price"
+                        />
                     </label>
-                    <Upload required={true} name="fileUrl" title="Upload Ebook" />
+                    <Upload onchange={handleChange} name="fileUrl" title="Upload Ebook" />
                 </div>
-                <Button type="primary" loading={loading}>
-                    add ebook
+                <Button disabled={!values} type="primary" loading={loading}>
+                    update ebook
                 </Button>
             </MyForm>
         </EbookStyles>
     );
 };
 
-export default AddEbook;
+export default UpdateEbook;
 const EbookStyles = styled.div`
     width: 100%;
     background: #fff;

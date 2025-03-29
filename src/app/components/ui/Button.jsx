@@ -9,17 +9,18 @@ const Button = props => {
         children,
         loading = false,
         replace = false,
+        disabled = false,
         ...restprops
     } = props;
     if (!props.href)
         return (
             <button
                 aria-label="button"
-                disabled={loading}
+                disabled={disabled || loading}
                 className={`btn ${className} ${type}`}
                 {...restprops}
             >
-                {loading && <span className="loader" />} {children}
+                {loading && <span className="loader" />} {replace && loading ? "" : children}
             </button>
         );
     else

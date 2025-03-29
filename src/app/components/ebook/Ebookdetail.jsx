@@ -89,7 +89,7 @@ const Ebookdetail = async ({ id }) => {
                             {reviews.map(
                                 r =>
                                     r.review && (
-                                        <li>
+                                        <li key={r._id}>
                                             <div className="ebook-rating">
                                                 <span className="star" />
                                                 {r.rating}

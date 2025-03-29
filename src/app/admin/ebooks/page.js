@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import DeleteEbook from "@/components/ebook/DeleteEbook";
+import { constant } from "@/config/constant";
 const Page = async () => {
     let data = [];
     try {
@@ -20,6 +21,7 @@ const Page = async () => {
                         <th>index</th>
                         <th>thumbnail</th>
                         <th>title</th>
+                        <th>description</th>
                         <th>author</th>
                         <th>orders</th>
                         <th>Action</th>
@@ -41,6 +43,7 @@ const Page = async () => {
                                     </Link>
                                 </td>
                                 <td>{ebook.title}</td>
+                                <td>{ebook.description ? ebook.description : "no description"}</td>
                                 <td>{ebook.author}</td>
                                 <td>{ebook.title}</td>
                                 <td>
