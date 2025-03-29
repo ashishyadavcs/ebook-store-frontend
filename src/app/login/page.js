@@ -39,6 +39,7 @@ const Page = () => {
                 dispatch(addUser(result.user));
                 setloading(false);
                 toastify.success("loggedin successfull");
+                router.refresh();
                 router.push(
                     searchParams.get("from") ||
                         (result.user.role == "admin" ? "/admin" : "/dashboard")

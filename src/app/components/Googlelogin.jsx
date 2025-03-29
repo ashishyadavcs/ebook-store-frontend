@@ -26,6 +26,7 @@ const Googlelogin = ({ title = "Login with" }) => {
         dispatch(addUser(result.user));
 
         if (result.success) {
+            router.refresh();
             const isAdmin = result.user.role == "admin";
             router.push(searchParams.get("from") || isAdmin ? "/admin" : "/dashboard");
         }
