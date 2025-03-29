@@ -15,6 +15,7 @@ const Googlelogin = ({ title = "Login with" }) => {
         const token = res.credential;
         const response = await fetch(`/api/auth/google`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -28,7 +29,7 @@ const Googlelogin = ({ title = "Login with" }) => {
         if (result.success) {
             router.refresh();
             const isAdmin = result.user.role == "admin";
-            router.push(searchParams.get("from") || isAdmin ? "/admin" : "/dashboard");
+            router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
         }
     };
     return (
