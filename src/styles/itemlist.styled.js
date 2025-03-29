@@ -14,7 +14,7 @@ const ItemListStyles = styled.div`
         overflow: hidden;
         background: #fff;
         margin: 0 0 10px;
-        height: 200px;
+        height: 150px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         border-radius: 8px;
         a {
