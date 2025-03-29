@@ -12,7 +12,7 @@ import { useForm } from "@/hooks/useForm";
 const Profile = () => {
     const [loading, setloading] = useState(false);
     const user = useAppSelector(state => state.user.data);
-    const { name = "", email = "", mobile = "", image = constant.default_user } = user;
+    const { name = "", email = "", mobile = "", image = constant.default_user } = user || {};
     const { handleChange, values } = useForm();
     const dispatch = useAppDispatch();
     const updateUser = async e => {

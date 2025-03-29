@@ -1,24 +1,29 @@
 "use client";
-import Link from "next/link";
 import { MdLogout } from "react-icons/md";
 import { logout } from "../../actions/logout";
 import { useAppDispatch } from "@/state/hooks";
 import { removeuser } from "@/state/userslice";
 import { redirect } from "next/navigation";
+import Button from "../ui/Button";
+import { useState } from "react";
 
 const Logout = ({ size = 15 }) => {
     const dispatch = useAppDispatch();
+    const [loading, setLoading] = useState(false);
     return (
-        <Link
+        <Button
             href="#"
+            loading={loading}
             onClick={async e => {
+                setLoading(true);
                 dispatch(removeuser(null));
                 await logout();
                 redirect("/login");
             }}
+            style={{ background: "#ffff", justifyContent: "flex-start" }}
         >
             <MdLogout size={size} /> logout
-        </Link>
+        </Button>
     );
 };
 

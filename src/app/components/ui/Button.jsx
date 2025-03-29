@@ -26,7 +26,7 @@ const Button = props => {
     else
         return (
             <Link scroll={true} className={`btn ${className} ${type}`} {...restprops}>
-                {children}
+                {children} {loading && <span className="loader" />}
             </Link>
         );
 };
