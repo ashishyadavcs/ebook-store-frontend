@@ -18,5 +18,6 @@ export const logout = async () => {
     if (result) {
         token.delete("accesstoken");
         token.delete("refreshtoken");
+        token.delete("userrole");
     }
 };

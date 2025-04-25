@@ -42,7 +42,7 @@ const UpdateEbook = ({ ebook }) => {
                 <div className="fields">
                     <label htmlFor="email">
                         <input
-                            value={ebook.title}
+                            defaultValue={ebook.title}
                             onChange={handleChange}
                             name="title"
                             type="text"
@@ -51,7 +51,7 @@ const UpdateEbook = ({ ebook }) => {
                     </label>
                     <label htmlFor="author">
                         <input
-                            value={ebook.author}
+                            defaultValue={ebook.author}
                             onChange={handleChange}
                             name="author"
                             type="text"
@@ -61,7 +61,7 @@ const UpdateEbook = ({ ebook }) => {
 
                     <label htmlFor="description">
                         <textarea
-                            value={ebook.description}
+                            defaultValue={ebook.description}
                             onChange={handleChange}
                             className="textarea"
                             name="description"
