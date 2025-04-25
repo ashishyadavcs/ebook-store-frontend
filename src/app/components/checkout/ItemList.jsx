@@ -36,17 +36,11 @@ const ItemList = () => {
                     ))}
                 </div>
             )}
-            {cart.length > 0 ? (
-                <div className="btn-wrap">
-                    <Button type="primary" href="/checkout">
-                        Place order
-                    </Button>
-                </div>
-            ) : (
-                <Button type="primary" href="/">
-                    go to home
+            <div className="btn-wrap">
+                <Button type="primary" href="/checkout">
+                    Place order
                 </Button>
-            )}
+            </div>
         </ItemListStyles>
     );
 };
