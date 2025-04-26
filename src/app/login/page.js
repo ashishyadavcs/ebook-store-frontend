@@ -34,7 +34,7 @@ const Page = () => {
             });
             const result = await res.json();
             if (!result.success) {
-                throw Error("login failed");
+                throw Error(result.errors[0].msg);
             } else {
                 dispatch(addUser(result.user));
                 setloading(false);
