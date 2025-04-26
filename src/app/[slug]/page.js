@@ -16,7 +16,7 @@ const Page = async ({ params }) => {
                 <Container>
                     <h2 className="heading">You Might Also Like These!</h2>
                     <Suspense fallback="loading...">
-                        <EbookList />
+                        <EbookList id={ebookid} />
                     </Suspense>
                 </Container>
             </EbookPageStyle>
