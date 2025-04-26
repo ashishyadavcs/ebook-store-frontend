@@ -7,6 +7,7 @@ export const HomeStyles = styled.section`
         margin: 40px auto;
         font-size: clamp(2rem, 8vw, 4rem);
         line-height: 1.3;
+        filter: drop-shadow(2px 1px 1px black);
         ${media.sm} {
             margin: 20px 30px 20px;
         }
