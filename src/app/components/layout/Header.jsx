@@ -27,6 +27,7 @@ const Header = () => {
             <Container>
                 <nav className="menu">
                     <Link href="/" className="sitename">
+                        <Image alt="logo" height={40} width={40} src="/images/logo.svg" />
                         {process.env.NEXT_PUBLIC_APP_NAME}
                     </Link>
                     <ul className="links" role="menubar">

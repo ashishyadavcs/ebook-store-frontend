@@ -7,7 +7,9 @@ import AddTocart from "@/components/ebook/AddTocart";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { constant } from "@/config/constant";
+import { delay } from "@/utils/common";
 const Ebookdetail = async ({ id }) => {
+    // await delay(200000)
     let purhcasedEbooks, ebook, paid;
     try {
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);

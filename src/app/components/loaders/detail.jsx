@@ -36,7 +36,7 @@ const ShimmerEffect = styled.div`
 `;
 
 const SkeletonImage = styled(SkeletonBox)`
-    width: 200px;
+    width: 335px;
     height: 300px;
     ${media.sm} {
         width: 100%;
@@ -49,13 +49,13 @@ const SkeletonDetails = styled.div`
 
 const SkeletonTitle = styled(SkeletonBox)`
     width: 60%;
-    height: 20px;
+    height: 30px;
     margin-bottom: 10px;
 `;
 
 const SkeletonText = styled(SkeletonBox)`
     width: 90%;
-    height: 15px;
+    height: 30px;
     margin-bottom: 8px;
 `;
 
@@ -67,7 +67,7 @@ const SkeletonButton = styled(SkeletonBox)`
 
 const SkeletonRating = styled(SkeletonBox)`
     width: 180px;
-    height: 20px;
+    height: 30px;
     margin-top: 15px;
 `;
 

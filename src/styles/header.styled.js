@@ -11,7 +11,12 @@ const StyledHeader = styled.header`
         padding: 10px;
     }
     .sitename {
+        display: flex;
+        align-items: center;
         font-weight: 800;
+        gap: 10px;
+        color: var(--redpink);
+        padding: 0;
     }
     nav {
         display: flex;
