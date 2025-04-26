@@ -31,6 +31,7 @@ const Googlelogin = ({ title = "Login with" }) => {
             router.refresh();
             const isAdmin = result.user.role == "admin";
             router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
+            toastify.info("Refresh page if not redirecting automatically");
         }
     };
     return (
