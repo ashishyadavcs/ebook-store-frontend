@@ -12,6 +12,7 @@ const FeaturedBook = styled.section`
     }
     .container {
         display: flex;
+        justify-content: space-around;
         flex-wrap: wrap;
         align-items: center;
         padding: 20px 0;

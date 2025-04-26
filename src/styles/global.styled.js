@@ -146,9 +146,8 @@ ${css`
         text-decoration: none;
     }
     .gradient-text {
-        width: max-content;
         color: transparent;
-        background: linear-gradient(90deg, var(--aqua), var(--hotyellow), var(--redpink));
+        background: linear-gradient(90deg, var(--aqua), #ba23fa, var(--redpink));
         background-clip: text;
         -webkit-background-clip: text;
     }

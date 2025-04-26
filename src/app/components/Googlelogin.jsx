@@ -12,6 +12,7 @@ const Googlelogin = ({ title = "Login with" }) => {
     const searchParams = useSearchParams();
     const dispatch = useAppDispatch();
     const handleSuccess = async res => {
+        localStorage.setItem("useGoogleSignin", true);
         const token = res.credential;
         const response = await fetch(`/api/auth/google`, {
             method: "POST",
@@ -37,7 +38,7 @@ const Googlelogin = ({ title = "Login with" }) => {
             <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
                 <GoogleLogin
                     useOneTap
-                    auto_select
+                    {...(localStorage.getItem("useGoogleSignin") && { auto_select: true })}
                     onSuccess={res => handleSuccess(res)}
                     onError={() => {
                         toastify.error("login failed");

@@ -8,7 +8,7 @@ export default async function Home({ searchParams }) {
     return (
         <HomeStyles>
             <Container>
-                <h1>Endless Stories, One Click Away!</h1>
+                <h1 className="gradient-text">Endless Stories, One Click Away!</h1>
                 {/* <Search /> */}
             </Container>
 
@@ -29,7 +29,7 @@ export default async function Home({ searchParams }) {
                             shop now and save big!
                         </p>
                     </div>
-                    <img src="/images/feature-book.svg" />
+                    <img loading="lazy" src="/images/feature-book.svg" />
                 </Container>
             </FeaturedBook>
         </HomeStyles>
