@@ -3,7 +3,7 @@ import styled from "styled-components";
 import config from "../../config/index.js";
 import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
-import { useRouter, useSearchParams } from "next/navigation.js";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
 
