@@ -17,6 +17,9 @@ const ItemListStyles = styled.div`
         height: 150px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         border-radius: 8px;
+        img {
+            object-position: center;
+        }
         a {
             width: 200px;
             height: 100%;
