@@ -8,17 +8,20 @@ import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { constant } from "@/config/constant";
 import { delay } from "@/utils/common";
+import { notFound } from "next/navigation";
 const Ebookdetail = async ({ id }) => {
     // await delay(200000)
     let purhcasedEbooks, ebook, paid;
     try {
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
         ebook = ebookResult?.data[0];
-
+        console.log(ebook);
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
-    } catch (err) {}
+    } catch (err) {
+        return notFound();
+    }
     const {
         title = "",
         coverImageUrl = constant.default_ebook,
