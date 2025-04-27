@@ -11,7 +11,7 @@ const Page = async () => {
     let data = [];
     try {
         const result = await useServerSideFetch("/api/users");
-        data = result.data;
+        data = result.data || [];
     } catch (err) {}
     return (
         <>

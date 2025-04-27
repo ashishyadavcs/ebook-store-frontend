@@ -2,7 +2,6 @@
 import SearchStyle from "@/styles/search.styled";
 import { throttling } from "@/utils/common";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const Search = ({ searchQuery }) => {
     const router = useRouter();
