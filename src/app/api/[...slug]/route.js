@@ -48,7 +48,7 @@ async function sendRequest(req, params, accesstoken) {
             throw Error(res.statusText);
         }
         const result = await res.json();
-        return NextResponse.json(result, { headers: res.headers });
+        return NextResponse.json(result);
     } catch (err) {
         return NextResponse.json(
             {
