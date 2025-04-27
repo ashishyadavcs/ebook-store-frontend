@@ -4,7 +4,14 @@ import { constant } from "@/config/constant";
 import Image from "next/image";
 import { media } from "@/config/media";
 const Ebook = ({ data, className, preload }) => {
-    const { title, author, coverImageUrl = constant.image, averageRating, totalReviews } = data;
+    const {
+        title,
+        author,
+        coverImageUrl = constant.image,
+        averageRating,
+        totalReviews,
+        price = 60,
+    } = data;
 
     return (
         <Ebookstyle className={`ebook ${className}`}>
@@ -21,7 +28,7 @@ const Ebook = ({ data, className, preload }) => {
                 <p className="description">{author}</p>
 
                 <p>
-                    <del>&#8377;100</del> &#8377;60 <strong className="off">40% off</strong>
+                    <del>&#8377;100</del> &#8377; {price} <strong className="off">40% off</strong>
                 </p>
                 {totalReviews > 0 && (
                     <p className="rating">

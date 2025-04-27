@@ -15,7 +15,9 @@ const Ebookdetail = async ({ id }) => {
     try {
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
         ebook = ebookResult?.data[0];
-        console.log(ebook);
+        if (!ebook) {
+            return notFound();
+        }
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
@@ -28,7 +30,7 @@ const Ebookdetail = async ({ id }) => {
         description = "",
         author = "",
         averageRating = "",
-        price = "",
+        price = 20,
         reviews = [],
         rating = 0,
         totalReviews = 0,
@@ -63,8 +65,9 @@ const Ebookdetail = async ({ id }) => {
                                     {averageRating}
                                 </div>
                             )}
+                            <br />
                             <strong className={`price ${paid ? "paid" : ""}`}>
-                                &#8377;{price ? price : 0} {paid && "paid"}
+                                {paid ? "purchased" : <>&#8377;{price}</>}
                             </strong>
                         </div>
                         <div className="btn-group">
@@ -83,7 +86,7 @@ const Ebookdetail = async ({ id }) => {
                         </div>
                     </div>
 
-                    {paid && <Review ebookid={id} size={30} />}
+                    {paid && !averageRating > 0 && <Review ebookid={id} size={30} />}
                 </div>
             </Container>
             <Container className="ebook-review">

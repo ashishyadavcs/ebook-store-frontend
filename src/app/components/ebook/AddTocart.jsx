@@ -18,8 +18,8 @@ const AddTocart = ({ ebook }) => {
                 toastify.success("added to cart");
             }}
         >
-            <FaCartPlus size={20} />
-            {existingItem ? "added to cart" : "+ add to cart"}
+            <FaCartPlus size={18} />
+            {existingItem ? "added into cart" : "+ add to cart"}
         </Button>
     );
 };
