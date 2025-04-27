@@ -13,7 +13,7 @@ const AdminLayout = ({ children }) => {
             <Sidebar>
                 <ul>
                     <li>
-                        <Link href={"/admin"}>
+                        <Link href={"/"}>
                             <IoHomeOutline size={size} />
                             <span>Home</span>
                         </Link>

@@ -25,7 +25,6 @@ const DeleteEbook = ({ id }) => {
             }
         } catch (err) {
             setloading(false);
-            console.log(err);
         }
     };
     return (

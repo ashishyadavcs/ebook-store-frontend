@@ -3,7 +3,7 @@ import { media } from "@/config/media";
 import styled from "styled-components";
 const FeaturedBook = styled.section`
     margin: 60px 0 0;
-    background: linear-gradient(0deg, #000000 5%, var(--lightblue));
+    background: linear-gradient(0deg, var(--redpink) 5%, var(--lightblue));
     h2 {
         font-size: clamp(2rem, 8vw, 4rem);
     }

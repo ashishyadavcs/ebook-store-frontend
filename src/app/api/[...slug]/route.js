@@ -39,17 +39,17 @@ async function sendRequest(req, params, accesstoken) {
             options.body = formData;
         }
     }
-    const { slug } = await params;
+    const { slug, query } = await params;
 
     try {
-        const res = await fetch(`${_config.BASE_URL}/${slug.join("/")}`, options);
+        const reqURL = `${_config.BASE_URL}/${req.url.split("/").slice(4).join("/")}`;
+        const res = await fetch(reqURL, options);
         if (!res.ok) {
             throw Error(res.statusText);
         }
         const result = await res.json();
-        return NextResponse.json(result);
+        return NextResponse.json(result, { headers: res.headers });
     } catch (err) {
-        console.log(err);
         return NextResponse.json(
             {
                 success: false,
@@ -77,7 +77,7 @@ async function authMiddleware(req, params) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: err.message,
+                    message: "not authorized",
                 },
                 { status: 401 }
             );

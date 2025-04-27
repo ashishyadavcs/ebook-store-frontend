@@ -9,7 +9,6 @@ import Upload from "@/components/ui/upload";
 import { useForm } from "@/hooks/useForm";
 const UpdateEbook = ({ ebook }) => {
     const { handleChange, values } = useForm();
-    console.log(values);
     const [loading, setloading] = useState(false);
     const addEbook = async e => {
         e.preventDefault();
