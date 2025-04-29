@@ -21,9 +21,7 @@ const Ebookdetail = async ({ id }) => {
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
-    } catch (err) {
-        return notFound();
-    }
+    } catch (err) {}
     const {
         title = "",
         coverImageUrl = constant.default_ebook,
