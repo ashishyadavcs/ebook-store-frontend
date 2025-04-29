@@ -61,16 +61,6 @@ const Profile = () => {
                         placeholder="Name"
                     />
                 </label>
-                <label htmlFor="email">
-                    <span>Email</span>
-                    <input
-                        onChange={handleChange}
-                        defaultValue={email}
-                        name="email"
-                        type="text"
-                        placeholder="Email"
-                    />
-                </label>
                 <label htmlFor="mobile">
                     <span>Mobile</span>
                     <input
