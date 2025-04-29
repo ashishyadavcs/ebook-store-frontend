@@ -23,7 +23,7 @@ const Page = async () => {
                 </thead>
                 <tbody>
                     {data.map((payment, i) => (
-                        <tr key={i}>
+                        <tr key={payment._id}>
                             <td style={{ maxWidth: "100px", overflow: "hidden" }}>{payment._id}</td>
                             <td>{payment.orderId}</td>
                             <td>&#8377;{payment.amount}</td>

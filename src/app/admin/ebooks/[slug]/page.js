@@ -1,11 +1,14 @@
 import Back from "@/components/Back";
 import UpdateEbook from "@/components/ebook/UpdateEbook";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
+import { notFound } from "next/navigation";
 
 const Page = async ({ params }) => {
     const { slug: id } = await params;
     const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
-    console.log(ebookResult);
+    if (ebookResult?.status !== 200) {
+        return notFound();
+    }
     const ebook = ebookResult?.data[0];
     return (
         <>

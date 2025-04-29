@@ -28,7 +28,7 @@ const Page = async () => {
                     </thead>
                     <tbody>
                         {data.map((user, i) => (
-                            <tr key={i}>
+                            <tr key={user._id}>
                                 <td>
                                     <Link href={`/${user._id}`}>
                                         <Image

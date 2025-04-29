@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import Container from "./components/ui/Container";
 import FeaturedBook from "@/styles/featuredbook.styled";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
+export const dynamic = "force-dynamic";
 export default async function Home({ searchParams }) {
     let ebooks = [];
     const params = await searchParams;
@@ -20,9 +21,7 @@ export default async function Home({ searchParams }) {
             },
         });
         ebooks = result.data?.reverse() || [];
-    } catch (err) {
-        console.log(err);
-    }
+    } catch (err) {}
 
     return (
         <HomeStyles>

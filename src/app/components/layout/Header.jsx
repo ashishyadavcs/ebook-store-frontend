@@ -21,6 +21,13 @@ const Header = () => {
             if (e.target == document.querySelector(".user")) return;
             document.querySelector("aside.sidebar")?.classList.remove("active");
         };
+        window.onscroll = () => {
+            document.querySelector("aside.sidebar")?.classList.remove("active");
+        };
+        return () => {
+            document.body.onclick = null;
+            window.onscroll = null;
+        };
     }, []);
     return (
         <StyledHeader>

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import config from "@/config/index.js";
+export const dynamic = "force-dynamic";
 export async function POST(request, { params }) {
     const body = await request.text();
     const _params = await params;

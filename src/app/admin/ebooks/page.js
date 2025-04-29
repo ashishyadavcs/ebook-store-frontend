@@ -30,7 +30,7 @@ const Page = async () => {
                 <Suspense fallback="loading...">
                     <tbody>
                         {data.map((ebook, i) => (
-                            <tr key={i}>
+                            <tr key={ebook._id}>
                                 <td>{i + 1}</td>
                                 <td>
                                     <Link href={`/${ebook._id}`}>

@@ -9,7 +9,7 @@ export default function Custom404() {
         <Suspense>
             <Pagestyle>
                 <Container>
-                    <h1>URL not correct</h1>
+                    <h1>Incorrect URL</h1>
                     <Button href="/" type="primary">
                         Go to Home
                     </Button>

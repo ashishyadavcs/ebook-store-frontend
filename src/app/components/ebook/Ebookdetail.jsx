@@ -14,14 +14,16 @@ const Ebookdetail = async ({ id }) => {
     let purhcasedEbooks, ebook, paid;
     try {
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
-        ebook = ebookResult?.data[0];
-        if (!ebook) {
+        if (!ebookResult.success) {
             return notFound();
         }
+        ebook = ebookResult?.data[0];
         const userResult = await useServerSideFetch("/api/user");
         purhcasedEbooks = userResult.data.ebooks;
         paid = purhcasedEbooks.find(el => el._id == id);
-    } catch (err) {}
+    } catch (err) {
+        return notFound();
+    }
     const {
         title = "",
         coverImageUrl = constant.default_ebook,
