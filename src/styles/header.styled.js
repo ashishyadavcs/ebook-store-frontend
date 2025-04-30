@@ -7,9 +7,6 @@ const StyledHeader = styled.header`
     z-index: 10;
     top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    a {
-        padding: 10px;
-    }
     .sitename {
         display: flex;
         align-items: center;
@@ -22,6 +19,7 @@ const StyledHeader = styled.header`
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 10px 0;
         a {
             color: inherit;
         }
