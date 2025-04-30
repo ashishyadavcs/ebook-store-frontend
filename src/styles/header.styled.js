@@ -13,13 +13,14 @@ const StyledHeader = styled.header`
         font-weight: 800;
         gap: 10px;
         color: var(--redpink);
-        padding: 0;
+    }
+    a {
+        padding: 10px;
     }
     nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 0;
         a {
             color: inherit;
         }
@@ -65,6 +66,10 @@ const StyledHeader = styled.header`
                 background: #02b47c;
             }
         }
+    }
+    .hide-cart {
+        opacity: 0;
+        pointer-events: none;
     }
     ${media.sm} {
         &::before {
