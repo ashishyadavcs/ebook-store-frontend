@@ -147,6 +147,7 @@ const Payment = () => {
             setLoading(false);
         } catch (err) {
             setLoading(false);
+            toastify.info("something went wrong at payment gateway");
         }
     };
     return (
