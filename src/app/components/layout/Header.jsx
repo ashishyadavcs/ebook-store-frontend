@@ -38,15 +38,17 @@ const Header = () => {
                         {process.env.NEXT_PUBLIC_APP_NAME}
                     </Link>
                     <ul className="links" role="menubar">
-                        <li>
-                            <Link
-                                className={`cart ${cart.length == 0 ? "disabled" : ""}`}
-                                href="/viewcart"
-                            >
-                                <FaCartPlus size={25} />
-                                <span>{cart.length}</span>
-                            </Link>
-                        </li>
+                        {cart.length > 0 && (
+                            <li>
+                                <Link
+                                    className={`cart ${cart.length == 0 ? "disabled" : ""}`}
+                                    href="/viewcart"
+                                >
+                                    <FaCartPlus size={25} />
+                                    <span>{cart.length}</span>
+                                </Link>
+                            </li>
+                        )}
 
                         <li>
                             {user ? (
