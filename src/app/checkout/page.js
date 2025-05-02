@@ -13,6 +13,7 @@ import { calculateCart } from "@/utils/cart.js";
 import { emptyCart } from "@/state/cart.js";
 import SuccessPopUp from "@/components/Successpopup.jsx";
 import { colors } from "@/config/constant.js";
+import { revalidatePathAction } from "../actions/common.js";
 
 const Payment = () => {
     const params = useSearchParams();
@@ -119,6 +120,7 @@ const Payment = () => {
                         setsuccess(true);
                         setTimeout(() => {
                             setsuccess(false);
+                            revalidatePathAction("/dashboard/ebooks");
                             redirect("/dashboard/ebooks");
                         }, 2000);
                         dispatch(emptyCart(null));

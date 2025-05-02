@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 const Page = async ({ params }) => {
     const { slug: id } = await params;
     const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
-    if (ebookResult?.status !== 200) {
+    if (!ebookResult.success) {
         return notFound();
     }
     const ebook = ebookResult?.data[0];

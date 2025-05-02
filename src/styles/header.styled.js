@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
         font-weight: 800;
         gap: 10px;
         color: var(--redpink);
+        padding: 10px 0;
     }
     a {
         padding: 10px;

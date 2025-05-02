@@ -16,8 +16,8 @@ const Logout = ({ size = 15 }) => {
             loading={loading}
             onClick={async e => {
                 setLoading(true);
-                dispatch(removeuser(null));
                 await logout();
+                dispatch(removeuser(null));
                 redirect("/login");
             }}
             style={{ background: "#ffff", justifyContent: "flex-start" }}

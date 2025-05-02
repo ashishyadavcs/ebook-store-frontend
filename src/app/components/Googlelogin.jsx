@@ -6,6 +6,7 @@ import { toastify } from "./Toast.jsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
+import { revalidatePathAction } from "../actions/common.js";
 
 const Googlelogin = ({ title = "Login with" }) => {
     const router = useRouter();
@@ -29,6 +30,7 @@ const Googlelogin = ({ title = "Login with" }) => {
 
         if (result.success) {
             router.refresh();
+            revalidatePathAction("/viewcart");
             const isAdmin = result.user.role == "admin";
             router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
             toastify.info("Refresh page if not redirecting automatically");

@@ -7,6 +7,8 @@ import MyForm from "@/components/ui/Form";
 import { useState } from "react";
 import Upload from "@/components/ui/upload";
 import { useForm } from "@/hooks/useForm";
+import { revalidatePathAction } from "../../actions/common";
+
 const UpdateEbook = ({ ebook }) => {
     const { handleChange, values } = useForm();
     const [loading, setloading] = useState(false);
@@ -32,7 +34,7 @@ const UpdateEbook = ({ ebook }) => {
 
         await res.json();
         setloading(false);
-
+        revalidatePathAction("/admin/ebooks");
         toastify.success("ebook added successfull");
     };
     return (
