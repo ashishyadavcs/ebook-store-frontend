@@ -9,6 +9,10 @@ const Config = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    useEffect(() => {
         const handleStart = () => {
             nProgress.start();
         };
