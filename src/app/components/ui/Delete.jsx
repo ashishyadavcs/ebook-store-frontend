@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import Button from "../ui/Button";
+import Button from "./Button";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { toastify } from "../Toast";
 
-const DeleteEbook = ({ id }) => {
+const DeleteItem = ({ url }) => {
     const [loading, setloading] = useState(false);
     const router = useRouter();
-    const deleteEbook = async id => {
+    const deleteItem = async () => {
         try {
             setloading(true);
-            const res = await fetch(`/api/ebooks/${id}`, {
+            const res = await fetch(url, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const DeleteEbook = ({ id }) => {
             loading={loading}
             replace={true}
             onClick={async e => {
-                await deleteEbook(id);
+                await deleteItem();
             }}
         >
             <MdDelete />
@@ -40,4 +40,4 @@ const DeleteEbook = ({ id }) => {
     );
 };
 
-export default DeleteEbook;
+export default DeleteItem;

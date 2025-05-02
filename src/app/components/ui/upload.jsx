@@ -3,10 +3,21 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaImage } from "react-icons/fa6";
 import styled from "styled-components";
-const Upload = ({ imageURL = false, title, name, required = false, onchange }) => {
+const Upload = ({
+    imageURL = false,
+    title,
+    name,
+    required = false,
+    onchange,
+    readonly = false,
+}) => {
     const [image, setImage] = useState(imageURL);
     return (
-        <UploadStyle htmlFor={name} className="upload">
+        <UploadStyle
+            htmlFor={name}
+            className="upload"
+            style={{ pointerEvents: readonly ? "none" : "all" }}
+        >
             {image ? (
                 <Image alt="profile image" src={image} width={90} height={100} />
             ) : (

@@ -1,3 +1,4 @@
+"use client";
 import FormStyle from "@/styles/form.styled";
 const MyForm = props => {
     return (

@@ -5,8 +5,8 @@ import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
-import DeleteEbook from "@/components/ebook/DeleteEbook";
 import { constant } from "@/config/constant";
+import DeleteItem from "@/components/ui/Delete";
 const Page = async () => {
     let data = [];
     try {
@@ -51,7 +51,7 @@ const Page = async () => {
                                         <Button href={`/admin/ebooks/${ebook._id}`}>
                                             <FaEdit />
                                         </Button>
-                                        <DeleteEbook id={ebook._id} />
+                                        <DeleteItem url={`/api/ebooks/${ebook._id}`} />
                                     </div>
                                 </td>
                             </tr>

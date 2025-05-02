@@ -5,8 +5,8 @@ import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
-import DeleteEbook from "@/components/ebook/DeleteEbook";
 import { constant } from "@/config/constant";
+import DeleteItem from "@/components/ui/Delete";
 const Page = async () => {
     let data = [];
     try {
@@ -30,7 +30,7 @@ const Page = async () => {
                         {data.map((user, i) => (
                             <tr key={user._id}>
                                 <td>
-                                    <Link href={`/${user._id}`}>
+                                    <Link href={`/admin/users/${user._id}`}>
                                         <Image
                                             src={user.image || constant.image}
                                             height={30}
@@ -47,7 +47,7 @@ const Page = async () => {
                                         <Button href={`/admin/users/${user._id}`}>
                                             <FaEdit />
                                         </Button>
-                                        <DeleteEbook id={user._id} />
+                                        <DeleteItem url={`/api/user/${user._id}`} />
                                     </div>
                                 </td>
                             </tr>
