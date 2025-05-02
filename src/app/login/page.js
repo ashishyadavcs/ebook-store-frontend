@@ -53,7 +53,13 @@ const Page = () => {
     return (
         <Container>
             <AuthStyle>
-                <Image height={600} width={400} alt="ebookstore" src="/images/book-cover.svg" />
+                <Image
+                    height={600}
+                    width={400}
+                    alt="ebookstore"
+                    priority
+                    src="/images/book-cover.svg"
+                />
                 <MyForm onSubmit={loginUser}>
                     <h2 className="title">Login</h2>
                     <label htmlFor="email">
