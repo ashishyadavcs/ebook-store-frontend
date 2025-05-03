@@ -6,15 +6,7 @@ export const company = [
         text: "home",
     },
     {
-        link: "/about",
-        text: "about us",
-    },
-    {
-        link: "/",
-        text: "books",
-    },
-    {
-        link: "/",
+        link: "/contact-us",
         text: "contact us",
     },
 ];
