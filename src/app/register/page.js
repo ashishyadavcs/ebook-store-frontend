@@ -49,7 +49,7 @@ const Page = () => {
                     width={400}
                     priority
                     alt="ebookstore"
-                    src="/images/book-cover.svg"
+                    src="/images/book-cover.png"
                 />
                 <MyForm onSubmit={registerUser}>
                     <h2 className="title">Sign Up</h2>
