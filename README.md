@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 Ebook Store Frontend
 
-## Getting Started
+A modern, SEO-optimized frontend for an eBook store built using **Next.js** and **React**. This application enables users to browse, search, and preview eBooks with a clean and responsive interface.
 
-First, run the development server:
+🔗 **Live Demo**: [ebook-store-navy.vercel.app](https://ebook-store-navy.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+- 🔍 Search for books by title
+- 📘 View detailed book pages
+- 🎯 Responsive design for all screen sizes
+- ⚡ Fast performance with Next.js static generation and routing
+- 🔒 Protected routes for authenticated users
+- 🎨 Clean, semantic HTML/CSS layout
+- 🧠 SEO optimized for search engine visibility
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Library**: [React](https://reactjs.org/)
+- **Routing & SSR**: Next.js App Router
+- **State Management**: React Context API (if applicable)
+- **Styling**: Vanilla CSS / SCSS
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
+## 📂 Project Structure
+
+```
+├── public/             # Static assets (images, etc.)
+├── src/
+│   ├── components/     # Reusable components (Navbar, BookCard, etc.)
+│   ├── pages/          # Next.js pages
+│   ├── styles/         # CSS/SCSS files
+│   └── utils/          # Utility functions or services
+├── .gitignore
+├── README.md
+├── next.config.js
+├── package.json
+└── vercel.json         # (if deployed to Vercel)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚙️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js (v14+)
+- npm or yarn
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone https://github.com/ashishyadavcs/ebook-store-frontend.git
+cd ebook-store-frontend
+npm install    # or yarn install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Run the Development Server
 
-## Deploy on Vercel
+```bash
+npm run dev    # or yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📦 Deployment
+
+This project is ready to deploy on [Vercel](https://vercel.com/):
+
+```bash
+npm install -g vercel
+vercel
+```
+
+Follow the prompts to complete the deployment.
+
+---
+
+## 🧑‍💻 Author
+
+- **Ashish Yadav**
+  - [LinkedIn](https://linkedin.com/in/ashishyadavcs)
+  - [GitHub](https://github.com/ashishyadavcs)
+  - 📫 ashishyadav.works@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
