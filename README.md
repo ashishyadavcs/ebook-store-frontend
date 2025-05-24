@@ -23,8 +23,8 @@ A modern, SEO-optimized frontend for an eBook store built using **Next.js** and 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Library**: [React](https://reactjs.org/)
 - **Routing & SSR**: Next.js App Router
-- **State Management**: React Context API (if applicable)
-- **Styling**: Vanilla CSS / SCSS
+- **State Management**: Redux Toolkit
+- **Styling**: Vanilla CSS , Styled components
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 
 ---
