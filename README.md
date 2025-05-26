@@ -42,7 +42,7 @@ A modern, SEO-optimized frontend for an eBook store built using **Next.js** and 
 ├── README.md
 ├── next.config.js
 ├── package.json
-└── vercel.json         # (if deployed to Vercel)
+└── vercel.json        
 ```
 
 ---
