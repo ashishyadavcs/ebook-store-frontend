@@ -7,8 +7,8 @@ export async function middleware(request) {
     const cookieStore = await cookies();
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    const role = cookieStore.get("userrole")?.value;
 
+    // Allow public and auth routes
     if (
         url.pathname.startsWith("/api/auth") ||
         url.pathname.startsWith("/api/cookie") ||
@@ -19,12 +19,29 @@ export async function middleware(request) {
 
     if (!refreshtoken) {
         const loginurl = new URL("/login", request.url);
-        loginurl.searchParams.set("from", request.nextUrl.pathname);
+        loginurl.searchParams.set("from", url.pathname);
         return NextResponse.redirect(loginurl);
     }
-    if (role !== "admin" && url.pathname.includes("admin")) {
-        const dashboardURL = new URL("/dashboard", request.url);
-        return NextResponse.redirect(dashboardURL);
+
+    if (url.pathname.startsWith("/admin")) {
+        try {
+            const res = await fetch(`${_config.APP_URL}/api/user`, {
+                headers: {
+                    Authorization: `Bearer ${accesstoken}`,
+                    Cookie: cookieStore.toString(),
+                },
+            });
+            if (!res.ok) throw new Error("User fetch failed");
+            const data = await res.json();
+            if (!data?.data?.user || data.data.user.role !== "admin") {
+                const dashboardURL = new URL("/dashboard", request.url);
+                return NextResponse.redirect(dashboardURL);
+            }
+        } catch {
+            const loginurl = new URL("/login", request.url);
+            loginurl.searchParams.set("from", url.pathname);
+            return NextResponse.redirect(loginurl);
+        }
     }
 
     return NextResponse.next();
