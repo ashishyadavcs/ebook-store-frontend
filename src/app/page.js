@@ -1,10 +1,15 @@
 import { HomeStyles } from "@/styles/home.styled";
-import EbookList from "@/components/ebook/EbookList";
-import Search from "./components/Search";
+import dynamicImport from "next/dynamic";
 import Container from "./components/ui/Container";
-import FeaturedBook from "@/styles/featuredbook.styled";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 export const dynamic = "force-dynamic";
+const Search = dynamicImport(() => import("./components/Search"), {
+    loading: () => <div style={{ minHeight: 40 }} />,
+});
+const EbookList = dynamicImport(() => import("@/components/ebook/EbookList"), {
+    loading: () => <div style={{ minHeight: 300 }} />,
+});
+import FeaturedBook from "@/styles/featuredbook.styled";
 export default async function Home({ searchParams }) {
     let ebooks = [];
     const params = await searchParams;
