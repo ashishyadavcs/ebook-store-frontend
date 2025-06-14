@@ -5,6 +5,17 @@ import EbookPageStyle from "@/styles/ebookpage.styled";
 import { Suspense } from "react";
 import Details from "@/components/loaders/detail";
 
+// Use a direct server-side fetch for SEO metadata
+export async function generateMetadata({ params }) {
+    const { slug: ebookid } = params;
+
+    return {
+        title: `Ebook Details - ${ebookid} | Ebook Store`,
+        description: `Read details, reviews, and purchase options for the ebook "${ebookid}" at Ebook Store.`,
+        keywords: ["ebook", "book details", "buy ebook", "read online", "ebook store"],
+    };
+}
+
 const Page = async ({ params }) => {
     const { slug: ebookid } = await params;
     return (
