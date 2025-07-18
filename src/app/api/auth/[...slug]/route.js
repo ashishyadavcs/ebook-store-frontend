@@ -13,6 +13,9 @@ export async function POST(request, { params }) {
         body: body && JSON.stringify(JSON.parse(body)),
     });
     const result = await res.json();
-    const response = NextResponse.json(result, { headers: res.headers });
+    const response = NextResponse.json(result, {
+        status: res.status,
+        headers: Object.fromEntries(res.headers.entries()),
+    });
     return response;
 }
