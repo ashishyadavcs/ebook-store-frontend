@@ -22,7 +22,12 @@ const Footer = () => {
                     <ul>
                         {company.map((a, i) => (
                             <li key={i}>
-                                <Link title={a.text} href={a.link}>
+                                <Link
+                                    title={a.text}
+                                    href={a.link}
+                                    target={a.target}
+                                    rel={a.target && "noopener noreferrer"}
+                                >
                                     {a.text}
                                 </Link>
                             </li>
