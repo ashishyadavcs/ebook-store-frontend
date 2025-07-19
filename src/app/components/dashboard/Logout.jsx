@@ -1,25 +1,33 @@
 "use client";
 import { MdLogout } from "react-icons/md";
-import { logout } from "../../actions/logout";
 import { useAppDispatch } from "@/state/hooks";
 import { removeuser } from "@/state/userslice";
 import { redirect } from "next/navigation";
 import Button from "../ui/Button";
 import { useState } from "react";
+import { toastify } from "../Toast";
 
-const Logout = ({ size = 15 }) => {
+const Logout = ({ size = 18 }) => {
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
+    const logoutOutUser = async () => {
+        setLoading(true);
+        await fetch("/api/auth/logout", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        dispatch(removeuser(null));
+        toastify.success("logged out successfully");
+        redirect("/login");
+    };
     return (
         <Button
             href="#"
             loading={loading}
-            onClick={async e => {
-                setLoading(true);
-                await logout();
-                dispatch(removeuser(null));
-                redirect("/login");
-            }}
+            onClick={logoutOutUser}
             style={{ background: "#ffff", justifyContent: "flex-start" }}
         >
             <MdLogout size={size} /> logout

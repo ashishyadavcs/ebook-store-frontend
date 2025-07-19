@@ -11,6 +11,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { useAppDispatch } from "@/state/hooks";
 import { addUser } from "@/state/userslice";
+import { getDeviceId } from "@/utils/common";
 const Page = () => {
     const [loading, setloading] = useState(false);
     const searchParams = useSearchParams();
@@ -21,11 +22,13 @@ const Page = () => {
         try {
             setloading(true);
             const { email, password } = e.target;
+            const deviceId = getDeviceId();
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
+                    "x-device-id": deviceId,
                 },
                 body: JSON.stringify({
                     email: email.value,

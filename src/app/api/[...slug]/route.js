@@ -63,11 +63,12 @@ async function authMiddleware(req, params) {
     const cookieStore = await cookies();
     let accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
+    const incomingHeaders = Object.fromEntries(req.headers.entries());
     if (!accesstoken && refreshtoken) {
         const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                ...incomingHeaders,
             },
             body: JSON.stringify({
                 token: refreshtoken,
@@ -77,9 +78,9 @@ async function authMiddleware(req, params) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: "not authorized",
+                    message: result.statusText || "Unauthorized",
                 },
-                { status: 401 }
+                { status: result.status || 401 }
             );
         }
         const data = await result.json();
