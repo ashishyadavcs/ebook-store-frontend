@@ -48,7 +48,10 @@ async function sendRequest(req, params, accesstoken) {
             throw Error(res.statusText);
         }
         const result = await res.json();
-        return NextResponse.json(result);
+        return NextResponse.json(result, {
+            headers: Object.fromEntries(res.headers.entries()),
+            status: res.status,
+        });
     } catch (err) {
         return NextResponse.json(
             {
@@ -63,12 +66,12 @@ async function authMiddleware(req, params) {
     const cookieStore = await cookies();
     let accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    const incomingHeaders = Object.fromEntries(req.headers.entries());
     if (!accesstoken && refreshtoken) {
         const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
             method: "POST",
+            credentials: "include",
             headers: {
-                ...incomingHeaders,
+                "content-type": "application/json",
             },
             body: JSON.stringify({
                 token: refreshtoken,
