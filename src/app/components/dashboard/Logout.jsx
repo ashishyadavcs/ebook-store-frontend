@@ -12,13 +12,18 @@ const Logout = ({ size = 18 }) => {
     const [loading, setLoading] = useState(false);
     const logoutOutUser = async () => {
         setLoading(true);
-        await fetch("/api/auth/logout", {
+        const res = await fetch("/api/auth/logout", {
             method: "POST",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
         });
+        setLoading(false);
+        if (!res.ok) {
+            toastify.error("logout failed");
+            return;
+        }
         dispatch(removeuser(null));
         toastify.success("logged out successfully");
         redirect("/login");

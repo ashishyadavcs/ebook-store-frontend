@@ -15,9 +15,21 @@ export async function DELETE(req, { params }) {
     return authMiddleware(req, params);
 }
 
-async function sendRequest(req, params, accesstoken) {
+async function authMiddleware(req, params) {
+    const cookieStore = await cookies();
+    let accesstoken = cookieStore.get("accesstoken")?.value;
+    const refreshtoken = cookieStore.get("refreshtoken")?.value;
+    if ((!refreshtoken && !accesstoken) || !refreshtoken) {
+        return NextResponse.json(
+            {
+                success: false,
+                redirect: "/login",
+                message: "session expired, please login again",
+            },
+            { status: 401 }
+        );
+    }
     const method = req.method;
-
     const options = {
         method,
         credentials: "include",
@@ -26,11 +38,12 @@ async function sendRequest(req, params, accesstoken) {
             ...(req.headers.get("Content-Type")?.includes("json") && {
                 "Content-Type": req.headers.get("Content-Type"),
             }),
-            //no content-type required for formdata
+            //no content-type required for formdata,
+            Cookie: req.headers.get("cookie"),
         },
     };
     if (method !== "GET") {
-        if (req.headers.get("Content-Type").includes("json")) {
+        if (req.headers.get("Content-Type")?.includes("json")) {
             try {
                 options.body = JSON.stringify(await req.json());
             } catch (err) {}
@@ -39,7 +52,6 @@ async function sendRequest(req, params, accesstoken) {
             options.body = formData;
         }
     }
-    const { slug, query } = await params;
 
     try {
         const reqURL = `${_config.BASE_URL}/${req.url.split("/").slice(4).join("/")}`;
@@ -48,10 +60,17 @@ async function sendRequest(req, params, accesstoken) {
             throw Error(res.statusText);
         }
         const result = await res.json();
-        return NextResponse.json(result, {
-            headers: Object.fromEntries(res.headers.entries()),
-            status: res.status,
-        });
+        const response = NextResponse.json(result);
+        // Forward response headers
+        const setCookieHeaders = res.headers.get("set-cookie");
+        if (setCookieHeaders) {
+            // Handle multiple cookies if they exist
+            const cookies = Array.isArray(setCookieHeaders) ? setCookieHeaders : [setCookieHeaders];
+            cookies.forEach(cookie => {
+                response.headers.append("Set-Cookie", cookie);
+            });
+        }
+        return response;
     } catch (err) {
         return NextResponse.json(
             {
@@ -60,37 +79,5 @@ async function sendRequest(req, params, accesstoken) {
             },
             { status: 500 }
         );
-    }
-}
-async function authMiddleware(req, params) {
-    const cookieStore = await cookies();
-    let accesstoken = cookieStore.get("accesstoken")?.value;
-    const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    if (!accesstoken && refreshtoken) {
-        const result = await fetch(`${_config.BASE_URL}/refreshtoken`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                token: refreshtoken,
-            }),
-        });
-        if (!result.ok) {
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: result.statusText || "Unauthorized",
-                },
-                { status: result.status || 401 }
-            );
-        }
-        const data = await result.json();
-
-        accesstoken = data.accesstoken;
-        return sendRequest(req, params, accesstoken);
-    } else {
-        return sendRequest(req, params, accesstoken);
     }
 }
