@@ -7,7 +7,7 @@ import Details from "@/components/loaders/detail";
 
 // Use a direct server-side fetch for SEO metadata
 export async function generateMetadata({ params }) {
-    const { slug: ebookid } = params;
+    const { slug: ebookid } = await params;
 
     return {
         title: `Ebook Details - ${ebookid} | Ebook Store`,

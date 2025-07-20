@@ -5,6 +5,7 @@ import { FaBook } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import Sidebar from "@/components/layout/Sidebar";
 import Logout from "@/components/dashboard/Logout";
+import { VscVmActive } from "react-icons/vsc";
 import { IoHome } from "react-icons/io5";
 
 const Layout = async ({ children }) => {
@@ -24,6 +25,11 @@ const Layout = async ({ children }) => {
             url: "/ebooks",
             icon: <FaBook />,
         },
+        {
+            text: "Logged-in Devices",
+            url: "/sessions",
+            icon: <VscVmActive color="green" size={20} />,
+        },
     ];
     return (
         <DashboardStyled className="dashboard-layout">
@@ -31,7 +37,7 @@ const Layout = async ({ children }) => {
                 <ul>
                     {links.map((link, i) => (
                         <li key={i}>
-                            <Link onClick={link.onClick} href={`/dashboard/${link.url}`}>
+                            <Link onClick={link.onClick} href={`/dashboard${link.url}`}>
                                 {link.icon}
                                 {link.text}
                             </Link>

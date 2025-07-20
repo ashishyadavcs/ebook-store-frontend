@@ -1,5 +1,6 @@
 "use client";
 import { DeviceCardStyle } from "@/styles/devices.styled";
+import Button from "../ui/Button";
 
 const DeviceCard = ({ device, onRevoke }) => {
     const getDeviceIcon = userAgent => {
@@ -42,9 +43,9 @@ const DeviceCard = ({ device, onRevoke }) => {
             </div>
 
             {!device.isCurrent && (
-                <button onClick={() => onRevoke(device._id)} className="revoke-btn">
+                <Button onClick={() => onRevoke(device._id)} className="revoke-btn">
                     Revoke Access
-                </button>
+                </Button>
             )}
         </DeviceCardStyle>
     );

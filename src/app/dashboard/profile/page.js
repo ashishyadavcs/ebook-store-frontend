@@ -29,14 +29,13 @@ const Profile = () => {
                 body: formdata,
                 credentials: "include",
             });
-            const result = await res.json();
-            if (!result.success) {
-                throw Error("user update failed");
-            } else {
-                dispatch(addUser(result.user));
-                setloading(false);
-                toastify.success("profile updated");
+            if (!res.ok) {
+                throw Error(res.statusText);
             }
+            const result = await res.json();
+            dispatch(addUser(result.user));
+            setloading(false);
+            toastify.success("profile updated");
         } catch (err) {
             setloading(false);
             toastify.error(err.message);

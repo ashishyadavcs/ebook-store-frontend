@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 import { useState } from "react";
 import { toastify } from "../Toast";
 
-const Logout = ({ size = 18 }) => {
+const Logout = ({ size = 20 }) => {
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
     const logoutOutUser = async () => {
@@ -33,6 +33,12 @@ const Logout = ({ size = 18 }) => {
             href="#"
             loading={loading}
             onClick={logoutOutUser}
+            onMouseOver={e => {
+                e.currentTarget.style.background = "#f0f0f0";
+            }}
+            onMouseOut={e => {
+                e.currentTarget.style.background = "#ffff";
+            }}
             style={{ background: "#ffff", justifyContent: "flex-start" }}
         >
             <MdLogout size={size} /> logout

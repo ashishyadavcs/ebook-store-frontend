@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { DevicesStyle } from "@/styles/devices.styled";
 import DeviceCard from "./DeviceCard";
+import Button from "../ui/Button";
+import Loader from "../loaders/Loader";
 
 const DevicesList = () => {
     const [devices, setDevices] = useState([]);
@@ -14,11 +16,14 @@ const DevicesList = () => {
 
     const fetchDevices = async () => {
         try {
-            const response = await fetch("/api/user/devices", {
+            const response = await fetch("/api/devices", {
                 credentials: "include",
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
             const data = await response.json();
-
             if (response.ok) {
                 setDevices(data.devices);
             } else {
@@ -33,9 +38,12 @@ const DevicesList = () => {
 
     const handleDeviceRevoke = async deviceId => {
         try {
-            const response = await fetch(`/api/user/devices/${deviceId}`, {
+            const response = await fetch(`/api/devices/${deviceId}`, {
                 method: "DELETE",
                 credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
 
             if (response.ok) {
@@ -48,9 +56,12 @@ const DevicesList = () => {
 
     const handleRevokeAll = async () => {
         try {
-            const response = await fetch("/api/user/devices/revoke-all", {
+            const response = await fetch("/api/devices/revoke-all", {
                 method: "POST",
                 credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
 
             if (response.ok) {
@@ -62,16 +73,16 @@ const DevicesList = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loader />;
     if (error) return <div>Error: {error}</div>;
 
     return (
         <DevicesStyle>
             <div className="devices-header">
                 <h2>Active Sessions</h2>
-                <button onClick={handleRevokeAll} className="revoke-all-btn">
+                <Button onClick={handleRevokeAll} className="revoke-all-btn">
                     Revoke All Other Devices
-                </button>
+                </Button>
             </div>
 
             <div className="devices-grid">

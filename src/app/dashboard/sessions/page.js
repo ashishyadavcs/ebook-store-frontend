@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export async function generateMetadata() {
     return {
-        title: "Logged-in Devices | Ebook Store",
+        title: "Active sessions",
         description: "Manage your logged-in devices and security settings.",
         keywords: ["devices", "security", "login", "sessions", "account"],
     };

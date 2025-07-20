@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 
 export default async function Page({ params }) {
-    const { slug: ebookId } = params;
+    const { slug: ebookId } = await params;
     let ebook = null;
     let showDummy = false;
     try {
