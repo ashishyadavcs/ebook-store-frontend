@@ -81,7 +81,7 @@ const DevicesList = () => {
             <div className="devices-header">
                 <h2>Active Sessions</h2>
                 {devices.length > 1 && (
-                    <Button onClick={handleRevokeAll} className="revoke-all-btn">
+                    <Button className="revoke-all-btn" onClick={handleRevokeAll} type="primary">
                         Revoke All Other Devices
                     </Button>
                 )}

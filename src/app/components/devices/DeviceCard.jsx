@@ -48,7 +48,7 @@ const DeviceCard = ({ device, onRevoke }) => {
             </div>
 
             {!device.isCurrent && (
-                <Button onClick={() => onRevoke(device._id)} className="revoke-btn">
+                <Button onClick={() => onRevoke(device._id)} type="primary">
                     Revoke Access
                 </Button>
             )}

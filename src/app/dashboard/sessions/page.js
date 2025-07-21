@@ -12,13 +12,13 @@ export async function generateMetadata() {
 
 const DevicesPage = () => {
     return (
-        <Container>
+        <>
             <h1 className="heading">Logged-in Devices</h1>
             <p>Manage devices that have access to your account</p>
             <Suspense fallback="Loading devices...">
                 <DevicesList />
             </Suspense>
-        </Container>
+        </>
     );
 };
 

@@ -6,27 +6,21 @@ export const DevicesStyle = styled.div`
 
     .devices-header {
         display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
+        .revoke-all-btn {
+            ${media.sm} {
+                width: 100%;
+            }
+        }
 
         h2 {
             margin: 0;
             color: #333;
             font-size: clamp(1.5rem, 2vw, 2rem);
-        }
-
-        .revoke-all-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-
-            &:hover {
-                background: #c82333;
-            }
         }
     }
 
@@ -49,6 +43,7 @@ export const DeviceCardStyle = styled.div`
 
     .device-header {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 15px;
 
@@ -85,12 +80,11 @@ export const DeviceCardStyle = styled.div`
 
     .device-details {
         margin-bottom: 15px;
-
+        word-wrap: break-word;
         p {
             margin: 5px 0;
             font-size: 14px;
             color: #666;
-            word-wrap: break-word;
         }
 
         .user-agent {
