@@ -27,12 +27,17 @@ const DeviceCard = ({ device, onRevoke }) => {
                 <span className="device-icon">{getDeviceIcon(device.userAgent)}</span>
                 <div className="device-info">
                     <h3>{device.deviceName || "Unknown Device"}</h3>
-                    <p className="location">{device.ip}</p>
                 </div>
                 {device.isCurrent && <span className="current-badge">Current</span>}
             </div>
 
             <div className="device-details">
+                <p>
+                    <strong>Device ID:</strong> {device.deviceId}
+                </p>
+                <p>
+                    <strong>IP Address:</strong> {device.ip}
+                </p>
                 <p>
                     <strong>Last Active:</strong> {formatDate(device.createdAt)}
                 </p>

@@ -80,9 +80,11 @@ const DevicesList = () => {
         <DevicesStyle>
             <div className="devices-header">
                 <h2>Active Sessions</h2>
-                <Button onClick={handleRevokeAll} className="revoke-all-btn">
-                    Revoke All Other Devices
-                </Button>
+                {devices.length > 1 && (
+                    <Button onClick={handleRevokeAll} className="revoke-all-btn">
+                        Revoke All Other Devices
+                    </Button>
+                )}
             </div>
 
             <div className="devices-grid">
