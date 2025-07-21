@@ -63,6 +63,9 @@ ${css`
     .text-center {
         text-align: center;
     }
+    .heading {
+        font-size: clamp(2rem, 3vw, 4rem);
+    }
     .container {
         width: calc(100% - var(--container-width));
         margin: auto;

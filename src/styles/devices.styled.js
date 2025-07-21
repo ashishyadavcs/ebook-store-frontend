@@ -1,3 +1,4 @@
+import { media } from "@/config/media";
 import styled from "styled-components";
 
 export const DevicesStyle = styled.div`
@@ -31,7 +32,10 @@ export const DevicesStyle = styled.div`
 
     .devices-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        ${media.sm} {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
         gap: 20px;
     }
 `;
