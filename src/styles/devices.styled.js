@@ -90,6 +90,7 @@ export const DeviceCardStyle = styled.div`
             margin: 5px 0;
             font-size: 14px;
             color: #666;
+            word-wrap: break-word;
         }
 
         .user-agent {

@@ -43,7 +43,9 @@ const Page = async () => {
                                     </Link>
                                 </td>
                                 <td>{ebook.title}</td>
-                                <td>{ebook.description ? ebook.description : "no description"}</td>
+                                <td style={{ maxWidth: "300px" }}>
+                                    {ebook.description ? ebook.description : "no description"}
+                                </td>
                                 <td>{ebook.author}</td>
                                 <td>{ebook.title}</td>
                                 <td>
