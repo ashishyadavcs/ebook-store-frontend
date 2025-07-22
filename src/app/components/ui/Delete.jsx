@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { toastify } from "../Toast";
 
-const DeleteItem = ({ url }) => {
+const DeleteItem = ({ url, message = "item deleted!" }) => {
     const [loading, setloading] = useState(false);
     const router = useRouter();
     const deleteItem = async () => {
@@ -19,7 +19,7 @@ const DeleteItem = ({ url }) => {
             });
             if (res.ok) {
                 await res.json();
-                toastify.success("ebook deleted!");
+                toastify.success(message);
                 setloading(false);
                 router.refresh();
             }

@@ -47,7 +47,10 @@ const Page = async () => {
                                         <Button href={`/admin/users/${user._id}`}>
                                             <FaEdit />
                                         </Button>
-                                        <DeleteItem url={`/api/user/${user._id}`} />
+                                        <DeleteItem
+                                            url={`/api/user/${user._id}`}
+                                            message="user deleted!"
+                                        />
                                     </div>
                                 </td>
                             </tr>

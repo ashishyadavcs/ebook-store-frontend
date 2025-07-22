@@ -53,7 +53,10 @@ const Page = async () => {
                                         <Button href={`/admin/ebooks/${ebook._id}`}>
                                             <FaEdit />
                                         </Button>
-                                        <DeleteItem url={`/api/ebooks/${ebook._id}`} />
+                                        <DeleteItem
+                                            url={`/api/ebooks/${ebook._id}`}
+                                            message="ebook deleted!"
+                                        />
                                     </div>
                                 </td>
                             </tr>
