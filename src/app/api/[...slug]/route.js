@@ -40,6 +40,7 @@ async function authMiddleware(req, params) {
             }),
             //no content-type required for formdata,
             Cookie: req.headers.get("cookie"),
+            "User-agent": req.headers.get("user-agent"),
         },
     };
     if (method !== "GET") {

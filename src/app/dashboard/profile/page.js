@@ -21,6 +21,7 @@ const Profile = () => {
             setloading(true);
             const formdata = new FormData();
             Object.keys(values).forEach(field => {
+                if (field == "email") return;
                 formdata.append(field, values[field]);
             });
 
@@ -51,6 +52,18 @@ const Profile = () => {
                     title="upload picture"
                 />
                 <label htmlFor="email">
+                    <span>Email</span>
+                    <input
+                        onChange={handleChange}
+                        readOnly
+                        disabled
+                        defaultValue={email}
+                        name="email"
+                        type="email"
+                        placeholder="Email"
+                    />
+                </label>
+                <label htmlFor="name">
                     <span>Name</span>
                     <input
                         onChange={handleChange}
@@ -66,6 +79,8 @@ const Profile = () => {
                         defaultValue={mobile}
                         name="mobile"
                         type="tel"
+                        pattern="[0-9]{10}"
+                        maxLength={10}
                         onChange={handleChange}
                         placeholder="Mobile Number"
                     />

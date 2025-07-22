@@ -11,6 +11,7 @@ export async function POST(request, { params }) {
         headers: {
             "content-type": "application/json",
             cookie: request.headers.get("cookie"),
+            "User-agent": request.headers.get("user-agent"),
         },
         body: body ? body : undefined,
     });
