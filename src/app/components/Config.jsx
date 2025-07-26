@@ -4,7 +4,7 @@ import { Toast } from "@/components/Toast";
 import { Globalstyle } from "@/styles/global.styled";
 import nProgress from "nprogress";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 const Config = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -13,24 +13,16 @@ const Config = () => {
     }, [pathname]);
 
     useEffect(() => {
-        const handleStart = () => {
-            nProgress.start();
-        };
-        const handleStop = () => {
-            nProgress.done();
-        };
-
-        handleStop();
-
+        nProgress.done();
         return () => {
-            handleStart();
+            nProgress.start();
         };
     }, [pathname, searchParams]);
     return (
-        <Suspense>
+        <>
             <Globalstyle />
             <Toast />
-        </Suspense>
+        </>
     );
 };
 

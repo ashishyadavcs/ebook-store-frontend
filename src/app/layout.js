@@ -4,6 +4,7 @@ import StyledComponentsRegistry from "@/components/styledregistery";
 import Config from "@/components/Config";
 import { Suspense } from "react";
 import ReduxProvider from "./state/Provider";
+import Breadcrumb from "./components/Breadcrumb";
 
 export const viewport = {
     themeColor: "#ffffff",
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }) {
                         <Suspense>
                             <Config />
                             <Header />
+
                             {children}
                             <Footer />
                         </Suspense>

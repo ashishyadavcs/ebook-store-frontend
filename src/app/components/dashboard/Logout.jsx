@@ -39,7 +39,12 @@ const Logout = ({ size = 20 }) => {
             onMouseOut={e => {
                 e.currentTarget.style.background = "#ffff";
             }}
-            style={{ background: "#ffff", justifyContent: "flex-start" }}
+            style={{
+                background: "#ffff",
+                justifyContent: "flex-start",
+                borderRadius: "0",
+                boxShadow: "none",
+            }}
         >
             <MdLogout size={size} /> logout
         </Button>
