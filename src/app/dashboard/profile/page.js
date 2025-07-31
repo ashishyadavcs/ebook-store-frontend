@@ -9,7 +9,10 @@ import { toastify } from "@/components/Toast";
 import { addUser } from "@/state/userslice";
 import { constant } from "@/config/constant";
 import { useForm } from "@/hooks/useForm";
+import { usePathname, useRouter } from "next/navigation";
 const Profile = () => {
+    const router = useRouter();
+    const currentURL = usePathname();
     const [loading, setloading] = useState(false);
     const user = useAppSelector(state => state.user.data);
     const { name = "", email = "", mobile = "", image = constant.default_user } = user || {};
@@ -30,6 +33,11 @@ const Profile = () => {
                 body: formdata,
                 credentials: "include",
             });
+            if (res.status === 401) {
+                toastify.error("session expired, please login again");
+                router.push(`/login?from=${currentURL}`);
+                return;
+            }
             if (!res.ok) {
                 throw Error(res.statusText);
             }
