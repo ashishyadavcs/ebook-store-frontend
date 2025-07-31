@@ -9,12 +9,8 @@ export async function middleware(request) {
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
 
     // Allow public and auth routes
-    if (
-        url.pathname.startsWith("/api/auth") ||
-        url.pathname.startsWith("/api/cookie") ||
-        (url.pathname.startsWith("/api/ebooks") && request.method === "GET")
-    ) {
-        return NextResponse.next();
+    if (url.pathname.startsWith("/api")) {
+        return NextResponse.next(); //allow api requests to continue
     }
 
     if (!refreshtoken) {
