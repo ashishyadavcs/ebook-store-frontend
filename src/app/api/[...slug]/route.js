@@ -19,7 +19,13 @@ async function authMiddleware(req, params) {
     const cookieStore = await cookies();
     let accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
-    if ((!refreshtoken && !accesstoken) || !refreshtoken) {
+
+    const publicApis = ["/api/ebooks"];
+    const reqPath = req.nextUrl?.pathname || req.url;
+    if (
+        !publicApis.some(path => reqPath.startsWith(path)) &&
+        ((!refreshtoken && !accesstoken) || !refreshtoken)
+    ) {
         return NextResponse.json(
             {
                 success: false,
