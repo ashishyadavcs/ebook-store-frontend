@@ -1,5 +1,5 @@
 import config from "@/config/index";
-import { cookies, headers } from "next/headers";
+import { cookies, headers as nextHeaders } from "next/headers";
 import { redirect } from "next/navigation";
 const cacheOption = {
     next: {
@@ -16,7 +16,8 @@ export const useServerSideFetch = async (url, option = cacheOption) => {
             ...option,
         });
         if (response.status === 401) {
-            const currentURL = headers().get("referer") || "/";
+            const headers = await nextHeaders();
+            const currentURL = headers.get("referer") || "/";
             return redirect(`/login?from=${encodeURIComponent(currentURL)}`);
         }
         const result = await response.json();
