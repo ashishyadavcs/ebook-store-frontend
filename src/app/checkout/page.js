@@ -5,7 +5,6 @@ import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect, useState } from "react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
-import config from "../../config/index.js";
 import MyForm from "@/components/ui/Form";
 import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import PriceDetails from "@/components/checkout/PriceDetails.jsx";
@@ -43,7 +42,7 @@ const Payment = () => {
             };
             fetchEBook(from)
                 .then(res => {
-                    setcart([{ ...res.data, quantity: 1 }]);
+                    setcart([{ ...res.data[0], price: res.data[0].price / 100, quantity: 1 }]);
                 })
                 .catch(err => {
                     router.push("/");
