@@ -7,17 +7,39 @@ import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { usePathname } from "next/navigation";
 import EbookActionSkeleton from "@/components/loaders/EbookAction";
+import { useAppSelector } from "@/state/hooks";
 
 const EbookAction = ({ ebook }) => {
     const pathname = usePathname();
-    const { _id: id, title, description, author, averageRating = "", price } = ebook;
+    const user = useAppSelector(state => state.user.data);
+    const {
+        _id: id,
+        title = "",
+        description = "",
+        author = "",
+        averageRating = "",
+        price = 2000,
+    } = ebook || {};
     const [paid, setpaid] = useState(null);
+
     useEffect(() => {
-        useServerSideFetch("/api/user").then(res => {
-            const result = res.data;
-            const purchasedEbooks = result.ebooks;
-            setpaid(purchasedEbooks.find(el => el._id == id)?._id ? true : false);
-        });
+        if (!user) {
+            setpaid(false);
+            return;
+        }
+        useServerSideFetch("/api/user")
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const result = res.data;
+                const purchasedEbooks = result.ebooks;
+                setpaid(purchasedEbooks.find(el => el._id == id)?._id ? true : false);
+            })
+            .catch(err => {
+                console.error("Error fetching user data:", err);
+                setpaid(false);
+            });
     }, [pathname, id]);
 
     const EbookBTN = () => {
