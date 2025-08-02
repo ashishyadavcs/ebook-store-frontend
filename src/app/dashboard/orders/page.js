@@ -1,4 +1,5 @@
 import Row from "@/components/client-components/Row";
+import Button from "@/components/ui/Button";
 import Table from "@/components/ui/Table";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 
@@ -9,6 +10,18 @@ const Page = async () => {
         data = result.data || [];
     } catch (err) {
         data = [];
+    }
+    if (!data.length) {
+        return (
+            <>
+                <div className="no-oredrs text-center">
+                    <h1 className="heading">No orders found</h1>
+                    <Button type="primary" href="/">
+                        exlore ebooks
+                    </Button>
+                </div>
+            </>
+        );
     }
 
     return (
