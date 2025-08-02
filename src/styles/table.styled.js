@@ -8,7 +8,6 @@ const TableStyle = styled.div`
     width: 100%;
     max-width: 100%;
     overflow: auto;
-    height: 100%;
     img {
         object-fit: cover;
     }
@@ -32,6 +31,9 @@ const TableStyle = styled.div`
         }
         tr {
             border-top: 1px solid #ddd;
+            &:hover {
+                background: #f1f1f1;
+            }
         }
         thead {
             background: #fff;

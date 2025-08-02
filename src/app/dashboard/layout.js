@@ -7,6 +7,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import Logout from "@/components/dashboard/Logout";
 import { VscVmActive } from "react-icons/vsc";
 import { IoHomeOutline } from "react-icons/io5";
+import { MdPayment } from "react-icons/md";
 
 const Layout = async ({ children }) => {
     const links = [
@@ -24,6 +25,11 @@ const Layout = async ({ children }) => {
             text: "My Ebooks",
             url: "/ebooks",
             icon: <IoBookOutline size={20} />,
+        },
+        {
+            text: "Orders",
+            url: "/orders",
+            icon: <MdPayment size={20} />,
         },
         {
             text: "Logged-in Devices",

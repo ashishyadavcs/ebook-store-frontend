@@ -43,7 +43,7 @@ const Payment = () => {
             };
             fetchEBook(from)
                 .then(res => {
-                    setcart([{ ...res.data, price: 20, quantity: 1 }]);
+                    setcart([{ ...res.data, quantity: 1 }]);
                 })
                 .catch(err => {
                     router.push("/");
@@ -52,6 +52,8 @@ const Payment = () => {
             setcart(mycart);
         }
     }, [from]);
+
+    console.log(cart);
 
     const user = useAppSelector(state => state.user.data);
     const { name = "", email = "", mobile = "" } = user;
@@ -62,11 +64,6 @@ const Payment = () => {
     });
     const [loading, setLoading] = useState(false);
     const { totalitems, totalprice } = calculateCart(cart);
-    let orderDetails = {
-        title: "",
-        description: "",
-        amount: totalprice,
-    };
     const payment = async e => {
         e.preventDefault();
         try {

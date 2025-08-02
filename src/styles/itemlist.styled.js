@@ -14,7 +14,7 @@ const ItemListStyles = styled.div`
         overflow: hidden;
         background: #fff;
         margin: 0 0 10px;
-        height: 150px;
+        min-height: 150px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         border-radius: 8px;
         img {
@@ -22,7 +22,6 @@ const ItemListStyles = styled.div`
         }
         a {
             width: 200px;
-            height: 100%;
             img {
                 width: 100%;
                 height: 100%;

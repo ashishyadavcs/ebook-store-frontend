@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Back = ({ title }) => {
     const router = useRouter();
     return (
-        <Backstyle className="back">
+        <Backstyle className="back" title="go back">
             <BiArrowBack size={26} onClick={e => router.back()} />
             <h2>{title}</h2>
         </Backstyle>

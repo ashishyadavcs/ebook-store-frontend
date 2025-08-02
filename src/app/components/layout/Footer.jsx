@@ -38,7 +38,13 @@ const Footer = () => {
                     <h3>Latest news</h3>
                     {news.map((n, i) => (
                         <div key={i} className="news">
-                            <Image alt="news" height={80} width={100} src={n.image} />
+                            <Image
+                                loading="lazy"
+                                alt="news"
+                                height={80}
+                                width={100}
+                                src={n.image}
+                            />
                             <div className="content">
                                 <h4>{n.title}</h4>
                                 <p>{n.description}</p>

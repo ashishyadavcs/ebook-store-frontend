@@ -28,11 +28,13 @@ const Ebookdetail = async ({ id }) => {
         description = "",
         author = "",
         averageRating = "",
-        price = 20,
+        price = 2000,
         reviews = [],
         rating = 0,
         totalReviews = 0,
     } = ebook || {};
+
+    console.log(ebook);
     return (
         <Ebookdetails>
             <span className="thumbnail mobile">
@@ -65,12 +67,12 @@ const Ebookdetail = async ({ id }) => {
                             )}
                             <br />
                             <strong className={`price ${paid ? "paid" : ""}`}>
-                                {paid ? "purchased" : <>&#8377;{price}</>}
+                                {paid ? "purchased" : <>&#8377;{price / 100}</>}
                             </strong>
                         </div>
                         <div className="btn-group">
                             {paid ? (
-                                <Button type="primary" href={`/${id}/readnow`}>
+                                <Button type="primary" href={`/dashboard/readnow/${id}`}>
                                     Read Ebook <FaBookReader />
                                 </Button>
                             ) : (

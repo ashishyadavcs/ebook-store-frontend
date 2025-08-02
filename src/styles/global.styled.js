@@ -55,11 +55,11 @@ ${css`
             }
         }
     }
-    /* main {
-        display: flex;
-        height: 100vh;
-        overflow: auto;
-    } */
+    h1 {
+        &.heading {
+            margin: 0 0 20px;
+        }
+    }
     .text-center {
         text-align: center;
     }

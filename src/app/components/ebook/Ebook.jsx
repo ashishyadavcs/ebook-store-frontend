@@ -28,7 +28,8 @@ const Ebook = ({ data, className, preload }) => {
                 <p className="description">{author}</p>
 
                 <p>
-                    <del>&#8377;100</del> &#8377; {price} <strong className="off">40% off</strong>
+                    <del>&#8377;100</del> &#8377; {price / 100}{" "}
+                    <strong className="off">40% off</strong>
                 </p>
                 {totalReviews > 0 && (
                     <p className="rating">
