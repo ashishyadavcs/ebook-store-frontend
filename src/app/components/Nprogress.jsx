@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
@@ -9,7 +9,10 @@ NProgress.configure({ showSpinner: false });
 
 export default function NProgressHandler() {
     const router = useRouter();
-    const pathname = usePathname(); // current route
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const fullPath = pathname + "?" + searchParams.toString();
 
     useEffect(() => {
         const originalPush = router.push;
@@ -17,8 +20,9 @@ export default function NProgressHandler() {
 
         // Override router.push
         router.push = (...args) => {
-            const targetUrl = typeof args[0] === "string" ? args[0] : args[0]?.pathname;
-            if (targetUrl && targetUrl !== pathname) {
+            const targetUrl =
+                typeof args[0] === "string" ? args[0] : args[0]?.pathname + "?" + args[0]?.search;
+            if (targetUrl && targetUrl !== fullPath) {
                 NProgress.start();
             }
             return originalPush.apply(router, args);
@@ -26,14 +30,14 @@ export default function NProgressHandler() {
 
         // Override router.replace
         router.replace = (...args) => {
-            const targetUrl = typeof args[0] === "string" ? args[0] : args[0]?.pathname;
-            if (targetUrl && targetUrl !== pathname) {
+            const targetUrl =
+                typeof args[0] === "string" ? args[0] : args[0]?.pathname + "?" + args[0]?.search;
+            if (targetUrl && targetUrl !== fullPath) {
                 NProgress.start();
             }
             return originalReplace.apply(router, args);
         };
 
-        // Handle <a> clicks
         const handleLinkClick = e => {
             const anchor = e.target.closest("a");
             if (
@@ -42,19 +46,14 @@ export default function NProgressHandler() {
                 anchor.target !== "_blank" &&
                 anchor.href.startsWith(window.location.origin)
             ) {
-                const nextPath = new URL(anchor.href).pathname;
-                if (nextPath !== window.location.pathname) {
+                const url = new URL(anchor.href);
+                const nextFullPath = url.pathname + url.search;
+                if (nextFullPath !== fullPath) {
                     NProgress.start();
                 }
             }
         };
 
-        // Popstate = back/forward button
-        const handlePopState = () => {
-            NProgress.start();
-        };
-
-        // Before unload (e.g., hard reload)
         const handleBeforeUnload = () => {
             NProgress.start();
         };
@@ -63,20 +62,17 @@ export default function NProgressHandler() {
         window.addEventListener("beforeunload", handleBeforeUnload);
 
         return () => {
-            // Restore originals
             router.push = originalPush;
             router.replace = originalReplace;
-
-            // Cleanup events
             window.removeEventListener("click", handleLinkClick);
             window.removeEventListener("beforeunload", handleBeforeUnload);
         };
     }, [router, pathname]);
 
-    // Stop progress bar when route (pathname) actually changes
+    // Stop NProgress on any route (including query param) change
     useEffect(() => {
         NProgress.done();
-    }, [pathname]);
+    }, [pathname, searchParams]);
 
     return null;
 }
