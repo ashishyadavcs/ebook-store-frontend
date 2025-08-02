@@ -14,6 +14,7 @@ const SkeletonContainer = styled.div`
     margin: 20px;
     ${media.sm} {
         flex-direction: column;
+        min-height: 100vh;
     }
 `;
 
