@@ -65,8 +65,9 @@ const Ebookdetail = async ({ id }) => {
                                 </div>
                             )}
                             <br />
+                            <p>&#8377;{price / 100}</p>
                             <strong className={`price ${paid ? "paid" : ""}`}>
-                                {paid ? "purchased" : <>&#8377;{price / 100}</>}
+                                {paid ? "purchased" : ""}
                             </strong>
                         </div>
                         <div className="btn-group">

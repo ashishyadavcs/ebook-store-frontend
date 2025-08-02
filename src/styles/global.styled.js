@@ -155,18 +155,7 @@ ${css`
         -webkit-background-clip: text;
     }
     #nprogress .bar {
-        border-radius: 100px;
-        background: linear-gradient(
-            130deg,
-            rgb(164, 228, 1),
-            rgb(219, 194, 0),
-            rgb(255, 153, 0),
-            rgb(255, 98, 36),
-            rgb(255, 36, 87),
-            rgb(250, 0, 133),
-            rgb(202, 7, 179),
-            rgb(88, 42, 162)
-        );
+        background: rgb(250, 0, 133);
         height: 5px;
     }
     .channel {
