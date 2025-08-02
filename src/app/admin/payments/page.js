@@ -1,5 +1,8 @@
 import Table from "@/components/ui/Table";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
+export const dynamic = "auto"; // or auto
+export const revalidate = 60; // optional ISR
+
 const Page = async () => {
     let data = [];
     try {

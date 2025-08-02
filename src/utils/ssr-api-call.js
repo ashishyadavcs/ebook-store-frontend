@@ -1,3 +1,4 @@
+"use server";
 import config from "@/config/index";
 import { cookies, headers as nextHeaders } from "next/headers";
 import { redirect } from "next/navigation";

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import { addToCart } from "@/state/cart";
 import { toastify } from "../Toast";
 import { FaCartPlus } from "react-icons/fa6";
-const AddTocart = ({ ebook }) => {
+const AddTocart = ({ ebook, loading }) => {
     ebook = { ...ebook, price: 20 };
     const cart = useAppSelector(state => state.cart.data);
     const dispatch = useAppDispatch();
@@ -13,6 +13,7 @@ const AddTocart = ({ ebook }) => {
     return (
         <Button
             disabled={existingItem}
+            loading={loading}
             onClick={e => {
                 dispatch(addToCart(ebook));
                 toastify.success("added to cart");

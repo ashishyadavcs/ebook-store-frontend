@@ -5,8 +5,10 @@ import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
-import { constant } from "@/config/constant";
 import DeleteItem from "@/components/ui/Delete";
+export const dynamic = "force-static"; // or auto
+export const revalidate = 60; // optional ISR
+
 const Page = async () => {
     let data = [];
     try {

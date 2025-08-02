@@ -1,38 +1,23 @@
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
-import Review from "@/components/Review";
 import Image from "next/image";
 import Ebookdetails from "@/styles/ebookdetails.styled";
-import AddTocart from "@/components/ebook/AddTocart";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
-import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { constant } from "@/config/constant";
 import { delay } from "@/utils/common";
 import { notFound } from "next/navigation";
+import EbookAction from "./EbookAction";
+import { Suspense } from "react";
 const Ebookdetail = async ({ id }) => {
     // await delay(200000)
-    let purhcasedEbooks, ebook, paid;
+    let ebook;
     try {
         const ebookResult = await useServerSideFetch(`/api/ebooks/${id}`);
         if (!ebookResult.success) {
             return notFound();
         }
         ebook = ebookResult?.data[0];
-        const userResult = await useServerSideFetch("/api/user");
-        purhcasedEbooks = userResult.data.ebooks;
-        paid = purhcasedEbooks.find(el => el._id == id);
     } catch (err) {}
-    const {
-        title = "",
-        coverImageUrl = constant.default_ebook,
-        description = "",
-        author = "",
-        averageRating = "",
-        price = 2000,
-        reviews = [],
-        rating = 0,
-        totalReviews = 0,
-    } = ebook || {};
+    const { coverImageUrl = constant.default_ebook, reviews = [], totalReviews = 0 } = ebook || {};
 
     return (
         <Ebookdetails>
@@ -42,7 +27,7 @@ const Ebookdetail = async ({ id }) => {
                     alt="ebook"
                     width={360}
                     height={400}
-                    src={ebook?.coverImageUrl || "/images/ebook.jpg"}
+                    src={coverImageUrl || "/images/ebook.jpg"}
                 />
             </span>
             <Container className="ebook-info">
@@ -50,44 +35,9 @@ const Ebookdetail = async ({ id }) => {
                     <Image priority layout="fill" alt="ebook" src={coverImageUrl} />
                 </span>
 
-                <div className="details">
-                    <div className="info">
-                        <div className="left">
-                            <h1>{title}</h1>
-                            <p className="desc">{description || "no description"}</p>
-                            <span className="author">
-                                <FaUserGraduate /> {author.toLowerCase() || "Mr.John"}
-                            </span>
-                            {averageRating && (
-                                <div className="ebook-rating">
-                                    <span className="star" />
-                                    {averageRating}
-                                </div>
-                            )}
-                            <br />
-                            <p>&#8377;{price / 100}</p>
-                            <strong className={`price ${paid ? "paid" : ""}`}>
-                                {paid ? "purchased" : ""}
-                            </strong>
-                        </div>
-                        <div className="btn-group">
-                            {paid ? (
-                                <Button type="primary" href={`/dashboard/readnow/${id}`}>
-                                    Read Ebook <FaBookReader />
-                                </Button>
-                            ) : (
-                                <>
-                                    <AddTocart ebook={ebook} />
-                                    <Button type="primary" href={`/checkout?from=${id}`}>
-                                        Buy Now
-                                    </Button>
-                                </>
-                            )}
-                        </div>
-                    </div>
-
-                    {paid && !averageRating > 0 && <Review ebookid={id} size={30} />}
-                </div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <EbookAction ebook={ebook} />
+                </Suspense>
             </Container>
             <Container className="ebook-review">
                 {reviews.length > 0 && (

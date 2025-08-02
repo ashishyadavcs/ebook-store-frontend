@@ -4,16 +4,23 @@ import EbookList from "@/components/ebook/EbookList";
 import EbookPageStyle from "@/styles/ebookpage.styled";
 import { Suspense } from "react";
 import Details from "@/components/loaders/detail";
+import { useServerSideFetch } from "@/utils/ssr-api-call";
 
-// Use a direct server-side fetch for SEO metadata
 export async function generateMetadata({ params }) {
     const { slug: ebookid } = await params;
-
     return {
         title: `Ebook Details - ${ebookid} | Ebook Store`,
         description: `Read details, reviews, and purchase options for the ebook "${ebookid}" at Ebook Store.`,
         keywords: ["ebook", "book details", "buy ebook", "read online", "ebook store"],
     };
+}
+export async function generateStaticParams() {
+    let slugs = [];
+    try {
+        const result = await useServerSideFetch("/api/ebooks");
+        slugs = result.data.reverse();
+    } catch (err) {}
+    return slugs.map(ebook => ({ slug: ebook._id }));
 }
 
 const Page = async ({ params }) => {

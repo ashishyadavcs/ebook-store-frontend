@@ -2,7 +2,8 @@ import { HomeStyles } from "@/styles/home.styled";
 import dynamicImport from "next/dynamic";
 import Container from "./components/ui/Container";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
+export const revalidate = 60;
 const Search = dynamicImport(() => import("./components/Search"), {
     loading: () => <div style={{ minHeight: 40 }} />,
 });
@@ -12,19 +13,24 @@ const EbookList = dynamicImport(() => import("@/components/ebook/EbookList"), {
 import FeaturedBook from "@/styles/featuredbook.styled";
 export default async function Home({ searchParams }) {
     let ebooks = [];
+    let options = {};
     const params = await searchParams;
     try {
         let url = `/api/ebooks`;
         if (params?.query?.length > 0) {
             url = `/api/ebooks?title=${params.query}`;
+            options = {
+                cache: "no-store",
+            };
         } else {
             url = `/api/ebooks`;
+            options = {
+                cache: "force-cache",
+                revalidate: 60,
+            };
         }
-        const result = await useServerSideFetch(url, {
-            next: {
-                revalidate: 0,
-            },
-        });
+
+        const result = await useServerSideFetch(url, options);
         ebooks = result.data?.reverse() || [];
     } catch (err) {}
 
