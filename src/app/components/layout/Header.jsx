@@ -7,11 +7,19 @@ import { useAppSelector } from "@/state/hooks";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import { constant } from "@/config/constant";
+import Button from "../ui/Button";
+import { ismobile } from "@/config/common";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
     const user = useAppSelector(state => state.user.data);
     const cart = useAppSelector(state => state.cart.data);
+    const router = useRouter();
     const openSidebar = e => {
+        if (!ismobile()) {
+            router.push(user.role == "admin" ? "/admin" : "/dashboard");
+            return;
+        }
         document.querySelector(".sidebar")?.classList.toggle("active");
     };
     useEffect(() => {
@@ -50,18 +58,14 @@ const Header = () => {
 
                         <li>
                             {user ? (
-                                <Link
-                                    href={user.role == "admin" ? "/admin" : "/dashboard"}
-                                    className="user"
-                                    onClick={openSidebar}
-                                >
+                                <Button type="default" className="user" onClick={openSidebar}>
                                     <Image
                                         alt="user"
                                         height={40}
                                         width={40}
                                         src={user?.image || constant.default_user}
                                     />
-                                </Link>
+                                </Button>
                             ) : (
                                 <Link href="/login">Login</Link>
                             )}

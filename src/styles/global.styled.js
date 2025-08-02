@@ -125,6 +125,11 @@ ${css`
             cursor: not-allowed;
             pointer-events: none;
         }
+        &.default {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
     }
     .loader {
         display: inline-block;
