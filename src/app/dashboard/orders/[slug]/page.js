@@ -12,7 +12,6 @@ const Page = async ({ params }) => {
     } catch (err) {
         order = [];
     }
-    console.log(order);
     return (
         <>
             <Back />

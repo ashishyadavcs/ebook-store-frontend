@@ -34,7 +34,6 @@ const Ebookdetail = async ({ id }) => {
         totalReviews = 0,
     } = ebook || {};
 
-    console.log(ebook);
     return (
         <Ebookdetails>
             <span className="thumbnail mobile">

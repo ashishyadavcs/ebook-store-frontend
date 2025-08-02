@@ -53,8 +53,6 @@ const Payment = () => {
         }
     }, [from]);
 
-    console.log(cart);
-
     const user = useAppSelector(state => state.user.data);
     const { name = "", email = "", mobile = "" } = user;
     const [userdetail, setuserdetail] = useState({

@@ -7,8 +7,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
 import { revalidatePathAction } from "../actions/common.js";
+import { useState } from "react";
 
 const Googlelogin = ({ title = "Login with" }) => {
+    const [autoselect, setautoselect] = useState(
+        localStorage.getItem("useGoogleSignin") === "true"
+    );
     const router = useRouter();
     const searchParams = useSearchParams();
     const dispatch = useAppDispatch();
@@ -26,14 +30,16 @@ const Googlelogin = ({ title = "Login with" }) => {
             }),
         });
         const result = await response.json();
-        dispatch(addUser(result.user));
 
         if (result.success) {
-            router.refresh();
             revalidatePathAction("/viewcart");
             const isAdmin = result.user.role == "admin";
-            router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
-            toastify.info("Refresh page if not redirecting automatically");
+            setTimeout(() => {
+                toastify.success("login successfull");
+                dispatch(addUser(result.user));
+                router.refresh();
+                router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
+            }, 2000);
         }
     };
     return (
@@ -41,7 +47,7 @@ const Googlelogin = ({ title = "Login with" }) => {
             <GoogleOAuthProvider clientId={config.GOOGLE_CLIENT_ID}>
                 <GoogleLogin
                     useOneTap
-                    {...(localStorage.getItem("useGoogleSignin") && { auto_select: true })}
+                    {...(autoselect && { auto_select: true })}
                     onSuccess={res => handleSuccess(res)}
                     onError={() => {
                         toastify.error("login failed");

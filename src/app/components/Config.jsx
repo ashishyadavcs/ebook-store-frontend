@@ -5,6 +5,7 @@ import { Globalstyle } from "@/styles/global.styled";
 import nProgress from "nprogress";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import Handle401 from "./handleunauth";
 const Config = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -22,6 +23,7 @@ const Config = () => {
         <>
             <Globalstyle />
             <Toast />
+            <Handle401 />
         </>
     );
 };

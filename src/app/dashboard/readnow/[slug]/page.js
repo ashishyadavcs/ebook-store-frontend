@@ -14,9 +14,7 @@ export default async function Page({ params }) {
         if (!userEbooks.some(e => e._id === ebookId)) return redirect("/unauthorized");
         // Fetch ebook
         const ebookData = await useServerSideFetch(`/api/ebooks/${ebookId}`);
-        console.log(ebookData, "readnow");
         ebook = ebookData?.data?.[0];
-        console.log(ebook, "readnow");
         if (!ebook) throw new Error("Ebook not found");
         if (!ebook) showDummy = true;
     } catch {

@@ -11,7 +11,6 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { useAppDispatch } from "@/state/hooks";
 import { addUser } from "@/state/userslice";
-import { getDeviceId } from "@/utils/common";
 const Page = () => {
     const [loading, setloading] = useState(false);
     const searchParams = useSearchParams();
@@ -22,13 +21,11 @@ const Page = () => {
         try {
             setloading(true);
             const { email, password } = e.target;
-            const deviceId = getDeviceId();
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-device-id": deviceId,
                 },
                 body: JSON.stringify({
                     email: email.value,
@@ -39,14 +36,16 @@ const Page = () => {
             if (!result.success) {
                 throw Error(result.errors[0].msg);
             } else {
-                dispatch(addUser(result.user));
-                setloading(false);
-                toastify.success("loggedin successfull");
-                router.refresh();
-                router.push(
-                    searchParams.get("from") ||
-                        (result.user.role == "admin" ? "/admin" : "/dashboard")
-                );
+                setTimeout(() => {
+                    router.refresh();
+                    dispatch(addUser(result.user));
+                    router.push(
+                        searchParams.get("from") ||
+                            (result.user.role == "admin" ? "/admin" : "/dashboard")
+                    );
+                    toastify.success("loggedin successfull");
+                    setloading(false);
+                }, 2000);
             }
         } catch (err) {
             setloading(false);
