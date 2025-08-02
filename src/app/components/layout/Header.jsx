@@ -9,14 +9,15 @@ import { useEffect } from "react";
 import { constant } from "@/config/constant";
 import Button from "../ui/Button";
 import { ismobile } from "@/config/common";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
     const user = useAppSelector(state => state.user.data);
     const cart = useAppSelector(state => state.cart.data);
     const router = useRouter();
+    const pathname = usePathname().toString();
     const openSidebar = e => {
-        if (!ismobile()) {
+        if (!ismobile() || (!pathname.includes("dashboard") && !pathname.includes("admin"))) {
             router.push(user.role == "admin" ? "/admin" : "/dashboard");
             return;
         }
