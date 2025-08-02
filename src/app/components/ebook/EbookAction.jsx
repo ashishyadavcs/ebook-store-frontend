@@ -44,7 +44,6 @@ const EbookAction = ({ ebook }) => {
 
     return (
         <div className="details">
-            {console.log("paid", paid)}
             <div className="info">
                 <div className="left">
                     <h1>{title}</h1>
@@ -59,7 +58,7 @@ const EbookAction = ({ ebook }) => {
                         </div>
                     )}
                     <br />
-                    <p>&#8377;{price / 100}</p>
+                    <p className="price">&#8377;{price / 100}</p>
                     <strong className={`price ${paid ? "paid" : ""}`}>
                         {paid ? "purchased" : ""}
                     </strong>

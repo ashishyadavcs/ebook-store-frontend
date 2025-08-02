@@ -100,8 +100,7 @@ const Ebookdetails = styled.div`
             margin: 10px 10px 5px 0;
         }
         .price {
-            display: inline-block;
-            margin: 10px 0;
+            margin: 10px 10px 10px 0;
             &.paid {
                 background: var(--success);
                 color: #fff;
