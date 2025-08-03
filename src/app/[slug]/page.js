@@ -5,7 +5,7 @@ import EbookPageStyle from "@/styles/ebookpage.styled";
 import { Suspense } from "react";
 import Details from "@/components/loaders/detail";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
-export const dynamic = "force-dynamic"; // or auto
+export const dynamic = "force-static"; // or auto
 export const revalidate = 20; // optional ISR
 export async function generateMetadata({ params }) {
     const { slug: ebookid } = await params;
