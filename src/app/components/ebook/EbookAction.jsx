@@ -29,15 +29,11 @@ const EbookAction = ({ ebook }) => {
         }
         useServerSideFetch("/api/user")
             .then(res => {
-                if (!res.ok) {
-                    throw new Error("Failed to fetch user data");
-                }
                 const result = res.data;
                 const purchasedEbooks = result.ebooks;
                 setpaid(purchasedEbooks.find(el => el._id == id)?._id ? true : false);
             })
             .catch(err => {
-                console.error("Error fetching user data:", err);
                 setpaid(false);
             });
     }, [pathname, id]);
