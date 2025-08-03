@@ -40,6 +40,17 @@ const OrderDetailStyle = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        &:has(a) {
+            display: flex;
+            flex-wrap: wrap;
+            white-space: normal;
+        }
+        a {
+            padding: 2px 4px;
+            text-decoration: underline;
+            display: block;
+            margin: 4px;
+        }
         span {
             padding: 4px 8px;
             border-radius: 4px;

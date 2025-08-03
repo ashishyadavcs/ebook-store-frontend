@@ -14,6 +14,7 @@ const EbookList = async ({ data, size = 300 }) => {
     } else {
         ebooks = [...data];
     }
+    ebooks = Array.from(new Map(ebooks.map(item => [item._id, item])).values());
     return (
         <EbooksContainer className="ebooks" size={size}>
             {ebooks.map((ebook, i) => (
