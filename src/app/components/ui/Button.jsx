@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import Spinner from "../loaders/Spinner";
+import Buttonstyle from "@/styles/Button.styled";
 
 const Button = props => {
     const {
@@ -20,15 +22,15 @@ const Button = props => {
                 className={`btn ${className} ${type}`}
                 {...restprops}
             >
-                {loading && <span className="loader" />} {replace && loading ? "" : children}
+                {loading && <Spinner size={18} />} {replace && loading ? "" : children}
             </button>
         );
     else
         return (
             <Link scroll={true} className={`btn ${className} ${type}`} {...restprops}>
-                {children} {loading && <span className="loader" />}
+                {children} {loading && <Spinner size={18} />}
             </Link>
         );
 };
 
-export default Button;
+export default Buttonstyle(Button);

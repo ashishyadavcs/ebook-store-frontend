@@ -72,7 +72,7 @@ const Page = () => {
                         Already have an account <Link href="/login">login</Link>{" "}
                     </p>
                     <span className="or">or</span>
-                    <Googlelogin title="signup with google" />
+                    <Googlelogin setLoading={setloading} title="signup with google" />
                 </MyForm>
             </AuthStyle>
         </Container>

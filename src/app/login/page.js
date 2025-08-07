@@ -45,7 +45,7 @@ const Page = () => {
                     );
                     toastify.success("loggedin successfull");
                     setloading(false);
-                }, 2000);
+                }, 200);
             }
         } catch (err) {
             setloading(false);
@@ -80,7 +80,7 @@ const Page = () => {
                         don't have an account <Link href="/register">signup</Link>{" "}
                     </p>
                     <span className="or">or</span>
-                    <Googlelogin title="Login with google" />
+                    <Googlelogin setLoading={setloading} title="Login with google" />
                 </MyForm>
             </AuthStyle>
         </Container>

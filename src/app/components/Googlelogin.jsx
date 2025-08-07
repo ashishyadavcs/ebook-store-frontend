@@ -9,7 +9,7 @@ import { addUser } from "@/state/userslice.js";
 import { revalidatePathAction } from "../actions/common.js";
 import { useState } from "react";
 
-const Googlelogin = ({ title = "Login with" }) => {
+const Googlelogin = ({ title = "Login with", setLoading }) => {
     const [autoselect, setautoselect] = useState(
         localStorage.getItem("useGoogleSignin") === "true"
     );
@@ -18,6 +18,7 @@ const Googlelogin = ({ title = "Login with" }) => {
     const dispatch = useAppDispatch();
     const handleSuccess = async res => {
         localStorage.setItem("useGoogleSignin", true);
+        setLoading(true);
         const token = res.credential;
         const response = await fetch(`/api/auth/google`, {
             method: "POST",
@@ -38,8 +39,9 @@ const Googlelogin = ({ title = "Login with" }) => {
                 toastify.success("login successfull");
                 dispatch(addUser(result.user));
                 router.refresh();
+                setLoading(false);
                 router.push(searchParams.get("from") || (isAdmin ? "/admin" : "/dashboard"));
-            }, 2000);
+            }, 200);
         }
     };
     return (
