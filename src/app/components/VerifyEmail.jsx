@@ -18,7 +18,6 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
     const [timer, setTimer] = useState(0);
     const user = useAppSelector(state => state.user.data);
     const dispatch = useDispatch();
-
     // Timer effect
     useEffect(() => {
         let interval = null;
@@ -31,6 +30,21 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
         }
         return () => clearInterval(interval);
     }, [timer]);
+
+    useEffect(() => {
+        //confirm before refresh
+        const handleBeforeUnload = e => {
+            if (codeSent) {
+                e.preventDefault();
+                e.returnValue = ""; // Required for Chrome
+            }
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, [codeSent]);
 
     // Format timer display
     const formatTime = seconds => {
@@ -54,7 +68,7 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
         if (data.success) {
             setLoading(false);
             setCodeSent(true);
-            setTimer(120); // 2 minutes timer
+            setTimer(60); // 1 minute timer
             toastify.success("Verification code sent successfully!");
         } else {
             setLoading(false);
@@ -96,7 +110,7 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
             });
             const data = await res.json();
             if (data.success) {
-                setTimer(120); // Reset timer to 2 minutes
+                setTimer(60); // Reset timer to 1 minute
                 toastify.success("Verification code resent successfully!");
             } else {
                 toastify.error(data.message || "Failed to resend verification code");
@@ -119,8 +133,13 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
                         <input
                             required
                             value={values?.otp}
-                            onChange={handleChange}
-                            type="number"
+                            onChange={e => {
+                                const val = e.target.value.replace(/\D/g, "");
+                                handleChange({ target: { name: "otp", value: val } });
+                            }}
+                            type="text"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
                             name="otp"
                             placeholder="Enter 4-digit code"
                             maxLength={4}
@@ -192,24 +211,6 @@ const VerifyEmailStyles = styled.div`
     p {
         margin: 12px 0;
         color: #666;
-    }
-
-    input[type="number"] {
-        text-align: center;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-
-        /* Remove spinner arrows */
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        &[type="number"] {
-            -moz-appearance: textfield;
-            appearance: textfield;
-        }
     }
 
     .resend-section {

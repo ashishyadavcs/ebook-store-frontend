@@ -45,6 +45,7 @@ ${css`
         font-size: clamp(1.4rem, 6vw, 1.6rem);
         font-family: ${inter.style.fontFamily};
         background: var(--lightblue);
+
         /* &:has(.ebooks) {
             background: url("/images/wall.avif") fixed;
         } */
@@ -54,6 +55,9 @@ ${css`
                 padding: 0 0 60px;
             }
         }
+    }
+    p {
+        color: #555;
     }
     h1 {
         &.heading {

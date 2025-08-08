@@ -10,6 +10,9 @@ const Footerstyle = styled.footer`
     a {
         color: #f1f1f1;
     }
+    p {
+        color: #f1f1f1;
+    }
     .main {
         padding: 20px 0;
         display: grid;

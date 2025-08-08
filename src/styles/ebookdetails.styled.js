@@ -11,9 +11,7 @@ const Ebookdetails = styled.div`
     h1 {
         text-transform: capitalize;
     }
-    .info {
-        margin: 0 0 20px;
-    }
+
     .thumbnail {
         border-radius: 8px;
         overflow: hidden;
@@ -51,44 +49,19 @@ const Ebookdetails = styled.div`
     .details {
         flex: 1;
     }
-    .ebook-rating {
-        margin: 10px 0;
-        background: ${colors.green};
-        color: #fff;
-        border-radius: 4px;
-        padding: 2px 6px;
-        display: flex;
-        width: max-content;
-        gap: 5px;
-        align-items: center;
-        .star {
-            display: inline-block;
-            --size: 18px;
-            height: var(--size);
-            width: var(--size);
-            background: #fff;
-            clip-path: polygon(
-                50% 0%,
-                61% 35%,
-                98% 35%,
-                68% 57%,
-                79% 91%,
-                50% 70%,
-                21% 91%,
-                32% 57%,
-                2% 35%,
-                39% 35%
-            );
-        }
-    }
+
     .ebook-review {
         margin: 30px auto 0;
+        padding: 20px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
         .reviews {
             list-style: none;
             li {
-                display: flex;
-                align-items: center;
-                gap: 8px;
+                border-radius: 8px;
+                padding: 10px;
+                width: max-content;
+                margin: 10px 0 0;
             }
         }
     }
@@ -101,13 +74,19 @@ const Ebookdetails = styled.div`
         }
         .price {
             margin: 10px 10px 10px 0;
-            &.paid {
-                background: var(--success);
-                color: #fff;
-                padding: 3px 10px;
-                border-radius: 100px;
-                font-size: 1rem;
-            }
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 2rem;
+        }
+        .paid {
+            color: green;
+            background: #e6ffe6ff;
+            border: 1px solid #9fbb9f5d;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 1rem;
         }
         .info {
             display: flex;

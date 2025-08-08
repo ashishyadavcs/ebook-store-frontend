@@ -66,6 +66,7 @@ const Header = () => {
                                         width={40}
                                         src={user?.image || constant.default_user}
                                     />
+                                    <span className="name"> {user.name}</span>
                                 </Button>
                             ) : (
                                 <Link href="/login">Login</Link>

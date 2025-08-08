@@ -12,6 +12,7 @@ import { useForm } from "@/hooks/useForm";
 import { usePathname, useRouter } from "next/navigation";
 import VerifyEmail from "@/components/VerifyEmail";
 import ModalWrapper from "@/components/ModalWrapper";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 const Profile = () => {
     const router = useRouter();
     const currentURL = usePathname();
@@ -76,7 +77,13 @@ const Profile = () => {
                             className={`verify-btn ${user.verified ? "verified" : ""}`}
                             onClick={() => setIsModalOpen(true)}
                         >
-                            {user.verified ? "verified" : "verify"}
+                            {user.verified ? (
+                                <>
+                                    <IoIosCheckmarkCircle size={16} color="lime" /> verified
+                                </>
+                            ) : (
+                                "verify"
+                            )}
                         </Button>
                     </div>
 

@@ -4,10 +4,12 @@ import Button from "../ui/Button";
 import Review from "../Review";
 import AddTocart from "@/components/ebook/AddTocart";
 import { FaBookReader, FaUserGraduate } from "react-icons/fa";
+import { LuUser } from "react-icons/lu";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { usePathname } from "next/navigation";
 import EbookActionSkeleton from "@/components/loaders/EbookAction";
 import { useAppSelector } from "@/state/hooks";
+import Rating from "../ui/Rating";
 
 const EbookAction = ({ ebook }) => {
     const pathname = usePathname();
@@ -67,19 +69,16 @@ const EbookAction = ({ ebook }) => {
                     <h1>{title}</h1>
                     <p className="desc">{description || "no description"}</p>
                     <span className="author">
-                        <FaUserGraduate /> {author.toLowerCase() || "Mr.John"}
+                        <LuUser /> {author.toLowerCase() || "Mr.John"}
                     </span>
-                    {averageRating && (
-                        <div className="ebook-rating">
-                            <span className="star" />
-                            {averageRating}
-                        </div>
-                    )}
+                    {averageRating && <Rating value={averageRating} number />}
                     <br />
-                    <p className="price">&#8377;{price / 100}</p>
-                    <strong className={`price ${paid ? "paid" : ""}`}>
-                        {paid ? "purchased" : ""}
-                    </strong>
+                    <p className="price">
+                        &#8377;{price / 100}{" "}
+                        <strong className={`price ${paid ? "paid" : ""}`}>
+                            {paid ? "purchased" : ""}
+                        </strong>
+                    </p>
                 </div>
                 <div className="btn-group">
                     <EbookBTN />

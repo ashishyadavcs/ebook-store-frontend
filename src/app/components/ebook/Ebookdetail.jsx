@@ -7,6 +7,8 @@ import { delay } from "@/utils/common";
 import { notFound } from "next/navigation";
 import EbookAction from "./EbookAction";
 import { Suspense } from "react";
+import Rating from "../ui/Rating";
+
 const Ebookdetail = async ({ id }) => {
     // await delay(200000)
     let ebook;
@@ -19,6 +21,7 @@ const Ebookdetail = async ({ id }) => {
     } catch (err) {}
     const { coverImageUrl = constant.default_ebook, reviews = [], totalReviews = 0 } = ebook || {};
 
+    console.log("ebook", ebook);
     return (
         <Ebookdetails>
             <span className="thumbnail mobile">
@@ -39,27 +42,26 @@ const Ebookdetail = async ({ id }) => {
                     <EbookAction ebook={ebook} />
                 </Suspense>
             </Container>
-            <Container className="ebook-review">
-                {reviews.length > 0 && (
-                    <>
+
+            {reviews.length > 0 && (
+                <>
+                    <Container className="ebook-review">
                         <h3>Reviews & ratings ({totalReviews})</h3>
                         <ul className="reviews">
                             {reviews.map(
                                 r =>
                                     r.review && (
                                         <li key={r._id}>
-                                            <div className="ebook-rating">
-                                                <span className="star" />
-                                                {r.rating}
-                                            </div>
-                                            {r.review}
+                                            <Rating value={r.rating} />
+
+                                            <p> {r.review}</p>
                                         </li>
                                     )
                             )}
                         </ul>
-                    </>
-                )}
-            </Container>
+                    </Container>
+                </>
+            )}
         </Ebookdetails>
     );
 };

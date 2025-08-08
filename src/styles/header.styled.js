@@ -33,6 +33,15 @@ const StyledHeader = styled.header`
         }
         .user {
             padding: 10px;
+            .name {
+                max-width: 100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                ${media.sm} {
+                    display: none;
+                }
+            }
         }
     }
     .links {

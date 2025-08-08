@@ -60,6 +60,7 @@ const Review = ({ size, ebookid }) => {
             setloading(false);
         }
     };
+
     return (
         <ReviewStyle size={size} className="review">
             <h3>Rate This Ebook</h3>
@@ -88,6 +89,7 @@ const Review = ({ size, ebookid }) => {
 export default Review;
 const ReviewStyle = styled.div`
     width: min(400px, 100%);
+    margin: 30px 0 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
