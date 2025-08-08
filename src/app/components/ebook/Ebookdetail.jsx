@@ -21,7 +21,6 @@ const Ebookdetail = async ({ id }) => {
     } catch (err) {}
     const { coverImageUrl = constant.default_ebook, reviews = [], totalReviews = 0 } = ebook || {};
 
-    console.log("ebook", ebook);
     return (
         <Ebookdetails>
             <span className="thumbnail mobile">
