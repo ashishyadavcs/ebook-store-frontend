@@ -93,6 +93,16 @@ const Payment = () => {
                         // language: "hi",
                     },
                 },
+                // notes: {
+                //     order_type: from ? "single_ebook" : "cart_checkout",
+                //     total_items: totalitems,
+                //     user_id: user?._id || "guest",
+                //     user_email: email,
+                //     ebook_ids: from ? [from] : cart.map(e => e._id).join(","),
+                //     purchase_date: new Date().toISOString(),
+                //     platform: "web",
+                //     checkout_source: from ? "direct_purchase" : "cart",
+                // },
                 remember_customer: true, // to save cards
                 handler: async response => {
                     const req = await fetch(`/api/verify-payment`, {
@@ -138,8 +148,8 @@ const Payment = () => {
                     color: colors.redpink,
                 },
             };
-            const paymentobject = new window.Razorpay(options);
-            await paymentobject.open();
+            const razorpay = new window.Razorpay(options);
+            await razorpay.open();
             setLoading(false);
         } catch (err) {
             setLoading(false);

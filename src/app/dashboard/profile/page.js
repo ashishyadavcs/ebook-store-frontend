@@ -10,11 +10,15 @@ import { addUser } from "@/state/userslice";
 import { constant } from "@/config/constant";
 import { useForm } from "@/hooks/useForm";
 import { usePathname, useRouter } from "next/navigation";
+import VerifyEmail from "@/components/VerifyEmail";
+import ModalWrapper from "@/components/ModalWrapper";
 const Profile = () => {
     const router = useRouter();
     const currentURL = usePathname();
     const [loading, setloading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const user = useAppSelector(state => state.user.data);
+    console.log(user);
     const { name = "", email = "", mobile = "", image = constant.default_user } = user || {};
     const { handleChange, values } = useForm();
     const dispatch = useAppDispatch();
@@ -52,6 +56,9 @@ const Profile = () => {
     };
     return (
         <ProfileStyle>
+            <ModalWrapper size={400} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <VerifyEmail userdata={user} setIsModalOpen={setIsModalOpen} />
+            </ModalWrapper>
             <MyForm onSubmit={updateUser}>
                 <Upload
                     onchange={handleChange}
@@ -60,7 +67,19 @@ const Profile = () => {
                     title="upload picture"
                 />
                 <label htmlFor="email">
-                    <span>Email</span>
+                    <div>
+                        <span>Email</span>
+                        <Button
+                            disabled={user.verified}
+                            type="default"
+                            btnType="button"
+                            className={`verify-btn ${user.verified ? "verified" : ""}`}
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            {user.verified ? "verified" : "verify"}
+                        </Button>
+                    </div>
+
                     <input
                         onChange={handleChange}
                         readOnly

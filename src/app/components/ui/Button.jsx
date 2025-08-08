@@ -12,12 +12,14 @@ const Button = props => {
         loading = false,
         replace = false,
         disabled = false,
+        btnType = "submit",
         ...restprops
     } = props;
     if (!props.href)
         return (
             <button
                 aria-label="button"
+                type={btnType}
                 disabled={disabled || loading}
                 className={`btn ${className} ${type}`}
                 {...restprops}
