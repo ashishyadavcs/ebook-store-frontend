@@ -52,7 +52,7 @@ const Page = () => {
                     src="/images/book-cover.png"
                 />
                 <MyForm onSubmit={registerUser}>
-                    <h2 className="title">Sign Up</h2>
+                    <h2 className="title">Sign Up </h2>
                     <label htmlFor="email">
                         <span>Name</span>
                         <input name="name" type="text" required placeholder="Name" />

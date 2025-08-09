@@ -19,15 +19,21 @@ const AuthStyle = styled.section`
         flex-direction: column;
     }
     ${media.minsm} {
-        width: 50%;
         img {
             width: 50%;
             height: 100%;
         }
         gap: 40px;
         form {
+            width: 50%;
             padding: 0 40px 0 0;
         }
+    }
+    ${media.md} {
+        width: 70%;
+    }
+    ${media.xxl} {
+        width: 50%;
     }
     .or {
         display: block;
