@@ -27,8 +27,8 @@ const Ebook = ({ data, className, preload }) => {
                 <h3 className="title">{title}</h3>
                 <p className="description">{author}</p>
 
-                <p>
-                    <del>&#8377;100</del> &#8377; {price / 100}{" "}
+                <p className="price">
+                    &#8377; {price / 100} <del>&#8377;100</del>
                     <strong className="off">40% off</strong>
                 </p>
                 {totalReviews > 0 && (
@@ -74,6 +74,7 @@ const Ebookstyle = styled.div`
             animation: wave 1s linear infinite forwards;
         }
     }
+
     .rating {
         margin: 10px 0;
         gap: 4px;
