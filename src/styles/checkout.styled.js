@@ -36,6 +36,11 @@ export const Checkoutstyle = styled.section`
                 input {
                     display: none;
                 }
+                input:disabled + label {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                    pointer-events: none;
+                }
                 input:checked + label {
                     border: 2px solid ${colors.redpink};
                     .checked {
@@ -173,6 +178,36 @@ export const Checkoutstyle = styled.section`
         .btn {
             margin: 30px 0 10px;
             width: 100%;
+        }
+    }
+`;
+export const ViewcartStyles = styled.div`
+    padding: 20px 0;
+    .title {
+        margin: 0 0 20px;
+        ${media.sm} {
+            text-align: center;
+        }
+    }
+    .container {
+        display: flex;
+        ${media.sm} {
+            flex-direction: column-reverse;
+        }
+        gap: min(60px, 6vw);
+        > * {
+            flex: 1;
+        }
+        .form {
+            border-radius: 8px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            ${media.minsm} {
+                .btn {
+                    width: max-content;
+                }
+            }
         }
     }
 `;

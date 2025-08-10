@@ -38,7 +38,7 @@ const ItemList = () => {
             )}
             <div className="btn-wrap">
                 <Button type="primary" href="/checkout">
-                    Place order
+                    Proceed to checkout
                 </Button>
             </div>
         </ItemListStyles>

@@ -22,7 +22,7 @@ const Payment = () => {
     let mycart = useAppSelector(state => state.cart.data);
     const [cart, setcart] = useState(mycart);
     const [success, setsuccess] = useState(false);
-    const [paymentGateway, setpaymentGateway] = useState("stripe");
+    const [paymentGateway, setpaymentGateway] = useState("razorpay");
     useEffect(() => {
         if (from) {
             const fetchEBook = async from => {
@@ -72,6 +72,7 @@ const Payment = () => {
                                 onChange={e => setpaymentGateway(e.target.value)}
                                 checked={paymentGateway === "stripe"}
                                 type="radio"
+                                disabled
                                 id="stripe"
                                 name="payment"
                                 value="stripe"

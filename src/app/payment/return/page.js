@@ -12,10 +12,8 @@ const PaymentReturn = () => {
 
     useEffect(() => {
         const sessionId = searchParams.get("session_id");
-
-        if (!sessionId) {
-            setStatus("error");
-            return;
+        if (!document.referrer.includes("checkout") || !sessionId) {
+            router.push("/");
         }
 
         // Verify payment status with backend
@@ -50,6 +48,8 @@ const PaymentReturn = () => {
     const handleContinue = () => {
         if (status === "success") {
             router.push("/dashboard");
+        } else if (status === "error") {
+            router.push("/");
         } else {
             router.push("/checkout");
         }
