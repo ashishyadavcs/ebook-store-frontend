@@ -72,7 +72,6 @@ const Payment = () => {
                                 onChange={e => setpaymentGateway(e.target.value)}
                                 checked={paymentGateway === "stripe"}
                                 type="radio"
-                                disabled
                                 id="stripe"
                                 name="payment"
                                 value="stripe"
