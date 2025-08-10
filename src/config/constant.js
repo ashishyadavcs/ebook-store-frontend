@@ -7,4 +7,6 @@ export const colors = {
     redpink: "#ff0080",
     aqua: "#43ffec",
     green: "#00cd00",
+    blue: "#007bff",
+    gray: "#6c757d",
 };

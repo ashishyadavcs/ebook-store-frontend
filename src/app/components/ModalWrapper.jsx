@@ -1,10 +1,17 @@
 "use client";
-import React, { useEffect, useRef, useCallback, useMemo } from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import ModalWrapperStyle from "@/styles/modalwrapper.styled";
 import Button from "@/components/ui/Button";
 
-const ModalWrapper = ({ isOpen, onClose, children, portalTarget = document.body, size }) => {
+const ModalWrapper = ({
+    isOpen,
+    onClose,
+    children,
+    portalTarget = document.body,
+    size,
+    confirm,
+}) => {
     if (!isOpen || !portalTarget) return null;
 
     const modalContent = (

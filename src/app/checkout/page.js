@@ -1,35 +1,28 @@
 "use client";
-import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
 import { useEffect, useState } from "react";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
 import { useAppDispatch, useAppSelector } from "@/state/hooks";
-import PriceDetails from "@/components/checkout/PriceDetails.jsx";
 import { calculateCart } from "@/utils/cart.js";
-import { emptyCart } from "@/state/cart.js";
 import SuccessPopUp from "@/components/Successpopup.jsx";
 import { colors } from "@/config/constant.js";
-import { revalidatePathAction } from "../actions/common.js";
-
+import { LuShield } from "react-icons/lu";
+import { FaCreditCard } from "react-icons/fa6";
+import { FaMobileAlt } from "react-icons/fa";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import OrderSummary from "@/components/checkout/OrderSummary.jsx";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 const Payment = () => {
     const params = useSearchParams();
     const router = useRouter();
     const from = params.get("from");
-    const dispatch = useAppDispatch();
     let mycart = useAppSelector(state => state.cart.data);
     const [cart, setcart] = useState(mycart);
     const [success, setsuccess] = useState(false);
-
-    useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.async = true;
-        document.body.appendChild(script);
-    }, []);
-
+    const [paymentGateway, setpaymentGateway] = useState("stripe");
     useEffect(() => {
         if (from) {
             const fetchEBook = async from => {
@@ -60,131 +53,123 @@ const Payment = () => {
         mobile,
     });
     const [loading, setLoading] = useState(false);
-    const { totalitems, totalprice } = calculateCart(cart);
-    const payment = async e => {
-        e.preventDefault();
-        try {
-            setLoading(true);
-            const req = await fetch(`/api/create-order`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    amount: totalprice * 100, // convert in paise
-                    cart,
-                }),
-            });
 
-            const result = await req.json();
-            const data = result.data;
-            const { amount, currency, id } = data;
-            const options = {
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEYID,
-                amount: amount,
-                currency: currency,
-                name: "Ebook Store",
-                description: "Test UPI Payment",
-                image: "/images/logo.svg",
-                animation: false,
-                order_id: id,
-                config: {
-                    display: {
-                        // language: "hi",
-                    },
-                },
-                // notes: {
-                //     order_type: from ? "single_ebook" : "cart_checkout",
-                //     total_items: totalitems,
-                //     user_id: user?._id || "guest",
-                //     user_email: email,
-                //     ebook_ids: from ? [from] : cart.map(e => e._id).join(","),
-                //     purchase_date: new Date().toISOString(),
-                //     platform: "web",
-                //     checkout_source: from ? "direct_purchase" : "cart",
-                // },
-                remember_customer: true, // to save cards
-                handler: async response => {
-                    const req = await fetch(`/api/verify-payment`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            orderid: response.razorpay_order_id,
-                            paymentid: response.razorpay_payment_id,
-                            signature: response.razorpay_signature,
-                            ebooks: from ? [from] : cart.map(e => e._id),
-                            amount,
-                        }),
-                    });
-                    const result = await req.json();
-                    if (result.success) {
-                        setLoading(false);
-                        setsuccess(true);
-                        setTimeout(() => {
-                            setsuccess(false);
-                            revalidatePathAction("/dashboard/ebooks");
-                            redirect("/dashboard/ebooks");
-                        }, 2000);
-                        dispatch(emptyCart(null));
-                        return;
-                    }
-                    setLoading(false);
-                    toastify.error("payment failed");
-                },
-                modal: {
-                    ondismiss: () => {
-                        setLoading(false);
-                    },
-                },
-
-                prefill: {
-                    name,
-                    email,
-                    contact: user?.mobile,
-                },
-                theme: {
-                    color: colors.redpink,
-                },
-            };
-            const razorpay = new window.Razorpay(options);
-            await razorpay.open();
-            setLoading(false);
-        } catch (err) {
-            setLoading(false);
-            toastify.info("something went wrong at payment gateway");
-        }
-    };
     return (
         <Checkoutstyle>
+            {console.log(cart)}
             {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
             <Container>
                 <h2 className="title">Checkout</h2>
+                <p>Complete your purchase securely</p>
             </Container>
-            <Container>
-                <MyForm className="form" onSubmit={payment}>
-                    <label>
-                        <span>Name</span>
-                        <input
-                            onChange={e => setuserdetail(v => ({ ...v, name: e.target.value }))}
-                            type="text"
-                            value={userdetail.name}
-                        />
-                    </label>
-                    <label>
-                        <span>Mobile</span>
-                        <input
-                            onChange={e => setuserdetail(v => ({ ...v, mobile: e.target.value }))}
-                            type="tel"
-                            value={userdetail.mobile}
-                        />
-                    </label>
-                    <Button type="primary" loading={loading}>
-                        pay now
-                    </Button>
-                </MyForm>
-                <PriceDetails items={cart} />
+            <Container className="payment-ui">
+                <div className="payment-methods">
+                    <div className="methods">
+                        <h3 className="sub-title">Payment Methods</h3>
+                        <p>choose your preferred payment option</p>
+                        <div className="method">
+                            <input
+                                onChange={e => setpaymentGateway(e.target.value)}
+                                checked={paymentGateway === "stripe"}
+                                type="radio"
+                                id="stripe"
+                                name="payment"
+                                value="stripe"
+                            />
+                            <label htmlFor="stripe">
+                                <IoIosCheckmarkCircle
+                                    className="checked"
+                                    size={30}
+                                    color={colors.green}
+                                />
+
+                                <div className="method-item">
+                                    <FaCreditCard color="blue" size={30} />
+                                    <div className="text">
+                                        <h3>Stripe</h3>
+                                        <p>International cards & digital wallets</p>
+                                    </div>
+                                </div>
+                                <div className="more">
+                                    <ul className="tags">
+                                        <li>visa</li>
+                                        <li>mastercard</li>
+                                        <li>paypal</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                        <div className="method">
+                            <input
+                                onChange={e => setpaymentGateway(e.target.value)}
+                                checked={paymentGateway === "razorpay"}
+                                type="radio"
+                                id="razorpay"
+                                name="payment"
+                                value="razorpay"
+                            />
+                            <label htmlFor="razorpay">
+                                <IoIosCheckmarkCircle
+                                    className="checked"
+                                    size={30}
+                                    color={colors.green}
+                                />
+                                <div className="method-item">
+                                    <FaMobileAlt size={30} />
+                                    <div className="text">
+                                        <h3>Razorpay</h3>
+                                        <p>Pay with UPI, Cards, Netbanking & Wallets</p>
+                                    </div>
+                                </div>
+
+                                <div className="more">
+                                    <ul className="tags">
+                                        <li>upi</li>
+                                        <li>cards</li>
+                                        <li>wallets</li>
+                                        <li>netbanking</li>
+                                    </ul>
+                                    <p>
+                                        <IoMdCheckmarkCircleOutline color={colors.green} /> zero
+                                        processing fees
+                                    </p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <MyForm className="form">
+                        <h2 className="sub-title">Contact details</h2>
+                        <label>
+                            <span>Name</span>
+                            <input
+                                onChange={e => setuserdetail(v => ({ ...v, name: e.target.value }))}
+                                type="text"
+                                value={userdetail.name}
+                            />
+                        </label>
+                        <label>
+                            <span>Mobile</span>
+                            <input
+                                onChange={e =>
+                                    setuserdetail(v => ({ ...v, mobile: e.target.value }))
+                                }
+                                type="tel"
+                                value={userdetail.mobile}
+                            />
+                        </label>
+                    </MyForm>
+                    <div className="secure">
+                        <LuShield size={30} color="#00a63e" />
+                        <div className="text">
+                            <h3>256-bit SSL Encryption</h3>
+                            <p>
+                                Your payment information is encrypted and secure. We never store
+                                your card details.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <OrderSummary paymentGateway={paymentGateway} cart={cart} />
             </Container>
         </Checkoutstyle>
     );
