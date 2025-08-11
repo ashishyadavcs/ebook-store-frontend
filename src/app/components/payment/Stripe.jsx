@@ -12,9 +12,8 @@ const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY);
 
 const Stripe1 = ({ totalprice, cart }) => {
     const [clientSecret, setClientSecret] = useState("");
-    const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const amount = totalprice; // Replace with actual amount
+    const amount = totalprice;
 
     useEffect(() => {
         (async isModalOpen => {
@@ -32,7 +31,6 @@ const Stripe1 = ({ totalprice, cart }) => {
                 }),
             });
             const data = await response.json();
-            console.log(data);
             setClientSecret(data.clientSecret);
         })(isModalOpen);
         document.body.style.overflow = isModalOpen ? "hidden" : "auto";

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 import { FaCheckCircle, FaTimesCircle, FaSpinner } from "react-icons/fa";
+import { media } from "@/config/media";
 
 const PaymentReturn = () => {
     const searchParams = useSearchParams();
@@ -21,14 +22,15 @@ const PaymentReturn = () => {
             try {
                 const response = await fetch(`/api/verify-stripe-payment?session_id=${sessionId}`, {
                     method: "GET",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
                 });
 
-                const data = await response.json();
+                const { data, success = false } = await response.json();
 
-                if (data.success && data.status === "paid") {
+                if (success && data.status === "paid") {
                     setStatus("success");
                     setPaymentData(data);
                 } else {
@@ -63,7 +65,7 @@ const PaymentReturn = () => {
                         <div className="status-icon loading">
                             <FaSpinner />
                         </div>
-                        <h2>Processing Payment...</h2>
+                        <h2>verifying Payment...</h2>
                         <p>Please wait while we verify your payment.</p>
                     </StatusContainer>
                 );
@@ -84,7 +86,7 @@ const PaymentReturn = () => {
                                 <h4>Payment Details:</h4>
                                 <div className="detail">
                                     <span>Transaction ID:</span>
-                                    <span>{paymentData.transaction_id}</span>
+                                    <span>{paymentData.paymentId}</span>
                                 </div>
                                 <div className="detail">
                                     <span>Amount:</span>
@@ -135,18 +137,16 @@ const PaymentReturn = () => {
         }
     };
 
-    return (
-        <Container>
-            <div className="content">{renderContent()}</div>
-        </Container>
-    );
+    return <Container>{renderContent()}</Container>;
 };
 
 export default PaymentReturn;
 
 // Styled Components
 const Container = styled.div`
-    min-height: 100vh;
+    ${media.minsm} {
+        min-height: 100vh;
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,8 +160,9 @@ const StatusContainer = styled.div`
     padding: 40px;
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
+    width: min(500px, 95%);
+    overflow: hidden;
+    margin: auto;
 
     .status-icon {
         width: 80px;
@@ -231,6 +232,7 @@ const PaymentDetails = styled.div`
 
     .detail {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         padding: 8px 0;
         border-bottom: 1px solid #e2e8f0;

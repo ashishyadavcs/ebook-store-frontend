@@ -10,7 +10,13 @@ const Footer = () => {
         <Footerstyle className="footer">
             <Container className="main">
                 <div className="info">
-                    <Image alt="logo" height={70} width={70} src="/images/logo.svg" />
+                    <Image
+                        loading="lazy"
+                        alt="logo"
+                        height={70}
+                        width={70}
+                        src="/images/logo.svg"
+                    />
                     <p>
                         Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.{" "}

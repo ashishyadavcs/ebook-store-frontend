@@ -21,13 +21,6 @@ const TableStyle = styled.div`
         th {
             text-align: left;
             padding: 10px;
-            ${media.sm} {
-                &:first-child {
-                    background: #fff;
-                    position: sticky;
-                    left: 0;
-                }
-            }
         }
         tr {
             border-top: 1px solid #ddd;
@@ -37,9 +30,6 @@ const TableStyle = styled.div`
         }
         thead {
             background: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 2;
         }
         tbody {
             height: 100%;

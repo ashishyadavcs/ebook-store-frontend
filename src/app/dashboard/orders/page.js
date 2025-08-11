@@ -26,7 +26,7 @@ const Page = async () => {
 
     return (
         <>
-            <h1 className="heading">Order History</h1>
+            <h1 className="heading">Order History ({data.length})</h1>
             <Table>
                 <thead>
                     <tr>

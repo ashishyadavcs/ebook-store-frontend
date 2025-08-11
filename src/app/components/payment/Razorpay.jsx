@@ -15,6 +15,9 @@ const Razorpay = ({ cart }) => {
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
         script.async = true;
         document.body.appendChild(script);
+        return () => {
+            document.body.style.overflow = "auto";
+        };
     }, []);
     const payment = async e => {
         e.preventDefault();
@@ -108,7 +111,6 @@ const Razorpay = ({ cart }) => {
             await razorpay.open();
             setLoading(false);
         } catch (err) {
-            console.log(err);
             setLoading(false);
             toastify.info("something went wrong at payment gateway");
         }

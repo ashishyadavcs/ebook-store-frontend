@@ -39,6 +39,10 @@ const Page = async ({ params }) => {
                             <td>{order.paymentId}</td>
                         </tr>
                         <tr>
+                            <th>PaymentGateway</th>
+                            <td>{order.paymentGateway}</td>
+                        </tr>
+                        <tr>
                             <th>Amount</th>
                             <td>{order.amount ? `₹${order.amount}` : "-"}</td>
                         </tr>
