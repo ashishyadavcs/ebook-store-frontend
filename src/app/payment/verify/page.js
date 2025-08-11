@@ -13,11 +13,10 @@ const PaymentReturn = () => {
 
     useEffect(() => {
         const sessionId = searchParams.get("session_id");
-        // if (!document.referrer.includes("checkout") || !sessionId) {
-        //     router.push("/");
-        // }
-
-        // Verify payment status with backend
+        if (!document.referrer.includes("checkout") || !sessionId) {
+            router.push("/");
+        }
+        let attempts = 0;
         const verifyPayment = async () => {
             try {
                 const response = await fetch(`/api/verify-stripe-payment?session_id=${sessionId}`, {
@@ -33,18 +32,22 @@ const PaymentReturn = () => {
                 if (success && data.status === "paid") {
                     setStatus("success");
                     setPaymentData(data);
-                    return;
                 } else {
-                    setStatus("failed");
+                    attempts++;
+                    if (attempts < 5) {
+                        setTimeout(() => {
+                            verifyPayment();
+                        }, 2000);
+                    } else {
+                        setStatus("failed");
+                    }
                 }
             } catch (error) {
                 setStatus("error");
             }
         };
 
-        setTimeout(() => {
-            verifyPayment();
-        }, 5000);
+        verifyPayment();
     }, [searchParams]);
 
     const handleContinue = () => {
@@ -160,7 +163,7 @@ const StatusContainer = styled.div`
     padding: 40px;
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    width: min(500px, 95%);
+    width: min(500px, 100%);
     overflow: hidden;
     margin: auto;
 
