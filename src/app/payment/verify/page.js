@@ -13,9 +13,9 @@ const PaymentReturn = () => {
 
     useEffect(() => {
         const sessionId = searchParams.get("session_id");
-        if (!document.referrer.includes("checkout") || !sessionId) {
-            router.push("/");
-        }
+        // if (!document.referrer.includes("checkout") || !sessionId) {
+        //     router.push("/");
+        // }
 
         // Verify payment status with backend
         const verifyPayment = async () => {
@@ -28,23 +28,28 @@ const PaymentReturn = () => {
                     },
                 });
 
-                const { data, success = false } = await response.json();
+                const { data, success } = await response.json();
 
                 if (success && data.status === "paid") {
                     setStatus("success");
                     setPaymentData(data);
-                } else {
-                    setStatus("failed");
+                    return;
                 }
             } catch (error) {
-                console.error("Error verifying payment:", error);
+                console.log(error);
                 setStatus("error");
             }
         };
 
-        setTimeout(() => {
-            verifyPayment();
-        }, 4000);
+        let attempts = 0;
+        const maxAttempts = 30; // ~5 minutes with backoff
+        const poll = async () => {
+            attempts++;
+            await verifyPayment();
+            if (attempts < maxAttempts) setTimeout(poll, Math.min(2000 * attempts, 10000));
+            else router.push("/payments/timeout");
+        };
+        poll();
     }, [searchParams]);
 
     const handleContinue = () => {
