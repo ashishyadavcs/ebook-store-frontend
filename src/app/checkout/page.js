@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
-import { useAppDispatch, useAppSelector } from "@/state/hooks";
-import { calculateCart } from "@/utils/cart.js";
-import SuccessPopUp from "@/components/Successpopup.jsx";
+import { useAppSelector } from "@/state/hooks";
 import { colors } from "@/config/constant.js";
 import { LuShield } from "react-icons/lu";
 import { FaCreditCard } from "react-icons/fa6";
@@ -21,7 +19,6 @@ const Payment = () => {
     const from = params.get("from");
     let mycart = useAppSelector(state => state.cart.data);
     const [cart, setcart] = useState(mycart);
-    const [success, setsuccess] = useState(false);
     const [paymentGateway, setpaymentGateway] = useState("razorpay");
     useEffect(() => {
         if (from) {
@@ -55,7 +52,6 @@ const Payment = () => {
 
     return (
         <Checkoutstyle>
-            {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
             <Container>
                 <h2 className="title">Checkout</h2>
                 <p>Complete your purchase securely</p>

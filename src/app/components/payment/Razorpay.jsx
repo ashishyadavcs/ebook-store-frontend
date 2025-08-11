@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaLock } from "react-icons/fa";
-import Button from "../ui/Button";
-import { toastify } from "../Toast";
+import Button from "@/components/ui/Button";
+import { toastify } from "@/components/Toast";
 import { colors } from "@/config/constant";
 import { useAppSelector } from "@/state/hooks";
 import { calculateCart } from "@/utils/cart";
-import SuccessPopUp from "../Successpopup";
+import SuccessPopUp from "@/components/Successpopup";
+import { revalidatePathAction } from "../../actions/common";
+import { redirect } from "next/navigation";
 const Razorpay = ({ cart }) => {
     const [loading, setLoading] = useState(false);
     const [success, setsuccess] = useState(false);
@@ -48,21 +50,6 @@ const Razorpay = ({ cart }) => {
                 image: "/images/logo.svg",
                 animation: false,
                 order_id: id,
-                config: {
-                    display: {
-                        // language: "hi",
-                    },
-                },
-                // notes: {
-                //     order_type: from ? "single_ebook" : "cart_checkout",
-                //     total_items: totalitems,
-                //     user_id: user?._id || "guest",
-                //     user_email: email,
-                //     ebook_ids: from ? [from] : cart.map(e => e._id).join(","),
-                //     purchase_date: new Date().toISOString(),
-                //     platform: "web",
-                //     checkout_source: from ? "direct_purchase" : "cart",
-                // },
                 remember_customer: true, // to save cards
                 handler: async response => {
                     const req = await fetch(`/api/verify-payment`, {
@@ -74,7 +61,7 @@ const Razorpay = ({ cart }) => {
                             orderid: response.razorpay_order_id,
                             paymentid: response.razorpay_payment_id,
                             signature: response.razorpay_signature,
-                            ebooks: from ? [from] : cart.map(e => e._id),
+                            ebooks: cart.map(e => e._id),
                             amount,
                         }),
                     });
