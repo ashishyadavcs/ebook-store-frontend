@@ -34,22 +34,17 @@ const PaymentReturn = () => {
                     setStatus("success");
                     setPaymentData(data);
                     return;
+                } else {
+                    setStatus("failed");
                 }
             } catch (error) {
-                console.log(error);
                 setStatus("error");
             }
         };
 
-        let attempts = 0;
-        const maxAttempts = 30; // ~5 minutes with backoff
-        const poll = async () => {
-            attempts++;
-            await verifyPayment();
-            if (attempts < maxAttempts) setTimeout(poll, Math.min(2000 * attempts, 10000));
-            else router.push("/payments/timeout");
-        };
-        poll();
+        setTimeout(() => {
+            verifyPayment();
+        }, 5000);
     }, [searchParams]);
 
     const handleContinue = () => {
