@@ -44,7 +44,7 @@ const PaymentReturn = () => {
 
         setTimeout(() => {
             verifyPayment();
-        }, 2000);
+        }, 4000);
     }, [searchParams]);
 
     const handleContinue = () => {
