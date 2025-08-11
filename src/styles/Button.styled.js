@@ -16,6 +16,7 @@ export const Buttonstyle = button => styled(button)`
     color: inherit;
     position: relative;
     font-weight: 600;
+    line-height: 0;
     text-transform: capitalize;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     &.primary {

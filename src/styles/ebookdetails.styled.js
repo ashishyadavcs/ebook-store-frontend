@@ -94,6 +94,9 @@ const Ebookdetails = styled.div`
             gap: min(50px, 4vw);
             .btn {
                 flex-shrink: 0;
+                ${media.sm} {
+                    flex-grow: 1;
+                }
             }
         }
         ${media.sm} {

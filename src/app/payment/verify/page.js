@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 import { FaCheckCircle, FaTimesCircle, FaSpinner } from "react-icons/fa";
 import { media } from "@/config/media";
+import { revalidatePathAction } from "../../actions/common";
 
 const PaymentReturn = () => {
     const searchParams = useSearchParams();
@@ -32,6 +33,7 @@ const PaymentReturn = () => {
                 if (success && data.status === "paid") {
                     setStatus("success");
                     setPaymentData(data);
+                    revalidatePathAction("/dashboard/ebooks");
                 } else {
                     attempts++;
                     if (attempts < 5) {
