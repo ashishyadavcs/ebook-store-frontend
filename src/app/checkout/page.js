@@ -52,11 +52,9 @@ const Payment = () => {
         email,
         mobile,
     });
-    const [loading, setLoading] = useState(false);
 
     return (
         <Checkoutstyle>
-            {console.log(cart)}
             {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
             <Container>
                 <h2 className="title">Checkout</h2>

@@ -5,8 +5,10 @@ import { toastify } from "../Toast";
 import { colors } from "@/config/constant";
 import { useAppSelector } from "@/state/hooks";
 import { calculateCart } from "@/utils/cart";
+import SuccessPopUp from "../Successpopup";
 const Razorpay = ({ cart }) => {
     const [loading, setLoading] = useState(false);
+    const [success, setsuccess] = useState(false);
     const user = useAppSelector(state => state.user.data);
     const { totalitems, totalprice } = calculateCart(cart);
     const { name = "", email = "", mobile = "" } = user;
@@ -116,10 +118,13 @@ const Razorpay = ({ cart }) => {
         }
     };
     return (
-        <Button onClick={payment} type="primary" loading={loading}>
-            <FaLock />
-            Pay with Razorpay
-        </Button>
+        <>
+            {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
+            <Button onClick={payment} btnType="button" type="primary" loading={loading}>
+                <FaLock />
+                Pay with Razorpay
+            </Button>
+        </>
     );
 };
 
