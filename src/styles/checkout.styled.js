@@ -191,10 +191,29 @@ export const ViewcartStyles = styled.div`
         margin: 0 0 16px 0;
     }
 
+    .loading-placeholder {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading-pulse 1.5s infinite;
+        border-radius: 8px;
+        height: 100px;
+        margin-bottom: 16px;
+
+        @keyframes loading-pulse {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    }
+
     .cart-content {
         display: grid;
         grid-template-columns: 1fr;
         gap: 24px;
+        will-change: transform; /* Performance hint for browser */
 
         @supports (grid-template-columns: 1fr) {
             ${media.md} {
@@ -452,12 +471,29 @@ export const ViewcartStyles = styled.div`
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         margin: 24px auto;
         max-width: 500px;
+        animation: fadeIn 0.5s ease-in-out;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .empty-icon {
             width: 100px;
             height: 100px;
             margin: 0 auto 24px;
             background: url("/images/empty-cart.svg") center/contain no-repeat;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+            }
         }
 
         h2 {
