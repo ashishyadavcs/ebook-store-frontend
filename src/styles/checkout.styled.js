@@ -6,7 +6,7 @@ import { colors } from "@/config/constant";
 export const Checkoutstyle = styled.section`
     padding: 20px 0;
     .title {
-        margin: 0 0 10px;
+        margin: 0 0 5px;
     }
     .sub-title {
         font-weight: 600;

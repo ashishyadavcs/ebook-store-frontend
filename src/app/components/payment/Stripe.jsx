@@ -16,6 +16,8 @@ const Stripe1 = ({ totalprice, cart }) => {
     const amount = totalprice;
 
     useEffect(() => {
+        document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+        if (!isModalOpen) return;
         (async isModalOpen => {
             if (!isModalOpen) return;
             const response = await fetch("/api/create-stripe-session", {
@@ -33,7 +35,6 @@ const Stripe1 = ({ totalprice, cart }) => {
             const data = await response.json();
             setClientSecret(data.clientSecret);
         })(isModalOpen);
-        document.body.style.overflow = isModalOpen ? "hidden" : "auto";
     }, [isModalOpen]);
 
     const options = {
