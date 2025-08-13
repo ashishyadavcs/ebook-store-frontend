@@ -16,9 +16,8 @@ const ReduxProvider = ({ children }) => {
         storeRef.current = makeStore();
     }
     let persister = persistStore(storeRef.current);
-    const PersistProvider = ({ children }) => {
-        if (typeof window === "undefined") return <>{children}</>;
-        return (
+    return (
+        <Provider store={storeRef.current}>
             <PersistGate
                 loading={
                     <Container>
@@ -29,11 +28,6 @@ const ReduxProvider = ({ children }) => {
             >
                 {children}
             </PersistGate>
-        );
-    };
-    return (
-        <Provider store={storeRef.current}>
-            <PersistProvider>{children}</PersistProvider>
         </Provider>
     );
 };
