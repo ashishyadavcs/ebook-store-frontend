@@ -1,11 +1,10 @@
 import React from "react";
-const Razorpay = dynamic(() => import("@/components/payment/Razorpay"));
-const Stripe = dynamic(() => import("@/components/payment/Stripe"));
+import Razorpay from "@/components/payment/Razorpay";
+import Stripe from "@/components/payment/Stripe";
 import { FaLock } from "react-icons/fa";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { LuShield } from "react-icons/lu";
 import { colors } from "@/config/constant";
-import dynamic from "next/dynamic";
 import { calculateCart } from "@/utils/cart";
 
 const OrderSummary = ({ cart, paymentGateway }) => {

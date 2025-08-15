@@ -88,7 +88,7 @@ const Payment = () => {
                                     <ul className="tags">
                                         <li>visa</li>
                                         <li>mastercard</li>
-                                        <li>paypal</li>
+                                        <li>credit card</li>
                                     </ul>
                                 </div>
                             </label>
