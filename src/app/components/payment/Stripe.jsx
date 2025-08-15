@@ -80,6 +80,8 @@ const Paystyle = styled.div`
     .stripe-loader {
         display: flex;
         flex-direction: column;
+        text-align: center;
+        padding: 20px;
         align-items: center;
         justify-content: center;
         height: 100%;
