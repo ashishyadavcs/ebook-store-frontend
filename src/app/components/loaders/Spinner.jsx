@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const Spinner = ({ size = 18 }) => {
-    return <SpinnerStyle size={size} />;
+const Spinner = ({ size = 18, color = "#f3f3f3" }) => {
+    return <SpinnerStyle size={size} color={color} />;
 };
 
 export default Spinner;
 const SpinnerStyle = styled.span`
     display: inline-block;
-    border: 2px solid #f3f3f3;
+    border: 2px solid ${({ color }) => color};
     border-top: 2px solid transparent;
     border-radius: 50%;
     --size: ${({ size }) => size + "px"};

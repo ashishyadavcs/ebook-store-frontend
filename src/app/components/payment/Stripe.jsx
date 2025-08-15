@@ -7,12 +7,14 @@ import ModalWrapper from "@/components/ModalWrapper";
 import config from "@/config/index";
 import styled from "styled-components";
 import { FaLock } from "react-icons/fa";
+import Spinner from "@/components/loaders/Spinner";
 
 const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY);
 
 const Stripe1 = ({ totalprice, cart }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [loading, setloading] = useState(false);
     const amount = totalprice;
 
     useEffect(() => {
@@ -20,6 +22,7 @@ const Stripe1 = ({ totalprice, cart }) => {
         if (!isModalOpen) return;
         (async isModalOpen => {
             if (!isModalOpen) return;
+            setloading(true);
             const response = await fetch("/api/create-stripe-session", {
                 method: "POST",
                 credentials: "include",
@@ -34,6 +37,7 @@ const Stripe1 = ({ totalprice, cart }) => {
             });
             const data = await response.json();
             setClientSecret(data.clientSecret);
+            setloading(false);
         })(isModalOpen);
     }, [isModalOpen]);
 
@@ -45,7 +49,15 @@ const Stripe1 = ({ totalprice, cart }) => {
             <ModalWrapper confirm={true} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <Paystyle>
                     <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-                        <EmbeddedCheckout />
+                        {loading ? (
+                            <div className="stripe-loader">
+                                <h2>Preparing your secure payment...</h2>
+                                <p>Please wait while we load the Stripe checkout.</p>
+                                <Spinner size={30} color="blue" />
+                            </div>
+                        ) : (
+                            <EmbeddedCheckout />
+                        )}
                     </EmbeddedCheckoutProvider>
                 </Paystyle>
             </ModalWrapper>
@@ -65,4 +77,12 @@ const Paystyle = styled.div`
     height: 100vh;
     overflow: auto;
     padding: 50px 0;
+    .stripe-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap: 20px;
+    }
 `;
