@@ -17,7 +17,7 @@ const ModalWrapperStyle = styled.div`
         font-size: 20px;
         padding: 10px;
         position: absolute;
-        inset: 0 0 auto auto;
+        inset: 0 10px auto auto;
     }
 `;
 

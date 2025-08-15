@@ -17,7 +17,18 @@ const ModalWrapper = ({
     const modalContent = (
         <ModalWrapperStyle size={size}>
             <div className="modal-content">
-                <Button type="default" className="close-btn" onClick={onClose}>
+                <Button
+                    type="default"
+                    className="close-btn"
+                    onClick={e => {
+                        if (confirm) {
+                            let isok = window.confirm("do you want to cancel?");
+                            isok && onClose(e);
+                            return;
+                        }
+                        onClose(e);
+                    }}
+                >
                     &times;
                 </Button>
                 {children}
