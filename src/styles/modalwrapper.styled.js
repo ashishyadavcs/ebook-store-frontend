@@ -1,4 +1,5 @@
 "use client";
+import { media } from "@/config/media";
 import styled from "styled-components";
 
 const ModalWrapperStyle = styled.div`
@@ -14,10 +15,15 @@ const ModalWrapperStyle = styled.div`
         position: relative;
     }
     .close-btn {
-        font-size: 20px;
+        font-size: 26px;
+        line-height: 1;
+        color: #ccc;
         padding: 10px;
         position: absolute;
         inset: 0 10px auto auto;
+        ${media.sm} {
+            inset: -3px 5px auto auto;
+        }
     }
 `;
 
