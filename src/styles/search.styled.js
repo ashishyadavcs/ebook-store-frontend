@@ -4,7 +4,7 @@ import styled from "styled-components";
 const SearchStyle = styled(MyForm)`
     margin: 30px auto;
     input {
-        border-radius: 8px;
+        border-radius: 100px;
         padding: 10px 20px;
     }
 `;

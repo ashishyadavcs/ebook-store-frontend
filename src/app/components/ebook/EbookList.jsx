@@ -4,7 +4,7 @@ import Link from "next/link";
 import { memo } from "react";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 
-const EbookList = async ({ data, size = 300 }) => {
+const EbookList = async ({ data, size = 250 }) => {
     let ebooks = [];
     if (!data) {
         try {

@@ -9,6 +9,7 @@ const FeaturedBook = styled.section`
     }
     p {
         margin: 10px 0 20px;
+        color: #333;
     }
     .container {
         display: flex;

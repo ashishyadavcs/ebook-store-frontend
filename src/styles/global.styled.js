@@ -4,10 +4,11 @@ import { colors } from "@/config/constant";
 import { media } from "@/config/media";
 import { Inter } from "next/font/google";
 const inter = Inter({
-    fallback: ["serif"],
+    fallback: ["Roboto"],
     display: "swap",
     preload: false,
     subsets: ["latin"],
+    family: "Roboto",
 });
 
 export const Globalstyle = createGlobalStyle`
@@ -22,7 +23,7 @@ ${css`
         --hotyellow: #ffb;
         --aqua: ${colors.aqua};
         --success: #00cd00;
-        --lightblue: #f2f4f7;
+        --lightblue: #fff;
         --container-width: min(80px, 10vw); //layout dependent in dashboard sidebar
     }
     ::-webkit-scrollbar {

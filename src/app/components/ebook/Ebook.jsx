@@ -45,7 +45,7 @@ export default Ebook;
 const Ebookstyle = styled.div`
     overflow: hidden;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 8px;
     .content {
         padding: 10px;
     }

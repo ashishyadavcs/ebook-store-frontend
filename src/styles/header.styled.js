@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
     background: #fff;
     z-index: 10;
     top: 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
     .sitename {
         display: flex;
         align-items: center;
@@ -76,7 +76,7 @@ const StyledHeader = styled.header`
                 border-radius: 50%;
                 color: #fff;
                 font-size: 1.4rem;
-                background: #02b47c;
+                background: var(--redpink);
             }
         }
     }
