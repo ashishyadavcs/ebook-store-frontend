@@ -43,7 +43,7 @@ const Payment = () => {
     }, [from]);
 
     const user = useAppSelector(state => state.user.data);
-    const { name = "", email = "", mobile = "" } = user;
+    const { name = "", email = "", mobile = "" } = user || {};
     const [userdetail, setuserdetail] = useState({
         name,
         email,
