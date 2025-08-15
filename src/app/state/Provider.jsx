@@ -1,7 +1,7 @@
 "use client";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { makeStore } from "./store";
 import dynamic from "next/dynamic";
 import Loader from "@/components/loaders/Loader";
@@ -10,21 +10,33 @@ const PersistGate = dynamic(() =>
     import("redux-persist/integration/react").then(mod => mod.PersistGate)
 );
 const ReduxProvider = ({ children }) => {
-    const storeRef = useRef(undefined);
-    if (!storeRef.current) {
-        storeRef.current = makeStore();
+    const [isClient, setIsClient] = useState(false);
+    const storeRef = useRef();
+
+    useEffect(() => {
+        setIsClient(true);
+        if (!storeRef.current) {
+            storeRef.current = makeStore();
+            storeRef.current.persistor = persistStore(storeRef.current);
+        }
+    }, []);
+
+    if (!isClient) {
+        const serverStore = makeStore();
+        return <Provider store={serverStore}>{children}</Provider>;
     }
-    let persister = persistStore(storeRef.current);
+
+    if (!storeRef.current) {
+        return (
+            <Container>
+                <Loader />
+            </Container>
+        );
+    }
+
     return (
         <Provider store={storeRef.current}>
-            <PersistGate
-                loading={
-                    <Container>
-                        <Loader />
-                    </Container>
-                }
-                persistor={persister}
-            >
+            <PersistGate loading={null} persistor={storeRef.current.persistor}>
                 {children}
             </PersistGate>
         </Provider>
