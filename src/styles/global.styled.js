@@ -23,7 +23,7 @@ ${css`
         --hotyellow: #ffb;
         --aqua: ${colors.aqua};
         --success: #00cd00;
-        --lightblue: #fff;
+        --lightblue: #f2f4f7;
         --container-width: min(80px, 10vw); //layout dependent in dashboard sidebar
     }
     ::-webkit-scrollbar {

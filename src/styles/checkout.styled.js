@@ -11,6 +11,11 @@ export const Checkoutstyle = styled.section`
     .sub-title {
         font: 600 18px/1.5 sans-serif;
     }
+    .header {
+        ${media.sm} {
+            text-align: center;
+        }
+    }
     .payment-ui {
         margin: 30px auto 0;
         display: flex;
@@ -20,12 +25,17 @@ export const Checkoutstyle = styled.section`
             display: flex;
             flex-direction: column;
             gap: 30px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+
             width: 100%;
+            ${media.sm} {
+                border-top: 1px solid #ddd;
+                padding: 20px 0 0;
+            }
             ${media.minsm} {
+                border-radius: 8px;
+                background: #fff;
+                padding: 20px;
+                border: 1px solid #ddd;
                 width: calc(70% - 30px);
             }
             .method {
@@ -50,6 +60,7 @@ export const Checkoutstyle = styled.section`
                     cursor: pointer;
                     padding: 20px;
                     border-radius: 8px;
+                    background: #fff;
                     border: 2px solid #ddd;
                     display: block;
                     .checked {
@@ -99,7 +110,9 @@ export const Checkoutstyle = styled.section`
                 border-radius: 8px;
                 display: flex;
                 gap: 10px;
-                margin: 20px 0;
+                ${media.minsm} {
+                    margin: 20px 0;
+                }
                 svg {
                     flex-shrink: 0;
                 }

@@ -5,6 +5,11 @@ const Dashboard = styled.main`
     display: flex;
     flex-wrap: wrap;
     --sidebarwidth: 18vw;
+    h1 {
+        ${media.sm} {
+            font-size: 18px;
+        }
+    }
     .sidebar {
         width: var(--sidebarwidth);
         transition: all 0.3s;

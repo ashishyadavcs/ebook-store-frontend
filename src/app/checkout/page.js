@@ -52,7 +52,7 @@ const Payment = () => {
 
     return (
         <Checkoutstyle>
-            <Container>
+            <Container className="header">
                 <h2 className="title">Checkout</h2>
                 <p>Complete your purchase securely</p>
             </Container>

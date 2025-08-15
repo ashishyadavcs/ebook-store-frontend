@@ -482,8 +482,6 @@ const Pagestyle = styled.section`
         button {
             padding: 14px 30px;
             margin: 10px 0 0;
-            background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
-            box-shadow: 0 5px 15px rgba(255, 0, 128, 0.3);
             transition: all 0.3s ease;
             width: 100%;
             max-width: 250px;
