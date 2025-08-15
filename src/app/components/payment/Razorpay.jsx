@@ -13,7 +13,7 @@ const Razorpay = ({ cart }) => {
     const [success, setsuccess] = useState(false);
     const user = useAppSelector(state => state.user.data);
     const { totalitems, totalprice } = calculateCart(cart);
-    const { name = "", email = "", mobile = "" } = user;
+    const { name = "", email = "", mobile = "" } = user || {};
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";

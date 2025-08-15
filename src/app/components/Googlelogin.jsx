@@ -10,6 +10,7 @@ import { revalidatePathAction } from "../actions/common.js";
 import { useState } from "react";
 
 const Googlelogin = ({ title = "Login with", setLoading }) => {
+    if (typeof localStorage === "undefined") return null;
     const [autoselect, setautoselect] = useState(
         localStorage.getItem("useGoogleSignin") === "true"
     );
