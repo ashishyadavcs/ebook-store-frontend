@@ -1,6 +1,6 @@
 import React from "react";
-const Razorpay = dynamic(() => import("@/components/payment/Razorpay"), { ssr: false });
-const Stripe = dynamic(() => import("@/components/payment/Stripe"), { ssr: false });
+const Razorpay = dynamic(() => import("@/components/payment/Razorpay"));
+const Stripe = dynamic(() => import("@/components/payment/Stripe"));
 import { FaLock } from "react-icons/fa";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { LuShield } from "react-icons/lu";
