@@ -23,9 +23,11 @@ export const EbooksContainer = styled.div`
                     height: 180px;
                 }
             }
-            &:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            ${media.minsm} {
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
             }
         }
     }
