@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import Spinner from "./Spinner";
 
 const EbookActionSkeleton = () => {
-    return <EbookBtnStyle className="ebook-btn"></EbookBtnStyle>;
+    return (
+        <EbookBtnStyle className="ebook-btn">
+            <Spinner color="#888" /> checking status...
+        </EbookBtnStyle>
+    );
 };
 
 export default EbookActionSkeleton;
@@ -11,6 +16,13 @@ const EbookBtnStyle = styled.div`
     height: 40px;
     background: #f0f0f0;
     border-radius: 5px;
+    text-align: center;
+    display: flex;
+    gap: 7px;
+    font-weight: 600;
+    color: #ccc;
+    align-items: center;
+    justify-content: center;
     margin: 10px 0;
     --loader-background-color: #eeeeee;
     --loader-highlight-color: #dedede;

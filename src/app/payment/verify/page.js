@@ -15,7 +15,7 @@ const PaymentReturn = () => {
     useEffect(() => {
         const sessionId = searchParams.get("session_id");
         if (!document.referrer.includes("checkout") || !sessionId) {
-            router.push("/");
+            return router.push("/");
         }
         let attempts = 0;
         const verifyPayment = async () => {
