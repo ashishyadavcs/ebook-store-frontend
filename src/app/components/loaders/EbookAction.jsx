@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 const EbookActionSkeleton = () => {
     return (
         <EbookBtnStyle className="ebook-btn">
-            <Spinner color="#888" /> checking status...
+            <Spinner color="#888" /> checking access...
         </EbookBtnStyle>
     );
 };
