@@ -19,13 +19,10 @@ export default async function RootLayout({ children }) {
             <body>
                 <ReduxProvider>
                     <StyledComponentsRegistry>
-                        <Suspense>
-                            <Config />
-                            <Header />
-
-                            {children}
-                            <Footer />
-                        </Suspense>
+                        <Config />
+                        <Header />
+                        {children}
+                        <Footer />
                     </StyledComponentsRegistry>
                 </ReduxProvider>
             </body>
