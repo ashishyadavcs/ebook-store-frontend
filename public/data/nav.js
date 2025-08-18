@@ -2,18 +2,24 @@ import { FaCartPlus } from "react-icons/fa";
 
 export const company = [
     {
-        link: "/",
-        text: "home",
-    },
-    {
         link: "/contact-us",
         text: "contact us",
     },
 ];
-export const privacy = {
-    link: "",
-    text: "privacy | term of service",
-};
+export const legal = [
+    {
+        link: "",
+        text: "privacy policy",
+    },
+    {
+        link: "",
+        text: "terms of service",
+    },
+    {
+        link: "",
+        text: "cancellation & refund",
+    },
+];
 export const news = [
     {
         title: "Nostrud exercitation",

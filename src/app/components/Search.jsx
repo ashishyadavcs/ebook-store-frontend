@@ -1,13 +1,13 @@
 "use client";
 import SearchStyle from "@/styles/search.styled";
-import { throttling } from "@/utils/common";
 import { useRouter } from "next/navigation";
+import Button from "./ui/Button";
 
 const Search = ({ searchQuery }) => {
     const router = useRouter();
     const search = e => {
         e.preventDefault();
-        let query = e.target.value.trim();
+        let query = e.target.query.value.trim();
         if (query.length > 0) {
             router.push(`?query=${query}`);
             return;
@@ -17,8 +17,20 @@ const Search = ({ searchQuery }) => {
         router.refresh();
     };
     return (
-        <SearchStyle>
-            <input onInput={throttling(search, 0)} type="search" placeholder="search ebooks..." />
+        <SearchStyle
+            onSubmit={e => {
+                e.preventDefault();
+                search(e);
+            }}
+        >
+            <input
+                required
+                minLength={3}
+                name="query"
+                type="search"
+                placeholder="search ebooks..."
+            />
+            <Button type="default">Search</Button>
         </SearchStyle>
     );
 };

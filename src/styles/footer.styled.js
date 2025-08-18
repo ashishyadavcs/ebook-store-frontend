@@ -46,10 +46,13 @@ const Footerstyle = styled.footer`
     }
     .company {
         li {
-            margin: 4px 0;
+            margin: 4px 0 8px;
         }
         a {
             text-transform: capitalize;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
     .sub-footer {

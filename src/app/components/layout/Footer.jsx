@@ -3,7 +3,7 @@ import Footerstyle from "@/styles/footer.styled";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
-import { company, news, privacy } from "../../../../public/nav";
+import { company, news, legal } from "@/data/nav";
 
 const Footer = () => {
     return (
@@ -17,6 +17,7 @@ const Footer = () => {
                         width={70}
                         src="/images/logo.svg"
                     />
+                    <h3>Ebook Store</h3>
                     <p>
                         Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.{" "}
@@ -27,6 +28,20 @@ const Footer = () => {
 
                     <ul>
                         {company.map((a, i) => (
+                            <li key={i}>
+                                <Link
+                                    title={a.text}
+                                    href={a.link}
+                                    target={a.target}
+                                    rel={a.target && "noopener noreferrer"}
+                                >
+                                    {a.text}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                    <ul>
+                        {legal.map((a, i) => (
                             <li key={i}>
                                 <Link
                                     title={a.text}
@@ -63,7 +78,6 @@ const Footer = () => {
             <div className="sub-footer">
                 <Container>
                     <p className="copyright">copyright&copy;2024-{new Date().getFullYear() + 1}</p>
-                    <Link href={privacy.link}>{privacy.text}</Link>
                 </Container>
             </div>
         </Footerstyle>

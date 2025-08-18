@@ -23,6 +23,7 @@ const EbookList = async ({ data, size = 250 }) => {
                     prefetch={false}
                     key={ebook._id}
                     className="ebook-details"
+                    title={ebook.title}
                     href={`/${ebook._id}`}
                 >
                     <Ebook
