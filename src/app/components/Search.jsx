@@ -1,6 +1,7 @@
 "use client";
 import SearchStyle from "@/styles/search.styled";
 import { useRouter } from "next/navigation";
+import { FaSearch } from "react-icons/fa";
 import Button from "./ui/Button";
 
 const Search = ({ searchQuery }) => {
@@ -30,7 +31,10 @@ const Search = ({ searchQuery }) => {
                 type="search"
                 placeholder="search ebooks..."
             />
-            <Button type="default">Search</Button>
+            <Button type="default">
+                <FaSearch size={20} />
+                <span>Search</span>
+            </Button>
         </SearchStyle>
     );
 };
