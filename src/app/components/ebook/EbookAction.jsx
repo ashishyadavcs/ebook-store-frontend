@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Review from "../Review";
 import AddTocart from "@/components/ebook/AddTocart";
-import { FaBookReader, FaUserGraduate } from "react-icons/fa";
+import { FaBookReader } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { usePathname } from "next/navigation";
 import EbookActionSkeleton from "@/components/loaders/EbookAction";
 import { useAppSelector } from "@/state/hooks";
-import Rating from "../ui/Rating";
+import Rating from "@/components/ui/Rating";
 
 const EbookAction = ({ ebook }) => {
     const pathname = usePathname();
@@ -29,10 +29,9 @@ const EbookAction = ({ ebook }) => {
             setpaid(false);
             return;
         }
-        useServerSideFetch("/api/user")
+        useServerSideFetch(`/api/user-ebooks`)
             .then(res => {
-                const result = res.data;
-                const purchasedEbooks = result.ebooks;
+                const purchasedEbooks = res.data;
                 setpaid(purchasedEbooks.find(el => el._id == id)?._id ? true : false);
             })
             .catch(err => {
