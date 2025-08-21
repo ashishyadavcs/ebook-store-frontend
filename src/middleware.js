@@ -5,6 +5,7 @@ import _config from "@/config/index.js";
 export async function middleware(request) {
     const url = request.nextUrl;
     const cookieStore = await cookies();
+    const userid = cookieStore.get("_user")?.value;
     const accesstoken = cookieStore.get("accesstoken")?.value;
     const refreshtoken = cookieStore.get("refreshtoken")?.value;
 
@@ -21,7 +22,7 @@ export async function middleware(request) {
 
     if (url.pathname.startsWith("/admin")) {
         try {
-            const res = await fetch(`${_config.APP_URL}/api/user`, {
+            const res = await fetch(`${_config.APP_URL}/api/user/${userid}`, {
                 headers: {
                     Authorization: `Bearer ${accesstoken}`,
                     Cookie: cookieStore.toString(),
@@ -29,11 +30,11 @@ export async function middleware(request) {
             });
             if (!res.ok) throw new Error("User fetch failed");
             const data = await res.json();
-            if (!data?.data?.user || data.data.user.role !== "admin") {
+            if (!data?.data.role || data.data.role !== "admin") {
                 const dashboardURL = new URL("/dashboard", request.url);
                 return NextResponse.redirect(dashboardURL);
             }
-        } catch {
+        } catch (err) {
             const loginurl = new URL("/login", request.url);
             loginurl.searchParams.set("from", url.pathname);
             return NextResponse.redirect(loginurl);
