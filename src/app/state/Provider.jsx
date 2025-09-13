@@ -36,9 +36,9 @@ const ReduxProvider = ({ children }) => {
 
     return (
         <Provider store={storeRef.current}>
-            <PersistGate loading={null} persistor={storeRef.current.persistor}>
-                {children}
-            </PersistGate>
+            {/* <PersistGate loading={null} persistor={storeRef.current.persistor}> */}
+            {children}
+            {/* </PersistGate> */}
         </Provider>
     );
 };
