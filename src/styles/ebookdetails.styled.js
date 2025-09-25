@@ -10,10 +10,6 @@ const Ebookdetails = styled.div`
     }
     .heading {
         text-transform: capitalize;
-
-        margin: 0 0 10px;
-
-        text-align: left;
     }
 
     .thumbnail {
