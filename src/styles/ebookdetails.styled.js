@@ -8,8 +8,12 @@ const Ebookdetails = styled.div`
     ${media.sm} {
         padding: 0 0 40px;
     }
-    h1 {
+    .heading {
         text-transform: capitalize;
+
+        margin: 0 0 10px;
+
+        text-align: left;
     }
 
     .thumbnail {
