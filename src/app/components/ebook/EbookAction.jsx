@@ -65,7 +65,7 @@ const EbookAction = ({ ebook }) => {
         <div className="details">
             <div className="info">
                 <div className="left">
-                    <h1 className="heading">{title}</h1>
+                    <h1>{title}</h1>
                     <p className="desc">{description || "no description"}</p>
                     <span className="author">
                         <LuUser /> {author.toLowerCase() || "Mr.John"}
