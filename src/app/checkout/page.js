@@ -1,7 +1,7 @@
 "use client";
 import Container from "@/components/ui/Container";
 import { Checkoutstyle } from "@/styles/checkout.styled";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
@@ -13,6 +13,10 @@ import { FaMobileAlt } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import OrderSummary from "@/components/checkout/OrderSummary.jsx";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import dynamic from "next/dynamic";
+const Razorpay = dynamic(() => import("@/components/payment/Razorpay"), { ssr: false });
+const Stripe = dynamic(() => import("@/components/payment/Stripe"), { ssr: false });
+import { calculateCart } from "@/utils/cart";
 const Payment = () => {
     const params = useSearchParams();
     const router = useRouter();
@@ -49,6 +53,7 @@ const Payment = () => {
         email,
         mobile,
     });
+    const { totalitems, totalprice } = calculateCart(cart);
 
     return (
         <Checkoutstyle>
@@ -91,6 +96,9 @@ const Payment = () => {
                                         <li>credit card</li>
                                     </ul>
                                 </div>
+                                <Suspense fallback="Loading Stripe Payment Gateway...">
+                                    <Stripe cart={cart} totalprice={totalprice} />
+                                </Suspense>
                             </label>
                         </div>
                         <div className="method">
@@ -128,6 +136,9 @@ const Payment = () => {
                                         processing fees
                                     </p>
                                 </div>
+                                <Suspense fallback="Loading Razorpay Payment Gateway...">
+                                    <Razorpay cart={cart} totalprice={totalprice} />
+                                </Suspense>
                             </label>
                         </div>
                     </div>

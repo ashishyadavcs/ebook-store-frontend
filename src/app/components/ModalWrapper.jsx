@@ -22,7 +22,7 @@ const ModalWrapper = ({
                     className="close-btn"
                     onClick={e => {
                         if (confirm) {
-                            let isok = window.confirm("do you want to cancel?");
+                            let isok = window.confirm(confirm);
                             isok && onClose(e);
                             return;
                         }

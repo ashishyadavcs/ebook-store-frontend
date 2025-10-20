@@ -5,6 +5,10 @@ import { colors } from "@/config/constant";
 
 export const Checkoutstyle = styled.section`
     padding: 20px 0;
+    .pay-btn {
+        margin: 20px 0 0;
+        display: none;
+    }
     .title {
         margin: 0 0 5px;
     }
@@ -52,6 +56,9 @@ export const Checkoutstyle = styled.section`
                 }
                 input:checked + label {
                     border: 2px solid ${colors.redpink};
+                    .pay-btn {
+                        display: block;
+                    }
                     .checked {
                         opacity: 1;
                     }
@@ -63,6 +70,7 @@ export const Checkoutstyle = styled.section`
                     background: #fff;
                     border: 2px solid #ddd;
                     display: block;
+                    transition: all 0.3s;
                     .checked {
                         float: right;
                         opacity: 0;

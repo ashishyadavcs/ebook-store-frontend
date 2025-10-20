@@ -107,8 +107,14 @@ const Razorpay = ({ cart }) => {
     return (
         <>
             {success && <SuccessPopUp goto={"/dashboard/ebooks"} />}
-            <Button onClick={payment} btnType="button" type="primary" loading={loading}>
-                <FaLock />
+            <Button
+                className="pay-btn"
+                onClick={payment}
+                btnType="button"
+                type="primary"
+                loading={loading}
+            >
+                <FaLock style={{ marginRight: "8px" }} />
                 Pay with Razorpay
             </Button>
         </>

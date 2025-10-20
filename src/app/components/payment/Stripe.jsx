@@ -8,6 +8,7 @@ import config from "@/config/index";
 import styled from "styled-components";
 import { FaLock } from "react-icons/fa";
 import Spinner from "@/components/loaders/Spinner";
+import { toastify } from "../Toast";
 
 const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY);
 
@@ -34,6 +35,10 @@ const Stripe1 = ({ totalprice, cart }) => {
                     currency: "usd",
                     cart,
                 }),
+            }).catch(err => {
+                setloading(false);
+                setIsModalOpen(false);
+                toastify.info("Failed to initiate payment. Please try again.");
             });
             const data = await response.json();
             setClientSecret(data.clientSecret);
@@ -46,7 +51,11 @@ const Stripe1 = ({ totalprice, cart }) => {
     };
     return (
         <>
-            <ModalWrapper confirm={true} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <ModalWrapper
+                confirm={"are you sure you want to cancel the payment?"}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            >
                 <Paystyle>
                     <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
                         {loading ? (
@@ -62,7 +71,7 @@ const Stripe1 = ({ totalprice, cart }) => {
                 </Paystyle>
             </ModalWrapper>
 
-            <Button type="primary" onClick={() => setIsModalOpen(true)}>
+            <Button className="pay-btn" type="primary" onClick={() => setIsModalOpen(true)}>
                 <FaLock style={{ marginRight: "8px" }} />
                 Pay with Stripe
             </Button>
@@ -74,7 +83,7 @@ export default Stripe1;
 const Paystyle = styled.div`
     background: #ffffff;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     overflow: auto;
     padding: 50px 0;
     .stripe-loader {

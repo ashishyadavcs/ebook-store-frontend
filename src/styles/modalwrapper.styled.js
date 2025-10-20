@@ -22,7 +22,7 @@ const ModalWrapperStyle = styled.div`
         position: absolute;
         inset: 0 10px auto auto;
         ${media.sm} {
-            inset: -3px 5px auto auto;
+            inset: -3px 10px auto auto;
         }
     }
 `;
