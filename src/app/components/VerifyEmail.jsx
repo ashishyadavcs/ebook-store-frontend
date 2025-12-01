@@ -4,9 +4,7 @@ import styled from "styled-components";
 import MyForm from "./ui/Form";
 import { toastify } from "./Toast";
 import { useForm } from "@/hooks/useForm";
-import { useAppSelector } from "@/state/hooks";
-import { useDispatch } from "react-redux";
-import { addUser } from "@/state/userslice";
+import useUserStore from "@/state/stores/userStore";
 import { media } from "@/config/media";
 
 const VerifyEmail = ({ userdata, setIsModalOpen }) => {
@@ -16,8 +14,7 @@ const VerifyEmail = ({ userdata, setIsModalOpen }) => {
     const { email, name } = userdata;
     const [codeSent, setCodeSent] = useState(false);
     const [timer, setTimer] = useState(0);
-    const user = useAppSelector(state => state.user.data);
-    const dispatch = useDispatch();
+    const { user, setUser } = useUserStore();
     // Timer effect
     useEffect(() => {
         let interval = null;

@@ -6,7 +6,7 @@
             "@/utils/*": ["./src/utils/*"],
             "@/config/*": ["./src/config/*"],
             "@/hooks/*": ["./src/hooks/*"],
-            "@/state/*": ["./src/app/state/*"],
+            "@/state/*": ["./src/state/*"],
             "@/data/*": ["./public/data/*"]
         }
     }

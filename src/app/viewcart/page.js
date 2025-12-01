@@ -2,13 +2,13 @@
 import { useMemo } from "react";
 import Container from "@/components/ui/Container";
 import { ViewcartStyles } from "@/styles/checkout.styled";
-import { useAppSelector } from "@/state/hooks";
+import useCartStore from "@/state/stores/cartStore";
 import Button from "@/components/ui/Button";
 import PriceDetails from "@/components/checkout/PriceDetails";
 import ItemList from "@/components/checkout/ItemList";
 
 const ViewCart = () => {
-    const cart = useAppSelector(state => state.cart.data);
+    const { items: cart } = useCartStore();
     const { totalItems, totalPrice, totalDiscount } = useMemo(() => {
         if (!cart || cart.length === 0) {
             return { totalItems: 0, totalPrice: 0, totalDiscount: 0 };

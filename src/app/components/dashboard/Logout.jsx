@@ -1,14 +1,13 @@
 "use client";
 import { MdLogout } from "react-icons/md";
-import { useAppDispatch } from "@/state/hooks";
-import { removeuser } from "@/state/userslice";
+import useUserStore from "@/state/stores/userStore";
 import { redirect } from "next/navigation";
 import Button from "../ui/Button";
 import { useState } from "react";
 import { toastify } from "../Toast";
 
 const Logout = ({ size = 20 }) => {
-    const dispatch = useAppDispatch();
+    const { logout } = useUserStore();
     const [loading, setLoading] = useState(false);
     const logoutOutUser = async () => {
         setLoading(true);
@@ -24,7 +23,7 @@ const Logout = ({ size = 20 }) => {
             toastify.error("logout failed");
             return;
         }
-        dispatch(removeuser(null));
+        logout();
         toastify.success("logged out successfully");
         redirect("/login");
     };

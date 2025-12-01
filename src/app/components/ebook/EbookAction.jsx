@@ -8,12 +8,12 @@ import { LuUser } from "react-icons/lu";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { usePathname } from "next/navigation";
 import EbookActionSkeleton from "@/components/loaders/EbookAction";
-import { useAppSelector } from "@/state/hooks";
+import useUserStore from "@/state/stores/userStore";
 import Rating from "@/components/ui/Rating";
 
 const EbookAction = ({ ebook }) => {
     const pathname = usePathname();
-    const user = useAppSelector(state => state.user.data);
+    const { user } = useUserStore();
     const {
         _id: id,
         title = "",

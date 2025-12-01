@@ -1,8 +1,8 @@
 "use client";
-import { useAppSelector } from "@/state/hooks";
+import useUserStore from "@/state/stores/userStore";
 
 const Page = () => {
-    const user = useAppSelector(state => state.user.data);
+    const { user } = useUserStore();
     return (
         <>
             <h1 className="text-center">

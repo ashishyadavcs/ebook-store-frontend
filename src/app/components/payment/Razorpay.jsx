@@ -3,7 +3,7 @@ import { FaLock } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import { toastify } from "@/components/Toast";
 import { colors } from "@/config/constant";
-import { useAppSelector } from "@/state/hooks";
+import useUserStore from "@/state/stores/userStore";
 import { calculateCart } from "@/utils/cart";
 import SuccessPopUp from "@/components/Successpopup";
 import { revalidatePathAction } from "../../actions/common";
@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 const Razorpay = ({ cart }) => {
     const [loading, setLoading] = useState(false);
     const [success, setsuccess] = useState(false);
-    const user = useAppSelector(state => state.user.data);
+    const { user } = useUserStore();
     const { totalitems, totalprice } = calculateCart(cart);
     const { name = "", email = "", mobile = "" } = user || {};
     useEffect(() => {

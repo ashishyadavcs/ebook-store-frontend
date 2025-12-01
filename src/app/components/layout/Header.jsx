@@ -3,7 +3,8 @@ import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
-import { useAppSelector } from "@/state/hooks";
+import useUserStore from "@/state/stores/userStore";
+import useCartStore from "@/state/stores/cartStore";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import { constant } from "@/config/constant";
@@ -12,8 +13,8 @@ import { ismobile } from "@/config/common";
 import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
-    const user = useAppSelector(state => state.user.data);
-    const cart = useAppSelector(state => state.cart.data);
+    const { user } = useUserStore();
+    const { items: cart, getTotalItems } = useCartStore();
     const router = useRouter();
     const pathname = usePathname().toString();
     const openSidebar = e => {

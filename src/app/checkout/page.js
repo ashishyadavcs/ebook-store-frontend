@@ -5,7 +5,8 @@ import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import MyForm from "@/components/ui/Form";
-import { useAppSelector } from "@/state/hooks";
+import useCartStore from "@/state/stores/cartStore";
+import useUserStore from "@/state/stores/userStore";
 import { colors } from "@/config/constant.js";
 import { LuShield } from "react-icons/lu";
 import { FaCreditCard } from "react-icons/fa6";
@@ -21,8 +22,8 @@ const Payment = () => {
     const params = useSearchParams();
     const router = useRouter();
     const from = params.get("from");
-    let mycart = useAppSelector(state => state.cart.data);
-    const [cart, setcart] = useState(mycart);
+    const { items: cartItems } = useCartStore();
+    const [cart, setcart] = useState(cartItems);
     const [paymentGateway, setpaymentGateway] = useState("razorpay");
     useEffect(() => {
         if (from) {
@@ -42,11 +43,11 @@ const Payment = () => {
                     router.push("/");
                 });
         } else {
-            setcart(mycart);
+            setcart(cartItems);
         }
     }, [from]);
 
-    const user = useAppSelector(state => state.user.data);
+    const { user } = useUserStore();
     const { name = "", email = "", mobile = "" } = user || {};
     const [userdetail, setuserdetail] = useState({
         name,

@@ -3,8 +3,7 @@ import { memo, useCallback } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { MdDelete } from "react-icons/md";
-import { useAppDispatch } from "@/state/hooks";
-import { addToCart, removeFromCart } from "@/state/cart";
+import useCartStore from "@/state/stores/cartStore";
 
 const formatCurrency = amount => `₹${amount.toLocaleString("en-IN")}`;
 

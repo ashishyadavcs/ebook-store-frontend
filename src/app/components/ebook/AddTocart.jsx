@@ -1,21 +1,19 @@
 "use client";
 import React from "react";
 import Button from "../ui/Button";
-import { useAppDispatch, useAppSelector } from "@/state/hooks";
-import { addToCart } from "@/state/cart";
+import useCartStore from "@/state/stores/cartStore";
 import { toastify } from "../Toast";
 import { FaCartPlus } from "react-icons/fa6";
 const AddTocart = ({ ebook, loading }) => {
     ebook = { ...ebook, price: 20 };
-    const cart = useAppSelector(state => state.cart.data);
-    const dispatch = useAppDispatch();
-    const existingItem = cart.length > 0 && cart.some(i => i?._id == ebook._id);
+    const { items: cart, addItem, getItemCount } = useCartStore();
+    const existingItem = getItemCount(ebook._id) > 0;
     return (
         <Button
             disabled={existingItem}
             loading={loading}
             onClick={e => {
-                dispatch(addToCart(ebook));
+                addItem(ebook);
                 toastify.success("added to cart");
             }}
         >

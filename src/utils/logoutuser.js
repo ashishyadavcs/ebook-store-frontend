@@ -1,7 +1,6 @@
-import { removeuser } from "@/state/userslice";
 import { logout } from "../app/actions/logout";
 
-export const logoutUser = async dispatch => {
+export const logoutUser = async clearUser => {
     await logout();
-    dispatch(removeuser(null));
+    clearUser();
 };

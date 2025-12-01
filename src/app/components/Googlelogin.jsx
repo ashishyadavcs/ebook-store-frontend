@@ -4,8 +4,7 @@ import config from "../../config/index.js";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { toastify } from "./Toast.jsx";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAppDispatch } from "@/state/hooks/index.js";
-import { addUser } from "@/state/userslice.js";
+import useUserStore from "@/state/stores/userStore";
 import { revalidatePathAction } from "../actions/common.js";
 import { useState } from "react";
 
@@ -16,7 +15,7 @@ const Googlelogin = ({ title = "Login with", setLoading }) => {
     );
     const router = useRouter();
     const searchParams = useSearchParams();
-    const dispatch = useAppDispatch();
+    const { setUser } = useUserStore();
     const handleSuccess = async res => {
         localStorage.setItem("useGoogleSignin", true);
         setLoading(true);

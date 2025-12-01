@@ -3,10 +3,9 @@ import Button from "@/components/ui/Button";
 import MyForm from "@/components/ui/Form";
 import ProfileStyle from "@/styles/profile.styled";
 import Upload from "@/components/ui/upload";
-import { useAppDispatch, useAppSelector } from "@/state/hooks";
+import useUserStore from "@/state/stores/userStore";
 import { useState } from "react";
 import { toastify } from "@/components/Toast";
-import { addUser } from "@/state/userslice";
 import { constant } from "@/config/constant";
 import { useForm } from "@/hooks/useForm";
 import { usePathname, useRouter } from "next/navigation";
@@ -18,11 +17,10 @@ const Profile = () => {
     const currentURL = usePathname();
     const [loading, setloading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const user = useAppSelector(state => state.user.data);
+    const { user, setUser } = useUserStore();
     console.log(user);
     const { name = "", email = "", mobile = "", image = constant.default_user } = user || {};
     const { handleChange, values } = useForm();
-    const dispatch = useAppDispatch();
     const updateUser = async e => {
         e.preventDefault();
         try {
@@ -47,7 +45,7 @@ const Profile = () => {
                 throw Error(res.statusText);
             }
             const result = await res.json();
-            dispatch(addUser(result.user));
+            setUser(result.user);
             setloading(false);
             toastify.success("profile updated");
         } catch (err) {
