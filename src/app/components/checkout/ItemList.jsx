@@ -60,19 +60,24 @@ const QuantityControl = memo(({ quantity, onIncrease, onDecrease }) => (
 
 // Cart item component
 const CartItem = memo(({ item }) => {
-    const dispatch = useAppDispatch();
+    const { addItem, updateQuantity, removeItem } = useCartStore();
 
     const handleAddItem = useCallback(() => {
-        dispatch(addToCart(item));
-    }, [dispatch, item]);
+        addItem(item);
+    }, [addItem, item]);
 
     const handleRemoveItem = useCallback(() => {
-        dispatch(removeFromCart(item));
-    }, [dispatch, item]);
+        const newQuantity = (item.quantity || 1) - 1;
+        if (newQuantity > 0) {
+            updateQuantity(item._id, newQuantity);
+        } else {
+            removeItem(item._id);
+        }
+    }, [updateQuantity, removeItem, item]);
 
     const handleRemoveCompletely = useCallback(() => {
-        dispatch(removeFromCart({ ...item, quantity: 0 }));
-    }, [dispatch, item]);
+        removeItem(item._id);
+    }, [removeItem, item]);
 
     return (
         <div className="cart-item">
