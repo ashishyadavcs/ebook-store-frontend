@@ -23,10 +23,6 @@ export const legal = [
         link: "/cookie-policy",
         text: "cookie policy",
     },
-    {
-        link: "/about-us",
-        text: "about us",
-    },
 ];
 export const news = [
     {
