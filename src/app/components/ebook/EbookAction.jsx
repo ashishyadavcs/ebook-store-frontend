@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Button from "../ui/Button";
-import Review from "../Review";
+import Button from "@/components/ui/Button";
+import Review from "@/components/Review";
 import AddTocart from "@/components/ebook/AddTocart";
 import { FaBookReader } from "react-icons/fa";
 import { LuUser } from "react-icons/lu";

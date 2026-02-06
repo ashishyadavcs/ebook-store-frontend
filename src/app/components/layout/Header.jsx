@@ -2,12 +2,12 @@
 import Link from "next/link";
 import StyledHeader from "@/styles/header.styled";
 import Container from "@/components/ui/Container";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { useAppSelector } from "@/state/hooks";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import { constant } from "@/config/constant";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 import { ismobile } from "@/config/common";
 import { useRouter, usePathname } from "next/navigation";
 

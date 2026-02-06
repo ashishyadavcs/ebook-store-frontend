@@ -1,7 +1,7 @@
 import Table from "@/components/ui/Table";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import React, { Suspense } from "react";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { FaEdit } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import Link from "next/link";

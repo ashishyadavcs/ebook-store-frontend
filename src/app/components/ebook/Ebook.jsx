@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { constant } from "@/config/constant";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { media } from "@/config/media";
 const Ebook = ({ data, className, preload }) => {
     const {

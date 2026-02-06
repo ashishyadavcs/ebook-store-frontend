@@ -2,7 +2,7 @@
 import SearchStyle from "@/styles/search.styled";
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
-import Button from "./ui/Button";
+import Button from "@/components/ui/Button";
 
 const Search = ({ searchQuery }) => {
     const router = useRouter();

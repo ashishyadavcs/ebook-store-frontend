@@ -1,7 +1,7 @@
 "use client";
 import Footerstyle from "@/styles/footer.styled";
 import Container from "@/components/ui/Container";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Link from "next/link";
 import { company, news, legal } from "@/data/nav";
 

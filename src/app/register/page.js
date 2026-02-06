@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import Googlelogin from "@/components/Googlelogin";
 import AuthStyle from "@/styles/auth.styled";
 import MyForm from "@/components/ui/Form";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { useRouter } from "next/navigation";
 import { toastify } from "@/components/Toast";
 import { useState } from "react";

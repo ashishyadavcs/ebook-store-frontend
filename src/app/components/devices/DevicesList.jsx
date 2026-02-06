@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { DevicesStyle } from "@/styles/devices.styled";
-import DeviceCard from "./DeviceCard";
-import Button from "../ui/Button";
-import Loader from "../loaders/Loader";
+import DeviceCard from "@/components/devices/DeviceCard";
+import Button from "@/components/ui/Button";
+import Loader from "@/components/loaders/Loader";
 
 const DevicesList = () => {
     const [devices, setDevices] = useState([]);

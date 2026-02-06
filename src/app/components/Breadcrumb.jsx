@@ -3,7 +3,7 @@ import config from "@/config/index";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { memo } from "react";
-import Container from "./ui/Container";
+import Container from "@/components/ui/Container";
 import styled from "styled-components";
 
 const Breadcrumb = () => {

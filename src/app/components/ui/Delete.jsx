@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "@/components/ui/Button";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
-import { toastify } from "../Toast";
+import { toastify } from "@/components/Toast";
 
 const DeleteItem = ({ url, message = "item deleted!" }) => {
     const [loading, setloading] = useState(false);

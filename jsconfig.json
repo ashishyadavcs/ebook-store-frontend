@@ -7,7 +7,8 @@
             "@/config/*": ["./src/config/*"],
             "@/hooks/*": ["./src/hooks/*"],
             "@/state/*": ["./src/app/state/*"],
-            "@/data/*": ["./public/data/*"]
+            "@/data/*": ["./public/data/*"],
+            "@/actions/*": ["./src/app/actions/*"]
         }
     }
 }

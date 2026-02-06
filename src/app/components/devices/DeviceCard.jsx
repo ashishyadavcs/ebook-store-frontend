@@ -1,6 +1,6 @@
 "use client";
 import { DeviceCardStyle } from "@/styles/devices.styled";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 
 const DeviceCard = ({ device, onRevoke }) => {
     const getDeviceIcon = userAgent => {

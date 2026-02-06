@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "@/components/Image";
 import React, { useState } from "react";
 import { FaImage } from "react-icons/fa6";
 import styled from "styled-components";

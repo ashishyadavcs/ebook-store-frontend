@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import Spinner from "../loaders/Spinner";
+import Spinner from "@/components/loaders/Spinner";
 import Buttonstyle from "@/styles/Button.styled";
 
 const Button = props => {

@@ -1,12 +1,12 @@
 "use client";
 import styled from "styled-components";
-import config from "../../config/index.js";
+import config from "@/config/index";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { toastify } from "./Toast.jsx";
+import { toastify } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAppDispatch } from "@/state/hooks/index.js";
 import { addUser } from "@/state/userslice.js";
-import { revalidatePathAction } from "../actions/common.js";
+import { revalidatePathAction } from "@/actions/common";
 import { useState } from "react";
 
 const Googlelogin = ({ title = "Login with", setLoading }) => {

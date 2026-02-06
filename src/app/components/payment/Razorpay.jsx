@@ -6,7 +6,7 @@ import { colors } from "@/config/constant";
 import { useAppSelector } from "@/state/hooks";
 import { calculateCart } from "@/utils/cart";
 import SuccessPopUp from "@/components/Successpopup";
-import { revalidatePathAction } from "../../actions/common";
+import { revalidatePathAction } from "@/actions/common";
 import { redirect } from "next/navigation";
 const Razorpay = ({ cart }) => {
     const [loading, setLoading] = useState(false);

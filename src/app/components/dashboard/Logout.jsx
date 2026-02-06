@@ -3,9 +3,9 @@ import { MdLogout } from "react-icons/md";
 import { useAppDispatch } from "@/state/hooks";
 import { removeuser } from "@/state/userslice";
 import { redirect } from "next/navigation";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 import { useState } from "react";
-import { toastify } from "../Toast";
+import { toastify } from "@/components/Toast";
 
 const Logout = ({ size = 20 }) => {
     const dispatch = useAppDispatch();

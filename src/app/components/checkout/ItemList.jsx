@@ -1,6 +1,6 @@
 "use client";
 import { memo, useCallback } from "react";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Button from "@/components/ui/Button";
 import { MdDelete } from "react-icons/md";
 import { useAppDispatch } from "@/state/hooks";

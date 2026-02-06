@@ -11,6 +11,7 @@ const EbookList = dynamicImport(() => import("@/components/ebook/EbookList"), {
     loading: () => <div style={{ minHeight: 300 }} />,
 });
 import FeaturedBook from "@/styles/featuredbook.styled";
+import Image from "@/components/Image";
 export default async function Home({ searchParams }) {
     let ebooks = [];
     let options = {};
@@ -62,7 +63,13 @@ export default async function Home({ searchParams }) {
                             shop now and save big!
                         </p>
                     </div>
-                    <img loading="lazy" src="/images/feature-book.svg" />
+                    <Image
+                        layout="fixed"
+                        width={300}
+                        height={200}
+                        loading="lazy"
+                        src="/images/feature-book.svg"
+                    />
                 </Container>
             </FeaturedBook>
         </HomeStyles>

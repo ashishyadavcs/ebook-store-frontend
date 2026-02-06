@@ -8,16 +8,24 @@ export const company = [
 ];
 export const legal = [
     {
-        link: "",
+        link: "/privacy-policy",
         text: "privacy policy",
     },
     {
-        link: "",
+        link: "/terms-of-service",
         text: "terms of service",
     },
     {
-        link: "",
+        link: "/refund-policy",
         text: "cancellation & refund",
+    },
+    {
+        link: "/cookie-policy",
+        text: "cookie policy",
+    },
+    {
+        link: "/about-us",
+        text: "about us",
     },
 ];
 export const news = [

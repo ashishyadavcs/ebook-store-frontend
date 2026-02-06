@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Button from "./ui/Button";
+import Button from "@/components/ui/Button";
 import styled from "styled-components";
-import MyForm from "./ui/Form";
-import { toastify } from "./Toast";
+import MyForm from "@/components/ui/Form";
+import { toastify } from "@/components/Toast";
 import { useForm } from "@/hooks/useForm";
 import { useAppSelector } from "@/state/hooks";
 import { useDispatch } from "react-redux";

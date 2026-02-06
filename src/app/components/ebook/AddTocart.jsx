@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 import { useAppDispatch, useAppSelector } from "@/state/hooks";
 import { addToCart } from "@/state/cart";
-import { toastify } from "../Toast";
+import { toastify } from "@/components/Toast";
 import { FaCartPlus } from "react-icons/fa6";
 const AddTocart = ({ ebook, loading }) => {
     ebook = { ...ebook, price: 20 };

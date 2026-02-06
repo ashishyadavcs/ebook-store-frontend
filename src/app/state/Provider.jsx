@@ -2,7 +2,7 @@
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { useEffect, useRef, useState } from "react";
-import { makeStore } from "./store";
+import { makeStore } from "@/state/store";
 import dynamic from "next/dynamic";
 import Loader from "@/components/loaders/Loader";
 import Container from "@/components/ui/Container";

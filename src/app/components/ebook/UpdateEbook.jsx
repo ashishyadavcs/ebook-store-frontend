@@ -7,7 +7,7 @@ import MyForm from "@/components/ui/Form";
 import { useState } from "react";
 import Upload from "@/components/ui/upload";
 import { useForm } from "@/hooks/useForm";
-import { revalidatePathAction } from "../../actions/common";
+import { revalidatePathAction } from "@/actions/common";
 
 const UpdateEbook = ({ ebook }) => {
     const { handleChange, values } = useForm();

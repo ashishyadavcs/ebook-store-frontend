@@ -1,9 +1,9 @@
 "use client";
 import styled, { css } from "styled-components";
-import Button from "./ui/Button";
+import Button from "@/components/ui/Button";
 import { useState } from "react";
-import { media } from "../../config/media";
-import { toastify } from "./Toast";
+import { media } from "@/config/media";
+import { toastify } from "@/components/Toast";
 import { useRouter } from "next/navigation";
 
 const Review = ({ size, ebookid }) => {

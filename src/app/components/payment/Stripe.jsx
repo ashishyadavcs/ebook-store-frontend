@@ -8,7 +8,7 @@ import config from "@/config/index";
 import styled from "styled-components";
 import { FaLock } from "react-icons/fa";
 import Spinner from "@/components/loaders/Spinner";
-import { toastify } from "../Toast";
+import { toastify } from "@/components/Toast";
 
 const stripePromise = loadStripe(config.STRIPE_PUBLISHABLE_KEY);
 

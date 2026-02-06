@@ -1,13 +1,13 @@
 import Container from "@/components/ui/Container";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Ebookdetails from "@/styles/ebookdetails.styled";
 import { useServerSideFetch } from "@/utils/ssr-api-call";
 import { constant } from "@/config/constant";
 import { delay } from "@/utils/common";
 import { notFound } from "next/navigation";
-import EbookAction from "./EbookAction";
+import EbookAction from "@/components/ebook/EbookAction";
 import { Suspense } from "react";
-import Rating from "../ui/Rating";
+import Rating from "@/components/ui/Rating";
 
 const Ebookdetail = async ({ id }) => {
     // await delay(200000)

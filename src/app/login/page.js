@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 import Googlelogin from "@/components/Googlelogin";
 import { toastify } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
+import Image from "@/components/Image";
 import MyForm from "@/components/ui/Form";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
