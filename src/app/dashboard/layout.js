@@ -8,6 +8,7 @@ import Logout from "@/components/dashboard/Logout";
 import { VscVmActive } from "react-icons/vsc";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdPayment } from "react-icons/md";
+import ClientLink from "@/components/client-components/ClientLink";
 
 const Layout = async ({ children }) => {
     const links = [
@@ -43,10 +44,10 @@ const Layout = async ({ children }) => {
                 <ul>
                     {links.map((link, i) => (
                         <li key={i}>
-                            <Link onClick={link.onClick} href={`/dashboard${link.url}`}>
+                            <ClientLink href={`/dashboard${link.url}`}>
                                 {link.icon}
                                 {link.text}
-                            </Link>
+                            </ClientLink>
                         </li>
                     ))}
                     <Logout />
