@@ -2,9 +2,9 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import StyledComponentsRegistry from "@/components/styledregistery";
 import Config from "@/components/Config";
+import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
 import ReduxProvider from "./state/Provider";
-import Breadcrumb from "./components/Breadcrumb";
 
 export const viewport = {
     themeColor: "#ffffff",
@@ -17,6 +17,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
+                <NextTopLoader color="rgb(250, 0, 133)" height={5} showSpinner={true} />
                 <ReduxProvider>
                     <StyledComponentsRegistry>
                         <Suspense>

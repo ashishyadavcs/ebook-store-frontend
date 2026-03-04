@@ -109,10 +109,6 @@ ${css`
         background-clip: text;
         -webkit-background-clip: text;
     }
-    #nprogress .bar {
-        background: rgb(250, 0, 133);
-        height: 5px;
-    }
     .channel {
         position: fixed;
         bottom: 50px;

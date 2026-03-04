@@ -4,7 +4,6 @@ import { Globalstyle } from "@/styles/global.styled";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Handle401 from "@/components/Handle401";
-import NProgressbar from "@/components/Nprogress";
 const Config = () => {
     const pathname = usePathname();
     useEffect(() => {
@@ -15,7 +14,6 @@ const Config = () => {
         <>
             <Globalstyle />
             <Toast />
-            <NProgressbar />
             <Handle401 />
         </>
     );

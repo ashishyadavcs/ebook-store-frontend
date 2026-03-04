@@ -32,7 +32,7 @@ const Layout = async ({ children }) => {
             icon: <MdPayment size={20} />,
         },
         {
-            text: "Logged-in Devices",
+            text: "Sessions",
             url: "/sessions",
             icon: <VscVmActive color="green" size={20} />,
         },
